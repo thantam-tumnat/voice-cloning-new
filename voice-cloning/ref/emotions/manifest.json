@@ -1,0 +1,52 @@
+{
+  "neutral": [
+    {
+      "file": "neutral_1.wav",
+      "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+      "actor_id": "001",
+      "gender": "Male",
+      "agreement": 0.929,
+      "sec": 3.21
+    }
+  ],
+  "angry": [
+    {
+      "file": "angry_1.wav",
+      "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+      "actor_id": "001",
+      "gender": "Male",
+      "agreement": 0.857,
+      "sec": 3.12
+    }
+  ],
+  "happy": [
+    {
+      "file": "happy_1.wav",
+      "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+      "actor_id": "001",
+      "gender": "Male",
+      "agreement": 0.714,
+      "sec": 4.41
+    }
+  ],
+  "sad": [
+    {
+      "file": "sad_1.wav",
+      "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+      "actor_id": "001",
+      "gender": "Male",
+      "agreement": 0.75,
+      "sec": 3.56
+    }
+  ],
+  "frustrated": [
+    {
+      "file": "frustrated_1.wav",
+      "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+      "actor_id": "001",
+      "gender": "Male",
+      "agreement": 0.625,
+      "sec": 3.83
+    }
+  ]
+}

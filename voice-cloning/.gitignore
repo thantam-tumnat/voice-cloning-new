@@ -49,3 +49,8 @@ voices/          # pre-rename name; keep ignored so old checkouts stay clean
 !ref/
 !ref/*.wav
 !ref/*.md
+# emotion donor clips curated from thai-ser (tools/build_emotion_refs.py)
+!ref/emotions/
+!ref/emotions/*.wav
+!ref/emotions/*.txt
+!ref/emotions/*.json
