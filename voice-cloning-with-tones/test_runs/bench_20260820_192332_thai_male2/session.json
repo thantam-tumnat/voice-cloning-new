@@ -1,0 +1,50 @@
+{
+  "session_id": "bench_20260820_192332_thai_male2",
+  "name": "Emotion Benchmark (20260820_192332)",
+  "created_at": "2026-08-20T19:23:32.438018",
+  "speaker_id": "thai_male2",
+  "text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+  "emotions": [
+    "neutral",
+    "calm",
+    "happy",
+    "sad",
+    "angry",
+    "excited",
+    "nervous",
+    "sarcastic",
+    "scared",
+    "tired"
+  ],
+  "repeats": 3,
+  "total_takes": 30,
+  "completed_takes": 1,
+  "params": {
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 10,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260820_192332_thai_male2/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 3.29,
+        "rms": 0.0778,
+        "energy_dbfs": -22.2,
+        "f0_med_hz": 130.6,
+        "f0_p10_hz": 102.6,
+        "f0_p90_hz": 171.4,
+        "f0_spread_st": 8.89
+      },
+      "elapsed_s": 9.21,
+      "error": null,
+      "timestamp": "2026-08-20T19:23:41.650558"
+    }
+  }
+}

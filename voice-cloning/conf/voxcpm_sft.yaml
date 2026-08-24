@@ -1,0 +1,79 @@
+# Full-SFT recipe for SiangTTS — VoxCPM2-2B, all modules except the AudioVAE.
+#
+# ⚠ Does NOT fit the RTX 3090: fp32 master weights + AdamW states + grads need
+# ~40 GB. This config targets a rented A100-80G / H100 (single GPU). Use
+# conf/voxcpm_lora.yaml for local runs; escalate here only if LoRA (incl.
+# r=128 + enable_proj) plateaus on eval CER.
+#
+# Checkpoints are standalone model dirs (model.safetensors + config/tokenizer/
+# VAE copied from the base snapshot) loadable via
+# `python -m src.inference --base-model checkpoints/siangtts-sft-v0/latest`.
+
+pretrained_path: openbmb/VoxCPM2
+sample_rate: 16000        # AudioVAE encoder input rate
+out_sample_rate: 48000    # AudioVAE decoder output rate
+
+manifests:
+  train:
+    - path: data/vaja/train.jsonl
+      weight: 1.0
+    - path: data/libritts/train.jsonl
+      weight: 0.25      # ~20% EN — prevents forgetting + keeps code-switching
+  val:
+    - path: data/vaja/val.jsonl
+    - path: data/libritts/val.jsonl
+
+# No `lora:` section → full SFT (train/train_lora.py switches on its absence).
+
+optim:
+  optimizer: adamw
+  lr: 1.0e-5              # VoxCPM full-SFT default (10× lower than LoRA)
+  weight_decay: 0.01
+  warmup_steps: 1000
+
+train:
+  batch_size: 8                    # A100-80G sizing
+  gradient_accumulation_steps: 2   # effective batch 16
+  max_batch_tokens: 8192
+  num_epochs: 2                    # VoxCPM guidance: 1–2 epochs for full SFT
+  num_workers: 8
+  max_grad_norm: 1.0
+  save_every_steps: 2000
+  eval_every_steps: 1000
+  log_every_steps: 50
+  lambdas:
+    loss/diff: 1.0
+    loss/stop: 1.0
+
+monitor:
+  tensorboard:
+    enabled: true
+    log_dir: runs/siangtts-sft-v0
+    flush_every_steps: 100
+  audio_sampler:
+    enabled: true
+    every_steps: 2000
+    prompts: eval/prompts_listen.tsv
+    sample_rate: 48000
+    max_prompts: 6
+    cfg_value: 2.5
+    inference_timesteps: 10
+  timing:
+    enabled: true
+    summary_path: runs/siangtts-sft-v0/training_summary.json
+    log_gpu_stats: true
+
+augment:
+  thai_digit:
+    p_full: 0.4
+    p_partial: 0.1
+  en_text_original_vs_normalized:
+    p_normalized: 0.3
+  whitespace_jitter:
+    p: 0.15
+  case_jitter:
+    p: 0.1
+
+paths:
+  checkpoint_dir: checkpoints/siangtts-sft-v0
+  log_dir: runs/siangtts-sft-v0

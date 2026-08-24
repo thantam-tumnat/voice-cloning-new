@@ -1,0 +1,320 @@
+{
+  "session_id": "bench_20260821_165059_base",
+  "name": "Emotion Benchmark (20260821_165059)",
+  "created_at": "2026-08-21T16:50:59.839306",
+  "speaker_id": null,
+  "text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry"
+  ],
+  "repeats": 2,
+  "total_takes": 8,
+  "completed_takes": 8,
+  "params": {
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 10,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 2.25,
+        "rms": 0.1222,
+        "energy_dbfs": -18.3,
+        "f0_med_hz": 138.1,
+        "f0_p10_hz": 101.6,
+        "f0_p90_hz": 209.6,
+        "f0_spread_st": 12.54
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 2.25,
+            "rms": 0.1222,
+            "energy_dbfs": -18.3,
+            "f0_med_hz": 138.1,
+            "f0_p10_hz": 101.6,
+            "f0_p90_hz": 209.6,
+            "f0_spread_st": 12.54
+          }
+        }
+      ],
+      "elapsed_s": 19.26,
+      "error": null,
+      "timestamp": "2026-08-21T16:51:19.113467"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 2.33,
+        "rms": 0.0987,
+        "energy_dbfs": -20.1,
+        "f0_med_hz": 141.2,
+        "f0_p10_hz": 105.3,
+        "f0_p90_hz": 206.7,
+        "f0_spread_st": 11.68
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 2.33,
+            "rms": 0.0987,
+            "energy_dbfs": -20.1,
+            "f0_med_hz": 141.2,
+            "f0_p10_hz": 105.3,
+            "f0_p90_hz": 206.7,
+            "f0_spread_st": 11.68
+          }
+        }
+      ],
+      "elapsed_s": 41.13,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:00.249253"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "(Happy and cheerful voice, smiling while speaking)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 2.4,
+        "rms": 0.082,
+        "energy_dbfs": -21.7,
+        "f0_med_hz": 139.7,
+        "f0_p10_hz": 103.5,
+        "f0_p90_hz": 185.4,
+        "f0_spread_st": 10.09
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 2.4,
+            "rms": 0.082,
+            "energy_dbfs": -21.7,
+            "f0_med_hz": 139.7,
+            "f0_p10_hz": 103.5,
+            "f0_p90_hz": 185.4,
+            "f0_spread_st": 10.09
+          }
+        }
+      ],
+      "elapsed_s": 8.18,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:08.435382"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "(Happy and cheerful voice, smiling while speaking)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 2.44,
+        "rms": 0.1005,
+        "energy_dbfs": -20.0,
+        "f0_med_hz": 136.0,
+        "f0_p10_hz": 101.5,
+        "f0_p90_hz": 187.5,
+        "f0_spread_st": 10.63
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 2.44,
+            "rms": 0.1005,
+            "energy_dbfs": -20.0,
+            "f0_med_hz": 136.0,
+            "f0_p10_hz": 101.5,
+            "f0_p90_hz": 187.5,
+            "f0_spread_st": 10.63
+          }
+        }
+      ],
+      "elapsed_s": 7.42,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:15.862842"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "(Sad voice, quiet and downcast)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 2.27,
+        "rms": 0.0545,
+        "energy_dbfs": -25.3,
+        "f0_med_hz": 142.6,
+        "f0_p10_hz": 106.7,
+        "f0_p90_hz": 187.5,
+        "f0_spread_st": 9.77
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 2.27,
+            "rms": 0.0545,
+            "energy_dbfs": -25.3,
+            "f0_med_hz": 142.6,
+            "f0_p10_hz": 106.7,
+            "f0_p90_hz": 187.5,
+            "f0_spread_st": 9.77
+          }
+        }
+      ],
+      "elapsed_s": 7.59,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:23.454456"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "(Sad voice, quiet and downcast)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 1.83,
+        "rms": 0.0929,
+        "energy_dbfs": -20.6,
+        "f0_med_hz": 132.4,
+        "f0_p10_hz": 94.0,
+        "f0_p90_hz": 170.9,
+        "f0_spread_st": 10.35
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 1.83,
+            "rms": 0.0929,
+            "energy_dbfs": -20.6,
+            "f0_med_hz": 132.4,
+            "f0_p10_hz": 94.0,
+            "f0_p90_hz": 170.9,
+            "f0_spread_st": 10.35
+          }
+        }
+      ],
+      "elapsed_s": 6.78,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:30.237954"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "(Angry, firm and aggressive tone)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 1.85,
+        "rms": 0.1942,
+        "energy_dbfs": -14.2,
+        "f0_med_hz": 148.6,
+        "f0_p10_hz": 114.0,
+        "f0_p90_hz": 201.3,
+        "f0_spread_st": 9.84
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 1.85,
+            "rms": 0.1942,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 148.6,
+            "f0_p10_hz": 114.0,
+            "f0_p90_hz": 201.3,
+            "f0_spread_st": 9.84
+          }
+        }
+      ],
+      "elapsed_s": 6.42,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:36.668946"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "(Angry, firm and aggressive tone)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืม",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 2.21,
+        "rms": 0.0796,
+        "energy_dbfs": -22.0,
+        "f0_med_hz": 133.3,
+        "f0_p10_hz": 105.9,
+        "f0_p90_hz": 355.8,
+        "f0_spread_st": 20.98
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_165059_base/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 2.21,
+            "rms": 0.0796,
+            "energy_dbfs": -22.0,
+            "f0_med_hz": 133.3,
+            "f0_p10_hz": 105.9,
+            "f0_p90_hz": 355.8,
+            "f0_spread_st": 20.98
+          }
+        }
+      ],
+      "elapsed_s": 7.05,
+      "error": null,
+      "timestamp": "2026-08-21T16:52:43.719561"
+    }
+  }
+}

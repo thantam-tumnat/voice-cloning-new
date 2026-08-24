@@ -1,0 +1,160 @@
+{
+  "info": {
+    "name": "SiangTTS webhook (:8002)",
+    "description": "Thai TTS service that replaced the n8n LIveAI_Audio flow.\n\nSet the collection variables first:\n- base_url: http://localhost:8010 (use 127.0.0.1 while testing; the service has no auth)\n- voice_id: must match a clip in ref/ — ref/demo_female.wav gives voice_id demo_female\n- callback_url: grab a throwaway URL from https://webhook.site so results never reach the real callback\n\n'Create audio' fills the job_id variable automatically, so the job requests below work straight after it.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8010" },
+    { "key": "voice_id", "value": "demo_female" },
+    { "key": "callback_url", "value": "https://webhook.site/REPLACE-ME" },
+    { "key": "run_id", "value": "" },
+    { "key": "job_id", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Health",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}/health", "host": ["{{base_url}}"], "path": ["health"] },
+        "description": "status must be 'ok' — 'loading' means the model is still coming up (~30-60s).\nupload_token:false means every job will fail at the upload step."
+      }
+    },
+    {
+      "name": "2. Create audio (short)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// one id per run, reused for both job_id and queue_id",
+              "pm.collectionVariables.set('run_id', 'postman-' + Date.now());"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('accepted', () => pm.response.to.have.status(200));",
+              "const j = pm.response.json();",
+              "if (j.job_id) {",
+              "    pm.collectionVariables.set('job_id', j.job_id);",
+              "    console.log('job_id =', j.job_id, '| chunks =', j.chunks);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "options": { "raw": { "language": "json" } },
+          "raw": "{\n  \"job_id\": \"{{run_id}}\",\n  \"queue_id\": \"{{run_id}}\",\n  \"prompt\": \"สนใจสินค้าตัวไหน กดที่ตะกร้าได้เลยนะคะ\",\n  \"voice_id\": \"{{voice_id}}\",\n  \"voice_text\": \"\",\n  \"audio_speed\": 1,\n  \"country_code\": \"th\",\n  \"callback_url\": \"{{callback_url}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/webhook/live-ai-create-new",
+          "host": ["{{base_url}}"],
+          "path": ["webhook", "live-ai-create-new"]
+        },
+        "description": "Returns {status, job_id, chunks} immediately — the audio is produced afterwards and announced on callback_url."
+      }
+    },
+    {
+      "name": "3. Create audio (long, multi-chunk)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.collectionVariables.set('run_id', 'postman-long-' + Date.now());"]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const j = pm.response.json();",
+              "if (j.job_id) pm.collectionVariables.set('job_id', j.job_id);",
+              "pm.test('split into more than one chunk', () => pm.expect(j.chunks).to.be.above(1));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "options": { "raw": { "language": "json" } },
+          "raw": "{\n  \"job_id\": \"{{run_id}}\",\n  \"queue_id\": \"{{run_id}}\",\n  \"prompt\": \"ผู้หญิงหลายคนดูแลคนอื่นเก่งมากอย่าลืมดูแลตัวเองจนวันนึงรู้สึกว่าทำไมหน้าโทรมเหนื่อยง่ายไม่มั่นใจเหมือนเมื่อก่อนเราเองก็เคยเป็นค่ะทั้งทำงานหนักพักผ่อนน้อยดูแลตัวเองไม่สม่ำเสมอจนได้ลองตัวนี้แล้วรู้สึกว่าเป็นอีกตัวนึงที่ช่วยทำให้เรากลับมาดูแลตัวเองได้ง่ายขึ้นสิ่งที่ชอบก็คือใช้ง่ายไม่ยุ่งยากเหมาะสำหรับผู้หญิงที่ใช้ชีวิตเร่งรีบและที่สำคัญคือช่วยให้เรารู้สึกมั่นใจขึ้นเพราะว่าการดูแลตัวเองไม่ใช่เรื่องฟุ่มเฟือยแต่เป็นการรักตัวเอง\",\n  \"voice_id\": \"{{voice_id}}\",\n  \"audio_speed\": 1,\n  \"country_code\": \"th\",\n  \"callback_url\": \"{{callback_url}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/webhook/live-ai-create-new",
+          "host": ["{{base_url}}"],
+          "path": ["webhook", "live-ai-create-new"]
+        },
+        "description": "The pinned payload from the old n8n workflow. Space-free Thai, so it exercises the sentence/word breakpoint pass and the ffmpeg concat."
+      }
+    },
+    {
+      "name": "4. Job status (last created)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/jobs/{{job_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["jobs", "{{job_id}}"]
+        },
+        "description": "status: queued -> running -> completed | failed.\nprogress is chunks_done/total, position is the place in line while waiting."
+      }
+    },
+    {
+      "name": "5. All jobs",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/jobs?limit=20",
+          "host": ["{{base_url}}"],
+          "path": ["jobs"],
+          "query": [{ "key": "limit", "value": "20" }]
+        }
+      }
+    },
+    {
+      "name": "6. Failed jobs only",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/jobs?status=failed",
+          "host": ["{{base_url}}"],
+          "path": ["jobs"],
+          "query": [{ "key": "status", "value": "failed" }]
+        }
+      }
+    },
+    {
+      "name": "7. Empty prompt (expect 400)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "options": { "raw": { "language": "json" } },
+          "raw": "{\n  \"queue_id\": \"postman-empty\",\n  \"prompt\": \"   \",\n  \"voice_id\": \"{{voice_id}}\",\n  \"callback_url\": \"{{callback_url}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/webhook/live-ai-create-new",
+          "host": ["{{base_url}}"],
+          "path": ["webhook", "live-ai-create-new"]
+        },
+        "description": "The old n8n flow hung until timeout on this input. Should now return 400 with an explanatory error."
+      }
+    }
+  ]
+}

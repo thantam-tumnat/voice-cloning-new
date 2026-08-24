@@ -1,0 +1,219 @@
+[sweep] loading model ...
+[sweep] LoRA layers: lm=144 dit=48
+[sweep] seed voice: ok
+[sweep] lm_only: lm=2.0 dit=0.0 cfg=2.5 lang=en punct=False
+    lm_only          rep0 neutral   62.4s
+    lm_only          rep0 angry     50.2s
+    lm_only          rep0 sad      113.1s
+    lm_only          rep0 happy     46.6s
+    lm_only          rep0 scared    60.1s
+    lm_only          rep1 neutral   57.7s
+    lm_only          rep1 angry     37.2s
+    lm_only          rep1 sad      108.1s
+    lm_only          rep1 happy     58.0s
+    lm_only          rep1 scared    57.8s
+    lm_only          rep2 neutral   63.5s
+    lm_only          rep2 angry     53.6s
+    lm_only          rep2 sad       63.7s
+    lm_only          rep2 happy     55.6s
+    lm_only          rep2 scared    56.1s
+[sweep] lm_dit0.5: lm=2.0 dit=0.5 cfg=2.5 lang=en punct=False
+    lm_dit0.5        rep0 neutral   57.5s
+    lm_dit0.5        rep0 angry     50.5s
+    lm_dit0.5        rep0 sad       65.3s
+    lm_dit0.5        rep0 happy     50.8s
+    lm_dit0.5        rep0 scared    50.3s
+    lm_dit0.5        rep1 neutral   57.9s
+    lm_dit0.5        rep1 angry     57.6s
+    lm_dit0.5        rep1 sad       63.7s
+    lm_dit0.5        rep1 happy     57.5s
+    lm_dit0.5        rep1 scared    58.1s
+    lm_dit0.5        rep2 neutral   61.3s
+    lm_dit0.5        rep2 angry     62.0s
+    lm_dit0.5        rep2 sad       38.5s
+    lm_dit0.5        rep2 happy     62.0s
+    lm_dit0.5        rep2 scared    51.9s
+[sweep] lm_dit1.0: lm=2.0 dit=1.0 cfg=2.5 lang=en punct=False
+    lm_dit1.0        rep0 neutral   59.8s
+    lm_dit1.0        rep0 angry     50.1s
+    lm_dit1.0        rep0 sad      185.3s
+    lm_dit1.0        rep0 happy     48.1s
+    lm_dit1.0        rep0 scared    50.0s
+    lm_dit1.0        rep1 neutral   57.5s
+    lm_dit1.0        rep1 angry     57.5s
+    lm_dit1.0        rep1 sad       95.2s
+    lm_dit1.0        rep1 happy     57.4s
+    lm_dit1.0        rep1 scared    55.8s
+    lm_dit1.0        rep2 neutral   61.0s
+    lm_dit1.0        rep2 angry     61.4s
+    lm_dit1.0        rep2 sad       59.2s
+    lm_dit1.0        rep2 happy     63.4s
+    lm_dit1.0        rep2 scared    61.1s
+[sweep] lm_cfg4.0: lm=2.0 dit=0.0 cfg=4.0 lang=en punct=False
+    lm_cfg4.0        rep0 neutral   57.5s
+    lm_cfg4.0        rep0 angry     57.4s
+    lm_cfg4.0        rep0 sad      344.4s
+    lm_cfg4.0        rep0 happy     57.7s
+    lm_cfg4.0        rep0 scared    57.6s
+    lm_cfg4.0        rep1 neutral   57.3s
+    lm_cfg4.0        rep1 angry     57.5s
+    lm_cfg4.0        rep1 sad       61.1s
+    lm_cfg4.0        rep1 happy     57.6s
+    lm_cfg4.0        rep1 scared    57.5s
+    lm_cfg4.0        rep2 neutral   51.9s
+    lm_cfg4.0        rep2 angry     51.8s
+    lm_cfg4.0        rep2 sad       85.9s
+    lm_cfg4.0        rep2 happy     53.7s
+    lm_cfg4.0        rep2 scared    54.0s
+[sweep] lm_cfg6.0: lm=2.0 dit=0.0 cfg=6.0 lang=en punct=False
+    lm_cfg6.0        rep0 neutral   49.7s
+    lm_cfg6.0        rep0 angry     65.0s
+    lm_cfg6.0        rep0 sad       53.5s
+    lm_cfg6.0        rep0 happy     53.7s
+    lm_cfg6.0        rep0 scared    59.4s
+    lm_cfg6.0        rep1 neutral   57.7s
+    lm_cfg6.0        rep1 angry     57.4s
+    lm_cfg6.0        rep1 sad       67.0s
+    lm_cfg6.0        rep1 happy     57.4s
+    lm_cfg6.0        rep1 scared    57.6s
+    lm_cfg6.0        rep2 neutral   49.9s
+    lm_cfg6.0        rep2 angry     51.8s
+    lm_cfg6.0        rep2 sad       95.2s
+    lm_cfg6.0        rep2 happy     52.0s
+    lm_cfg6.0        rep2 scared    47.9s
+[sweep] lm_lvl3: lm=2.0 dit=0.0 cfg=2.5 lang=en punct=False
+    lm_lvl3          rep0 neutral   59.3s
+    lm_lvl3          rep0 angry     50.0s
+    lm_lvl3          rep0 sad       59.3s
+    lm_lvl3          rep0 happy     50.3s
+    lm_lvl3          rep0 scared    50.1s
+    lm_lvl3          rep1 neutral   57.4s
+    lm_lvl3          rep1 angry     36.6s
+    lm_lvl3          rep1 sad       55.5s
+    lm_lvl3          rep1 happy     57.6s
+    lm_lvl3          rep1 scared    57.2s
+    lm_lvl3          rep2 neutral   63.1s
+    lm_lvl3          rep2 angry     62.8s
+    lm_lvl3          rep2 sad       53.8s
+    lm_lvl3          rep2 happy     57.5s
+    lm_lvl3          rep2 scared    55.6s
+[sweep] lm_th: lm=2.0 dit=0.0 cfg=2.5 lang=th punct=False
+    lm_th            rep0 neutral   59.3s
+    lm_th            rep0 angry     82.4s
+    lm_th            rep0 sad       74.8s
+    lm_th            rep0 happy     80.5s
+    lm_th            rep0 scared    87.9s
+    lm_th            rep1 neutral   57.6s
+    lm_th            rep1 angry     82.1s
+    lm_th            rep1 sad       82.4s
+    lm_th            rep1 happy     84.1s
+    lm_th            rep1 scared    86.2s
+    lm_th            rep2 neutral   62.8s
+    lm_th            rep2 angry     88.4s
+    lm_th            rep2 sad       95.0s
+    lm_th            rep2 happy     80.9s
+    lm_th            rep2 scared    82.1s
+[sweep] lm_both: lm=2.0 dit=0.0 cfg=2.5 lang=both punct=False
+    lm_both          rep0 neutral   59.3s
+    lm_both          rep0 angry     74.7s
+    lm_both          rep0 sad      116.3s
+    lm_both          rep0 happy     57.7s
+    lm_both          rep0 scared   116.5s
+    lm_both          rep1 neutral   57.4s
+    lm_both          rep1 angry     73.1s
+    lm_both          rep1 sad      102.9s
+    lm_both          rep1 happy    278.6s
+    lm_both          rep1 scared    57.7s
+    lm_both          rep2 neutral   63.4s
+    lm_both          rep2 angry     83.9s
+    lm_both          rep2 sad      128.1s
+    lm_both          rep2 happy     97.5s
+    lm_both          rep2 scared   102.4s
+[sweep] lm_punct: lm=2.0 dit=0.0 cfg=2.5 lang=en punct=True
+    lm_punct         rep0 neutral   65.7s
+    lm_punct         rep0 angry     52.6s
+    lm_punct         rep0 sad       88.2s
+    lm_punct         rep0 happy     68.1s
+    lm_punct         rep0 scared    68.4s
+    lm_punct         rep1 neutral   67.0s
+    lm_punct         rep1 angry     63.5s
+    lm_punct         rep1 sad       82.9s
+    lm_punct         rep1 happy     65.5s
+    lm_punct         rep1 scared    66.1s
+    lm_punct         rep2 neutral   66.1s
+    lm_punct         rep2 angry     57.6s
+    lm_punct         rep2 sad       62.6s
+    lm_punct         rep2 happy     58.7s
+    lm_punct         rep2 scared    54.7s
+[sweep] lm_noprompt: lm=2.0 dit=0.0 cfg=2.5 lang=en punct=False
+    lm_noprompt      rep0 neutral   50.6s
+    lm_noprompt      rep0 angry     50.5s
+    lm_noprompt      rep0 sad       59.8s
+    lm_noprompt      rep0 happy     50.4s
+    lm_noprompt      rep0 scared    50.1s
+    lm_noprompt      rep1 neutral   52.1s
+    lm_noprompt      rep1 angry     54.0s
+    lm_noprompt      rep1 sad       58.1s
+    lm_noprompt      rep1 happy     58.2s
+    lm_noprompt      rep1 scared    54.3s
+    lm_noprompt      rep2 neutral   63.2s
+    lm_noprompt      rep2 angry     63.4s
+    lm_noprompt      rep2 sad       56.3s
+    lm_noprompt      rep2 happy     52.2s
+    lm_noprompt      rep2 scared    62.1s
+
+condition           score  angry    sad  happy  scared  A-vs-S
+lm_cfg4.0            2.16  -0.15   8.84   0.02   -0.09    7.78
+lm_dit1.0            1.23  -0.11   4.80   0.13    0.12    4.25
+lm_only              1.21   0.87   3.14   0.30    0.52    3.62
+lm_punct             0.59   0.34   1.34   0.10    0.58    1.55
+lm_cfg6.0            0.31  -0.73   2.30  -0.18   -0.15    1.59
+lm_dit0.5            0.25   0.13   0.71   0.22   -0.05    0.65
+lm_noprompt          0.17   0.23  -0.10   0.03    0.52    0.63
+lm_lvl3             -0.03   0.24  -0.45   0.09   -0.00    0.66
+lm_th               -0.59  -1.51   1.84  -1.89   -0.78    0.42
+lm_both             -0.87  -0.86   4.40  -5.87   -1.17    3.14
+
+condition         emotion     dE_dB  df0_st  dspread  dpace_%
+lm_only           angry        1.16    0.26     1.94   -18.40
+lm_only           sad         -3.19   -0.98    -0.03    75.60
+lm_only           happy       -1.24   -0.17     0.28   -10.00
+lm_only           scared       1.31    2.12     0.66    -1.72
+lm_dit0.5         angry       -0.44   -1.19     0.96    -7.56
+lm_dit0.5         sad         -3.92   -2.36     1.40    -1.95
+lm_dit0.5         happy        0.19   -0.49     0.50    -6.39
+lm_dit0.5         scared      -0.09   -0.78    -0.67    -7.40
+lm_dit1.0         angry        0.83   -0.59    -0.12     3.09
+lm_dit1.0         sad         -4.45   -0.17     0.90   120.59
+lm_dit1.0         happy        0.80   -0.73     0.20    -4.94
+lm_dit1.0         scared       1.08   -0.41     0.49    -1.79
+lm_cfg4.0         angry       -0.57   -0.65    -0.79    -1.32
+lm_cfg4.0         sad         -1.99   -1.78     1.46   233.23
+lm_cfg4.0         happy        0.62    0.01     0.11     0.55
+lm_cfg4.0         scared       1.41   -0.92    -0.94     0.00
+lm_cfg6.0         angry       -0.39    0.63    -1.50    20.78
+lm_cfg6.0         sad         -2.21   -1.53     1.38    50.48
+lm_cfg6.0         happy        0.02    0.56    -1.10     4.27
+lm_cfg6.0         scared       0.43   -0.30    -0.84     3.88
+lm_lvl3           angry       -0.61   -0.95     1.48    -9.16
+lm_lvl3           sad          1.04    0.77    -0.93    -5.57
+lm_lvl3           happy        0.67   -0.44     0.16    -2.99
+lm_lvl3           scared       0.38   -1.91     1.00    -7.87
+lm_th             angry        2.10   -0.33     0.16    53.17
+lm_th             sad          3.87   -1.47     1.54    53.78
+lm_th             happy        1.13   -1.41     0.91    51.11
+lm_th             scared       3.12   -1.05     0.77    55.79
+lm_both           angry        4.63   -1.05     2.45    42.10
+lm_both           sad         -1.00   -0.52    -0.11   118.66
+lm_both           happy       -1.97    2.34     2.59   177.94
+lm_both           scared      -0.14    0.72     0.11    70.97
+lm_punct          angry        0.89    0.22     0.37    -6.74
+lm_punct          sad         -2.77   -1.10    -0.27    26.02
+lm_punct          happy        0.63    1.14    -0.27     1.86
+lm_punct          scared       1.69    2.44     0.25    -2.48
+lm_noprompt       angry       -0.59    3.00    -0.88     0.86
+lm_noprompt       sad         -0.88    1.95    -3.94     8.04
+lm_noprompt       happy        1.14    0.59    -2.21    -2.91
+lm_noprompt       scared       0.14    3.96    -0.84    -1.30
+
+wrote scratch\sweep\tune

@@ -1,0 +1,81 @@
+id	text	ref_audio	gt_audio
+clone_000	รู้ไว้ใช่ว่า ใส่บ่าแบกหาม	data/vaja-cv/wavs/vaja_00010225.wav	data/vaja-cv/wavs/vaja_00001230.wav
+clone_001	เธอช่างโชคดีที่มีครอบครัวแบบนี้	data/vaja-cv/wavs/vaja_00024016.wav	data/vaja-cv/wavs/vaja_00021061.wav
+clone_002	กองทุนรวมสิทธิการเช่าอสังหาริมทรัพย์โรงแรมและรีสอร์ทในเครือ	data/vaja-cv/wavs/vaja_00030140.wav	data/vaja-cv/wavs/vaja_00023863.wav
+clone_003	เครื่องเป่าผม	data/vaja-cv/wavs/vaja_00021154.wav	data/vaja-cv/wavs/vaja_00017072.wav
+clone_004	รวย !	data/vaja-cv/wavs/vaja_00000885.wav	data/vaja-cv/wavs/vaja_00007776.wav
+clone_005	แหล่งน้ำมันสำรองกำลังจะหมดไป	data/vaja-cv/wavs/vaja_00021694.wav	data/vaja-cv/wavs/vaja_00032178.wav
+clone_006	ฉันจะบอกคุณ บรรณารักษ์พูดด้วยสีหน้าผ่องใส	data/vaja-cv/wavs/vaja_00005782.wav	data/vaja-cv/wavs/vaja_00003656.wav
+clone_007	น่าเสียดายจัง	data/vaja-cv/wavs/vaja_00033900.wav	data/vaja-cv/wavs/vaja_00014734.wav
+clone_008	นักศึกษาทุกคนเป็นประชาชน	data/vaja-cv/wavs/vaja_00008005.wav	data/vaja-cv/wavs/vaja_00014806.wav
+clone_009	กระเป๋าหนังสีน้ำตาลที่สายห้อยลงมา	data/vaja-cv/wavs/vaja_00020346.wav	data/vaja-cv/wavs/vaja_00021823.wav
+clone_010	มันเป็นที่ห้อยสายห้อยที่จะป้องกันไม่ให้เราตกไปข้างล่าง	data/vaja-cv/wavs/vaja_00019026.wav	data/vaja-cv/wavs/vaja_00032626.wav
+clone_011	ความผิดอาญาแผ่นดิน	data/vaja-cv/wavs/vaja_00004398.wav	data/vaja-cv/wavs/vaja_00034507.wav
+clone_012	ชุดข้อมูล	data/vaja-cv/wavs/vaja_00017217.wav	data/vaja-cv/wavs/vaja_00011043.wav
+clone_013	และน้ำเสียงของเธอน่าตื่นเต้น	data/vaja-cv/wavs/vaja_00014346.wav	data/vaja-cv/wavs/vaja_00005621.wav
+clone_014	ทำไมฉันถึงรู้สึกวิงเวียนศีรษะ?	data/vaja-cv/wavs/vaja_00019367.wav	data/vaja-cv/wavs/vaja_00002128.wav
+clone_015	ชาวโรมเรียกว่า	data/vaja-cv/wavs/vaja_00024912.wav	data/vaja-cv/wavs/vaja_00025797.wav
+clone_016	นี่มันไม่ใช่ของฉัน คนขายหมวกกล่าว	data/vaja-cv/wavs/vaja_00029404.wav	data/vaja-cv/wavs/vaja_00011609.wav
+clone_017	พระนิเทศชลที กัปตันอัลเฟรด จอห์น ลอฟตัล	data/vaja-cv/wavs/vaja_00020658.wav	data/vaja-cv/wavs/vaja_00022901.wav
+clone_018	แค่ เขาก็ไม่มากันแล้ว ฮือ	data/vaja-cv/wavs/vaja_00014960.wav	data/vaja-cv/wavs/vaja_00008783.wav
+clone_019	ฉันคิดว่าเราเห็นด้วยแล้วว่าเราไม่สามารถเสี่ยงข้อมูลที่ตกอยู่ในมือของเขา	data/vaja-cv/wavs/vaja_00032834.wav	data/vaja-cv/wavs/vaja_00018415.wav
+clone_020	พิธีเปิดอาหารชาววัง	data/vaja-cv/wavs/vaja_00012577.wav	data/vaja-cv/wavs/vaja_00010985.wav
+clone_021	จดหมายมาในสามชุดต่อวัน	data/vaja-cv/wavs/vaja_00008692.wav	data/vaja-cv/wavs/vaja_00034832.wav
+clone_022	นั่นเป็นสาเหตุที่ทำให้เสียงของคุณสูงมาก	data/vaja-cv/wavs/vaja_00005258.wav	data/vaja-cv/wavs/vaja_00028728.wav
+clone_023	ห้องปฏิบัติการวิจัย	data/vaja-cv/wavs/vaja_00024581.wav	data/vaja-cv/wavs/vaja_00027084.wav
+clone_024	มีแม่แมวมาเมียงมองหมูหมามุดม้านั่งใต้ต้นมะม่วง	data/vaja-cv/wavs/vaja_00012625.wav	data/vaja-cv/wavs/vaja_00004883.wav
+clone_025	อุบัติเหตุในโรงไฟฟ้าพลังงานนิวเคลียร์คือว่าหายนะ	data/vaja-cv/wavs/vaja_00025214.wav	data/vaja-cv/wavs/vaja_00021120.wav
+clone_026	เธอต้องการขนาดไหน มันถามขึ้น	data/vaja-cv/wavs/vaja_00014154.wav	data/vaja-cv/wavs/vaja_00014551.wav
+clone_027	นกกระจอกและนกร้องเพลงเต้นรำอยู่ตามแนวรั้ว	data/vaja-cv/wavs/vaja_00007448.wav	data/vaja-cv/wavs/vaja_00033630.wav
+clone_028	หลายประเทศ จะต้องมองให้ลึกถึงข้างใน	data/vaja-cv/wavs/vaja_00022699.wav	data/vaja-cv/wavs/vaja_00007551.wav
+clone_029	ขนงแปลว่าอะไร	data/vaja-cv/wavs/vaja_00013009.wav	data/vaja-cv/wavs/vaja_00003766.wav
+clone_030	ช้างอยู่ในสวนสัตว์	data/vaja-cv/wavs/vaja_00006476.wav	data/vaja-cv/wavs/vaja_00019149.wav
+clone_031	ฉันหวังว่าเขาจะมาฟังมัน	data/vaja-cv/wavs/vaja_00007510.wav	data/vaja-cv/wavs/vaja_00003852.wav
+clone_032	อีเมล์ลูกค้าอันไหนที่คุณใช้	data/vaja-cv/wavs/vaja_00021035.wav	data/vaja-cv/wavs/vaja_00010132.wav
+clone_033	เพราะเขาบอกว่าจะไม่มา	data/vaja-cv/wavs/vaja_00034786.wav	data/vaja-cv/wavs/vaja_00015488.wav
+clone_034	ปีหนึ่งพันแปดร้อยแปดสิบเก้า สากลที่สอง	data/vaja-cv/wavs/vaja_00016906.wav	data/vaja-cv/wavs/vaja_00034523.wav
+clone_035	ความรู้จะแพร่กระจายไปยังตัวเธอเองโดยไม่มีคำพูดใด ๆ	data/vaja-cv/wavs/vaja_00033803.wav	data/vaja-cv/wavs/vaja_00034829.wav
+clone_036	คุณหมายถึงฉันรึเปล่า	data/vaja-cv/wavs/vaja_00033293.wav	data/vaja-cv/wavs/vaja_00008422.wav
+clone_037	เขาต้องล้มลุกคลุกคลานไปตลอดทาง	data/vaja-cv/wavs/vaja_00008075.wav	data/vaja-cv/wavs/vaja_00030673.wav
+clone_038	สาวน้อยไม่ให้คำตอบที่ชัดเจน	data/vaja-cv/wavs/vaja_00019997.wav	data/vaja-cv/wavs/vaja_00030566.wav
+clone_039	การแข่งขันเป็นอย่างไรบ้าง?	data/vaja-cv/wavs/vaja_00024757.wav	data/vaja-cv/wavs/vaja_00019682.wav
+clone_040	การโจมตีคือรูปแบบที่ดีที่สุดของการป้องกัน	data/vaja-cv/wavs/vaja_00027843.wav	data/vaja-cv/wavs/vaja_00000018.wav
+clone_041	ทีมใดเป็นทีมเบสบอลหญิงที่ดีที่สุด	data/vaja-cv/wavs/vaja_00033594.wav	data/vaja-cv/wavs/vaja_00017191.wav
+clone_042	โดยไม่ต้องเสียเงินซื้อเพิ่มและไม่ต้องเก็บกล่องเปล่า	data/vaja-cv/wavs/vaja_00025146.wav	data/vaja-cv/wavs/vaja_00005605.wav
+clone_043	มันเป็นไปได้ดี ทุกอย่างถูกพิจารณา	data/vaja-cv/wavs/vaja_00017667.wav	data/vaja-cv/wavs/vaja_00034585.wav
+clone_044	โอกาสหน้ามาพบกันใหม่	data/vaja-cv/wavs/vaja_00000696.wav	data/vaja-cv/wavs/vaja_00006858.wav
+clone_045	เซแกนสอนวิชาการคิดเชิงวิพากษ์ที่คอร์เนลจนกระทั่งเสียชีวิต	data/vaja-cv/wavs/vaja_00034324.wav	data/vaja-cv/wavs/vaja_00006881.wav
+clone_046	ฉันกำลังไป	data/vaja-cv/wavs/vaja_00022781.wav	data/vaja-cv/wavs/vaja_00013051.wav
+clone_047	หนังสือพิมพ์ต้องการประชาธิปไตย	data/vaja-cv/wavs/vaja_00012422.wav	data/vaja-cv/wavs/vaja_00026369.wav
+clone_048	พอกลับบ้านมาก็อยากทิ้งตัวลงนอนเลย	data/vaja-cv/wavs/vaja_00007958.wav	data/vaja-cv/wavs/vaja_00027065.wav
+clone_049	ชุดข้อมูลเสียงมีราคาแพงมาก	data/vaja-cv/wavs/vaja_00033878.wav	data/vaja-cv/wavs/vaja_00003875.wav
+clone_050	ส่งเสริมให้เกิดการกระจายรายได้จากธุรกิจท่องเที่ยว	data/vaja-cv/wavs/vaja_00016715.wav	data/vaja-cv/wavs/vaja_00005896.wav
+clone_051	ถอยหลัง	data/vaja-cv/wavs/vaja_00024871.wav	data/vaja-cv/wavs/vaja_00024160.wav
+clone_052	พร้อมทั้งรินน้ำให้ไหลลงไปที่พื้นดินหรือที่รองรับ	data/vaja-cv/wavs/vaja_00016622.wav	data/vaja-cv/wavs/vaja_00033939.wav
+clone_053	เขาบอกความแตกต่างระหว่างชาวสก็อตกับคนสก็อตไม่ได้	data/vaja-cv/wavs/vaja_00007001.wav	data/vaja-cv/wavs/vaja_00023062.wav
+clone_054	คุณพูดภาษาอูรดูได้ชำนาญแค่ไหน	data/vaja-cv/wavs/vaja_00006661.wav	data/vaja-cv/wavs/vaja_00033704.wav
+clone_055	การได้อาบน้ำสัมผัสรักร่วมกัน	data/vaja-cv/wavs/vaja_00014548.wav	data/vaja-cv/wavs/vaja_00012149.wav
+clone_056	เพื่อสรุปการสำรวจที่ครอบคลุมของเราจะเปิดเผยความเก่งกาจที่แท้จริงของวิธีการของพวกเขา	data/vaja-cv/wavs/vaja_00019385.wav	data/vaja-cv/wavs/vaja_00024481.wav
+clone_057	เรื่องราวนี้น่าเป็นไปได้	data/vaja-cv/wavs/vaja_00032572.wav	data/vaja-cv/wavs/vaja_00009745.wav
+clone_058	ไม่ คุณไม่ควรทำ มันค่อนข้างจะเป็นคนละทางกัน	data/vaja-cv/wavs/vaja_00005746.wav	data/vaja-cv/wavs/vaja_00030906.wav
+clone_059	บุคคลนั้นอาจเป็นประโยชน์ต่อคุณในทางใดทางหนึ่ง	data/vaja-cv/wavs/vaja_00011283.wav	data/vaja-cv/wavs/vaja_00020675.wav
+clone_060	มันดีหมดทุกอัน	data/vaja-cv/wavs/vaja_00012085.wav	data/vaja-cv/wavs/vaja_00011731.wav
+clone_061	ภาพยนตร์เรื่องนี้อยู่ในช่วงศตวรรษที่สิบแปดของยุโรป	data/vaja-cv/wavs/vaja_00019258.wav	data/vaja-cv/wavs/vaja_00031316.wav
+clone_062	ตอนนี้ฉันมองเห็นมีดเล่มนั้นแล้ว	data/vaja-cv/wavs/vaja_00008366.wav	data/vaja-cv/wavs/vaja_00022452.wav
+clone_063	พวกเขาทำให้ตัวเองเป็นบ้า	data/vaja-cv/wavs/vaja_00006959.wav	data/vaja-cv/wavs/vaja_00017742.wav
+clone_064	สัปดาห์	data/vaja-cv/wavs/vaja_00000785.wav	data/vaja-cv/wavs/vaja_00007980.wav
+clone_065	อุทยานแห่งชาติ	data/vaja-cv/wavs/vaja_00029969.wav	data/vaja-cv/wavs/vaja_00031091.wav
+clone_066	เกาหลีเหนือและเกาหลีใต้แตกต่างกันอย่างมาก	data/vaja-cv/wavs/vaja_00016819.wav	data/vaja-cv/wavs/vaja_00005344.wav
+clone_067	เกิดเหตุการณ์อะไรขึ้น	data/vaja-cv/wavs/vaja_00020784.wav	data/vaja-cv/wavs/vaja_00002038.wav
+clone_068	หมากผู้หมากเมีย	data/vaja-cv/wavs/vaja_00019178.wav	data/vaja-cv/wavs/vaja_00034810.wav
+clone_069	ส่องแสงสว่างอย่างไม่ลดละ	data/vaja-cv/wavs/vaja_00005448.wav	data/vaja-cv/wavs/vaja_00008006.wav
+clone_070	ตุลา	data/vaja-cv/wavs/vaja_00026384.wav	data/vaja-cv/wavs/vaja_00002450.wav
+clone_071	มันจะเป็นอะไรไปได้อีก	data/vaja-cv/wavs/vaja_00034112.wav	data/vaja-cv/wavs/vaja_00010254.wav
+clone_072	คุณพูดว่า อะไรน่าสงสารนะ ? กระต่ายถาม	data/vaja-cv/wavs/vaja_00025416.wav	data/vaja-cv/wavs/vaja_00013733.wav
+clone_073	คุณสั่งการอะไร ราชาลิงถามขณะกำลังก้มลงต่ำ	data/vaja-cv/wavs/vaja_00017030.wav	data/vaja-cv/wavs/vaja_00020026.wav
+clone_074	แถมต้นไม้มงคลแต่ละชนิดนั้นต่างมีความหมายดีอยู่แล้วในตัว	data/vaja-cv/wavs/vaja_00005923.wav	data/vaja-cv/wavs/vaja_00024020.wav
+clone_075	ในทันทีทันใดนั้น เขาก็พุ่งตัวเองเข้าไปในกลุ่มนกเค้าแมวอย่างรวดเร็ว	data/vaja-cv/wavs/vaja_00013125.wav	data/vaja-cv/wavs/vaja_00024611.wav
+clone_076	กินข้าวยังที่รัก	data/vaja-cv/wavs/vaja_00029975.wav	data/vaja-cv/wavs/vaja_00023083.wav
+clone_077	พจมานเปลี่ยนนามสกุลกลับเป็นดามาพงศ์	data/vaja-cv/wavs/vaja_00024579.wav	data/vaja-cv/wavs/vaja_00026567.wav
+clone_078	ในทางกลับกันฉันหวังว่านายเจลลี่บันจะสบายดี	data/vaja-cv/wavs/vaja_00015729.wav	data/vaja-cv/wavs/vaja_00024740.wav
+clone_079	โดยไม่ต้องรอนโยบายจากกษัตริย์ หรือพูดอีกแบบ	data/vaja-cv/wavs/vaja_00003274.wav	data/vaja-cv/wavs/vaja_00033147.wav

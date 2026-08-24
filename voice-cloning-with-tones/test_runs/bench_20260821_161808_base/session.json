@@ -1,0 +1,292 @@
+{
+  "session_id": "bench_20260821_161808_base",
+  "name": "Emotion Benchmark (20260821_161808)",
+  "created_at": "2026-08-21T16:18:08.244307",
+  "speaker_id": null,
+  "text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืมเลยจริงๆ",
+  "emotions": [
+    "happy",
+    "sad",
+    "angry",
+    "calm"
+  ],
+  "repeats": 1,
+  "total_takes": 4,
+  "completed_takes": 4,
+  "params": {
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 10,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "(Happy and cheerful voice, smiling while speaking)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืมเลยจริงๆ",
+      "filename": "happy_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/happy_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 2.98,
+        "rms": 0.0427,
+        "energy_dbfs": -27.4,
+        "f0_med_hz": 226.4,
+        "f0_p10_hz": 174.5,
+        "f0_p90_hz": 285.7,
+        "f0_spread_st": 8.53
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "happy_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/happy_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 2.98,
+            "rms": 0.0427,
+            "energy_dbfs": -27.4,
+            "f0_med_hz": 226.4,
+            "f0_p10_hz": 174.5,
+            "f0_p90_hz": 285.7,
+            "f0_spread_st": 8.53
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "happy_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/happy_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 2.98,
+            "rms": 0.0452,
+            "energy_dbfs": -26.9,
+            "f0_med_hz": 226.4,
+            "f0_p10_hz": 174.5,
+            "f0_p90_hz": 285.7,
+            "f0_spread_st": 8.53
+          }
+        },
+        {
+          "id": "raw",
+          "label": "🎵 ปิด DSP",
+          "filename": "happy_take_1__raw.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/happy_take_1__raw.wav",
+          "metrics": {
+            "dur_s": 3.84,
+            "rms": 0.0398,
+            "energy_dbfs": -28.0,
+            "f0_med_hz": 225.4,
+            "f0_p10_hz": 174.5,
+            "f0_p90_hz": 285.7,
+            "f0_spread_st": 8.53
+          }
+        }
+      ],
+      "elapsed_s": 11.26,
+      "error": null,
+      "timestamp": "2026-08-21T16:18:19.511089"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "(Sad voice, quiet and downcast)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืมเลยจริงๆ",
+      "filename": "sad_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/sad_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 2.46,
+        "rms": 0.1125,
+        "energy_dbfs": -19.0,
+        "f0_med_hz": 181.8,
+        "f0_p10_hz": 124.0,
+        "f0_p90_hz": 278.7,
+        "f0_spread_st": 14.02
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "sad_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/sad_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 2.46,
+            "rms": 0.1125,
+            "energy_dbfs": -19.0,
+            "f0_med_hz": 181.8,
+            "f0_p10_hz": 124.0,
+            "f0_p90_hz": 278.7,
+            "f0_spread_st": 14.02
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "sad_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/sad_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 2.46,
+            "rms": 0.1382,
+            "energy_dbfs": -17.2,
+            "f0_med_hz": 181.8,
+            "f0_p10_hz": 124.0,
+            "f0_p90_hz": 278.7,
+            "f0_spread_st": 14.02
+          }
+        },
+        {
+          "id": "raw",
+          "label": "🎵 ปิด DSP",
+          "filename": "sad_take_1__raw.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/sad_take_1__raw.wav",
+          "metrics": {
+            "dur_s": 3.52,
+            "rms": 0.1182,
+            "energy_dbfs": -18.5,
+            "f0_med_hz": 180.1,
+            "f0_p10_hz": 123.8,
+            "f0_p90_hz": 267.7,
+            "f0_spread_st": 13.35
+          }
+        }
+      ],
+      "elapsed_s": 9.15,
+      "error": null,
+      "timestamp": "2026-08-21T16:18:28.669857"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "(Angry, firm and aggressive tone)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืมเลยจริงๆ",
+      "filename": "angry_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/angry_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 3.77,
+        "rms": 0.1839,
+        "energy_dbfs": -14.7,
+        "f0_med_hz": 240.0,
+        "f0_p10_hz": 192.3,
+        "f0_p90_hz": 290.9,
+        "f0_spread_st": 7.17
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "angry_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/angry_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 3.77,
+            "rms": 0.1839,
+            "energy_dbfs": -14.7,
+            "f0_med_hz": 240.0,
+            "f0_p10_hz": 192.3,
+            "f0_p90_hz": 290.9,
+            "f0_spread_st": 7.17
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "angry_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/angry_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 3.77,
+            "rms": 0.1839,
+            "energy_dbfs": -14.7,
+            "f0_med_hz": 240.0,
+            "f0_p10_hz": 192.3,
+            "f0_p90_hz": 290.9,
+            "f0_spread_st": 7.17
+          }
+        },
+        {
+          "id": "raw",
+          "label": "🎵 ปิด DSP",
+          "filename": "angry_take_1__raw.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/angry_take_1__raw.wav",
+          "metrics": {
+            "dur_s": 4.0,
+            "rms": 0.1823,
+            "energy_dbfs": -14.8,
+            "f0_med_hz": 240.0,
+            "f0_p10_hz": 190.5,
+            "f0_p90_hz": 290.9,
+            "f0_spread_st": 7.33
+          }
+        }
+      ],
+      "elapsed_s": 10.2,
+      "error": null,
+      "timestamp": "2026-08-21T16:18:38.871214"
+    },
+    "calm_1": {
+      "emotion": "calm",
+      "take_idx": 1,
+      "instruction": "(Calm and soothing voice, speaking softly)",
+      "spoken_text": "วันนี้เป็นวันที่ผมจะไม่มีวันลืมเลยจริงๆ",
+      "filename": "calm_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/calm_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 3.29,
+        "rms": 0.1513,
+        "energy_dbfs": -16.4,
+        "f0_med_hz": 244.9,
+        "f0_p10_hz": 197.5,
+        "f0_p90_hz": 306.7,
+        "f0_spread_st": 7.62
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "calm_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/calm_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 3.29,
+            "rms": 0.1513,
+            "energy_dbfs": -16.4,
+            "f0_med_hz": 244.9,
+            "f0_p10_hz": 197.5,
+            "f0_p90_hz": 306.7,
+            "f0_spread_st": 7.62
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "calm_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/calm_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 3.29,
+            "rms": 0.1823,
+            "energy_dbfs": -14.8,
+            "f0_med_hz": 244.9,
+            "f0_p10_hz": 197.5,
+            "f0_p90_hz": 306.7,
+            "f0_spread_st": 7.62
+          }
+        },
+        {
+          "id": "raw",
+          "label": "🎵 ปิด DSP",
+          "filename": "calm_take_1__raw.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_161808_base/calm_take_1__raw.wav",
+          "metrics": {
+            "dur_s": 3.84,
+            "rms": 0.1765,
+            "energy_dbfs": -15.1,
+            "f0_med_hz": 243.7,
+            "f0_p10_hz": 195.7,
+            "f0_p90_hz": 306.3,
+            "f0_spread_st": 7.76
+          }
+        }
+      ],
+      "elapsed_s": 9.73,
+      "error": null,
+      "timestamp": "2026-08-21T16:18:48.608064"
+    }
+  }
+}

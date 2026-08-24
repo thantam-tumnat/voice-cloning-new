@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thai TTS Tone Annotation & Voice Cloning Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=2.1.0">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="logo-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="22"></line>
+          </svg>
+        </div>
+        <div>
+          <h1 class="app-title">Thai TTS Tone & Voice Cloning Studio</h1>
+          <p class="app-subtitle">วิเคราะห์โทนอารมณ์ + สั่งสคริปต์พูดตามแท็ก + โคลนเสียงด้วย SiangTTS (VoxCPM2 Thai LoRA)</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <a href="/test" class="btn btn-sm btn-outline" style="display:inline-flex;align-items:center;gap:6px;font-weight:600;color:#c084fc;border-color:rgba(139,92,246,0.4);background:rgba(139,92,246,0.1);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 2v7.31"></path>
+            <path d="M14 9.3V2"></path>
+            <path d="M8.5 2h7"></path>
+            <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+            <path d="M5.52 16h12.96"></path>
+          </svg>
+          <span>🧪 หน้าผลเทส (Benchmark)</span>
+        </a>
+        <div id="health-status" class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-label">กำลังเชื่อมต่อ...</span>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace-grid">
+      <!-- Left Column: Input, Presets & Voice Clone -->
+      <section class="card input-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="step-num">1</span>
+            <h2>ข้อความภาษาไทย & การตั้งค่า (Input)</h2>
+          </div>
+          <span id="char-counter" class="char-counter">0 ตัวอักษร</span>
+        </div>
+
+        <div class="preset-section">
+          <span class="preset-label">ตัวอย่างข้อความทดสอบ:</span>
+          <div class="preset-pills">
+            <button type="button" class="preset-btn" data-preset="calm">☕ [calm] สงบนุ่มนวล</button>
+            <button type="button" class="preset-btn" data-preset="shift">😢+😡 เศร้าปนโกรธ</button>
+            <button type="button" class="preset-btn" data-preset="sarcastic">😏 ประชดประชัน</button>
+            <button type="button" class="preset-btn" data-preset="happy">🎉 ดีใจสุดขีด</button>
+            <button type="button" class="preset-btn" data-preset="news">📰 ข่าวสาร/เป็นกลาง</button>
+          </div>
+        </div>
+
+        <div class="textarea-wrapper">
+          <label for="text-input" class="field-label">ข้อความภาษาไทย หรือ สคริปต์ที่มีแท็ก [emotion]:</label>
+          <textarea 
+            id="text-input" 
+            placeholder="พิมพ์ข้อความภาษาไทย เช่น: [calm] หายใจเข้าลึกๆ ผ่อนคลาย แล้วค่อยๆ ปล่อยวางทุกอย่างลงนะ" 
+            rows="5"
+            spellcheck="false"
+          ></textarea>
+        </div>
+
+        <div class="guidance-wrapper">
+          <label for="guidance-input" class="field-label">
+            <span>คำแนะนำอารมณ์เพิ่มเติม (Custom Prompt / Guidance - ไม่บังคับ):</span>
+          </label>
+          <input 
+            type="text" 
+            id="guidance-input" 
+            class="custom-input"
+            placeholder="เช่น: ขอให้เน้นประชดอย่างแรง, ท่อนแรกเศร้าท่อนหลังโกรธจัด, น้ำเสียงนุ่มนวล"
+          />
+        </div>
+
+        <!-- Voice Cloning & Engine Options -->
+        <div class="voice-config-section">
+          <div class="config-row">
+            <div class="form-group flex-1">
+              <label for="engine-select" class="field-label">เป้าหมาย TTS Engine:</label>
+              <select id="engine-select" class="custom-select">
+                <option value="voxcpm" selected>SiangTTS (VoxCPM2 + Thai LoRA) ⭐</option>
+                <option value="elevenlabs">ElevenLabs (Inline Audio Tags)</option>
+                <option value="gemini">Gemini (Prompt + Clean Text)</option>
+              </select>
+            </div>
+            <div class="form-group flex-1" id="speaker-group">
+              <label for="speaker-select" class="field-label">เลือกเสียงที่โคลนไว้ (Speaker):</label>
+              <div class="speaker-action-row">
+                <select id="speaker-select" class="custom-select flex-1">
+                  <option value="">-- ไม่ใช้เสียงโคลน (Base Voice) --</option>
+                </select>
+                <button type="button" id="btn-play-speaker-ref" class="btn btn-sm btn-outline btn-ref-play hidden"
+                        title="กดเพื่อฟังเสียงต้นแบบ (Ref Audio)">
+                  <svg class="play-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <svg class="pause-icon hidden" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                  <span class="ref-btn-label">ฟังเสียง Ref</span>
+                </button>
+                <button type="button" id="btn-reroll-seed" class="btn btn-sm btn-outline hidden"
+                        title="Base Voice ถูกสุ่มไว้ครั้งเดียวแล้วจำไว้ถาวร — กดเพื่อสุ่มผู้พูดใหม่">
+                  สุ่มเสียงใหม่ (Re-roll)</button>
+              </div>
+              <audio id="speaker-ref-audio" preload="none" class="hidden"></audio>
+            </div>
+          </div>
+
+          <!-- Reference Audio Upload Area -->
+          <div class="upload-voice-area" id="upload-voice-area">
+            <div class="upload-header">
+              <span class="upload-title">🎙️ อัพโหลดไฟล์เสียงเพื่อโคลนเสียงใหม่ (Zero-Shot Clone):</span>
+              <button type="button" id="btn-save-speaker" class="btn btn-sm btn-outline hidden">บันทึกเป็นโปรไฟล์เสียง</button>
+            </div>
+            <div class="drop-zone" id="drop-zone">
+              <input type="file" id="audio-file-input" accept="audio/*" class="file-input-hidden">
+              <div class="drop-zone-content" id="drop-zone-content">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <span class="drop-text">คลิกเพื่อเลือกไฟล์เสียงตัวอย่าง (.wav, .mp3) หรือลากไฟล์มาวางที่นี่</span>
+                <span class="drop-subtext">แนะนำความยาว 3 - 30 วินาทีเพื่อความเหมือนสูงสุด</span>
+              </div>
+              <div class="file-info-badge hidden" id="file-info-badge">
+                <div class="file-badge-content">
+                  <span id="selected-filename">sample.wav</span>
+                  <button type="button" id="btn-play-uploaded-ref" class="btn btn-xs btn-outline btn-badge-play" title="ฟังเสียงไฟล์ที่เลือก">
+                    <svg class="play-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <svg class="pause-icon hidden" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="6" y="4" width="4" height="16"></rect>
+                      <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                    <span class="upload-btn-label">ฟังเสียง Ref</span>
+                  </button>
+                </div>
+                <button type="button" id="btn-remove-file" class="btn-icon-clear" title="ลบไฟล์">✕</button>
+              </div>
+            </div>
+            <audio id="uploaded-ref-audio" preload="none" class="hidden"></audio>
+          </div>
+
+          <!-- LoRA & Emotion Mode Multi-Selection Toggle -->
+          <div class="form-group" id="lora-mode-group" style="margin-top: 12px;">
+            <div class="field-label-row">
+              <label class="field-label" style="margin-bottom: 0;">
+                <span>โหมดสร้างเสียง (เลือกรูปแบบที่ต้องการสร้าง - ติ๊กเลือกได้หลายแบบ):</span>
+              </label>
+            </div>
+            <div class="lora-mode-toggle" id="lora-mode-toggle">
+              <label class="lora-toggle-opt active opt-lora-on" id="opt-lora-on">
+                <input type="checkbox" name="lora_mode_check" value="lora_on" checked>
+                <span class="chk-badge">✓</span>
+                <span>✨ Thai LoRA (ON)</span>
+              </label>
+              <label class="lora-toggle-opt opt-lora-off" id="opt-lora-off">
+                <input type="checkbox" name="lora_mode_check" value="lora_off">
+                <span class="chk-badge">✓</span>
+                <span>🚫 LoRA OFF (Base)</span>
+              </label>
+              <label class="lora-toggle-opt opt-no-emotion" id="opt-no-emotion">
+                <input type="checkbox" name="lora_mode_check" value="no_emotion">
+                <span class="chk-badge">✓</span>
+                <span>😐 ไม่ใส่อารมณ์ (เสียงเรียบ)</span>
+              </label>
+              <label class="lora-toggle-opt opt-raw-tts" id="opt-raw-tts">
+                <input type="checkbox" name="lora_mode_check" value="raw_tts">
+                <span class="chk-badge">✓</span>
+                <span>🎛️ เสียงสด (Raw / No DSP)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- LLM Model Selector for Emotion Annotation -->
+          <div class="config-row" style="margin-top: 12px;">
+            <div class="form-group flex-1">
+              <div class="field-label-row">
+                <label for="llm-model-select" class="field-label" style="margin-bottom: 0;">
+                  <span>โมเดล LLM สำหรับวิเคราะห์อารมณ์:</span>
+                </label>
+                <button type="button" id="btn-refresh-models" class="btn-icon-action" title="รีเฟรชรายชื่อโมเดลจาก API Key ล่าสุด">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                  </svg>
+                  <span>🔄 รีเฟรชโมเดล</span>
+                </button>
+              </div>
+              <select id="llm-model-select" class="custom-select" style="margin-top: 6px;">
+                <optgroup label="9arm Gateway / OpenAI Compatible">
+                  <option value="qwen3.8-27b-fp8" selected>qwen3.8-27b-fp8 (⚡ แนะนำ: 9arm Gateway)</option>
+                  <option value="deepseek-v4-flash-0731">deepseek-v4-flash-0731 (9arm Gateway)</option>
+                </optgroup>
+                <optgroup label="Google Gemini">
+                  <option value="gemini-3.6-flash">gemini-3.6-flash (⚡ แนะนำ: Google)</option>
+                  <option value="gemini-3.7-flash">gemini-3.7-flash (✨ รุ่นใหม่ล่าสุด)</option>
+                  <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite (🚀 ประหยัดโควตาพิเศษ)</option>
+                  <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite (⚡ โมเดลขนาดเล็ก)</option>
+                  <option value="gemini-flash-lite-latest">gemini-flash-lite-latest (🔄 ตามรุ่นล่าสุดอัตโนมัติ)</option>
+                </optgroup>
+                <option value="custom">✏️ ระบุชื่อโมเดลเอง (Custom)...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group hidden" id="custom-model-group" style="margin-top: 8px;">
+            <label for="custom-model-input" class="field-label">ระบุชื่อโมเดลที่ต้องการ:</label>
+            <input type="text" id="custom-model-input" class="custom-input" placeholder="เช่น gemini-3.6-flash หรือชื่อโมเดลอื่นๆ">
+          </div>
+
+          <!-- CFG Guidance Control Section -->
+          <div class="form-group cfg-config-section" id="cfg-config-section" style="margin-top: 14px;">
+            <div class="field-label-row">
+              <label for="param-cfg" class="field-label" style="margin-bottom: 0;">
+                <span>ความเข้มอารมณ์ / CFG Guidance:</span>
+                <span class="cfg-badge-val" id="val-cfg">2.5</span>
+              </label>
+              <div class="cfg-stepper-group">
+                <button type="button" class="cfg-step-btn" id="btn-cfg-minus" title="ลดค่า CFG (-0.1)">−</button>
+                <button type="button" class="cfg-step-btn" id="btn-cfg-plus" title="เพิ่มค่า CFG (+0.1)">+</button>
+              </div>
+            </div>
+            
+            <!-- Quick Preset Pills for CFG -->
+            <div class="cfg-preset-pills">
+              <button type="button" class="cfg-pill-btn" data-cfg="1.5">🍃 1.5 นุ่มนวล</button>
+              <button type="button" class="cfg-pill-btn" data-cfg="2.0">🌿 2.0 ธรรมชาติ</button>
+              <button type="button" class="cfg-pill-btn active" data-cfg="2.5">⭐ 2.5 มาตรฐาน</button>
+              <button type="button" class="cfg-pill-btn" data-cfg="3.5">🔥 3.5 ชัดเจน</button>
+              <button type="button" class="cfg-pill-btn" data-cfg="4.5">⚡ 4.5 จัดจ้าน</button>
+            </div>
+
+            <div class="cfg-slider-wrapper">
+              <input type="range" id="param-cfg" min="1.0" max="6.0" step="0.1" value="2.5" class="custom-range">
+              <div class="range-labels">
+                <span>1.0 (เบา)</span>
+                <span>2.5 (แนะนำ)</span>
+                <span>6.0 (แรงสุด)</span>
+              </div>
+            </div>
+            <small class="param-hint">💡 ค่า CFG ควบคุมความเข้มข้นของการแสดงอารมณ์ตามแท็ก (แนะนำ 2.0 – 3.5)</small>
+          </div>
+
+          <!-- Post-Process DSP Module -->
+          <div class="form-group dsp-section" id="dsp-section" style="margin-top: 14px;">
+            <div class="dsp-toggle-row">
+              <label class="dsp-switch" id="dsp-switch-label">
+                <input type="checkbox" id="chk-post-process" checked>
+                <span class="dsp-switch-track"><span class="dsp-switch-thumb"></span></span>
+                <span class="dsp-switch-text">
+                  <span class="dsp-switch-title">🎚️ Post-Process DSP</span>
+                  <span class="dsp-switch-sub" id="dsp-state-sub">เปิดอยู่ — ปรับระดับเสียง จังหวะ และช่องว่างตามอารมณ์</span>
+                </span>
+              </label>
+              <button type="button" id="btn-dsp-reset" class="btn-icon-action" title="คืนค่าเริ่มต้นทั้งหมด">
+                <span>↺ คืนค่าเริ่มต้น</span>
+              </button>
+            </div>
+
+            <div id="dsp-params" class="dsp-params">
+              <div class="dsp-preset-pills">
+                <button type="button" class="dsp-pill-btn active" data-dsp-preset="reference">⭐ มาตรฐาน (ElevenLabs ref)</button>
+                <button type="button" class="dsp-pill-btn" data-dsp-preset="narration">📖 พูดกระชับ</button>
+                <button type="button" class="dsp-pill-btn" data-dsp-preset="dramatic">🎭 เว้นจังหวะเยอะ</button>
+                <button type="button" class="dsp-pill-btn" data-dsp-preset="minimal">🪶 แตะเบาสุด</button>
+                <button type="button" class="dsp-pill-btn dsp-pill-control" data-dsp-preset="cleanup">🚫 ปิดชั้นอารมณ์ (Cleanup only)</button>
+              </div>
+
+              <div class="dsp-group">
+                <div class="dsp-group-title">⏸️ ช่องว่างระหว่างท่อน (Gap Policy)</div>
+                <div class="dsp-grid">
+                  <div class="param-item">
+                    <label for="dsp-gap-same">โทนเดิม: <span class="dsp-val" id="val-dsp-gap-same">0.20</span> วิ</label>
+                    <input type="range" id="dsp-gap-same" min="0" max="1.5" step="0.01" value="0.20" data-dsp-key="gap_same_tone_s" data-dsp-default="0.20">
+                    <small class="param-hint">คั่นระหว่างประโยคที่อารมณ์เดียวกัน</small>
+                  </div>
+                  <div class="param-item">
+                    <label for="dsp-gap-emotion">เปลี่ยนอารมณ์: <span class="dsp-val" id="val-dsp-gap-emotion">0.45</span> วิ</label>
+                    <input type="range" id="dsp-gap-emotion" min="0" max="2" step="0.01" value="0.45" data-dsp-key="gap_emotion_s" data-dsp-default="0.45">
+                    <small class="param-hint">คั่นตรงจุดที่อารมณ์เปลี่ยน</small>
+                  </div>
+                  <div class="param-item">
+                    <label for="dsp-gap-para">ขึ้นย่อหน้า: <span class="dsp-val" id="val-dsp-gap-para">1.20</span> วิ</label>
+                    <input type="range" id="dsp-gap-para" min="0" max="3" step="0.05" value="1.20" data-dsp-key="gap_paragraph_s" data-dsp-default="1.20">
+                    <small class="param-hint">คั่นตรงที่ต้นฉบับขึ้นบรรทัดใหม่</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dsp-group">
+                <div class="dsp-group-title">🎛️ ปรับระดับเสียง &amp; ความเร็ว (Energy / Rate Match)</div>
+                <div class="dsp-subtoggles">
+                  <label class="dsp-chk">
+                    <input type="checkbox" id="dsp-match-energy" checked data-dsp-key="match_energy" data-dsp-default="true">
+                    <span>เปิดปรับระดับเสียง (Energy Match)</span>
+                  </label>
+                  <label class="dsp-chk">
+                    <input type="checkbox" id="dsp-match-rate" checked data-dsp-key="match_rate" data-dsp-default="true">
+                    <span>เปิดปรับความเร็ว (Rate Match)</span>
+                  </label>
+                </div>
+                <div class="dsp-grid">
+                  <div class="param-item">
+                    <label for="dsp-energy-match">ความแรงการปรับระดับ: <span class="dsp-val" id="val-dsp-energy-match">0.70</span></label>
+                    <input type="range" id="dsp-energy-match" min="0" max="1" step="0.05" value="0.70" data-dsp-key="energy_match" data-dsp-default="0.70">
+                    <small class="param-hint">0 = ปล่อยตามที่โมเดลปั้นมา, 1 = รีดให้เท่ากันหมดแล้วค่อยใส่ออฟเซ็ตอารมณ์</small>
+                  </div>
+                  <div class="param-item">
+                    <label for="dsp-max-stretch">ยืด/หดได้สูงสุด: <span class="dsp-val" id="val-dsp-max-stretch">15</span>%</label>
+                    <input type="range" id="dsp-max-stretch" min="0" max="40" step="1" value="15" data-dsp-key="max_stretch" data-dsp-default="15" data-dsp-scale="0.01">
+                    <small class="param-hint">เกิน 15% เริ่มได้ยินว่าโดนประมวลผล</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dsp-group">
+                <div class="dsp-group-title">✂️ ตัดขอบ &amp; ระดับขาออก (Trim / Fade / Peak)</div>
+                <div class="dsp-grid">
+                  <div class="param-item">
+                    <label for="dsp-trim-floor">เกณฑ์ตัดความเงียบ: <span class="dsp-val" id="val-dsp-trim-floor">45</span> dB</label>
+                    <input type="range" id="dsp-trim-floor" min="15" max="70" step="1" value="45" data-dsp-key="trim_floor_db" data-dsp-default="45">
+                    <small class="param-hint">ต่ำกว่าจุดดังสุดเท่านี้ถือว่าเงียบ</small>
+                  </div>
+                  <div class="param-item">
+                    <label for="dsp-trim-keep">เผื่อขอบไว้: <span class="dsp-val" id="val-dsp-trim-keep">30</span> ms</label>
+                    <input type="range" id="dsp-trim-keep" min="0" max="200" step="5" value="30" data-dsp-key="trim_keep_s" data-dsp-default="30" data-dsp-scale="0.001">
+                    <small class="param-hint">กันเสียงเริ่มห้วนเกินไป</small>
+                  </div>
+                  <div class="param-item">
+                    <label for="dsp-edge-fade">Fade ขอบ: <span class="dsp-val" id="val-dsp-edge-fade">15</span> ms</label>
+                    <input type="range" id="dsp-edge-fade" min="0" max="80" step="1" value="15" data-dsp-key="edge_fade_s" data-dsp-default="15" data-dsp-scale="0.001">
+                    <small class="param-hint">ยาวพอกัน click สั้นพอไม่กินเสียงพยัญชนะ</small>
+                  </div>
+                  <div class="param-item">
+                    <label for="dsp-output-peak">ระดับสูงสุดขาออก: <span class="dsp-val" id="val-dsp-output-peak">0.95</span></label>
+                    <input type="range" id="dsp-output-peak" min="0.5" max="1" step="0.01" value="0.95" data-dsp-key="output_peak" data-dsp-default="0.95">
+                    <small class="param-hint">normalize ลงมาเมื่อเกินค่านี้</small>
+                  </div>
+                </div>
+              </div>
+
+              <details class="dsp-tone-details" id="dsp-tone-details">
+                <summary>🎭 ตารางต่ออารมณ์ (dB &amp; ความเร็ว)</summary>
+                <div class="dsp-tone-wrap">
+                  <table class="dsp-tone-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">อารมณ์</th>
+                        <th scope="col">ระดับเสียง (dB)</th>
+                        <th scope="col">ความเร็ว (×)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  <tr data-tone="neutral">
+                    <th scope="row">😐 เฉยๆ</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="neutral" step="0.1" min="-12" max="12" value="0.0" data-dsp-default="0.0"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="neutral" step="0.005" min="0.7" max="1.3" value="1.0" data-dsp-default="1.0"></td>
+                  </tr>
+                  <tr data-tone="happy">
+                    <th scope="row">😊 มีความสุข</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="happy" step="0.1" min="-12" max="12" value="-0.5" data-dsp-default="-0.5"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="happy" step="0.005" min="0.7" max="1.3" value="0.927" data-dsp-default="0.927"></td>
+                  </tr>
+                  <tr data-tone="sad">
+                    <th scope="row">😢 เศร้า</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="sad" step="0.1" min="-12" max="12" value="-2.0" data-dsp-default="-2.0"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="sad" step="0.005" min="0.7" max="1.3" value="1.035" data-dsp-default="1.035"></td>
+                  </tr>
+                  <tr data-tone="angry">
+                    <th scope="row">😠 โกรธ</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="angry" step="0.1" min="-12" max="12" value="3.0" data-dsp-default="3.0"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="angry" step="0.005" min="0.7" max="1.3" value="0.95" data-dsp-default="0.95"></td>
+                  </tr>
+                  <tr data-tone="excited">
+                    <th scope="row">🤩 ตื่นเต้น</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="excited" step="0.1" min="-12" max="12" value="2.5" data-dsp-default="2.5"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="excited" step="0.005" min="0.7" max="1.3" value="0.9" data-dsp-default="0.9"></td>
+                  </tr>
+                  <tr data-tone="calm">
+                    <th scope="row">😌 สงบ</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="calm" step="0.1" min="-12" max="12" value="-2.0" data-dsp-default="-2.0"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="calm" step="0.005" min="0.7" max="1.3" value="1.08" data-dsp-default="1.08"></td>
+                  </tr>
+                  <tr data-tone="nervous">
+                    <th scope="row">😬 ประหม่า</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="nervous" step="0.1" min="-12" max="12" value="-0.5" data-dsp-default="-0.5"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="nervous" step="0.005" min="0.7" max="1.3" value="1.0" data-dsp-default="1.0"></td>
+                  </tr>
+                  <tr data-tone="sarcastic">
+                    <th scope="row">🙄 ประชด</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="sarcastic" step="0.1" min="-12" max="12" value="-0.5" data-dsp-default="-0.5"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="sarcastic" step="0.005" min="0.7" max="1.3" value="1.05" data-dsp-default="1.05"></td>
+                  </tr>
+                  <tr data-tone="scared">
+                    <th scope="row">😨 กลัว</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="scared" step="0.1" min="-12" max="12" value="3.0" data-dsp-default="3.0"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="scared" step="0.005" min="0.7" max="1.3" value="0.966" data-dsp-default="0.966"></td>
+                  </tr>
+                  <tr data-tone="tired">
+                    <th scope="row">😪 เหนื่อย</th>
+                    <td><input type="number" class="dsp-tone-energy" data-tone="tired" step="0.1" min="-12" max="12" value="-1.4" data-dsp-default="-1.4"></td>
+                    <td><input type="number" class="dsp-tone-rate" data-tone="tired" step="0.005" min="0.7" max="1.3" value="1.073" data-dsp-default="1.073"></td>
+                  </tr>
+                    </tbody>
+                  </table>
+                  <small class="param-hint">💡 dB เทียบกับระดับ neutral ของ take นั้น / ความเร็ว &gt;1 = ยาวขึ้น (ช้าลง)</small>
+                </div>
+              </details>
+            </div>
+
+            <div id="dsp-off-note" class="dsp-off-note hidden">
+              🚫 ปิด DSP อยู่ — เสียงจะถูกต่อกันดิบๆ คั่น 60ms คงที่ ไม่ตัดขอบ ไม่ปรับระดับ ไม่ปรับจังหวะ
+            </div>
+          </div>
+
+          <!-- Advanced Parameters Collapsible -->
+          <details class="advanced-details" id="advanced-details">
+            <summary>⚙️ พารามิเตอร์ขั้นสูงเพิ่มเติม (Advanced Timesteps)</summary>
+            <div class="advanced-grid">
+              <div class="param-item">
+                <label for="param-steps">Inference Timesteps: <span id="val-steps">10</span></label>
+                <input type="range" id="param-steps" min="4" max="30" step="1" value="10">
+                <small class="param-hint">จำนวนรอบ sampling ในการสร้างเสียง (ปกติ 10)</small>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="controls-bar">
+          <button type="button" id="btn-clear" class="btn btn-secondary">ล้างค่า</button>
+          <div class="action-buttons-group">
+            <button type="button" id="btn-process" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <span>วิเคราะห์ & สร้างสคริปต์</span>
+            </button>
+            <button type="button" id="btn-synthesize-direct" class="btn btn-accent">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              </svg>
+              <span>🎙️ สร้างเสียงพูด (Synthesize)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Output, Script Editor & Audio Player -->
+      <section class="card output-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="step-num">2</span>
+            <h2>สคริปต์และสตูดิโอเสียง (Output & Audio Studio)</h2>
+          </div>
+          <div id="model-badge" class="model-badge hidden">
+            <span id="model-name">gemini-3.6-flash</span>
+            <span id="fallback-indicator" class="badge-tag normal">Normal</span>
+          </div>
+        </div>
+
+        <!-- Error & Quota Alert Banner -->
+        <div id="error-banner" class="error-banner hidden">
+          <div class="error-banner-header">
+            <div class="error-banner-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span id="error-title">การวิเคราะห์ LLM ล้มเหลว (ใช้งาน Fallback Neutral)</span>
+            </div>
+            <button type="button" id="btn-close-error" class="btn-icon-clear" title="ปิดการแจ้งเตือน">✕</button>
+          </div>
+          <div id="error-detail-text" class="error-detail-text"></div>
+          <div class="error-actions">
+            <button type="button" id="btn-switch-to-flash" class="btn btn-xs btn-outline">🔄 สลับเป็น gemini-3.6-flash</button>
+            <button type="button" id="btn-switch-to-flash-lite" class="btn btn-xs btn-outline">🔄 สลับเป็น gemini-3.5-flash-lite</button>
+            <button type="button" id="btn-view-raw-json" class="btn btn-xs btn-secondary">🔍 ดูข้อมูล JSON ละเอียด</button>
+          </div>
+        </div>
+
+        <!-- Audio Player Section -->
+        <div id="audio-player-card" class="audio-player-card hidden">
+          <!-- Multi-Player Dedicated Cards Container -->
+          <div id="multi-player-container" class="multi-player-container">
+            <!-- Player Box 1: Thai LoRA ON -->
+            <div id="player-box-lora-on" class="player-card-box lora-on-box hidden">
+              <div class="player-header">
+                <div class="player-status">
+                  <span class="audio-pulse-dot dot-green"></span>
+                  <span class="player-title title-green" id="title-lora-on">✨ Thai LoRA (ON)</span>
+                </div>
+                <a id="btn-download-lora-on" href="#" download="lora_on.wav" class="btn btn-sm btn-outline btn-outline-green">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>ดาวน์โหลด (LoRA ON)</span>
+                </a>
+              </div>
+              <div class="player-controls">
+                <audio id="audio-player-lora-on" controls class="native-audio-player"></audio>
+              </div>
+            </div>
+
+            <!-- Player Box 2: LoRA OFF (Base) -->
+            <div id="player-box-lora-off" class="player-card-box lora-off-box hidden">
+              <div class="player-header">
+                <div class="player-status">
+                  <span class="audio-pulse-dot dot-blue"></span>
+                  <span class="player-title title-blue" id="title-lora-off">🚫 LoRA OFF (Base Model)</span>
+                </div>
+                <a id="btn-download-lora-off" href="#" download="lora_off.wav" class="btn btn-sm btn-outline btn-outline-blue">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>ดาวน์โหลด (LoRA OFF)</span>
+                </a>
+              </div>
+              <div class="player-controls">
+                <audio id="audio-player-lora-off" controls class="native-audio-player"></audio>
+              </div>
+            </div>
+
+            <!-- Player Box 3: No Emotion -->
+            <div id="player-box-no-emotion" class="player-card-box no-emotion-box hidden">
+              <div class="player-header">
+                <div class="player-status">
+                  <span class="audio-pulse-dot dot-amber"></span>
+                  <span class="player-title title-amber" id="title-no-emotion">😐 เสียงเรียบ / ไม่ใส่อารมณ์ (No Emotion)</span>
+                </div>
+                <a id="btn-download-no-emotion" href="#" download="no_emotion.wav" class="btn btn-sm btn-outline btn-outline-amber">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>ดาวน์โหลด (เสียงเรียบ)</span>
+                </a>
+              </div>
+              <div class="player-controls">
+                <audio id="audio-player-no-emotion" controls class="native-audio-player"></audio>
+              </div>
+            </div>
+
+            <!-- Player Box 4: Raw Audio (No DSP) -->
+            <div id="player-box-raw" class="player-card-box raw-box hidden">
+              <div class="player-header">
+                <div class="player-status">
+                  <span class="audio-pulse-dot dot-purple"></span>
+                  <span class="player-title title-purple" id="title-raw">🎛️ เสียงสดจาก TTS (Raw Audio / No DSP)</span>
+                </div>
+                <a id="btn-download-raw" href="#" download="raw_audio.wav" class="btn btn-sm btn-outline btn-outline-purple">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>ดาวน์โหลด (เสียงสด)</span>
+                </a>
+              </div>
+              <div class="player-controls">
+                <audio id="audio-player-raw" controls class="native-audio-player"></audio>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Controls -->
+        <div class="tab-nav">
+          <button type="button" class="tab-btn active" data-tab="editor">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+            สคริปต์ & Instruction Editor
+          </button>
+          <button type="button" class="tab-btn" data-tab="segments">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            การแบ่งช่วงอารมณ์ (Segments)
+          </button>
+          <button type="button" class="tab-btn" data-tab="raw">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Raw JSON
+          </button>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content-wrapper">
+          <!-- Loading State -->
+          <div id="loading-state" class="state-container hidden">
+            <div class="spinner"></div>
+            <p class="state-text" id="loading-text">กำลังวิเคราะห์ข้อความด้วย LLM...</p>
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="state-container">
+            <div class="empty-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <p class="empty-title">ยังไม่มีข้อความผลลัพธ์</p>
+            <p class="empty-desc">พิมพ์ข้อความภาษาไทย หรือเลือกตัวอย่างด้านซ้าย แล้วกดปุ่ม "วิเคราะห์ & สร้างสคริปต์" หรือ "สร้างเสียงพูด"</p>
+          </div>
+
+          <!-- Tab 1: Editable Text & Tag Editor -->
+          <div id="tab-editor" class="tab-pane hidden">
+            <div class="editor-section">
+              <!-- Quick Insert Toolbar -->
+              <div class="tag-toolbar">
+                <span class="toolbar-label">คลิกเพื่อแทรก Tag อารมณ์:</span>
+                <div class="tag-buttons-row">
+                  <button type="button" class="tag-insert-btn tone-calm" data-tag="[calm] ">+ [calm]</button>
+                  <button type="button" class="tag-insert-btn tone-sad" data-tag="[sad] ">+ [sad]</button>
+                  <button type="button" class="tag-insert-btn tone-angry" data-tag="[angry] ">+ [angry]</button>
+                  <button type="button" class="tag-insert-btn tone-happy" data-tag="[happily] ">+ [happily]</button>
+                  <button type="button" class="tag-insert-btn tone-excited" data-tag="[excited] ">+ [excited]</button>
+                  <button type="button" class="tag-insert-btn tone-nervous" data-tag="[nervous] ">+ [nervous]</button>
+                  <button type="button" class="tag-insert-btn tone-sarcastic" data-tag="[sarcastic] ">+ [sarcastic]</button>
+                  <button type="button" class="tag-insert-btn tone-scared" data-tag="[scared] ">+ [scared]</button>
+                  <button type="button" class="tag-insert-btn tone-tired" data-tag="[tired] ">+ [tired]</button>
+                </div>
+              </div>
+
+              <!-- Main Editable Textarea -->
+              <div class="editor-box">
+                <div class="editor-header">
+                  <span class="editor-label">สคริปต์พร้อมส่งเข้า TTS (สามารถแก้ไขข้อความได้โดยตรง):</span>
+                  <div class="editor-actions">
+                    <span id="output-char-counter" class="char-counter">0 ตัวอักษร</span>
+                    <button type="button" class="btn-copy" id="btn-copy-output" title="คัดลอกข้อความทั้งหมด">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>คัดลอกสคริปต์</span>
+                    </button>
+                  </div>
+                </div>
+                <textarea 
+                  id="output-editable-text" 
+                  class="output-textarea" 
+                  rows="5"
+                  placeholder="ผลลัพธ์สคริปต์พร้อม Tag/Instruction จะปรากฏที่นี่..."
+                  spellcheck="false"
+                ></textarea>
+              </div>
+
+              <!-- Per-Segment Instruction Editor -->
+              <div class="editor-box" id="segmented-editor-box">
+                <div class="editor-header">
+                  <span class="editor-label">สคริปต์แบบแบ่งตามอารมณ์ (Instruction ต่อช่วง):</span>
+                  <div class="editor-actions">
+                    <div class="seg-format-toggle" id="seg-format-toggle">
+                      <button type="button" class="seg-format-btn active" data-format="full">เต็ม</button>
+                      <button type="button" class="seg-format-btn" data-format="short">สั้น</button>
+                    </div>
+                    <span id="segmented-char-counter" class="char-counter">0 ตัวอักษร</span>
+                    <button type="button" class="btn-copy" id="btn-copy-segmented" title="คัดลอกสคริปต์แบบแบ่งช่วง">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>คัดลอก</span>
+                    </button>
+                  </div>
+                </div>
+                <textarea
+                  id="segmented-editable-text"
+                  class="output-textarea"
+                  rows="4"
+                  placeholder="สคริปต์ที่มี Instruction กำกับแต่ละช่วงอารมณ์จะปรากฏที่นี่..."
+                  spellcheck="false"
+                ></textarea>
+                <label class="seg-use-toggle">
+                  <input type="checkbox" id="chk-use-segmented">
+                  <span>ใช้ช่องนี้ส่งเข้า TTS (แทนช่องบน)</span>
+                </label>
+                <p class="seg-editor-hint">
+                  แทรก instruction กลางข้อความได้เลย เช่น <code>(sad)</code> —
+                  ระบบจะตัดเป็นช่วงๆ ตามวงเล็บแล้วสังเคราะห์ทีละช่วง จึงไม่มีการอ่านวงเล็บออกเสียง
+                  (วงเล็บภาษาไทยถือเป็นเนื้อหาปกติ ไม่ใช่คำสั่ง)
+                </p>
+              </div>
+
+              <!-- Live Highlight Preview -->
+              <div class="preview-box">
+                <span class="preview-label">Live Visual Tag / Instruction Preview:</span>
+                <div id="live-tag-preview" class="live-preview-content"></div>
+              </div>
+
+              <!-- Gemini Prompt Box (if Gemini selected) -->
+              <div id="gemini-prompt-section" class="gemini-prompt-section hidden">
+                <div class="editor-header">
+                  <span class="editor-label">Gemini Instruction Prompt (คำสั่งอารมณ์):</span>
+                  <button type="button" class="btn-copy" id="btn-copy-prompt" title="คัดลอกคำสั่ง">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <span>คัดลอก Prompt</span>
+                  </button>
+                </div>
+                <textarea 
+                  id="gemini-prompt-editable" 
+                  class="prompt-textarea" 
+                  rows="3"
+                  spellcheck="false"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Segments -->
+          <div id="tab-segments" class="tab-pane hidden">
+            <div id="segments-container" class="segments-list"></div>
+          </div>
+
+          <!-- Tab 3: Raw JSON -->
+          <div id="tab-raw" class="tab-pane hidden">
+            <div class="raw-json-toolbar">
+              <span class="json-status-badge" id="json-status-badge">HTTP 200 OK</span>
+              <button type="button" class="btn-copy" id="btn-copy-json" title="คัดลอก JSON ทั้งหมด">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>คัดลอก JSON</span>
+              </button>
+            </div>
+            <pre id="raw-json" class="json-viewer"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Tone Legend Footer -->
+    <footer class="tone-legend-card">
+      <div class="legend-title">Tier 1 Tone & Emotion Dictionary (8 อารมณ์):</div>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="tone-chip tone-calm">calm</span><span>สงบ / นุ่มนวล / ผ่อนคลาย</span></div>
+        <div class="legend-item"><span class="tone-chip tone-neutral">neutral</span><span>เป็นกลาง / บรรยาย</span></div>
+        <div class="legend-item"><span class="tone-chip tone-sad">sad</span><span>เศร้า / เสียใจ / ตัดพ้อ</span></div>
+        <div class="legend-item"><span class="tone-chip tone-happy">happy</span><span>ร่าเริง / ดีใจ / ยิ้มแย้ม</span></div>
+        <div class="legend-item"><span class="tone-chip tone-angry">angry</span><span>โกรธ / เสียงแข็ง / ดุดัน</span></div>
+        <div class="legend-item"><span class="tone-chip tone-excited">excited</span><span>ตื่นเต้น / กระตือรือร้น</span></div>
+        <div class="legend-item"><span class="tone-chip tone-nervous">nervous</span><span>ประหม่า / ลังเล / กังวล</span></div>
+        <div class="legend-item"><span class="tone-chip tone-sarcastic">sarcastic</span><span>ประชด / แดกดัน</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/static/app.js?v=2.1.0"></script>
+</body>
+</html>

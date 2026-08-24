@@ -1,0 +1,325 @@
+{
+  "info": {
+    "_postman_id": "7a3f81e2-b1c4-4d8e-9023-e1c4a91b2c45",
+    "name": "Thai TTS Tone & Voice Cloning Studio (VoxCPM2 / SiangTTS)",
+    "description": "Postman Collection for Thai TTS Emotional Tone Annotation (Gemini / Anthropic) and Voice Cloning Synthesis (SiangTTS / VoxCPM2).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. System & Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            },
+            "description": "Check if backend service is running and view active speaker profiles count."
+          }
+        },
+        {
+          "name": "Root Web UI",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            },
+            "description": "Serves the Web Studio UI index.html."
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Tone Annotation & Scripting",
+      "item": [
+        {
+          "name": "Speak (End-to-End: VoxCPM / SiangTTS)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"ขอโทษนะ ฉันไม่ได้ตั้งใจ แต่เธอก็ไม่ฟังฉันเลย\",\n  \"guidance\": \"ท่อนแรกเศร้าขอโทษ ท่อนหลังตัดพ้อโกรธ\",\n  \"engine\": \"voxcpm\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/speak",
+              "host": ["{{baseUrl}}"],
+              "path": ["speak"]
+            },
+            "description": "Segments Thai text, analyzes emotional tones with LLM, and formats for VoxCPM2 / SiangTTS style control."
+          }
+        },
+        {
+          "name": "Speak (End-to-End: ElevenLabs Tags)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"ยินดีด้วยนะ ในที่สุดก็ทำสำเร็จแล้ว สุดยอดไปเลย\",\n  \"guidance\": \"ดีใจสุดขีด ร่าเริงมาก\",\n  \"engine\": \"elevenlabs\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/speak",
+              "host": ["{{baseUrl}}"],
+              "path": ["speak"]
+            },
+            "description": "Segments text and formats with ElevenLabs inline tags like [happy], [excited]."
+          }
+        },
+        {
+          "name": "Speak (End-to-End: Gemini Prompt)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"หายใจเข้าลึกๆ ผ่อนคลาย แล้วค่อยๆ ปล่อยวางทุกอย่างลงนะ\",\n  \"guidance\": \"สงบ นุ่มนวล ช้าๆ\",\n  \"engine\": \"gemini\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/speak",
+              "host": ["{{baseUrl}}"],
+              "path": ["speak"]
+            },
+            "description": "Generates Gemini Instruction Prompt along with clean Thai speech text."
+          }
+        },
+        {
+          "name": "Annotate Only (Raw Segments)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"แหม เก่งจังเลยนะ ทำพังหมดทั้งห้องแล้วเนี่ย\",\n  \"guidance\": \"ประชดประชันแดกดัน\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/annotate",
+              "host": ["{{baseUrl}}"],
+              "path": ["annotate"]
+            },
+            "description": "Performs clause segmentation and LLM tone classification without formatting for a specific engine."
+          }
+        },
+        {
+          "name": "Render Only (Convert Segments to Engine)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"engine\": \"voxcpm\",\n  \"segments\": [\n    {\n      \"text\": \"ขอโทษนะ ฉันไม่ได้ตั้งใจ \",\n      \"tone\": \"sad\",\n      \"intensity\": 2\n    },\n    {\n      \"text\": \"แต่เธอก็ไม่ฟังฉันเลย\",\n      \"tone\": \"angry\",\n      \"intensity\": 2\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/render",
+              "host": ["{{baseUrl}}"],
+              "path": ["render"]
+            },
+            "description": "Renders pre-annotated segments into target engine output format."
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Speaker Profiles (Voice Cloning)",
+      "item": [
+        {
+          "name": "List Registered Speakers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/speakers",
+              "host": ["{{baseUrl}}"],
+              "path": ["speakers"]
+            },
+            "description": "Lists all voice cloning profiles registered in the ref/ directory."
+          }
+        },
+        {
+          "name": "Register Speaker (Upload Audio)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "speaker_id",
+                  "value": "sample_speaker",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Select a .wav or .mp3 sample file (3-30s)"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/speakers",
+              "host": ["{{baseUrl}}"],
+              "path": ["speakers"]
+            },
+            "description": "Uploads and registers a reference audio file for voice cloning."
+          }
+        },
+        {
+          "name": "Delete Speaker Profile",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/speakers/:speaker_id",
+              "host": ["{{baseUrl}}"],
+              "path": ["speakers", ":speaker_id"],
+              "variable": [
+                {
+                  "key": "speaker_id",
+                  "value": "sample_speaker"
+                }
+              ]
+            },
+            "description": "Deletes a registered speaker audio profile."
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Audio Synthesis (SiangTTS / VoxCPM2)",
+      "item": [
+        {
+          "name": "Synthesize Speech (Direct Text / Auto-Annotate)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"ขอโทษนะ ฉันไม่ได้ตั้งใจ แต่เธอก็ไม่ฟังฉันเลย\",\n  \"speaker_id\": null,\n  \"guidance\": \"ท่อนแรกเศร้า ท่อนหลังโกรธ\",\n  \"engine\": \"voxcpm\",\n  \"cfg_value\": 2.5,\n  \"inference_timesteps\": 10,\n  \"auto_annotate\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/synthesize",
+              "host": ["{{baseUrl}}"],
+              "path": ["synthesize"]
+            },
+            "description": "Synthesizes speech with auto tone annotation into 48kHz WAV audio stream."
+          }
+        },
+        {
+          "name": "Synthesize Speech (With Registered Speaker)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"(cheerful) ยินดีต้อนรับเข้าสู่ระบบเสียงสังเคราะห์ภาษาไทยครับ\",\n  \"speaker_id\": \"sample_speaker\",\n  \"cfg_value\": 2.5,\n  \"inference_timesteps\": 10,\n  \"auto_annotate\": false\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/synthesize",
+              "host": ["{{baseUrl}}"],
+              "path": ["synthesize"]
+            },
+            "description": "Synthesizes speech using a specific registered cloned voice profile."
+          }
+        },
+        {
+          "name": "Synthesize with Direct Audio Upload (One-off Clone)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "text",
+                  "value": "สวัสดีครับ นี่คือเสียงที่โคลนจากไฟล์เสียงตัวอย่าง",
+                  "type": "text"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Reference audio file (.wav/.mp3)"
+                },
+                {
+                  "key": "guidance",
+                  "value": "สุภาพ เป็นทางการ",
+                  "type": "text"
+                },
+                {
+                  "key": "cfg_value",
+                  "value": "2.5",
+                  "type": "text"
+                },
+                {
+                  "key": "inference_timesteps",
+                  "value": "10",
+                  "type": "text"
+                },
+                {
+                  "key": "auto_annotate",
+                  "value": "true",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/synthesize/upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["synthesize", "upload"]
+            },
+            "description": "Synthesizes speech by uploading a reference voice file directly in the same request."
+          }
+        }
+      ]
+    }
+  ]
+}

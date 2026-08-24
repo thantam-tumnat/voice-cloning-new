@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion TTS Benchmark & Pipeline Test Suite | SiangTTS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css?v=2.1.0">
+  <link rel="stylesheet" href="/static/test.css?v=1.2.0">
+</head>
+<body>
+  <div class="test-app-container">
+    <!-- Header -->
+    <header class="test-header">
+      <div class="test-brand">
+        <div class="test-logo-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 2v7.31"></path>
+            <path d="M14 9.3V2"></path>
+            <path d="M8.5 2h7"></path>
+            <path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+            <path d="M5.52 16h12.96"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="test-title-row">
+            <h1 class="test-title">Emotion TTS Benchmark & Pipeline Comparison</h1>
+            <span class="test-badge-suite">Test Suite v2.0</span>
+          </div>
+          <p class="test-subtitle">ทดสอบรันเสียงเดิม ทุกอารมณ์ (10 อารมณ์) ซ้ำหลายๆ ครั้ง (Multi-Take) เพื่อเทียบความต่างและเช็คผลลัพธ์เมื่อปรับแก้ Pipeline</p>
+        </div>
+      </div>
+      <div class="test-header-actions">
+        <button type="button" id="btn-open-history" class="btn btn-sm btn-outline btn-history">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>ประวัติการทดสอบ (History)</span>
+        </button>
+        <a href="/" class="btn btn-sm btn-secondary btn-studio-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>กลับหน้า Tone Studio</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Configuration Section -->
+    <section class="card config-card">
+      <div class="config-card-header">
+        <div class="card-title-group">
+          <span class="step-num">1</span>
+          <h2>ตั้งค่าการทดสอบเปรียบเทียบ (Benchmark Setup)</h2>
+        </div>
+        <div class="header-status-pill" id="health-status">
+          <span class="status-dot"></span>
+          <span class="status-label">กำลังเชื่อมต่อ GPU Service...</span>
+        </div>
+      </div>
+
+      <div class="config-grid">
+        <!-- Column 1: Voice & Sentence Selection -->
+        <div class="config-col">
+          <!-- Speaker Selection -->
+          <div class="form-group">
+            <div class="field-label-row">
+              <label for="speaker-select" class="field-label">เลือกเสียงผู้พูด (Speaker Profile):</label>
+              <button type="button" id="btn-play-ref" class="btn-icon-subtle hidden" title="ฟังเสียง Reference ของผู้พูด">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>ฟังเสียง Ref</span>
+              </button>
+              <audio id="speaker-ref-audio" preload="none" class="hidden"></audio>
+            </div>
+            <select id="speaker-select" class="custom-select">
+              <option value="">-- ไม่ใช้เสียงโคลน (Auto-Seed Neutral Voice) --</option>
+            </select>
+            <small class="field-hint">💡 ระบบจะล็อค Voice Identity เดียวกันนี้ตลอดทุกอารมณ์และทุก Take</small>
+          </div>
+
+          <!-- Preset Sentences -->
+          <div class="form-group" style="margin-top: 14px;">
+            <div class="field-label-row">
+              <label class="field-label">ประโยคทดสอบมาตรฐาน (Preset):</label>
+            </div>
+            <div class="preset-pill-group" id="preset-pill-group">
+              <!-- Dynamically rendered pills -->
+            </div>
+            <textarea id="test-text-input" class="custom-textarea" rows="3" placeholder="พิมพ์ข้อความภาษาไทยที่ต้องการทดสอบ..." spellcheck="false"></textarea>
+          </div>
+        </div>
+
+        <!-- Column 2: Emotions & Takes Configuration -->
+        <div class="config-col">
+          <!-- Emotion Selector Checkboxes -->
+          <div class="form-group">
+            <div class="field-label-row">
+              <label class="field-label">เลือกอารมณ์ที่ต้องการทดสอบ:</label>
+              <div class="action-links">
+                <button type="button" id="btn-select-all-emotions" class="btn-text-action">เลือกทั้งหมด</button>
+                <span class="sep">|</span>
+                <button type="button" id="btn-clear-emotions" class="btn-text-action">ล้าง</button>
+              </div>
+            </div>
+            <div class="emotion-checkbox-grid" id="emotion-checkbox-grid">
+              <!-- Emotion toggle pills will be rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Takes and Generation Parameters -->
+          <div class="params-row-grid" style="margin-top: 14px;">
+            <div class="param-box">
+              <label for="param-repeats" class="field-label">จำนวนรอบ (Takes / Emotion):</label>
+              <div class="repeats-picker" id="repeats-picker">
+                <button type="button" class="repeat-opt" data-repeats="1">1</button>
+                <button type="button" class="repeat-opt" data-repeats="2">2</button>
+                <button type="button" class="repeat-opt active" data-repeats="3">3 ⭐</button>
+                <button type="button" class="repeat-opt" data-repeats="4">4</button>
+                <button type="button" class="repeat-opt" data-repeats="5">5</button>
+              </div>
+              <input type="hidden" id="param-repeats" value="3">
+            </div>
+
+            <div class="param-box">
+              <label for="param-intensity" class="field-label">ระดับความเข้ม (Intensity):</label>
+              <select id="param-intensity" class="custom-select-sm">
+                <option value="1">Level 1 (แผ่วเบา / Slight)</option>
+                <option value="2" selected>Level 2 (มาตรฐาน / Moderate)</option>
+                <option value="3">Level 3 (รุนแรง / Intense)</option>
+              </select>
+            </div>
+
+            <div class="param-box">
+              <label for="param-cfg" class="field-label">CFG Guidance:</label>
+              <select id="param-cfg" class="custom-select-sm">
+                <option value="1.5">1.5 (นุ่มนวล)</option>
+                <option value="2.0">2.0 (ธรรมชาติ)</option>
+                <option value="2.5" selected>2.5 (แนะนำ)</option>
+                <option value="3.5">3.5 (ชัดเจน)</option>
+                <option value="4.5">4.5 (จัดจ้าน)</option>
+              </select>
+            </div>
+
+            <div class="param-box">
+              <label for="param-lora-mode" class="field-label">โหมด LoRA:</label>
+              <select id="param-lora-mode" class="custom-select-sm">
+                <option value="on" selected>✨ Thai LoRA (ON)</option>
+                <option value="off">🚫 LoRA OFF (Base)</option>
+                <option value="legacy">⚡ Legacy (2.0/2.0)</option>
+              </select>
+            </div>
+
+            <div class="param-box param-box-full">
+              <div class="field-label-row">
+                <label class="field-label">Post-Processing (DSP) — ติ๊กหลายสูตรเพื่อเทียบในรอบเดียว:</label>
+                <span class="bench-dsp-count" id="bench-dsp-count">1 สูตร</span>
+              </div>
+              <div class="bench-dsp-picker" id="bench-dsp-picker">
+                <label class="bench-dsp-opt active">
+                  <input type="checkbox" class="bench-dsp-input" value="emotion_on" checked>
+                  <span>🎚️ เปิดชั้นอารมณ์</span>
+                </label>
+                <label class="bench-dsp-opt">
+                  <input type="checkbox" class="bench-dsp-input" value="cleanup">
+                  <span>🚫 ปิดชั้นอารมณ์</span>
+                </label>
+                <label class="bench-dsp-opt">
+                  <input type="checkbox" class="bench-dsp-input" value="raw">
+                  <span>🎵 ปิด DSP</span>
+                </label>
+                <label class="bench-dsp-opt">
+                  <input type="checkbox" class="bench-dsp-input" value="dramatic">
+                  <span>🎭 เว้นจังหวะเยอะ</span>
+                </label>
+                <label class="bench-dsp-opt">
+                  <input type="checkbox" class="bench-dsp-input" value="narration">
+                  <span>📖 พูดกระชับ</span>
+                </label>
+              </div>
+              <small class="field-hint" id="bench-dsp-hint">💡 ติ๊กมากกว่า 1 สูตร = สร้างเสียง <strong>รอบเดียว</strong> แล้วประมวลผลหลายแบบจากเสียงชุดเดิม → เทียบได้ยุติธรรมและไม่เปลือง GPU เพิ่ม</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Bar -->
+      <div class="config-action-bar">
+        <div class="suite-info-summary" id="suite-info-summary">
+          <span class="info-badge">พร้อมทดสอบ: <strong id="summary-emotions-count">10</strong> อารมณ์ × <strong id="summary-takes-count">3</strong> รอบ = รวม <strong id="summary-total-takes">30</strong> Takes</span>
+        </div>
+        <div class="action-btn-group">
+          <button type="button" id="btn-run-benchmark" class="btn btn-primary btn-run-large">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>🚀 รันการทดสอบทั้งหมด (Run Test Suite)</span>
+          </button>
+          <button type="button" id="btn-stop-benchmark" class="btn btn-danger btn-stop-large hidden">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="6" width="12" height="12"></rect>
+            </svg>
+            <span>🛑 หยุด (Stop)</span>
+          </button>
+          <button type="button" id="btn-export-zip" class="btn btn-outline btn-export" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>ดาวน์โหลด ZIP (WAVs + รายงาน)</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- A/B Fair Comparison Section -->
+    <section class="card ab-card" id="ab-card">
+      <div class="config-card-header">
+        <div class="card-title-group">
+          <span class="step-num">2</span>
+          <h2>เทียบชั้นอารมณ์แบบยุติธรรม (A/B — สร้างเสียงครั้งเดียว)</h2>
+        </div>
+        <span class="ab-badge-fair">⚖️ Fair A/B</span>
+      </div>
+
+      <div class="ab-explain">
+        <span class="ab-explain-icon">💡</span>
+        <div class="ab-explain-text">
+          <strong>ทำไมต้องแยกเป็นปุ่มนี้?</strong>
+          โมเดลสุ่มใหม่ทุกครั้งที่สร้างเสียง ถ้ากดสร้าง 2 รอบแล้วเอามาเทียบ ความต่างที่ได้ยินจะปนกันระหว่าง
+          <em>ผลของ DSP</em> กับ <em>ความสุ่มของโมเดล</em> — แยกไม่ออกว่าอันไหนทำให้ต่าง
+          <br>
+          ปุ่มนี้ <strong>สร้างเสียงรอบเดียว</strong> แล้วเอาเสียงชุดเดิมไปประมวลผลหลายสูตร
+          → สิ่งที่ต่างกันคือ <strong>DSP ล้วนๆ</strong> และเสีย GPU แค่รอบเดียวไม่ว่าจะเทียบกี่สูตร
+        </div>
+      </div>
+
+      <div class="ab-uses-config" id="ab-uses-config">
+        <span class="ab-uses-label">ใช้ค่าจากข้อ 1:</span>
+        <span class="ab-chip" id="ab-echo-speaker">—</span>
+        <span class="ab-chip" id="ab-echo-cfg">—</span>
+        <span class="ab-chip" id="ab-echo-lora">—</span>
+        <span class="ab-chip ab-chip-text" id="ab-echo-text">—</span>
+      </div>
+
+      <div class="form-group ab-picker">
+        <div class="field-label-row">
+          <label class="field-label">เลือกสูตรที่จะเทียบ (2–4 สูตร):</label>
+          <span class="ab-picker-hint">สูตรแรกที่ติ๊กจะถูกใช้เป็นตัวตั้งต้นสำหรับเทียบส่วนต่าง</span>
+        </div>
+        <div class="ab-variant-grid" id="ab-variant-grid">
+          <label class="ab-variant active" data-variant="emotion_on">
+            <input type="checkbox" class="ab-variant-input" value="emotion_on" checked>
+            <span class="ab-variant-check">✓</span>
+            <span class="ab-variant-body">
+              <span class="ab-variant-title">🎚️ เปิดชั้นอารมณ์</span>
+              <span class="ab-variant-desc">ค่ามาตรฐาน — ปรับ dB และความเร็วตามอารมณ์ + เว้นจังหวะ 0.45 วิ ตอนเปลี่ยนอารมณ์</span>
+            </span>
+          </label>
+          <label class="ab-variant active" data-variant="cleanup">
+            <input type="checkbox" class="ab-variant-input" value="cleanup" checked>
+            <span class="ab-variant-check">✓</span>
+            <span class="ab-variant-body">
+              <span class="ab-variant-title">🚫 ปิดชั้นอารมณ์</span>
+              <span class="ab-variant-desc">เก็บ trim / fade / เว้นจังหวะ / peak ไว้ แต่ถอดการปรับตามอารมณ์ออกหมด</span>
+            </span>
+          </label>
+          <label class="ab-variant active" data-variant="raw">
+            <input type="checkbox" class="ab-variant-input" value="raw" checked>
+            <span class="ab-variant-check">✓</span>
+            <span class="ab-variant-body">
+              <span class="ab-variant-title">🎵 ปิด DSP ทั้งหมด</span>
+              <span class="ab-variant-desc">เสียงดิบจากโมเดล ต่อกันด้วยความเงียบ 60ms คงที่ ไม่แตะอะไรเลย</span>
+            </span>
+          </label>
+          <label class="ab-variant" data-variant="dramatic">
+            <input type="checkbox" class="ab-variant-input" value="dramatic">
+            <span class="ab-variant-check">✓</span>
+            <span class="ab-variant-body">
+              <span class="ab-variant-title">🎭 เว้นจังหวะเยอะ</span>
+              <span class="ab-variant-desc">เหมือนมาตรฐาน แต่ยืดช่องว่างทุกจุดและปล่อยไดนามิกของโมเดลผ่านมากขึ้น</span>
+            </span>
+          </label>
+          <label class="ab-variant" data-variant="narration">
+            <input type="checkbox" class="ab-variant-input" value="narration">
+            <span class="ab-variant-check">✓</span>
+            <span class="ab-variant-body">
+              <span class="ab-variant-title">📖 พูดกระชับ</span>
+              <span class="ab-variant-desc">เหมือนมาตรฐาน แต่บีบช่องว่างให้สั้นและรีดระดับเสียงให้สม่ำเสมอกว่า</span>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="config-action-bar">
+        <div class="suite-info-summary">
+          <span class="info-badge">สร้างเสียง <strong>1</strong> รอบ → ได้ <strong id="ab-count">3</strong> ไฟล์ให้เทียบ</span>
+        </div>
+        <div class="action-btn-group">
+          <button type="button" id="btn-run-ab" class="btn btn-primary btn-run-large">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7"></path>
+            </svg>
+            <span>⚖️ สร้างครั้งเดียว เทียบทั้งหมด</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="ab-status hidden" id="ab-status">
+        <span class="ab-spinner"></span>
+        <span id="ab-status-text">กำลังสร้างเสียง...</span>
+      </div>
+
+      <div class="ab-error hidden" id="ab-error"></div>
+
+      <div class="ab-results hidden" id="ab-results">
+        <div class="ab-results-head">
+          <h3>ผลการเทียบ</h3>
+          <span class="ab-results-note" id="ab-results-note"></span>
+        </div>
+
+        <div class="ab-table-wrap">
+          <table class="ab-table" id="ab-table">
+            <thead>
+              <tr>
+                <th scope="col">สูตร</th>
+                <th scope="col">ความยาว</th>
+                <th scope="col" title="ท่อนที่ดังสุด ลบ ท่อนที่เบาสุด — ยิ่งมากยิ่งมีคอนทราสต์ทางอารมณ์">ช่วงห่างระดับเสียง</th>
+                <th scope="col" title="ท่อนที่ช้าสุด เทียบ ท่อนที่เร็วสุด (วินาทีต่อตัวอักษร)">ช่วงห่างจังหวะ</th>
+                <th scope="col">ฟัง</th>
+                <th scope="col">โหลด</th>
+              </tr>
+            </thead>
+            <tbody id="ab-table-body"></tbody>
+          </table>
+        </div>
+
+        <div class="ab-timeline-block">
+          <div class="ab-timeline-title">
+            แผนผังต่อท่อน — ความกว้าง = ความยาวจริง, ความสูง = ความดัง, ช่องว่าง = ความเงียบที่คั่น
+          </div>
+          <div class="ab-legend" id="ab-legend"></div>
+          <div id="ab-timelines"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Indicator Card (Shown while running) -->
+    <section class="card progress-card hidden" id="progress-card">
+      <div class="progress-header">
+        <div class="progress-status-title">
+          <div class="spinner-small"></div>
+          <span id="progress-text-label">กำลังเริ่มการทดสอบ...</span>
+        </div>
+        <div class="progress-stats">
+          <span class="stat-pill" id="stat-completed-count">0 / 30 Takes</span>
+          <span class="stat-pill" id="stat-elapsed-time">00:00</span>
+        </div>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+    </section>
+
+    <!-- Results Matrix Section -->
+    <section class="card results-card" id="results-card">
+      <div class="results-card-header">
+        <div class="card-title-group">
+          <span class="step-num">3</span>
+          <h2>ตารางผลลัพธ์การทดสอบ & เปรียบเทียบ Takes (Results Matrix)</h2>
+        </div>
+        <div class="results-header-actions">
+          <button type="button" id="btn-play-all-suite" class="btn btn-sm btn-outline" title="เล่นเสียงทุกอารมณ์เรียงต่อกัน">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>เล่นทุกอารมณ์ต่อเนื่อง (Tour)</span>
+          </button>
+          <span class="session-tag" id="current-session-tag">Session: —</span>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="state-container" id="results-empty-state">
+        <div class="empty-icon">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+        </div>
+        <p class="empty-title">ยังไม่มีข้อมูลผลการทดสอบ</p>
+        <p class="empty-desc">เลือกผู้พูดและอารมณ์ที่ต้องการทดสอบด้านบน แล้วกดปุ่ม <strong>"🚀 รันการทดสอบทั้งหมด"</strong> เพื่อเริ่มการสังเคราะห์</p>
+      </div>
+
+      <!-- Results Table -->
+      <div class="table-responsive hidden" id="results-table-wrapper">
+        <div class="matrix-variant-bar hidden" id="matrix-variant-bar">
+          <span class="mv-label">🎛️ กำลังดูสูตร DSP:</span>
+          <div class="mv-pills" id="mv-pills"></div>
+          <span class="mv-note">ทุกสูตรมาจากเสียงชุดเดียวกัน — สลับดูได้โดยไม่ต้องรันใหม่</span>
+        </div>
+        <table class="benchmark-table" id="benchmark-table">
+          <thead>
+            <tr>
+              <th class="th-emotion">อารมณ์ (Emotion)</th>
+              <th class="th-instruction">คำสั่ง VoxCPM2 Instruction</th>
+              <th class="th-take" id="th-take-1">Take 1</th>
+              <th class="th-take" id="th-take-2">Take 2</th>
+              <th class="th-take" id="th-take-3">Take 3</th>
+              <th class="th-take" id="th-take-4" style="display:none;">Take 4</th>
+              <th class="th-take" id="th-take-5" style="display:none;">Take 5</th>
+              <th class="th-compare">ฟังเทียบ Takes</th>
+              <th class="th-metrics">สถิติเสียง (Prosody)</th>
+              <th class="th-actions">รันใหม่</th>
+            </tr>
+          </thead>
+          <tbody id="benchmark-tbody">
+            <!-- Rows rendered dynamically per emotion -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- History Modal -->
+    <div class="modal-backdrop hidden" id="history-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <h3>ประวัติการทดสอบย้อนหลัง (Test Sessions)</h3>
+          </div>
+          <button type="button" class="btn-close-modal" id="btn-close-history">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="history-loading" class="state-container hidden">
+            <div class="spinner-small"></div>
+            <p>กำลังโหลดรายการประวัติ...</p>
+          </div>
+          <div id="history-list" class="history-list">
+            <!-- Rendered list of past sessions -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Element for background playback comparison -->
+  <audio id="global-suite-audio" preload="none" class="hidden"></audio>
+
+  <script src="/static/test.js?v=1.2.1"></script>
+</body>
+</html>

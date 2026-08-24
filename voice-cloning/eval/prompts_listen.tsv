@@ -1,0 +1,7 @@
+id	text	ref_audio
+listen_thai_short	สวัสดีครับ ยินดีที่ได้รู้จัก
+listen_thai_long	วันนี้อากาศดีมาก ผมไปเดินเล่นที่สวนสาธารณะใกล้บ้าน
+listen_thai_digit	ผมเกิดเมื่อปี 1995 และตอนนี้อายุ 30 ปี
+listen_thai_codeswitch	ผมใช้ AI ตัวนี้สำหรับงาน text-to-speech ภาษาไทย
+listen_en_clean	The quick brown fox jumps over the lazy dog.
+listen_en_digit	He was born in 1923 and lived until 2007.

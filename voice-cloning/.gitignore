@@ -1,0 +1,51 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+.venv/
+.uv/
+.python-version-local
+
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+.DS_Store
+*.swp
+*.swo
+
+data/
+checkpoints/
+runs/
+wandb/
+logs/
+*.wav
+*.mp3
+*.flac
+*.parquet
+*.arrow
+
+.env
+.env.local
+secrets.json
+
+.idea/
+.vscode/
+
+# demo artifacts (regenerable)
+demo/samples/
+dist/
+
+# but DO track the static demo page's audio (served by GitHub Pages)
+!docs/samples/
+!docs/samples/*.wav
+
+# cached prompt caches (regenerable from ref/)
+voice_cache/
+voices/          # pre-rename name; keep ignored so old checkouts stay clean
+
+# track reference clips + README (seed voices for the API)
+!ref/
+!ref/*.wav
+!ref/*.md

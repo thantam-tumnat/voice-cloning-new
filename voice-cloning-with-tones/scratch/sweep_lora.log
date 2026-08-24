@@ -1,0 +1,135 @@
+[sweep] loading model ...
+[sweep] LoRA layers: lm=144 dit=48
+[sweep] seed voice: ok
+[sweep] base_lora_2.0: lm=2.0 dit=2.0 cfg=2.5 lang=en punct=False
+    base_lora_2.0    rep0 neutral   14.1s
+    base_lora_2.0    rep0 angry     11.9s
+    base_lora_2.0    rep0 sad       19.5s
+    base_lora_2.0    rep0 happy     13.6s
+    base_lora_2.0    rep0 scared    13.9s
+    base_lora_2.0    rep1 neutral   10.6s
+    base_lora_2.0    rep1 angry     11.1s
+    base_lora_2.0    rep1 sad       13.2s
+    base_lora_2.0    rep1 happy     10.7s
+    base_lora_2.0    rep1 scared    10.8s
+    base_lora_2.0    rep2 neutral    9.8s
+    base_lora_2.0    rep2 angry     10.0s
+    base_lora_2.0    rep2 sad       11.8s
+    base_lora_2.0    rep2 happy     11.6s
+    base_lora_2.0    rep2 scared    10.3s
+[sweep] lora_1.0: lm=1.0 dit=1.0 cfg=2.5 lang=en punct=False
+    lora_1.0         rep0 neutral    8.5s
+    lora_1.0         rep0 angry      6.5s
+    lora_1.0         rep0 sad       11.5s
+    lora_1.0         rep0 happy     10.5s
+    lora_1.0         rep0 scared    11.3s
+    lora_1.0         rep1 neutral    6.9s
+    lora_1.0         rep1 angry      6.4s
+    lora_1.0         rep1 sad       11.4s
+    lora_1.0         rep1 happy      7.6s
+    lora_1.0         rep1 scared     8.9s
+    lora_1.0         rep2 neutral   10.3s
+    lora_1.0         rep2 angry      8.6s
+    lora_1.0         rep2 sad        9.2s
+    lora_1.0         rep2 happy      9.1s
+    lora_1.0         rep2 scared     8.7s
+[sweep] lora_0.5: lm=0.5 dit=0.5 cfg=2.5 lang=en punct=False
+    lora_0.5         rep0 neutral    6.0s
+    lora_0.5         rep0 angry      6.0s
+    lora_0.5         rep0 sad        8.7s
+    lora_0.5         rep0 happy      6.3s
+    lora_0.5         rep0 scared     6.1s
+    lora_0.5         rep1 neutral    6.0s
+    lora_0.5         rep1 angry      6.8s
+    lora_0.5         rep1 sad        7.8s
+    lora_0.5         rep1 happy      7.4s
+    lora_0.5         rep1 scared     7.6s
+    lora_0.5         rep2 neutral    6.5s
+    lora_0.5         rep2 angry      7.5s
+    lora_0.5         rep2 sad        8.2s
+    lora_0.5         rep2 happy      8.0s
+    lora_0.5         rep2 scared     7.5s
+[sweep] lora_off: lm=0.0 dit=0.0 cfg=2.5 lang=en punct=False
+    lora_off         rep0 neutral    6.6s
+    lora_off         rep0 angry      7.6s
+    lora_off         rep0 sad        9.3s
+    lora_off         rep0 happy      7.6s
+    lora_off         rep0 scared     9.9s
+    lora_off         rep1 neutral    8.4s
+    lora_off         rep1 angry      6.7s
+    lora_off         rep1 sad        9.3s
+    lora_off         rep1 happy      8.0s
+    lora_off         rep1 scared     8.5s
+    lora_off         rep2 neutral    7.6s
+    lora_off         rep2 angry      8.4s
+    lora_off         rep2 sad        9.4s
+    lora_off         rep2 happy      7.9s
+    lora_off         rep2 scared     8.4s
+[sweep] lm_only: lm=2.0 dit=0.0 cfg=2.5 lang=en punct=False
+    lm_only          rep0 neutral   12.7s
+    lm_only          rep0 angry      9.4s
+    lm_only          rep0 sad       21.0s
+    lm_only          rep0 happy      8.7s
+    lm_only          rep0 scared    10.8s
+    lm_only          rep1 neutral   10.7s
+    lm_only          rep1 angry      7.4s
+    lm_only          rep1 sad       22.1s
+    lm_only          rep1 happy     10.2s
+    lm_only          rep1 scared    10.6s
+    lm_only          rep2 neutral   12.6s
+    lm_only          rep2 angry     11.9s
+    lm_only          rep2 sad       15.2s
+    lm_only          rep2 happy     13.2s
+    lm_only          rep2 scared    13.3s
+[sweep] dit_only: lm=0.0 dit=2.0 cfg=2.5 lang=en punct=False
+    dit_only         rep0 neutral    6.7s
+    dit_only         rep0 angry      7.6s
+    dit_only         rep0 sad      330.8s
+    dit_only         rep0 happy     54.0s
+    dit_only         rep0 scared    47.4s
+    dit_only         rep1 neutral   57.9s
+    dit_only         rep1 angry     55.4s
+    dit_only         rep1 sad       61.1s
+    dit_only         rep1 happy     55.1s
+    dit_only         rep1 scared    50.1s
+    dit_only         rep2 neutral   38.8s
+    dit_only         rep2 angry     40.8s
+    dit_only         rep2 sad       49.9s
+    dit_only         rep2 happy     45.4s
+    dit_only         rep2 scared    45.0s
+
+condition           score  angry    sad  happy  scared  A-vs-S
+lm_only              1.21   0.87   3.14   0.30    0.52    3.62
+lora_0.5             0.49   0.37   0.42   0.37    0.80    0.81
+lora_off             0.39   0.57  -0.17   0.76    0.41    1.00
+lora_1.0             0.31   0.69   0.00  -0.05    0.59    1.00
+dit_only             0.29   0.19   0.38  -0.13    0.72    0.84
+base_lora_2.0        0.15  -0.72   1.91  -0.12   -0.47    1.30
+
+condition         emotion     dE_dB  df0_st  dspread  dpace_%
+base_lora_2.0     angry       -3.13   -3.55     0.17     0.80
+base_lora_2.0     sad         -4.46   -2.09     0.36    32.67
+base_lora_2.0     happy        0.36   -0.50     0.41     2.93
+base_lora_2.0     scared      -1.40   -2.03     0.49     5.32
+lora_1.0          angry        2.69   -0.20     2.03   -10.15
+lora_1.0          sad          1.80    1.85     3.25     7.97
+lora_1.0          happy        0.40   -0.18     0.69     3.05
+lora_1.0          scared       4.31    2.40     0.20    10.08
+lora_0.5          angry        4.61    2.13     0.26     9.57
+lora_0.5          sad          1.13    2.40     1.14    22.80
+lora_0.5          happy        3.05    1.76     4.78    13.51
+lora_0.5          scared       3.78    2.43     3.74    14.89
+lora_off          angry        4.04    0.90    -0.61    -5.42
+lora_off          sad          4.74    2.39    -0.21    17.70
+lora_off          happy        5.80    3.65    -1.00    -1.72
+lora_off          scared       4.71    2.58    -1.80    13.30
+lm_only           angry        1.16    0.26     1.94   -18.40
+lm_only           sad         -3.19   -0.98    -0.03    75.60
+lm_only           happy       -1.24   -0.17     0.28   -10.00
+lm_only           scared       1.31    2.12     0.66    -1.72
+dit_only          angry        3.92    0.15     0.71     6.74
+dit_only          sad          2.90    1.55     1.95    21.91
+dit_only          happy        2.28    2.17     0.00    15.21
+dit_only          scared       3.89    1.30     3.60    10.17
+
+wrote scratch\sweep\lora

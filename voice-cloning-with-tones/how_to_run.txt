@@ -1,0 +1,50 @@
+=====================================================
+Thai TTS Tone Annotation & Voice Cloning Studio (Port 8011)
+=====================================================
+
+The studio does not load VoxCPM2. Generation goes to the shared SiangTTS GPU
+Service, which is the one process on the host holding the model -- the webhook
+queue on port 8010 uses the same one.
+
+Prerequisite: the GPU service must be running on port 8020.
+
+    cd C:\Users\opendream002\Desktop\deploy\voice-cloning
+    uv run uvicorn src.gpu_service:app --host 127.0.0.1 --port 8020
+
+    Ready when it prints "[gpu] ready -- stub=False sr=48000 ...".
+    First start takes 30-60 s to load the model.
+
+Run Tone Studio on Port 8011:
+
+    cd C:\Users\opendream002\Desktop\SiangTTS+emotions\voice-cloning-with-tones
+    uvicorn app.main:app --host 0.0.0.0 --port 8011 --reload
+
+Or double-click `run.bat`.
+
+Startup prints which engine it connected to:
+
+    [SiangTTS] Using the shared GPU service at http://127.0.0.1:8020 (...)
+
+If the GPU service is not running, the studio starts but /synthesize returns 503
+with instructions. It will NOT quietly load its own copy of the model: on a
+single-GPU host that either fights the shared one for VRAM or fails several
+minutes into a request. Set VOXCPM_REMOTE_REQUIRED=false to allow it anyway,
+only when nothing else is using the GPU.
+
+Point it somewhere else with VOXCPM_SERVICE_URL.
+
+The speaker list comes from the GPU service, not from this folder's ref/. To keep
+the studio's own clips (customer, determination, en_us, lion) in the picker, start
+the GPU service with both folders:
+
+    set SIANGTTS_REF_DIR=ref;..\voice-cloning-with-tones\ref
+
+Separate several folders with ';'. C:\temp\tts_jobs\voices is always included.
+New clips registered through the studio are written to the first folder.
+
+Web UI:
+    http://localhost:8011/
+API Documentation:
+    http://localhost:8011/docs
+Shared queue (what the GPU is actually doing):
+    http://localhost:8020/

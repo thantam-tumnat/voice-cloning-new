@@ -1,0 +1,103 @@
+# LoRA fine-tuning recipe for SiangTTS on a single RTX 3090 24 GB.
+# See RESEARCH.md §8.1–§8.2 for the reasoning behind each value.
+#
+# Keys under `lora:` map 1:1 to voxcpm.model.voxcpm2.LoRAConfig.
+# VoxCPM2's AudioVAE *encodes* at 16 kHz and *decodes* at 48 kHz — manifests are
+# resampled to `sample_rate` (16 kHz) at load time; `out_sample_rate` is only the
+# rate of generated audio (TensorBoard snapshots, inference output).
+
+# Local directory with the VoxCPM2 snapshot, or an HF repo id (auto-downloaded).
+pretrained_path: openbmb/VoxCPM2
+sample_rate: 16000        # AudioVAE encoder input rate (must match audio_vae_config)
+out_sample_rate: 48000    # AudioVAE decoder output rate
+
+manifests:
+  # Thai sources prepped separately (not interleaved) so tiny corpora aren't
+  # oversampled into single-speaker dominance. Weights set the batch mix:
+  # cv 1.0 / libritts 0.25 → ~80% Thai / 20% EN effective batch.
+  # Common Voice has real speaker IDs (4,245) so ref_audio pairing is correct.
+  # porjai_central (studio-clean, but no speaker labels) is a v1 addition —
+  # needs ref-pairing disabled to avoid teaching wrong-voice cloning.
+  train:
+    - path: data/vaja-cv/train.jsonl
+      weight: 1.0       # Common Voice — many speakers + real IDs → cloning signal
+    - path: data/vaja-porjai/train.jsonl
+      weight: 0.7       # porjai studio-clean (no ref_audio: unlabeled speakers)
+    - path: data/libritts/train.jsonl
+      weight: 0.42      # ~20% EN — retains English + code-switching
+  val:
+    - path: data/vaja-cv/val.jsonl
+    - path: data/vaja-porjai/val.jsonl
+    - path: data/libritts/val.jsonl
+
+lora:                     # → voxcpm LoRAConfig
+  enable_lm: true         # LoRA on base_lm (TSLM) + residual_lm (RALM)
+  enable_dit: true        # LoRA on LocDiT estimator
+  enable_proj: false
+  r: 64
+  alpha: 128
+  dropout: 0.05
+
+optim:
+  optimizer: adamw        # or adamw_8bit (bitsandbytes)
+  lr: 1.0e-4
+  weight_decay: 0.0
+  warmup_steps: 100
+
+train:
+  # batch_size 2 OOMs on a 24 GB 3090 (peak ~22.9 GB) — VoxCPM2 runs base_lm +
+  # residual_lm + encoder + DiT in one forward and has no gradient-checkpoint
+  # hook. batch_size 1 peaks at ~20.4 GB (measured, smoke run 2026-06-15).
+  # Launch with PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True.
+  batch_size: 1
+  gradient_accumulation_steps: 16  # effective batch 16
+  # Backstop guard. fps=25/patch=4 ≈ 6 tokens/s, so a 14 s target + 8 s ref ≈
+  # 180 packed tokens; 512 won't drop our filtered data but catches pathological
+  # samples. NOTE: DiT memory scales with audio *frames*, not LM tokens — the
+  # real OOM guard is the ≤14 s target / ≤8 s ref manifest filter (see RESULTS).
+  max_batch_tokens: 512
+  num_epochs: 2                    # v1: epoch 2 — resumes from latest (step 6605).
+                                   # v0 (1 ep) gave short-Thai 0% CER; epoch 2 to
+                                   # improve long-form stop reliability (val loss
+                                   # was still falling). 3+ risks over-train collapse.
+  num_workers: 4
+  max_grad_norm: 1.0
+  save_every_steps: 1000
+  eval_every_steps: 1000
+  log_every_steps: 50
+  lambdas:
+    loss/diff: 1.0
+    loss/stop: 1.0
+
+monitor:
+  tensorboard:
+    enabled: true
+    log_dir: runs/siangtts-lora-v0
+    flush_every_steps: 100
+  audio_sampler:
+    enabled: true
+    every_steps: 1000               # synth a few prompts and write to TB Audio tab
+    prompts: eval/prompts_listen.tsv
+    sample_rate: 48000              # decoder output rate
+    max_prompts: 6                   # cap per snapshot to stay light
+    cfg_value: 2.5
+    inference_timesteps: 10
+  timing:
+    enabled: true
+    summary_path: runs/siangtts-lora-v0/training_summary.json
+    log_gpu_stats: true              # records GPU name + VRAM peak per checkpoint
+
+augment:
+  thai_digit:
+    p_full: 0.4
+    p_partial: 0.1
+  en_text_original_vs_normalized:
+    p_normalized: 0.3              # 70% raw text_original, 30% text_normalized
+  whitespace_jitter:
+    p: 0.15
+  case_jitter:
+    p: 0.1
+
+paths:
+  checkpoint_dir: checkpoints/siangtts-lora-v0
+  log_dir: runs/siangtts-lora-v0

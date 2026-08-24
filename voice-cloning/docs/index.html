@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SiangTTS — Thai Voice-Cloning TTS Demo</title><style>
+body{font-family:system-ui,'Segoe UI',sans-serif;max-width:1100px;margin:2rem auto;
+  padding:0 1rem;color:#1b1f24;line-height:1.5}
+h1{margin-bottom:.2rem} .sub{color:#57606a;margin-top:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid #d0d7de;padding:.5rem;text-align:left;vertical-align:top}
+th{background:#f6f8fa} audio{width:200px}
+.badge{display:inline-block;font-size:.75rem;padding:.1rem .45rem;border-radius:1rem;
+  margin-right:.3rem;background:#eaeef2}
+.male{background:#ddf4ff} .female{background:#ffeff7} .num{background:#fff8c5}
+.txt{font-size:.95rem} .results td,.results th{text-align:center}
+.note{color:#57606a;font-size:.85rem}
+</style></head><body>
+<h1>SiangTTS — Thai Voice-Cloning TTS</h1>
+<p class="sub">LoRA fine-tune of VoxCPM2 on Thai · trained on a single RTX 3090 ·
+<a href="https://huggingface.co/dubbing-ai/SiangTTS-VoxCPM2-Thai-LoRA">model on HuggingFace</a></p>
+
+<table class="results">
+<tr><th>Voice cloning (80 prompts)</th><th>GT — real recording</th>
+<th>Base VoxCPM2</th><th>SiangTTS (LoRA)</th></tr>
+<tr><td>Intelligibility — CER (lower ↓)</td><td>0.97%</td><td>3.26%</td><td><b>0.84%</b></td></tr>
+<tr><td>Speaker similarity — SIM (higher ↑)</td><td>0.913</td><td>0.906</td><td><b>0.909</b></td></tr>
+</table>
+<p class="note"><b>GT</b> = the real recording, shown as the ceiling/reference.
+SiangTTS clones at essentially the genuine same-speaker similarity (SIM ≈ GT) and
+is as intelligible as real recordings (CER ≤ GT — note CER has an ASR-judge floor,
+measured with Typhoon-Whisper). Separately, short-form Thai CER 5.7%→3.8% and
+long-form 2.7%→1.6% (small 5 / 2-prompt sets). Listen below and judge for yourself.</p>
+
+<h2>Voice-cloning comparison</h2>
+<p class="note">Each row: the <b>reference voice</b> (a different utterance from the
+same speaker), the real <b>ground-truth</b> recording, the <b>base</b> VoxCPM2, and
+<b>SiangTTS</b>. Examples span gender, text length, and some contain spoken
+numbers (🔢). Gender is <i>estimated from pitch</i>.</p>
+<table><tr><th>Text</th><th>Reference voice</th><th>Ground truth</th><th>Base VoxCPM2</th><th>SiangTTS (LoRA)</th></tr><tr><td class='txt'>เราแบ่งพื้นที่โดเมนใช้โดยออกที<br><span class="badge male">♂ male (est.)</span><span class="badge">short · 4.5s</span></td><td><audio controls preload="none" src="samples/ex_00_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_00_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_00_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_00_lora.wav"></audio></td></tr><tr><td class='txt'>นอกจากเกี่ยวกับประชาแล้ว ยังพูดถึงแนวคิดหลังสมัยใหม่ และบริบทอื่นอีก<br><span class="badge male">♂ male (est.)</span><span class="badge">mid · 8.0s</span></td><td><audio controls preload="none" src="samples/ex_01_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_01_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_01_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_01_lora.wav"></audio></td></tr><tr><td class='txt'>แต่พูดถึงก็สะดวกดี พลาดคอนเสิร์ตไหน ก็ไปหาดูได้ ส่วนใหญ่อ๊อบกะพีจะไม่ค่อยพลาด ถ่ายหมด<br><span class="badge male">♂ male (est.)</span><span class="badge">long · 10.5s</span></td><td><audio controls preload="none" src="samples/ex_02_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_02_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_02_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_02_lora.wav"></audio></td></tr><tr><td class='txt'>หาดใหญ่เป็นอำเภอหรือเป็นจังหวัด<br><span class="badge female">♀ female (est.)</span><span class="badge">short · 4.5s</span></td><td><audio controls preload="none" src="samples/ex_03_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_03_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_03_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_03_lora.wav"></audio></td></tr><tr><td class='txt'>สิบนาทีต่อมาเจ้าของโรงแรมแอบเข้ามาในห้องดวงตาของเขาสดใสด้วยความตื่นเต้น<br><span class="badge female">♀ female (est.)</span><span class="badge">mid · 7.8s</span><span class="badge num">🔢 has number</span></td><td><audio controls preload="none" src="samples/ex_04_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_04_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_04_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_04_lora.wav"></audio></td></tr><tr><td class='txt'>คนที่ไม่เชื่อในศาสนาหลายคนเป็นผู้ไม่เชื่อเรื่องพระเจ้า แต่บางคนก็ไม่เชื่อเรื่องพระเจ้า<br><span class="badge female">♀ female (est.)</span><span class="badge">long · 9.8s</span></td><td><audio controls preload="none" src="samples/ex_05_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_05_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_05_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_05_lora.wav"></audio></td></tr><tr><td class='txt'>ภาพยนตร์เรื่องนี้อยู่ในช่วงศตวรรษที่สิบแปดของยุโรป<br><span class="badge male">♂ male (est.)</span><span class="badge">mid · 5.7s</span><span class="badge num">🔢 has number</span></td><td><audio controls preload="none" src="samples/ex_06_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_06_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_06_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_06_lora.wav"></audio></td></tr><tr><td class='txt'>ปีหนึ่งพันแปดร้อยแปดสิบเก้า สากลที่สอง<br><span class="badge female">♀ female (est.)</span><span class="badge">mid · 5.3s</span><span class="badge num">🔢 has number</span></td><td><audio controls preload="none" src="samples/ex_07_ref.wav"></audio></td><td><audio controls preload="none" src="samples/ex_07_ground_truth.wav"></audio></td><td><audio controls preload="none" src="samples/ex_07_base.wav"></audio></td><td><audio controls preload="none" src="samples/ex_07_lora.wav"></audio></td></tr></table>
+<h2>Long-form synthesis</h2>
+<p class="note">Genuinely long sentences (~14 s — longer than any Common Voice
+cloning clip above). Both models handle long Thai input here; this shows SiangTTS
+keeps quality on long text. Default voice, no ground truth.</p>
+<table><tr><th>Long sentence (~14 s)</th><th>Base VoxCPM2</th><th>SiangTTS (LoRA)</th></tr><tr><td class='txt'>การเรียนรู้ภาษาที่สองนั้นต้องอาศัยทั้งความตั้งใจและความอดทน เพราะการสื่อสารที่มีประสิทธิภาพไม่ได้ขึ้นอยู่กับคำศัพท์เพียงอย่างเดียว แต่ยังรวมถึงการออกเสียงและการเข้าใจวัฒนธรรมของผู้พูดด้วย</td><td><audio controls preload="none" src="samples/long_learn_base.wav"></audio></td><td><audio controls preload="none" src="samples/long_learn_lora.wav"></audio></td></tr><tr><td class='txt'>ในโลกปัจจุบันที่เทคโนโลยีก้าวหน้าอย่างรวดเร็ว ปัญญาประดิษฐ์เข้ามามีบทบาทในชีวิตประจำวันของเรามากขึ้นเรื่อย ๆ ตั้งแต่การช่วยแปลภาษาจนถึงการสร้างเสียงสังเคราะห์ที่ใกล้เคียงกับเสียงมนุษย์จริง</td><td><audio controls preload="none" src="samples/long_ai_base.wav"></audio></td><td><audio controls preload="none" src="samples/long_ai_lora.wav"></audio></td></tr></table>
+<h2>Number &amp; digit reading</h2>
+<p class="note">Written Arabic numerals spoken as Thai. Both base and SiangTTS read
+them correctly (VoxCPM2 has built-in number handling) — shown for completeness.
+Default voice, no ground truth.</p>
+<table><tr><th>Text (Arabic numerals)</th><th>Base VoxCPM2</th><th>SiangTTS (LoRA)</th></tr><tr><td class='txt'>เขาเกิดเมื่อปี 1990 ที่จังหวัดเชียงใหม่</td><td><audio controls preload="none" src="samples/digit_year_base.wav"></audio></td><td><audio controls preload="none" src="samples/digit_year_lora.wav"></audio></td></tr><tr><td class='txt'>สินค้าชิ้นนี้ราคา 1,250 บาท</td><td><audio controls preload="none" src="samples/digit_price_base.wav"></audio></td><td><audio controls preload="none" src="samples/digit_price_lora.wav"></audio></td></tr><tr><td class='txt'>ติดต่อได้ที่เบอร์ 081-234-5678</td><td><audio controls preload="none" src="samples/digit_phone_base.wav"></audio></td><td><audio controls preload="none" src="samples/digit_phone_lora.wav"></audio></td></tr><tr><td class='txt'>ร้านเปิด 9 โมงเช้า ถึง 5 ทุ่ม ทุกวัน</td><td><audio controls preload="none" src="samples/digit_mix_base.wav"></audio></td><td><audio controls preload="none" src="samples/digit_mix_lora.wav"></audio></td></tr></table>
+<p class="note">CER is measured with Typhoon-Whisper-Large-v3 and is an upper bound
+on error — the ASR judge itself mis-recognises some rare Thai words the model
+pronounces correctly. License: CC-BY-SA-4.0.</p>
+</body></html>

@@ -1,0 +1,41 @@
+# Environment & Secrets
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+.cache
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Auto-generated neutral seed voice (see SiangTTSService._build_seed_voice).
+# Derived from the local model, regenerated on demand -- not worth committing.
+voice_cache/_auto_seed.pt
+
+# Takes written by tools/ab_gen.py
+takes/

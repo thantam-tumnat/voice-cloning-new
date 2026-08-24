@@ -1,0 +1,126 @@
+{
+  "session_id": "bench_20260821_160814_base",
+  "name": "Emotion Benchmark (20260821_160814)",
+  "created_at": "2026-08-21T16:08:14.300156",
+  "speaker_id": null,
+  "text": "ทดสอบระบบเสียง",
+  "emotions": [
+    "happy",
+    "sad"
+  ],
+  "repeats": 1,
+  "total_takes": 2,
+  "completed_takes": 2,
+  "params": {
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 10,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "(Sad voice, quiet and downcast)",
+      "spoken_text": "ทดสอบระบบเสียง",
+      "filename": "sad_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_160814_base/sad_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 2.69,
+        "rms": 0.0806,
+        "energy_dbfs": -21.9,
+        "f0_med_hz": 165.5,
+        "f0_p10_hz": 143.4,
+        "f0_p90_hz": 215.5,
+        "f0_spread_st": 7.05
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "เปิดชั้นอารมณ์",
+          "filename": "sad_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_160814_base/sad_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 2.69,
+            "rms": 0.0806,
+            "energy_dbfs": -21.9,
+            "f0_med_hz": 165.5,
+            "f0_p10_hz": 143.4,
+            "f0_p90_hz": 215.5,
+            "f0_spread_st": 7.05
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "ปิดชั้นอารมณ์",
+          "filename": "sad_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_160814_base/sad_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 2.69,
+            "rms": 0.097,
+            "energy_dbfs": -20.3,
+            "f0_med_hz": 165.5,
+            "f0_p10_hz": 143.4,
+            "f0_p90_hz": 215.5,
+            "f0_spread_st": 7.05
+          }
+        },
+        {
+          "id": "raw",
+          "label": "ปิด DSP",
+          "filename": "sad_take_1__raw.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_160814_base/sad_take_1__raw.wav",
+          "metrics": {
+            "dur_s": 3.2,
+            "rms": 0.0929,
+            "energy_dbfs": -20.6,
+            "f0_med_hz": 165.5,
+            "f0_p10_hz": 143.4,
+            "f0_p90_hz": 215.1,
+            "f0_spread_st": 7.02
+          }
+        }
+      ],
+      "elapsed_s": 19.17,
+      "error": null,
+      "timestamp": "2026-08-21T16:08:33.480713"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "(Happy and cheerful voice, smiling while speaking)",
+      "spoken_text": "ทดสอบระบบเสียง",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_160814_base/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 1.26,
+        "rms": 0.11,
+        "energy_dbfs": -19.2,
+        "f0_med_hz": 152.4,
+        "f0_p10_hz": 104.4,
+        "f0_p90_hz": 245.8,
+        "f0_spread_st": 14.82
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_160814_base/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 1.26,
+            "rms": 0.11,
+            "energy_dbfs": -19.2,
+            "f0_med_hz": 152.4,
+            "f0_p10_hz": 104.4,
+            "f0_p90_hz": 245.8,
+            "f0_spread_st": 14.82
+          }
+        }
+      ],
+      "elapsed_s": 6.34,
+      "error": null,
+      "timestamp": "2026-08-21T16:08:39.825261"
+    }
+  }
+}

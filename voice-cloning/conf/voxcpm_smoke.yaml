@@ -1,0 +1,76 @@
+# Smoke-run recipe — tier-1-only Vaja, short run to validate the pipeline on the
+# 3090 before the full Phase-1 LoRA. Goal is mechanics, not final quality:
+#   - peak VRAM < 22 GB (check runs/.../training_summary.json)
+#   - training loop steps without crashing (packer, autocast, LoRA grads)
+#   - in-training audio snapshots fire and are intelligible by ~1k steps
+#   - generation terminates (no runaway length → trailing-silence gotcha)
+# Uses the SAME LoRA/optim/batch settings as conf/voxcpm_lora.yaml so the VRAM
+# reading is representative of the real run.
+
+pretrained_path: openbmb/VoxCPM2
+sample_rate: 16000
+out_sample_rate: 48000
+
+manifests:
+  train:
+    - path: data/vaja-tier1/train.jsonl
+      weight: 1.0
+  val:
+    - path: data/vaja-tier1/val.jsonl
+
+lora:
+  enable_lm: true
+  enable_dit: true
+  enable_proj: false
+  r: 64
+  alpha: 128
+  dropout: 0.05
+
+optim:
+  optimizer: adamw
+  lr: 1.0e-4
+  weight_decay: 0.0
+  warmup_steps: 100
+
+train:
+  batch_size: 1                    # batch 2 OOMs on 24 GB (no grad-checkpoint in VoxCPM)
+  gradient_accumulation_steps: 16  # effective batch 16
+  max_batch_tokens: 4096
+  num_epochs: 8                    # ~183 steps/epoch × 8 ≈ 1.5k steps
+  num_workers: 4
+  max_grad_norm: 1.0
+  save_every_steps: 500
+  eval_every_steps: 500
+  log_every_steps: 25
+  lambdas:
+    loss/diff: 1.0
+    loss/stop: 1.0
+
+monitor:
+  tensorboard:
+    enabled: true
+    log_dir: runs/siangtts-smoke
+    flush_every_steps: 50
+  audio_sampler:
+    enabled: true
+    every_steps: 500
+    prompts: eval/prompts_listen.tsv
+    sample_rate: 48000
+    max_prompts: 4
+    cfg_value: 2.5
+    inference_timesteps: 10
+  timing:
+    enabled: true
+    summary_path: runs/siangtts-smoke/training_summary.json
+    log_gpu_stats: true
+
+augment:
+  thai_digit:
+    p_full: 0.4
+    p_partial: 0.1
+  whitespace_jitter:
+    p: 0.15
+
+paths:
+  checkpoint_dir: checkpoints/siangtts-smoke
+  log_dir: runs/siangtts-smoke

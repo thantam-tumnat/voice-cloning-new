@@ -1,0 +1,11 @@
+id	text	expected_form
+digit_year_01	เขาเกิดเมื่อปี 1923	cardinal
+digit_year_02	เหตุการณ์นี้เกิดขึ้นในปี ค.ศ. 2024	cardinal_or_digit_recital
+digit_price_01	ราคา 1,250 บาท	cardinal
+digit_price_02	หนังสือเล่มนี้ราคา 350 บาท	cardinal
+digit_phone_01	เบอร์โทรของผมคือ 081-234-5678	digit_recital
+digit_count_01	มีนักเรียน 42 คนในห้องเรียน	cardinal
+digit_count_02	เขาวิ่งได้ 100 เมตรใน 12 วินาที	cardinal
+digit_mixed_01	ผมอ่านหนังสือ 5 เล่ม ภายใน 3 วัน	cardinal
+digit_decimal_01	ค่า pi เท่ากับ 3.14 โดยประมาณ	cardinal_with_decimal
+digit_codeswitch_01	GDP ของประเทศไทยในปี 2023 อยู่ที่ประมาณ 17 ล้านล้านบาท	cardinal_codeswitch

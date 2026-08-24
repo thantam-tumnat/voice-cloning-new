@@ -1,0 +1,650 @@
+{
+  "session_id": "bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517",
+  "name": "Emotion Benchmark (20260821_164428)",
+  "created_at": "2026-08-21T16:44:28.659687",
+  "speaker_id": "05c87486-3b7d-4801-86fa-b3753887b517",
+  "text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "excited",
+    "sarcastic"
+  ],
+  "repeats": 2,
+  "total_takes": 12,
+  "completed_takes": 12,
+  "params": {
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 10,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "neutral_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/neutral_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 3.81,
+        "rms": 0.1257,
+        "energy_dbfs": -18.0,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 212.4,
+        "f0_p90_hz": 333.3,
+        "f0_spread_st": 7.8
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "neutral_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/neutral_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 3.81,
+            "rms": 0.1257,
+            "energy_dbfs": -18.0,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 212.4,
+            "f0_p90_hz": 333.3,
+            "f0_spread_st": 7.8
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "neutral_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/neutral_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 3.81,
+            "rms": 0.1257,
+            "energy_dbfs": -18.0,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 212.4,
+            "f0_p90_hz": 333.3,
+            "f0_spread_st": 7.8
+          }
+        }
+      ],
+      "elapsed_s": 9.69,
+      "error": null,
+      "timestamp": "2026-08-21T16:44:38.370392"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "neutral_take_2__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/neutral_take_2__emotion_on.wav",
+      "metrics": {
+        "dur_s": 3.75,
+        "rms": 0.1484,
+        "energy_dbfs": -16.6,
+        "f0_med_hz": 251.3,
+        "f0_p10_hz": 211.5,
+        "f0_p90_hz": 322.1,
+        "f0_spread_st": 7.29
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "neutral_take_2__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/neutral_take_2__emotion_on.wav",
+          "metrics": {
+            "dur_s": 3.75,
+            "rms": 0.1484,
+            "energy_dbfs": -16.6,
+            "f0_med_hz": 251.3,
+            "f0_p10_hz": 211.5,
+            "f0_p90_hz": 322.1,
+            "f0_spread_st": 7.29
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "neutral_take_2__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/neutral_take_2__cleanup.wav",
+          "metrics": {
+            "dur_s": 3.75,
+            "rms": 0.1484,
+            "energy_dbfs": -16.6,
+            "f0_med_hz": 251.3,
+            "f0_p10_hz": 211.5,
+            "f0_p90_hz": 322.1,
+            "f0_spread_st": 7.29
+          }
+        }
+      ],
+      "elapsed_s": 9.96,
+      "error": null,
+      "timestamp": "2026-08-21T16:44:48.338779"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "(Happy and cheerful voice, smiling while speaking)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "happy_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/happy_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.25,
+        "rms": 0.1453,
+        "energy_dbfs": -16.8,
+        "f0_med_hz": 269.7,
+        "f0_p10_hz": 218.2,
+        "f0_p90_hz": 369.2,
+        "f0_spread_st": 9.11
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "happy_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/happy_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.25,
+            "rms": 0.1453,
+            "energy_dbfs": -16.8,
+            "f0_med_hz": 269.7,
+            "f0_p10_hz": 218.2,
+            "f0_p90_hz": 369.2,
+            "f0_spread_st": 9.11
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "happy_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/happy_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.25,
+            "rms": 0.1477,
+            "energy_dbfs": -16.6,
+            "f0_med_hz": 269.7,
+            "f0_p10_hz": 218.2,
+            "f0_p90_hz": 369.2,
+            "f0_spread_st": 9.11
+          }
+        }
+      ],
+      "elapsed_s": 10.76,
+      "error": null,
+      "timestamp": "2026-08-21T16:44:59.105601"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "(Happy and cheerful voice, smiling while speaking)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "happy_take_2__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/happy_take_2__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.42,
+        "rms": 0.1378,
+        "energy_dbfs": -17.2,
+        "f0_med_hz": 243.7,
+        "f0_p10_hz": 190.5,
+        "f0_p90_hz": 333.3,
+        "f0_spread_st": 9.69
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "happy_take_2__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/happy_take_2__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.42,
+            "rms": 0.1378,
+            "energy_dbfs": -17.2,
+            "f0_med_hz": 243.7,
+            "f0_p10_hz": 190.5,
+            "f0_p90_hz": 333.3,
+            "f0_spread_st": 9.69
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "happy_take_2__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/happy_take_2__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.42,
+            "rms": 0.1459,
+            "energy_dbfs": -16.7,
+            "f0_med_hz": 243.7,
+            "f0_p10_hz": 190.5,
+            "f0_p90_hz": 333.3,
+            "f0_spread_st": 9.69
+          }
+        }
+      ],
+      "elapsed_s": 11.78,
+      "error": null,
+      "timestamp": "2026-08-21T16:45:10.887831"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "(Sad voice, quiet and downcast)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sad_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sad_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.64,
+        "rms": 0.0899,
+        "energy_dbfs": -20.9,
+        "f0_med_hz": 216.2,
+        "f0_p10_hz": 187.5,
+        "f0_p90_hz": 275.9,
+        "f0_spread_st": 6.68
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "sad_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sad_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.64,
+            "rms": 0.0899,
+            "energy_dbfs": -20.9,
+            "f0_med_hz": 216.2,
+            "f0_p10_hz": 187.5,
+            "f0_p90_hz": 275.9,
+            "f0_spread_st": 6.68
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "sad_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sad_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.64,
+            "rms": 0.1132,
+            "energy_dbfs": -18.9,
+            "f0_med_hz": 216.2,
+            "f0_p10_hz": 187.5,
+            "f0_p90_hz": 275.9,
+            "f0_spread_st": 6.68
+          }
+        }
+      ],
+      "elapsed_s": 11.44,
+      "error": null,
+      "timestamp": "2026-08-21T16:45:22.336809"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "(Sad voice, quiet and downcast)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sad_take_2__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sad_take_2__emotion_on.wav",
+      "metrics": {
+        "dur_s": 5.04,
+        "rms": 0.1118,
+        "energy_dbfs": -19.0,
+        "f0_med_hz": 252.6,
+        "f0_p10_hz": 205.9,
+        "f0_p90_hz": 322.1,
+        "f0_spread_st": 7.75
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "sad_take_2__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sad_take_2__emotion_on.wav",
+          "metrics": {
+            "dur_s": 5.04,
+            "rms": 0.1118,
+            "energy_dbfs": -19.0,
+            "f0_med_hz": 252.6,
+            "f0_p10_hz": 205.9,
+            "f0_p90_hz": 322.1,
+            "f0_spread_st": 7.75
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "sad_take_2__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sad_take_2__cleanup.wav",
+          "metrics": {
+            "dur_s": 5.04,
+            "rms": 0.1346,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 252.6,
+            "f0_p10_hz": 205.9,
+            "f0_p90_hz": 322.1,
+            "f0_spread_st": 7.75
+          }
+        }
+      ],
+      "elapsed_s": 12.98,
+      "error": null,
+      "timestamp": "2026-08-21T16:45:35.319911"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "(Angry, firm and aggressive tone)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "angry_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/angry_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 3.54,
+        "rms": 0.2514,
+        "energy_dbfs": -12.0,
+        "f0_med_hz": 269.7,
+        "f0_p10_hz": 242.4,
+        "f0_p90_hz": 320.0,
+        "f0_spread_st": 4.81
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "angry_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/angry_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 3.54,
+            "rms": 0.2514,
+            "energy_dbfs": -12.0,
+            "f0_med_hz": 269.7,
+            "f0_p10_hz": 242.4,
+            "f0_p90_hz": 320.0,
+            "f0_spread_st": 4.81
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "angry_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/angry_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 3.54,
+            "rms": 0.1963,
+            "energy_dbfs": -14.1,
+            "f0_med_hz": 269.7,
+            "f0_p10_hz": 242.4,
+            "f0_p90_hz": 320.0,
+            "f0_spread_st": 4.81
+          }
+        }
+      ],
+      "elapsed_s": 9.15,
+      "error": null,
+      "timestamp": "2026-08-21T16:45:44.473143"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "(Angry, firm and aggressive tone)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "angry_take_2__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/angry_take_2__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.17,
+        "rms": 0.1635,
+        "energy_dbfs": -15.7,
+        "f0_med_hz": 242.4,
+        "f0_p10_hz": 205.1,
+        "f0_p90_hz": 307.7,
+        "f0_spread_st": 7.02
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "angry_take_2__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/angry_take_2__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.17,
+            "rms": 0.1635,
+            "energy_dbfs": -15.7,
+            "f0_med_hz": 242.4,
+            "f0_p10_hz": 205.1,
+            "f0_p90_hz": 307.7,
+            "f0_spread_st": 7.02
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "angry_take_2__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/angry_take_2__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.17,
+            "rms": 0.1635,
+            "energy_dbfs": -15.7,
+            "f0_med_hz": 242.4,
+            "f0_p10_hz": 205.1,
+            "f0_p90_hz": 307.7,
+            "f0_spread_st": 7.02
+          }
+        }
+      ],
+      "elapsed_s": 10.39,
+      "error": null,
+      "timestamp": "2026-08-21T16:45:54.865037"
+    },
+    "excited_1": {
+      "emotion": "excited",
+      "take_idx": 1,
+      "instruction": "(Excited and energetic tone)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "excited_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/excited_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 3.33,
+        "rms": 0.1436,
+        "energy_dbfs": -16.9,
+        "f0_med_hz": 231.9,
+        "f0_p10_hz": 199.8,
+        "f0_p90_hz": 294.8,
+        "f0_spread_st": 6.73
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "excited_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/excited_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 3.33,
+            "rms": 0.1436,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 231.9,
+            "f0_p10_hz": 199.8,
+            "f0_p90_hz": 294.8,
+            "f0_spread_st": 6.73
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "excited_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/excited_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 3.33,
+            "rms": 0.1436,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 231.9,
+            "f0_p10_hz": 199.8,
+            "f0_p90_hz": 294.8,
+            "f0_spread_st": 6.73
+          }
+        }
+      ],
+      "elapsed_s": 9.22,
+      "error": null,
+      "timestamp": "2026-08-21T16:46:04.089377"
+    },
+    "excited_2": {
+      "emotion": "excited",
+      "take_idx": 2,
+      "instruction": "(Excited and energetic tone)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "excited_take_2__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/excited_take_2__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.55,
+        "rms": 0.1425,
+        "energy_dbfs": -16.9,
+        "f0_med_hz": 258.1,
+        "f0_p10_hz": 214.3,
+        "f0_p90_hz": 350.4,
+        "f0_spread_st": 8.51
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "excited_take_2__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/excited_take_2__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.55,
+            "rms": 0.1425,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 258.1,
+            "f0_p10_hz": 214.3,
+            "f0_p90_hz": 350.4,
+            "f0_spread_st": 8.51
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "excited_take_2__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/excited_take_2__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.55,
+            "rms": 0.1321,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 258.1,
+            "f0_p10_hz": 214.3,
+            "f0_p90_hz": 350.4,
+            "f0_spread_st": 8.51
+          }
+        }
+      ],
+      "elapsed_s": 11.48,
+      "error": null,
+      "timestamp": "2026-08-21T16:46:15.571361"
+    },
+    "sarcastic_1": {
+      "emotion": "sarcastic",
+      "take_idx": 1,
+      "instruction": "(Sarcastic and mocking tone)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sarcastic_take_1__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sarcastic_take_1__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.38,
+        "rms": 0.1033,
+        "energy_dbfs": -19.7,
+        "f0_med_hz": 223.3,
+        "f0_p10_hz": 194.6,
+        "f0_p90_hz": 281.0,
+        "f0_spread_st": 6.36
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "sarcastic_take_1__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sarcastic_take_1__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.38,
+            "rms": 0.1033,
+            "energy_dbfs": -19.7,
+            "f0_med_hz": 223.3,
+            "f0_p10_hz": 194.6,
+            "f0_p90_hz": 281.0,
+            "f0_spread_st": 6.36
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "sarcastic_take_1__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sarcastic_take_1__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.38,
+            "rms": 0.1094,
+            "energy_dbfs": -19.2,
+            "f0_med_hz": 223.3,
+            "f0_p10_hz": 194.6,
+            "f0_p90_hz": 281.0,
+            "f0_spread_st": 6.36
+          }
+        }
+      ],
+      "elapsed_s": 10.77,
+      "error": null,
+      "timestamp": "2026-08-21T16:46:26.348164"
+    },
+    "sarcastic_2": {
+      "emotion": "sarcastic",
+      "take_idx": 2,
+      "instruction": "(Sarcastic and mocking tone)",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sarcastic_take_2__emotion_on.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sarcastic_take_2__emotion_on.wav",
+      "metrics": {
+        "dur_s": 4.8,
+        "rms": 0.0996,
+        "energy_dbfs": -20.0,
+        "f0_med_hz": 237.6,
+        "f0_p10_hz": 180.5,
+        "f0_p90_hz": 335.2,
+        "f0_spread_st": 10.72
+      },
+      "variants": [
+        {
+          "id": "emotion_on",
+          "label": "🎚️ เปิดชั้นอารมณ์",
+          "filename": "sarcastic_take_2__emotion_on.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sarcastic_take_2__emotion_on.wav",
+          "metrics": {
+            "dur_s": 4.8,
+            "rms": 0.0996,
+            "energy_dbfs": -20.0,
+            "f0_med_hz": 237.6,
+            "f0_p10_hz": 180.5,
+            "f0_p90_hz": 335.2,
+            "f0_spread_st": 10.72
+          }
+        },
+        {
+          "id": "cleanup",
+          "label": "🚫 ปิดชั้นอารมณ์",
+          "filename": "sarcastic_take_2__cleanup.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260821_164428_05c87486-3b7d-4801-86fa-b3753887b517/sarcastic_take_2__cleanup.wav",
+          "metrics": {
+            "dur_s": 4.8,
+            "rms": 0.1055,
+            "energy_dbfs": -19.5,
+            "f0_med_hz": 237.6,
+            "f0_p10_hz": 180.5,
+            "f0_p90_hz": 335.2,
+            "f0_spread_st": 10.72
+          }
+        }
+      ],
+      "elapsed_s": 12.51,
+      "error": null,
+      "timestamp": "2026-08-21T16:46:38.865497"
+    }
+  }
+}
