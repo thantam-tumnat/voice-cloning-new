@@ -3,6 +3,9 @@
 .env.local
 *.env
 
+# Downloaded model caches (SeedVC / funasr / rmvpe), fetched by tools/seedvc_server.py
+checkpoints/
+
 # Python
 __pycache__/
 *.py[cod]
