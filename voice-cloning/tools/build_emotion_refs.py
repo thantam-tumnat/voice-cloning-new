@@ -56,6 +56,10 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="resample every clip to this rate; F5/Thonburian expects 24000 (default: 24000)")
     p.add_argument("--gender", choices=["m", "f"], default=None,
                    help="optionally keep only one actor gender for prosody consistency (default: any)")
+    p.add_argument("--audio-ids", nargs="+", default=None,
+                   help="pick these exact clips by audio_id (copy them from the HF dataset "
+                        "viewer) instead of auto-selecting; agreement/duration/gender filters "
+                        "are ignored and each clip is saved under its own assigned emotion")
     p.add_argument("--dataset", default="airesearch/thai-ser", help="HF dataset id")
     p.add_argument("--split", default="train", help="dataset split to stream (default: train)")
     p.add_argument("--emotions", nargs="+", default=list(SUPPORTED),
@@ -150,18 +154,77 @@ def build(args: argparse.Namespace) -> int:
     if drop:
         ds = ds.remove_columns(drop)
 
-    kept: dict[str, list[dict]] = {e: [] for e in targets}
-    manifest: dict[str, list[dict]] = {e: [] for e in targets}
+    # In --audio-ids mode any of the five emotions may be picked, so bucket over
+    # all of SUPPORTED rather than just the requested targets.
+    want_ids = list(dict.fromkeys(args.audio_ids)) if args.audio_ids else None
+    buckets = list(SUPPORTED) if want_ids else targets
+    kept: dict[str, list[dict]] = {e: [] for e in buckets}
+    manifest: dict[str, list[dict]] = {e: [] for e in buckets}
+    remaining = set(want_ids) if want_ids else None
     scanned = 0
+
+    def _write(emo: str, y, sec: float, text: str, row: dict) -> None:
+        n = len(kept[emo]) + 1
+        stem = f"{emo}_{n}"
+        sf.write(str(args.out_dir / f"{stem}.wav"), y, args.target_sr, subtype="PCM_16")
+        (args.out_dir / f"{stem}.txt").write_text(text, encoding="utf-8")
+        entry = {
+            "file": f"{stem}.wav",
+            "audio_id": row.get("audio_id"),
+            "text": text,
+            "actor_id": row.get("actor_id"),
+            "gender": row.get("actor_gender"),
+            "agreement": round(float(row.get("agreement") or 0.0), 3),
+            "sec": round(sec, 2),
+        }
+        kept[emo].append(entry)
+        manifest[emo].append(entry)
+        print(f"[refs] {stem}.wav  ({sec:.1f}s, agree={entry['agreement']}, "
+              f"{entry['gender']}, id={entry['audio_id']})  {text[:36]}…")
+
+    def _decode(row: dict):
+        aud = row.get(args.mic)
+        if aud is None:
+            return None, None
+        array, in_sr = _extract_audio(aud)
+        y = _trim_silence(_to_mono_resampled(array, in_sr, args.target_sr), args.target_sr)
+        return y, y.size / args.target_sr
+
+    if want_ids:
+        print(f"[refs] picking {len(want_ids)} clip(s) by audio_id (filters ignored)")
 
     for row in ds:
         scanned += 1
         if scanned > args.max_scanned:
             print(f"[refs] stopped after scanning {args.max_scanned} rows", file=sys.stderr)
             break
+
+        # ---- explicit pick by audio_id ------------------------------------
+        if want_ids is not None:
+            if not remaining:
+                break
+            aid = str(row.get("audio_id") or "")
+            if aid not in remaining:
+                continue
+            remaining.discard(aid)
+            emo = (row.get("assigned_emo") or "").strip().lower()
+            if emo not in SUPPORTED:
+                print(f"[refs]   {aid}: assigned_emo {emo!r} not supported, skipping", file=sys.stderr)
+                continue
+            text = (row.get("script_sent") or "").strip()
+            if not text:
+                print(f"[refs]   {aid}: no script_sent transcript (improv turn); F5 needs ref "
+                      f"text, skipping", file=sys.stderr)
+                continue
+            y, sec = _decode(row)
+            if y is None:
+                continue
+            _write(emo, y, sec, text, row)
+            continue
+
+        # ---- auto-select first-N per emotion ------------------------------
         if all(len(kept[e]) >= args.per_emotion for e in targets):
             break
-
         emo = (row.get("assigned_emo") or "").strip().lower()
         if emo not in kept or len(kept[emo]) >= args.per_emotion:
             continue
@@ -172,41 +235,26 @@ def build(args: argparse.Namespace) -> int:
             continue
         if not _gender_ok(row.get("actor_gender"), args.gender):
             continue
-
-        aud = row.get(args.mic)
-        if aud is None:
+        y, sec = _decode(row)
+        if y is None or not (args.min_seconds <= sec <= args.max_seconds):
             continue
-        array, in_sr = _extract_audio(aud)
-        y = _to_mono_resampled(array, in_sr, args.target_sr)
-        y = _trim_silence(y, args.target_sr)
-        sec = y.size / args.target_sr
-        if not (args.min_seconds <= sec <= args.max_seconds):
-            continue
-
-        n = len(kept[emo]) + 1
-        stem = f"{emo}_{n}"
-        wav_path = args.out_dir / f"{stem}.wav"
-        sf.write(str(wav_path), y, args.target_sr, subtype="PCM_16")
-        (args.out_dir / f"{stem}.txt").write_text(text, encoding="utf-8")
-
-        entry = {
-            "file": wav_path.name,
-            "text": text,
-            "actor_id": row.get("actor_id"),
-            "gender": row.get("actor_gender"),
-            "agreement": round(float(row.get("agreement") or 0.0), 3),
-            "sec": round(sec, 2),
-        }
-        kept[emo].append(entry)
-        manifest[emo].append(entry)
-        print(f"[refs] {stem}.wav  ({sec:.1f}s, agree={entry['agreement']}, "
-              f"{entry['gender']})  {text[:40]}…")
+        _write(emo, y, sec, text, row)
 
     (args.out_dir / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-
     print(f"\n[refs] scanned {scanned} rows -> wrote to {args.out_dir}")
+
+    if want_ids:
+        for e in SUPPORTED:
+            if kept[e]:
+                print(f"[refs]   {e:11s} {len(kept[e])}")
+        if remaining:
+            print(f"[refs] WARNING: audio_id(s) not found in first {scanned} rows: "
+                  f"{sorted(remaining)} (raise --max-scanned)", file=sys.stderr)
+            return 1
+        return 0
+
     missing = []
     for e in targets:
         got = len(kept[e])
