@@ -76,6 +76,16 @@ class Settings(BaseSettings):
     thonburian_min_silence_len: int = 900
     # F5 speech speed multiplier: <1.0 = slower speech, >1.0 = faster.
     thonburian_speed: float = float(os.getenv("THONBURIAN_SPEED", "0.9"))
+    # When a real user target voice is chosen (uploaded or picked, not the auto/default
+    # seed), match F5's speaking rate to THAT voice's natural rate instead of the emotion
+    # donor's. The donor still supplies the emotion; only the overall tempo follows the
+    # user. Speed is derived as user_rate / donor_rate (syllable nuclei per voiced second)
+    # and clamped to the range below. Off => the fixed thonburian_speed is used.
+    thonburian_match_target_rate: bool = os.getenv(
+        "THONBURIAN_MATCH_TARGET_RATE", "1"
+    ).strip().lower() not in ("0", "false", "no", "off")
+    thonburian_rate_speed_min: float = float(os.getenv("THONBURIAN_RATE_SPEED_MIN", "0.6"))
+    thonburian_rate_speed_max: float = float(os.getenv("THONBURIAN_RATE_SPEED_MAX", "1.6"))
     # F5+vocos can overshoot [-1, 1]; the library saves as PCM_16 with no peak guard,
     # so loud emotions (happy/frustrated) clip on write. Scale any F5 output whose peak
     # exceeds this ceiling down to it before SeedVC and the pre-VC player. 0 disables.

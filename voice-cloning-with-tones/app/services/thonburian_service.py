@@ -381,6 +381,69 @@ class ThonburianService:
                 f"Ensure the SeedVC server is running on port 8022."
             ) from e
 
+    @staticmethod
+    def _estimate_speech_rate(wav_path: Path) -> Optional[float]:
+        """Estimate speaking rate as syllable nuclei per voiced second (transcript-free).
+
+        A crude energy-envelope peak picker (after De Jong & Wempe's syllable-nuclei
+        idea): count local RMS-envelope maxima above a floor, over the voiced duration.
+        Absolute values are rough, but the SAME method is applied to donor and target,
+        so the *ratio* used for speed matching cancels the estimator's systematic bias.
+        Returns None when the clip is unreadable, silent, or too short to measure.
+        """
+        try:
+            y, sr = sf.read(str(wav_path), dtype="float32")
+            if y.ndim > 1:
+                y = y.mean(axis=1)
+            if y.size == 0 or sr <= 0:
+                return None
+            frame = max(1, int(0.02 * sr))
+            hop = max(1, int(0.01 * sr))
+            if len(y) < frame:
+                return None
+            n = 1 + (len(y) - frame) // hop
+            if n <= 2:
+                return None
+            idx = np.arange(n) * hop
+            env = np.sqrt(np.array([
+                float(np.mean(y[i:i + frame] ** 2)) for i in idx
+            ]))
+            peak = float(env.max())
+            if peak <= 0:
+                return None
+            thr = peak * (10.0 ** (-35.0 / 20.0))  # -35 dB below the loudest frame
+            voiced_dur = float(np.count_nonzero(env > thr)) * hop / sr
+            if voiced_dur < 0.2:
+                return None
+            min_dist = max(1, int(0.15 * sr / hop))  # nuclei at least ~150 ms apart
+            nuclei = 0
+            last = -min_dist
+            for i in range(1, n - 1):
+                if env[i] > thr and env[i] >= env[i - 1] and env[i] > env[i + 1] and (i - last) >= min_dist:
+                    nuclei += 1
+                    last = i
+            if nuclei <= 0:
+                return None
+            return nuclei / voiced_dur
+        except Exception:
+            return None
+
+    def _matched_speed(self, target_wav: Path, donor_wav: Path) -> Optional[float]:
+        """Speed multiplier that makes F5 speak the donor's emotion at the *target's* pace.
+
+        F5's output rate tracks its reference clip's rate, so output_rate ≈ donor_rate ×
+        speed. Setting speed = target_rate / donor_rate makes output_rate ≈ target_rate.
+        Returns None when either rate can't be measured (caller falls back to the default).
+        """
+        target_rate = self._estimate_speech_rate(target_wav)
+        donor_rate = self._estimate_speech_rate(donor_wav)
+        if not target_rate or not donor_rate:
+            return None
+        speed = target_rate / donor_rate
+        lo = float(settings.thonburian_rate_speed_min)
+        hi = float(settings.thonburian_rate_speed_max)
+        return max(lo, min(hi, speed))
+
     def _depeak_f5(self, wav_path: Path) -> None:
         """Peak-limit an F5 output in place so it stops clipping downstream.
 
@@ -431,8 +494,17 @@ class ThonburianService:
         # prior Pipeline Explorer run left on the shared AudioConfig.
         self._apply_audio_tuning(None)
 
-        # F5 speech speed: <1.0 slower, >1.0 faster. Falls back to the global default.
-        speed_value = settings.thonburian_speed if speed is None else float(speed)
+        # F5 speech speed: <1.0 slower, >1.0 faster.
+        #  * explicit ``speed`` (e.g. a studio slider) always wins.
+        #  * otherwise, when a real user target voice is chosen, match the target's own
+        #    speaking rate so the *user's* pace drives the tempo, not the emotion donor's.
+        #  * failing both, fall back to the fixed server default.
+        explicit_speed = None if speed is None else float(speed)
+        use_rate_match = (
+            explicit_speed is None
+            and settings.thonburian_match_target_rate
+            and bool(ref_audio_bytes or speaker_id)
+        )
 
         temp_target_path = None
         if ref_audio_bytes:
@@ -477,6 +549,17 @@ class ThonburianService:
                     emotion, gender=gender, donor_set=donor_set
                 )
 
+                # 3b. Resolve this chunk's F5 speed. Rate-matching is per donor clip
+                # because each emotion's donor has its own natural rate.
+                rate_matched = None
+                if explicit_speed is not None:
+                    chunk_speed = explicit_speed
+                elif use_rate_match:
+                    rate_matched = self._matched_speed(target_wav, donor_wav)
+                    chunk_speed = rate_matched if rate_matched is not None else settings.thonburian_speed
+                else:
+                    chunk_speed = settings.thonburian_speed
+
                 ts = int(time.time() * 1000)
                 thon_out = scratch_dir / f"thon_{emotion}_{i}_{ts}.wav"
                 vc_out = scratch_dir / f"vc_{emotion}_{i}_{ts}.wav"
@@ -491,7 +574,12 @@ class ThonburianService:
                             "text": body_text,
                             "ref_voice": donor_wav.name,
                             "ref_text": donor_txt,
-                            "speed": speed_value,
+                            "speed": round(float(chunk_speed), 3),
+                            "speed_source": (
+                                "explicit" if explicit_speed is not None
+                                else "matched_to_target" if rate_matched is not None
+                                else "default"
+                            ),
                             "cfg_value": cfg_value,
                             "inference_timesteps": inference_timesteps,
                             "lora_mode": lora_mode,
@@ -513,7 +601,7 @@ class ThonburianService:
                     ref_voice=str(donor_wav.resolve()),
                     ref_text=donor_txt,
                     output_file=str(thon_out.resolve()),
-                    speed=speed_value,
+                    speed=chunk_speed,
                 )
 
                 # Tame F5's overshoot before anything reads it (SeedVC + pre-VC).
