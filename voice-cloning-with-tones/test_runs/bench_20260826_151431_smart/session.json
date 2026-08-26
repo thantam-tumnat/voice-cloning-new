@@ -1,0 +1,584 @@
+{
+  "session_id": "bench_20260826_151431_smart",
+  "name": "Emotion Benchmark (20260826_151431)",
+  "created_at": "2026-08-26T15:14:31.935092",
+  "speaker_id": "smart",
+  "gender": "male",
+  "donor_set": "male_006",
+  "text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 15,
+  "params": {
+    "gender": "male",
+    "donor_set": "male_006",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 16,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 3.78,
+        "rms": 0.1457,
+        "energy_dbfs": -16.7,
+        "f0_med_hz": 130.1,
+        "f0_p10_hz": 110.8,
+        "f0_p90_hz": 218.3,
+        "f0_spread_st": 11.74
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 3.78,
+            "rms": 0.1457,
+            "energy_dbfs": -16.7,
+            "f0_med_hz": 130.1,
+            "f0_p10_hz": 110.8,
+            "f0_p90_hz": 218.3,
+            "f0_spread_st": 11.74
+          }
+        }
+      ],
+      "elapsed_s": 3.47,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:35.413639"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "[neutral]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 3.51,
+        "rms": 0.1323,
+        "energy_dbfs": -17.6,
+        "f0_med_hz": 127.5,
+        "f0_p10_hz": 107.6,
+        "f0_p90_hz": 197.6,
+        "f0_spread_st": 10.53
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 3.51,
+            "rms": 0.1323,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 127.5,
+            "f0_p10_hz": 107.6,
+            "f0_p90_hz": 197.6,
+            "f0_spread_st": 10.53
+          }
+        }
+      ],
+      "elapsed_s": 3.43,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:38.845313"
+    },
+    "neutral_3": {
+      "emotion": "neutral",
+      "take_idx": 3,
+      "instruction": "[neutral]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "neutral_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/neutral_take_3.wav",
+      "metrics": {
+        "dur_s": 3.5,
+        "rms": 0.122,
+        "energy_dbfs": -18.3,
+        "f0_med_hz": 124.1,
+        "f0_p10_hz": 108.8,
+        "f0_p90_hz": 174.6,
+        "f0_spread_st": 8.19
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/neutral_take_3.wav",
+          "metrics": {
+            "dur_s": 3.5,
+            "rms": 0.122,
+            "energy_dbfs": -18.3,
+            "f0_med_hz": 124.1,
+            "f0_p10_hz": 108.8,
+            "f0_p90_hz": 174.6,
+            "f0_spread_st": 8.19
+          }
+        }
+      ],
+      "elapsed_s": 3.51,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:42.363836"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 2.76,
+        "rms": 0.1354,
+        "energy_dbfs": -17.4,
+        "f0_med_hz": 123.9,
+        "f0_p10_hz": 106.8,
+        "f0_p90_hz": 164.8,
+        "f0_spread_st": 7.51
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 2.76,
+            "rms": 0.1354,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 123.9,
+            "f0_p10_hz": 106.8,
+            "f0_p90_hz": 164.8,
+            "f0_spread_st": 7.51
+          }
+        }
+      ],
+      "elapsed_s": 2.95,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:45.320872"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "[happy]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 2.61,
+        "rms": 0.1442,
+        "energy_dbfs": -16.8,
+        "f0_med_hz": 127.5,
+        "f0_p10_hz": 108.4,
+        "f0_p90_hz": 208.0,
+        "f0_spread_st": 11.29
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 2.61,
+            "rms": 0.1442,
+            "energy_dbfs": -16.8,
+            "f0_med_hz": 127.5,
+            "f0_p10_hz": 108.4,
+            "f0_p90_hz": 208.0,
+            "f0_spread_st": 11.29
+          }
+        }
+      ],
+      "elapsed_s": 2.85,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:48.180440"
+    },
+    "happy_3": {
+      "emotion": "happy",
+      "take_idx": 3,
+      "instruction": "[happy]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "happy_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/happy_take_3.wav",
+      "metrics": {
+        "dur_s": 2.62,
+        "rms": 0.1334,
+        "energy_dbfs": -17.5,
+        "f0_med_hz": 122.8,
+        "f0_p10_hz": 105.7,
+        "f0_p90_hz": 176.0,
+        "f0_spread_st": 8.82
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/happy_take_3.wav",
+          "metrics": {
+            "dur_s": 2.62,
+            "rms": 0.1334,
+            "energy_dbfs": -17.5,
+            "f0_med_hz": 122.8,
+            "f0_p10_hz": 105.7,
+            "f0_p90_hz": 176.0,
+            "f0_spread_st": 8.82
+          }
+        }
+      ],
+      "elapsed_s": 2.89,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:51.081497"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "[sad]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 3.07,
+        "rms": 0.1037,
+        "energy_dbfs": -19.7,
+        "f0_med_hz": 127.3,
+        "f0_p10_hz": 106.7,
+        "f0_p90_hz": 206.9,
+        "f0_spread_st": 11.46
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 3.07,
+            "rms": 0.1037,
+            "energy_dbfs": -19.7,
+            "f0_med_hz": 127.3,
+            "f0_p10_hz": 106.7,
+            "f0_p90_hz": 206.9,
+            "f0_spread_st": 11.46
+          }
+        }
+      ],
+      "elapsed_s": 3.44,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:54.522432"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "[sad]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 3.21,
+        "rms": 0.1102,
+        "energy_dbfs": -19.2,
+        "f0_med_hz": 126.7,
+        "f0_p10_hz": 104.8,
+        "f0_p90_hz": 207.0,
+        "f0_spread_st": 11.79
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 3.21,
+            "rms": 0.1102,
+            "energy_dbfs": -19.2,
+            "f0_med_hz": 126.7,
+            "f0_p10_hz": 104.8,
+            "f0_p90_hz": 207.0,
+            "f0_spread_st": 11.79
+          }
+        }
+      ],
+      "elapsed_s": 3.46,
+      "error": null,
+      "timestamp": "2026-08-26T15:14:57.992710"
+    },
+    "sad_3": {
+      "emotion": "sad",
+      "take_idx": 3,
+      "instruction": "[sad]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "sad_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/sad_take_3.wav",
+      "metrics": {
+        "dur_s": 3.03,
+        "rms": 0.1155,
+        "energy_dbfs": -18.8,
+        "f0_med_hz": 130.1,
+        "f0_p10_hz": 110.0,
+        "f0_p90_hz": 195.8,
+        "f0_spread_st": 9.99
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/sad_take_3.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.1155,
+            "energy_dbfs": -18.8,
+            "f0_med_hz": 130.1,
+            "f0_p10_hz": 110.0,
+            "f0_p90_hz": 195.8,
+            "f0_spread_st": 9.99
+          }
+        }
+      ],
+      "elapsed_s": 3.54,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:01.536176"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 3.02,
+        "rms": 0.1347,
+        "energy_dbfs": -17.4,
+        "f0_med_hz": 144.8,
+        "f0_p10_hz": 108.3,
+        "f0_p90_hz": 218.9,
+        "f0_spread_st": 12.18
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 3.02,
+            "rms": 0.1347,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 144.8,
+            "f0_p10_hz": 108.3,
+            "f0_p90_hz": 218.9,
+            "f0_spread_st": 12.18
+          }
+        }
+      ],
+      "elapsed_s": 3.12,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:04.666897"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "[angry]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 3.1,
+        "rms": 0.1341,
+        "energy_dbfs": -17.4,
+        "f0_med_hz": 125.6,
+        "f0_p10_hz": 109.1,
+        "f0_p90_hz": 211.6,
+        "f0_spread_st": 11.47
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 3.1,
+            "rms": 0.1341,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 125.6,
+            "f0_p10_hz": 109.1,
+            "f0_p90_hz": 211.6,
+            "f0_spread_st": 11.47
+          }
+        }
+      ],
+      "elapsed_s": 3.07,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:07.744003"
+    },
+    "angry_3": {
+      "emotion": "angry",
+      "take_idx": 3,
+      "instruction": "[angry]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "angry_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/angry_take_3.wav",
+      "metrics": {
+        "dur_s": 3.0,
+        "rms": 0.1346,
+        "energy_dbfs": -17.4,
+        "f0_med_hz": 126.0,
+        "f0_p10_hz": 109.4,
+        "f0_p90_hz": 175.8,
+        "f0_spread_st": 8.21
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/angry_take_3.wav",
+          "metrics": {
+            "dur_s": 3.0,
+            "rms": 0.1346,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 126.0,
+            "f0_p10_hz": 109.4,
+            "f0_p90_hz": 175.8,
+            "f0_spread_st": 8.21
+          }
+        }
+      ],
+      "elapsed_s": 3.06,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:10.807784"
+    },
+    "frustrated_1": {
+      "emotion": "frustrated",
+      "take_idx": 1,
+      "instruction": "[frustrated]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "frustrated_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/frustrated_take_1.wav",
+      "metrics": {
+        "dur_s": 2.47,
+        "rms": 0.1179,
+        "energy_dbfs": -18.6,
+        "f0_med_hz": 131.2,
+        "f0_p10_hz": 110.4,
+        "f0_p90_hz": 199.7,
+        "f0_spread_st": 10.27
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/frustrated_take_1.wav",
+          "metrics": {
+            "dur_s": 2.47,
+            "rms": 0.1179,
+            "energy_dbfs": -18.6,
+            "f0_med_hz": 131.2,
+            "f0_p10_hz": 110.4,
+            "f0_p90_hz": 199.7,
+            "f0_spread_st": 10.27
+          }
+        }
+      ],
+      "elapsed_s": 2.91,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:13.727134"
+    },
+    "frustrated_2": {
+      "emotion": "frustrated",
+      "take_idx": 2,
+      "instruction": "[frustrated]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "frustrated_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/frustrated_take_2.wav",
+      "metrics": {
+        "dur_s": 2.27,
+        "rms": 0.1287,
+        "energy_dbfs": -17.8,
+        "f0_med_hz": 130.1,
+        "f0_p10_hz": 106.3,
+        "f0_p90_hz": 168.5,
+        "f0_spread_st": 7.98
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/frustrated_take_2.wav",
+          "metrics": {
+            "dur_s": 2.27,
+            "rms": 0.1287,
+            "energy_dbfs": -17.8,
+            "f0_med_hz": 130.1,
+            "f0_p10_hz": 106.3,
+            "f0_p90_hz": 168.5,
+            "f0_spread_st": 7.98
+          }
+        }
+      ],
+      "elapsed_s": 2.92,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:16.651423"
+    },
+    "frustrated_3": {
+      "emotion": "frustrated",
+      "take_idx": 3,
+      "instruction": "[frustrated]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "frustrated_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/frustrated_take_3.wav",
+      "metrics": {
+        "dur_s": 2.37,
+        "rms": 0.1313,
+        "energy_dbfs": -17.6,
+        "f0_med_hz": 126.4,
+        "f0_p10_hz": 107.7,
+        "f0_p90_hz": 201.4,
+        "f0_spread_st": 10.83
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_151431_smart/frustrated_take_3.wav",
+          "metrics": {
+            "dur_s": 2.37,
+            "rms": 0.1313,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 126.4,
+            "f0_p10_hz": 107.7,
+            "f0_p90_hz": 201.4,
+            "f0_spread_st": 10.83
+          }
+        }
+      ],
+      "elapsed_s": 2.96,
+      "error": null,
+      "timestamp": "2026-08-26T15:15:19.612927"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 /**
- * Emotion TTS Benchmark & Pipeline Comparison Suite
+ * Emotion TTS Benchmark & Pipeline Comparison Suite (Thonburian F5 + SeedVC)
  * Interactive Frontend Controller
  */
 
@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const speakerSelect = document.getElementById('speaker-select');
   const btnPlayRef = document.getElementById('btn-play-ref');
   const speakerRefAudio = document.getElementById('speaker-ref-audio');
+  const donorSetSelect = document.getElementById('donor-set-select');
+  const btnRandomDonorSet = document.getElementById('btn-random-donor-set');
+  const donorClipButtons = document.getElementById('donor-clip-buttons');
+  const donorClipAudio = document.getElementById('donor-clip-audio');
   const presetPillGroup = document.getElementById('preset-pill-group');
   const testTextInput = document.getElementById('test-text-input');
   const emotionCheckboxGrid = document.getElementById('emotion-checkbox-grid');
@@ -17,13 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const repeatsPicker = document.getElementById('repeats-picker');
   const paramRepeats = document.getElementById('param-repeats');
-  const paramIntensity = document.getElementById('param-intensity');
   const paramCfg = document.getElementById('param-cfg');
+  const paramSteps = document.getElementById('param-steps');
   const paramLoraMode = document.getElementById('param-lora-mode');
   const benchDspInputs = [...document.querySelectorAll('.bench-dsp-input')];
   const benchDspCount = document.getElementById('bench-dsp-count');
   const matrixVariantBar = document.getElementById('matrix-variant-bar');
   const mvPills = document.getElementById('mv-pills');
+
+  // Gender Radio selection
+  const genderRadios = document.querySelectorAll('input[name="bench_gender"]');
+  function getGender() {
+    const checked = document.querySelector('input[name="bench_gender"]:checked');
+    return checked ? checked.value : 'female';
+  }
+
+  function syncGenderRadios() {
+    const g = getGender();
+    const femaleOpt = document.getElementById('gender-opt-female');
+    const maleOpt = document.getElementById('gender-opt-male');
+    if (femaleOpt) {
+      femaleOpt.classList.toggle('active', g === 'female');
+      femaleOpt.style.borderColor = g === 'female' ? '#3b82f6' : '#334155';
+      femaleOpt.style.background = g === 'female' ? 'rgba(59,130,246,0.15)' : '#1e293b';
+      femaleOpt.style.color = g === 'female' ? '#93c5fd' : '#94a3b8';
+    }
+    if (maleOpt) {
+      maleOpt.classList.toggle('active', g === 'male');
+      maleOpt.style.borderColor = g === 'male' ? '#3b82f6' : '#334155';
+      maleOpt.style.background = g === 'male' ? 'rgba(59,130,246,0.15)' : '#1e293b';
+      maleOpt.style.color = g === 'male' ? '#93c5fd' : '#94a3b8';
+    }
+  }
+
+  genderRadios.forEach(r => r.addEventListener('change', syncGenderRadios));
+  syncGenderRadios();
 
   // Every take result of the current run, so switching the displayed DSP variant
   // can redraw the matrix from memory instead of re-running the sampler.
@@ -85,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Application State
   let presetsData = null;
   let allEmotions = [];
+  let donorSets = [];
   let isRunning = false;
   let shouldStop = false;
   let currentSessionId = null;
@@ -106,8 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await res.json();
       if (data.status === 'ok') {
         const synth = data.synthesizer || {};
-        const mode = synth.mode || 'ready';
-        healthStatus.innerHTML = `<span class="status-dot"></span><span class="status-label">ระบบพร้อมทำงาน (${mode})</span>`;
+        const engine = synth.engine || 'Thonburian F5 + SeedVC';
+        const loaded = synth.loaded ? 'พร้อมทำงาน' : 'โหลด On-demand';
+        healthStatus.innerHTML = `<span class="status-dot"></span><span class="status-label">${engine} (${loaded})</span>`;
       }
     } catch (e) {
       healthStatus.innerHTML = `<span class="status-dot dot-amber"></span><span class="status-label">กำลังเชื่อมต่อ Backend...</span>`;
@@ -122,6 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 1. Populate Speaker Dropdown
       populateSpeakers(presetsData.speakers || []);
+
+      // 1b. Populate Emotion Donor Set dropdown (same-person sets), filtered by gender
+      donorSets = presetsData.donor_sets || [];
+      populateDonorSets();
 
       // 2. Populate Preset Sentence Pills
       populatePresetSentences(presetsData.preset_sentences || []);
@@ -150,6 +188,111 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Same-person emotion donor sets. Only sets matching the current gender (plus
+  // gender-neutral ones) are offered, so the picker never mixes a female donor into a
+  // male run. Value "" means "auto by gender" (legacy per-gender folder).
+  function donorSetsForGender(g) {
+    return donorSets.filter(s => !s.gender || s.gender === g);
+  }
+
+  function populateDonorSets() {
+    if (!donorSetSelect) return;
+    const g = getGender();
+    const prev = donorSetSelect.value;
+    const available = donorSetsForGender(g);
+    donorSetSelect.innerHTML = '<option value="">-- อัตโนมัติตามเพศ (Auto by Gender) --</option>';
+    available.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      const emoCount = (s.emotions || []).length;
+      opt.textContent = `${s.name || s.id} (${emoCount} อารมณ์)`;
+      donorSetSelect.appendChild(opt);
+    });
+    // Keep the previous selection if it is still valid for this gender.
+    if (prev && available.some(s => s.id === prev)) {
+      donorSetSelect.value = prev;
+    } else {
+      donorSetSelect.value = '';
+    }
+    if (btnRandomDonorSet) btnRandomDonorSet.disabled = available.length === 0;
+    renderDonorClipButtons();
+  }
+
+  function getDonorSet() {
+    return donorSetSelect && donorSetSelect.value ? donorSetSelect.value : null;
+  }
+
+  // The donor set actually used when generating: the explicit pick, or the legacy
+  // per-gender folder ("female"/"male") when "Auto by Gender" is selected.
+  function effectiveDonorSetId() {
+    return getDonorSet() || getGender();
+  }
+
+  // Show a play button per emotion for the selected donor set, so the reference
+  // clips that drive each emotion can be auditioned before running anything.
+  function renderDonorClipButtons() {
+    if (!donorClipButtons) return;
+    const setId = effectiveDonorSetId();
+    const entry = donorSets.find(s => s.id === setId);
+    donorClipButtons.innerHTML = '';
+    if (!entry || !(entry.emotions || []).length) return;
+    entry.emotions.forEach(emo => {
+      const meta = allEmotions.find(e => e.id === emo.id) || { icon: '🎙️', name_th: emo.id };
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn btn-sm btn-secondary donor-clip-btn';
+      btn.dataset.emotion = emo.id;
+      btn.style.cssText = 'display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 9px;';
+      btn.title = emo.transcript ? `เล่น donor: ${emo.transcript}` : `เล่น donor (${emo.id})`;
+      btn.innerHTML = `<span class="dc-icon">▶</span><span>${meta.icon} ${meta.name_th || emo.id}</span>`;
+      btn.addEventListener('click', () => toggleDonorClip(setId, emo.id, btn));
+      donorClipButtons.appendChild(btn);
+    });
+  }
+
+  let donorClipPlayingBtn = null;
+  // Set a play button's glyph. Some buttons hold it in a `.dc-icon` child span,
+  // others (the emotion tiles) use the button's own text.
+  function setDonorBtnGlyph(btn, glyph) {
+    if (!btn) return;
+    const ic = btn.querySelector('.dc-icon');
+    if (ic) ic.textContent = glyph;
+    else btn.textContent = glyph;
+  }
+  function resetDonorClipBtn(btn) {
+    if (btn) setDonorBtnGlyph(btn, btn.dataset.playGlyph || '▶');
+  }
+  function toggleDonorClip(setId, emotion, btn, playGlyph = '▶', pauseGlyph = '⏸') {
+    if (!donorClipAudio) return;
+    btn.dataset.playGlyph = playGlyph;
+    const url = `/api/donor-clip/${encodeURIComponent(setId)}/${encodeURIComponent(emotion)}`;
+    const isSame = donorClipPlayingBtn === btn && !donorClipAudio.paused;
+    donorClipAudio.pause();
+    resetDonorClipBtn(donorClipPlayingBtn);
+    if (isSame) { donorClipPlayingBtn = null; return; }
+    donorClipAudio.src = url;
+    donorClipAudio.play().then(() => {
+      donorClipPlayingBtn = btn;
+      setDonorBtnGlyph(btn, pauseGlyph);
+    }).catch(() => {});
+    donorClipAudio.onended = () => { resetDonorClipBtn(btn); donorClipPlayingBtn = null; };
+  }
+
+  if (btnRandomDonorSet) {
+    btnRandomDonorSet.addEventListener('click', () => {
+      const available = donorSetsForGender(getGender());
+      if (!available.length) return;
+      const pick = available[Math.floor(Math.random() * available.length)];
+      donorSetSelect.value = pick.id;
+      donorSetSelect.dispatchEvent(new Event('change'));
+    });
+  }
+
+  // Re-filter donor sets whenever the gender changes.
+  genderRadios.forEach(r => r.addEventListener('change', populateDonorSets));
+  // Refresh the per-emotion donor preview buttons when the set changes.
+  if (donorSetSelect) donorSetSelect.addEventListener('change', renderDonorClipButtons);
+
   function populatePresetSentences(presets) {
     presetPillGroup.innerHTML = '';
     presets.forEach((p, idx) => {
@@ -177,6 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <input type="checkbox" value="${emo.id}" checked>
         <span class="chk-icon">✓</span>
         <span>${emo.icon} ${emo.name_th.split('/')[0].trim()}</span>
+        <button type="button" class="emo-donor-play" data-emotion="${emo.id}" title="ฟังเสียง donor ของอารมณ์นี้">▶</button>
       `;
 
       // A <label> wrapping its own <input> already toggles it on click, so the
@@ -188,6 +332,15 @@ document.addEventListener('DOMContentLoaded', () => {
       input.addEventListener('change', () => {
         label.classList.toggle('active', input.checked);
         updateSummaryCounters();
+      });
+
+      // Play this emotion's donor clip from the currently selected set. The button
+      // lives inside the <label>, so stop the click from toggling the checkbox.
+      const donorBtn = label.querySelector('.emo-donor-play');
+      donorBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        toggleDonorClip(effectiveDonorSetId(), emo.id, donorBtn, '▶', '⏸');
       });
 
       emotionCheckboxGrid.appendChild(label);
@@ -289,9 +442,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const repeats = parseInt(paramRepeats.value || '3', 10);
     const speakerId = speakerSelect.value.trim() || null;
-    const intensity = parseInt(paramIntensity.value || '2', 10);
-    const cfgValue = parseFloat(paramCfg.value || '2.5');
-    const loraMode = paramLoraMode.value || 'on';
+    const gender = getGender();
+    const cfgValue = parseFloat(paramCfg.value || '2.0');
+    const inferenceTimesteps = parseInt(paramSteps ? paramSteps.value : '32', 10);
+    const loraMode = paramLoraMode ? paramLoraMode.value : 'on';
     const dspVariants = getSelectedDspVariants();
     const postProcess = dspVariants.length === 1
       ? (window.DSP_VARIANT_SPECS[dspVariants[0]] || {}).post_process !== false
@@ -303,8 +457,10 @@ document.addEventListener('DOMContentLoaded', () => {
       emotions: selectedEmotions,
       repeats,
       speakerId,
-      intensity,
+      gender,
+      donorSet: getDonorSet(),
       cfgValue,
+      inferenceTimesteps,
       loraMode,
       postProcess,
       dspVariants,
@@ -336,12 +492,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // 1. Initialize Session via Backend API
       const initPayload = {
         speaker_id: config.speakerId,
+        gender: config.gender,
+        donor_set: config.donorSet,
         text: config.text,
         emotions: config.emotions,
         repeats: config.repeats,
-        intensity: config.intensity,
         cfg_value: config.cfgValue,
-        inference_timesteps: 10,
+        inference_timesteps: config.inferenceTimesteps,
         lora_mode: config.loraMode,
         post_process: config.postProcess,
       };
@@ -361,7 +518,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentSessionTag.textContent = `Session: ${currentSessionId}`;
 
       // 2. Render Empty Skeleton Table Rows
-      renderTableSkeleton(config.emotions, config.repeats, config.intensity);
+      renderTableSkeleton(config.emotions, config.repeats, 2);
 
       // 3. Build Task Queue
       const queue = [];
@@ -372,9 +529,11 @@ document.addEventListener('DOMContentLoaded', () => {
             emotion,
             take_idx: takeIdx,
             text: config.text,
-            intensity: config.intensity,
+            gender: config.gender,
+            donor_set: config.donorSet,
             speaker_id: config.speakerId,
             cfg_value: config.cfgValue,
+            inference_timesteps: config.inferenceTimesteps,
             lora_mode: config.loraMode,
             post_process: config.postProcess,
             // One ticked variant keeps the classic single-file take (and its plain
@@ -627,9 +786,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dur = metrics ? `${metrics.dur_s}s` : '—';
 
+    // Optional pre-SeedVC (Thonburian F5) player: emotional speech still in the donor's
+    // timbre, so it can be compared against the final voice-converted result.
+    const preVcUrl = result.pre_vc_url;
+    const preVcRow = preVcUrl ? `
+      <div class="mini-take-player mini-take-prevc" data-url="${preVcUrl}" title="เสียง Thonburian F5 ก่อนผ่าน SeedVC (ยังเป็นเสียง donor)">
+        <button type="button" class="btn-mini-play btn-mini-play-prevc" title="เล่นเสียง F5 ก่อน VC">
+          <svg class="play-svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <svg class="pause-svg hidden" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </button>
+        <div class="mini-meta"><span class="mini-prevc-label">🎤 F5 (ก่อน VC)</span></div>
+        <a href="${preVcUrl}" download="${result.pre_vc_filename || 'thon_preVC.wav'}" class="btn-mini-dl" title="ดาวน์โหลด F5 ก่อน VC">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </a>
+      </div>
+    ` : '';
+
+    // Optional "what was actually sent to the model" inspector.
+    const mi = result.model_input;
+    const miJson = mi ? JSON.stringify(mi, null, 2) : '';
+    const modelInputRow = mi ? `
+      <button type="button" class="btn-model-input" title="ดู JSON ที่ส่งเข้าโมเดล (F5 + SeedVC)">🔧 JSON</button>
+      <pre class="model-input-json hidden"></pre>
+    ` : '';
+
     cell.innerHTML = `
       <div class="mini-take-player" id="player-${emotion}-${take_idx}" data-url="${audio_url}">
-        <button type="button" class="btn-mini-play" title="เล่นเสียง">
+        <button type="button" class="btn-mini-play" title="เล่นเสียง (หลัง SeedVC)">
           <svg class="play-svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
           <svg class="pause-svg hidden" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
         </button>
@@ -640,14 +823,33 @@ document.addEventListener('DOMContentLoaded', () => {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         </a>
       </div>
+      ${preVcRow}
+      ${modelInputRow}
     `;
 
-    // Attach Play Click Listener
+    // Wire the JSON inspector toggle (textContent avoids HTML injection from the payload).
+    if (mi) {
+      const miBtn = cell.querySelector('.btn-model-input');
+      const miPre = cell.querySelector('.model-input-json');
+      miPre.textContent = miJson;
+      miBtn.addEventListener('click', () => miPre.classList.toggle('hidden'));
+    }
+
+    // Attach Play Click Listener (final, post-SeedVC)
     const playerBox = cell.querySelector('.mini-take-player');
     const playBtn = cell.querySelector('.btn-mini-play');
     playBtn.addEventListener('click', () => {
       toggleSingleAudio(audio_url, playerBox, playBtn);
     });
+
+    // Pre-VC (Thonburian F5) player
+    if (preVcUrl) {
+      const preBox = cell.querySelector('.mini-take-prevc');
+      const preBtn = cell.querySelector('.btn-mini-play-prevc');
+      preBtn.addEventListener('click', () => {
+        toggleSingleAudio(preVcUrl, preBox, preBtn);
+      });
+    }
 
     // Update Metrics in Row
     if (metrics) {
@@ -866,9 +1068,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const text = testTextInput.value.trim();
     const speakerId = speakerSelect.value.trim() || null;
-    const intensity = parseInt(paramIntensity.value || '2', 10);
-    const cfgValue = parseFloat(paramCfg.value || '2.5');
-    const loraMode = paramLoraMode.value || 'on';
+    const gender = getGender();
+    const cfgValue = parseFloat(paramCfg.value || '2.0');
+    const inferenceTimesteps = parseInt(paramSteps ? paramSteps.value : '32', 10);
+    const loraMode = paramLoraMode ? paramLoraMode.value : 'on';
     const dspVariants = getSelectedDspVariants();
     const postProcess = dspVariants.length === 1
       ? (window.DSP_VARIANT_SPECS[dspVariants[0]] || {}).post_process !== false
@@ -885,9 +1088,11 @@ document.addEventListener('DOMContentLoaded', () => {
             emotion,
             take_idx: takeIdx,
             text,
-            intensity,
+            gender,
+            donor_set: getDonorSet(),
             speaker_id: speakerId,
             cfg_value: cfgValue,
+            inference_timesteps: inferenceTimesteps,
             lora_mode: loraMode,
             post_process: postProcess,
             // Re-running one row must produce the same set of treatments as the
@@ -938,13 +1143,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = document.createElement('div');
         item.className = 'history-item';
         const dateStr = sess.created_at ? new Date(sess.created_at).toLocaleString('th-TH') : '—';
-        const spk = sess.speaker_id || 'Base Seed Voice';
+        const spk = sess.speaker_id || 'Default Target Voice';
+        const g = (sess.params && sess.params.gender) || sess.gender || 'female';
+        const gIcon = g.startsWith('m') ? '👨 ชาย' : '👩 หญิง';
         const takes = `${sess.completed_takes || 0}/${sess.total_takes || 0} Takes`;
 
         item.innerHTML = `
           <div class="history-meta">
             <span class="history-title">${sess.name}</span>
-            <span class="history-sub">📅 ${dateStr} · 🎙️ ${spk} · ⚡ ${takes}</span>
+            <span class="history-sub">📅 ${dateStr} · ${gIcon} · 🎙️ ${spk} · ⚡ ${takes}</span>
             <span class="history-text-snippet">"${sess.text || ''}"</span>
           </div>
           <button type="button" class="btn-load-history" data-session="${sess.session_id}">
@@ -985,6 +1192,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update form inputs to match session
       if (data.text) testTextInput.value = data.text;
       if (data.speaker_id) speakerSelect.value = data.speaker_id;
+      const g = (data.params && data.params.gender) || data.gender || 'female';
+      const rad = document.querySelector(`input[name="bench_gender"][value="${g}"]`);
+      if (rad) {
+        rad.checked = true;
+        syncGenderRadios();
+      }
       if (data.repeats) {
         paramRepeats.value = data.repeats;
         repeatsPicker.querySelectorAll('.repeat-opt').forEach(b => {
@@ -1014,6 +1227,9 @@ document.addEventListener('DOMContentLoaded', () => {
           audio_url: takeRecord.audio_url,
           filename: takeRecord.filename,
           metrics: takeRecord.metrics,
+          pre_vc_url: takeRecord.pre_vc_url,
+          pre_vc_filename: takeRecord.pre_vc_filename,
+          model_input: takeRecord.model_input,
           // Sessions recorded before variants existed simply have none, and the
           // cell falls back to the take's own fields.
           variants: takeRecord.variants || [],
@@ -1077,14 +1293,14 @@ window.DSP_VARIANT_SPECS = {
 
   const TONE_COLORS = {
     neutral: 'var(--tone-neutral)', sad: 'var(--tone-sad)', happy: 'var(--tone-happy)',
-    angry: 'var(--tone-angry)', excited: 'var(--tone-excited)', calm: 'var(--tone-calm)',
-    nervous: 'var(--tone-nervous)', sarcastic: 'var(--tone-sarcastic)',
+    angry: 'var(--tone-angry)', frustrated: 'var(--tone-frustrated)', excited: 'var(--tone-excited)',
+    calm: 'var(--tone-calm)', nervous: 'var(--tone-nervous)', sarcastic: 'var(--tone-sarcastic)',
     scared: 'var(--tone-scared)', tired: 'var(--tone-tired)'
   };
 
   const TONE_TH = {
-    neutral: 'เฉยๆ', sad: 'เศร้า', happy: 'มีความสุข', angry: 'โกรธ', excited: 'ตื่นเต้น',
-    calm: 'สงบ', nervous: 'ประหม่า', sarcastic: 'ประชด', scared: 'กลัว', tired: 'เหนื่อย'
+    neutral: 'เฉยๆ', sad: 'เศร้า', happy: 'มีความสุข', angry: 'โกรธ', frustrated: 'หงุดหงิด',
+    excited: 'ตื่นเต้น', calm: 'สงบ', nervous: 'ประหม่า', sarcastic: 'ประชด', scared: 'กลัว', tired: 'เหนื่อย'
   };
 
   const $ = (id) => document.getElementById(id);
@@ -1131,21 +1347,28 @@ window.DSP_VARIANT_SPECS = {
   function syncEcho() {
     const spk = $('speaker-select');
     const cfg = $('param-cfg');
-    const lora = $('param-lora-mode');
+    const steps = $('param-steps');
     const txt = $('test-text-input');
+    const checkedG = document.querySelector('input[name="bench_gender"]:checked');
+    const g = checkedG ? checkedG.value : 'female';
     const set = (id, v) => { const el = $(id); if (el) el.textContent = v; };
-    set('ab-echo-speaker', '🎙️ ' + (spk && spk.value
+    set('ab-echo-speaker', (g === 'female' ? '👩 หญิง · ' : '👨 ชาย · ') + '🎙️ ' + (spk && spk.value
       ? (spk.options[spk.selectedIndex] || {}).text || spk.value
-      : 'Auto-Seed Neutral'));
-    set('ab-echo-cfg', 'CFG ' + (cfg ? cfg.value : '2.5'));
-    set('ab-echo-lora', 'LoRA ' + (lora ? lora.value : 'on'));
+      : 'Default Target'));
+    const donor = $('donor-set-select');
+    set('ab-echo-donor', '🎭 ' + (donor && donor.value
+      ? (donor.options[donor.selectedIndex] || {}).text || donor.value
+      : 'Donor: Auto by Gender'));
+    set('ab-echo-cfg', 'CFG ' + (cfg ? cfg.value : '2.0'));
+    set('ab-echo-lora', 'Steps ' + (steps ? steps.value : '32'));
     const t = txt && txt.value.trim();
     set('ab-echo-text', t ? `“${t.length > 48 ? t.slice(0, 48) + '…' : t}”` : 'ยังไม่ได้ใส่ข้อความ');
   }
-  ['speaker-select', 'param-cfg', 'param-lora-mode'].forEach((id) => {
+  ['speaker-select', 'param-cfg', 'param-steps', 'donor-set-select'].forEach((id) => {
     const el = $(id);
     if (el) el.addEventListener('change', syncEcho);
   });
+  document.querySelectorAll('input[name="bench_gender"]').forEach(r => r.addEventListener('change', syncEcho));
   const textEl = $('test-text-input');
   if (textEl) textEl.addEventListener('input', syncEcho);
   document.addEventListener('click', () => setTimeout(syncEcho, 60));
@@ -1240,7 +1463,9 @@ window.DSP_VARIANT_SPECS = {
 
     const spk = $('speaker-select');
     const cfg = $('param-cfg');
-    const lora = $('param-lora-mode');
+    const steps = $('param-steps');
+    const checkedG = document.querySelector('input[name="bench_gender"]:checked');
+    const gender = checkedG ? checkedG.value : 'female';
 
     abError.classList.add('hidden');
     abResults.classList.add('hidden');
@@ -1255,8 +1480,11 @@ window.DSP_VARIANT_SPECS = {
         body: JSON.stringify({
           text,
           speaker_id: spk && spk.value ? spk.value : null,
-          cfg_value: cfg ? parseFloat(cfg.value) : 2.5,
-          lora_mode: lora ? lora.value : 'on',
+          gender: gender,
+          donor_set: getDonorSet(),
+          cfg_value: cfg ? parseFloat(cfg.value) : 2.0,
+          inference_timesteps: steps ? parseInt(steps.value) : 32,
+          lora_mode: 'on',
           auto_annotate: true,
           variants: ids.map(id => ({
             id,

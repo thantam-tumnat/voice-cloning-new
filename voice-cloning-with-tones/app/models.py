@@ -151,11 +151,18 @@ class PostProcessParams(BaseModel):
 class SynthesizeRequest(BaseModel):
     text: str = Field(min_length=1, max_length=5000)
     speaker_id: Optional[str] = None
+    gender: Optional[Literal["male", "female", "m", "f"]] = Field(
+        default=None, description="Voice gender: 'male' or 'female'"
+    )
     guidance: Optional[str] = None
     engine: Literal["voxcpm", "siangtts", "elevenlabs", "gemini"] = "voxcpm"
     model: Optional[str] = Field(default=None, description="Optional specific LLM model to use")
     cfg_value: float = Field(default=2.5, ge=1.0, le=10.0)
     inference_timesteps: int = Field(default=10, ge=4, le=50)
+    speed: Optional[float] = Field(
+        default=None, ge=0.5, le=2.0,
+        description="F5 speech speed multiplier: <1.0 slower, >1.0 faster. Null uses the server default.",
+    )
     auto_annotate: bool = True
     lora_mode: Optional[Literal["on", "off", "legacy"]] = Field(
         default="on", description="LoRA mode: 'on' (Thai optimized), 'off' (Base model), or 'legacy' (shipped 2.0/2.0)"
@@ -164,6 +171,17 @@ class SynthesizeRequest(BaseModel):
     post_process_params: Optional[PostProcessParams] = Field(
         default=None, description="Per-request overrides for the audio_post DSP constants"
     )
+
+
+class PipelineTraceRequest(BaseModel):
+    """One run of donor -> Thonburian F5 -> SeedVC, keeping every stage playable."""
+    donor_set: str = Field(min_length=1, description="Donor set id, e.g. 'female' or 'male'")
+    emotion: str = Field(min_length=1, description="neutral|happy|sad|angry|frustrated")
+    speaker_id: Optional[str] = Field(default=None, description="Target voice to clone (from ref/)")
+    text: Optional[str] = Field(default=None, max_length=5000,
+                                description="Text to synthesize; empty falls back to the donor transcript")
+    speed: Optional[float] = Field(default=None, ge=0.5, le=2.0,
+                                   description="F5 speed multiplier; null uses the server default")
 
 
 class ABVariantSpec(BaseModel):
@@ -210,10 +228,21 @@ class ABSynthesizeRequest(BaseModel):
     """
     text: str = Field(min_length=1, max_length=5000)
     speaker_id: Optional[str] = None
+    gender: Optional[Literal["male", "female", "m", "f"]] = Field(
+        default=None, description="Voice gender: 'male' or 'female'"
+    )
+    donor_set: Optional[str] = Field(
+        default=None,
+        description="Same-person emotion donor set id (e.g. 'female_0031'). None = auto by gender.",
+    )
     guidance: Optional[str] = None
     model: Optional[str] = None
     cfg_value: float = Field(default=2.5, ge=1.0, le=10.0)
     inference_timesteps: int = Field(default=10, ge=4, le=50)
+    speed: Optional[float] = Field(
+        default=None, ge=0.5, le=2.0,
+        description="F5 speech speed multiplier: <1.0 slower, >1.0 faster. Null uses the server default.",
+    )
     auto_annotate: bool = True
     lora_mode: Optional[Literal["on", "off", "legacy"]] = "on"
     variants: List[ABVariantSpec] = Field(min_length=1, max_length=6)
@@ -256,12 +285,17 @@ class LLMTagConversionResult(BaseModel):
 class BenchmarkSessionInitRequest(BaseModel):
     name: Optional[str] = None
     speaker_id: Optional[str] = None
+    gender: Optional[str] = "female"
+    donor_set: Optional[str] = Field(
+        default=None,
+        description="Same-person emotion donor set id (e.g. 'female_0031'). None = auto by gender.",
+    )
     text: str = Field(min_length=1, max_length=5000)
-    emotions: List[str] = Field(default_factory=lambda: [t.value for t in Tone])
+    emotions: List[str] = Field(default_factory=lambda: ["neutral", "happy", "sad", "angry", "frustrated"])
     repeats: int = Field(default=3, ge=1, le=10)
     intensity: int = Field(default=2, ge=1, le=3)
-    cfg_value: float = Field(default=2.5, ge=1.0, le=10.0)
-    inference_timesteps: int = Field(default=10, ge=4, le=50)
+    cfg_value: float = Field(default=2.0, ge=1.0, le=10.0)
+    inference_timesteps: int = Field(default=32, ge=4, le=100)
     lora_mode: Optional[Literal["on", "off", "legacy"]] = "on"
     post_process: bool = True
     post_process_params: Optional[PostProcessParams] = None
@@ -272,6 +306,7 @@ class BenchmarkSessionInitResponse(BaseModel):
     name: str
     created_at: str
     speaker_id: Optional[str]
+    gender: Optional[str] = "female"
     text: str
     emotions: List[str]
     repeats: int
@@ -287,8 +322,13 @@ class BenchmarkTakeRequest(BaseModel):
     instruction: Optional[str] = None
     intensity: int = Field(default=2, ge=1, le=3)
     speaker_id: Optional[str] = None
-    cfg_value: float = Field(default=2.5, ge=1.0, le=10.0)
-    inference_timesteps: int = Field(default=10, ge=4, le=50)
+    gender: Optional[str] = "female"
+    donor_set: Optional[str] = Field(
+        default=None,
+        description="Same-person emotion donor set id (e.g. 'female_0031'). None = auto by gender.",
+    )
+    cfg_value: float = Field(default=2.0, ge=1.0, le=10.0)
+    inference_timesteps: int = Field(default=32, ge=4, le=100)
     lora_mode: Optional[Literal["on", "off", "legacy"]] = "on"
     post_process: bool = True
     post_process_params: Optional[PostProcessParams] = None
@@ -318,6 +358,13 @@ class BenchmarkTakeResult(BaseModel):
     metrics: Optional[dict] = None
     elapsed_s: float = 0.0
     error: Optional[str] = None
+    # The Thonburian F5 output *before* SeedVC (emotional speech still in the donor's
+    # timbre), so the UI can play the pre-conversion stage next to the final result.
+    pre_vc_url: Optional[str] = None
+    pre_vc_filename: Optional[str] = None
+    # The exact inputs handed to each model stage (F5 + SeedVC) for this take, so the
+    # UI can show what was actually sent. Shape: {"chunks": [{f5_input, seedvc_input,...}]}.
+    model_input: Optional[dict] = None
     # Every DSP treatment of this take, first entry mirroring the fields above.
     variants: List[BenchmarkTakeVariant] = Field(default_factory=list)
 

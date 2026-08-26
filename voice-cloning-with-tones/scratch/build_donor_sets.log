@@ -1,0 +1,24 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[Donors] Building same-person donor sets from airesearch/thai-ser (mic=mic_clip, target=5/gender, min_agreement=0.6)
+
+[Donors] Shard 1/29: data/train-00000-of-00029.parquet (complete actors so far: male=0, female=0) ...
+[Donors] Shard loaded: 961 rows
+[Donors] After shard 1: processed=961, complete actors male=3, female=3 (2s)
+
+[Donors] Shard 2/29: data/train-00001-of-00029.parquet (complete actors so far: male=3, female=3) ...
+[Donors] Shard loaded: 961 rows
+[Donors] After shard 2: processed=1922, complete actors male=5, female=5 (5s)
+[Donors] Enough complete actors collected for both genders.
+[Donors] Wrote set female_004 (mean_agreement=1.000) -> ref\emotions\female_004
+[Donors] Wrote set female_002 (mean_agreement=0.986) -> ref\emotions\female_002
+[Donors] Wrote set female_005 (mean_agreement=0.975) -> ref\emotions\female_005
+[Donors] Wrote set female_010 (mean_agreement=0.958) -> ref\emotions\female_010
+[Donors] Wrote set female_011 (mean_agreement=0.950) -> ref\emotions\female_011
+[Donors] Wrote set male_003 (mean_agreement=0.975) -> ref\emotions\male_003
+[Donors] Wrote set male_006 (mean_agreement=0.971) -> ref\emotions\male_006
+[Donors] Wrote set male_001 (mean_agreement=0.950) -> ref\emotions\male_001
+[Donors] Wrote set male_009 (mean_agreement=0.943) -> ref\emotions\male_009
+[Donors] Wrote set male_012 (mean_agreement=0.930) -> ref\emotions\male_012
+
+[Donors] Done. Wrote 5 female + 5 male same-person donor sets to ref\emotions
+[Donors] Manifest: ref\emotions\donors_manifest.json

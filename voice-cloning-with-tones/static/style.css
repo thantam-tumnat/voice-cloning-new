@@ -44,6 +44,8 @@
   --tone-tired: #94a3b8;
   --tone-tired-bg: rgba(148, 163, 184, 0.15);
   --tone-sarcastic-bg: rgba(244, 114, 182, 0.15);
+  --tone-frustrated: #fb923c;
+  --tone-frustrated-bg: rgba(251, 146, 60, 0.15);
 
   --font-thai: 'Noto Sans Thai', sans-serif;
   --font-en: 'Plus Jakarta Sans', sans-serif;
@@ -772,6 +774,7 @@ textarea:focus, .custom-input:focus {
 .tone-sarcastic { background: var(--tone-sarcastic-bg); color: var(--tone-sarcastic); border: 1px solid var(--tone-sarcastic); }
 .tone-scared { background: var(--tone-scared-bg); color: var(--tone-scared); border: 1px solid var(--tone-scared); }
 .tone-tired { background: var(--tone-tired-bg); color: var(--tone-tired); border: 1px solid var(--tone-tired); }
+.tone-frustrated { background: var(--tone-frustrated-bg); color: var(--tone-frustrated); border: 1px solid var(--tone-frustrated); }
 
 .border-neutral { border-left-color: var(--tone-neutral) !important; }
 .border-sad { border-left-color: var(--tone-sad) !important; }
@@ -783,6 +786,7 @@ textarea:focus, .custom-input:focus {
 .border-sarcastic { border-left-color: var(--tone-sarcastic) !important; }
 .border-scared { border-left-color: var(--tone-scared) !important; }
 .border-tired { border-left-color: var(--tone-tired) !important; }
+.border-frustrated { border-left-color: var(--tone-frustrated) !important; }
 
 /* JSON Viewer */
 .json-viewer {
@@ -1961,4 +1965,49 @@ textarea:focus, .custom-input:focus {
 .dsp-grid input[type="range"]:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+/* Gender Selection Toggle */
+.gender-toggle-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.gender-radio-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-family: var(--font-thai);
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.gender-radio-label input[type="radio"] {
+  display: none;
+}
+
+.gender-radio-label:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: var(--text-primary);
+}
+
+.gender-radio-label.active {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: #8b5cf6;
+  color: #c084fc;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
 }

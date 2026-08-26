@@ -1,0 +1,444 @@
+{
+  "created_at": "2026-08-26T15:08:43",
+  "source": "airesearch/thai-ser",
+  "sample_rate": 24000,
+  "params": {
+    "mic": "mic_clip",
+    "min_agreement": 0.6,
+    "min_seconds": 2.0,
+    "max_seconds": 8.0,
+    "sets_per_gender": 5
+  },
+  "sets": [
+    {
+      "id": "female_004",
+      "actor_id": "004",
+      "gender": "female",
+      "mean_agreement": 1.0,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s002_con_actor004_script2_2_1a.flac",
+          "agreement": 1.0,
+          "sec": 4.74
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor004_script1_1_2b.flac",
+          "agreement": 1.0,
+          "sec": 3.7
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor004_script1_1_3a.flac",
+          "agreement": 1.0,
+          "sec": 3.33
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor004_script1_1_4b.flac",
+          "agreement": 1.0,
+          "sec": 5.51
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor004_script1_1_5b.flac",
+          "agreement": 1.0,
+          "sec": 5.1
+        }
+      }
+    },
+    {
+      "id": "female_002",
+      "actor_id": "002",
+      "gender": "female",
+      "mean_agreement": 0.986,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s001_con_actor002_script1_2_1a.flac",
+          "agreement": 1.0,
+          "sec": 3.61
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s001_con_actor002_script1_1_2a.flac",
+          "agreement": 1.0,
+          "sec": 3.28
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s001_con_actor002_script1_1_3a.flac",
+          "agreement": 1.0,
+          "sec": 3.82
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s001_con_actor002_script1_1_4a.flac",
+          "agreement": 1.0,
+          "sec": 4.18
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s001_con_actor002_script1_1_5a.flac",
+          "agreement": 0.929,
+          "sec": 3.49
+        }
+      }
+    },
+    {
+      "id": "female_005",
+      "actor_id": "005",
+      "gender": "female",
+      "mean_agreement": 0.975,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s003_con_actor005_script1_2_1b.flac",
+          "agreement": 1.0,
+          "sec": 3.49
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s003_con_actor005_script1_1_2b.flac",
+          "agreement": 1.0,
+          "sec": 3.45
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s003_con_actor005_script1_1_3a.flac",
+          "agreement": 1.0,
+          "sec": 4.08
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s003_con_actor005_script2_1_4b.flac",
+          "agreement": 1.0,
+          "sec": 6.33
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s003_con_actor005_script3_2_5b.flac",
+          "agreement": 0.875,
+          "sec": 5.92
+        }
+      }
+    },
+    {
+      "id": "female_010",
+      "actor_id": "010",
+      "gender": "female",
+      "mean_agreement": 0.958,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s005_con_actor010_script1_1_1a.flac",
+          "agreement": 1.0,
+          "sec": 3.98
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s005_con_actor010_script2_1_2b.flac",
+          "agreement": 1.0,
+          "sec": 4.4
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s005_con_actor010_script1_1_3b.flac",
+          "agreement": 1.0,
+          "sec": 4.46
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s005_con_actor010_script1_1_4a.flac",
+          "agreement": 0.917,
+          "sec": 4.89
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s005_con_actor010_script3_1_5a.flac",
+          "agreement": 0.875,
+          "sec": 4.29
+        }
+      }
+    },
+    {
+      "id": "female_011",
+      "actor_id": "011",
+      "gender": "female",
+      "mean_agreement": 0.95,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s006_con_actor011_script1_1_1b.flac",
+          "agreement": 1.0,
+          "sec": 4.68
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s006_con_actor011_script1_1_2b.flac",
+          "agreement": 0.875,
+          "sec": 3.49
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s006_con_actor011_script2_2_3a.flac",
+          "agreement": 1.0,
+          "sec": 5.5
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s006_con_actor011_script1_2_4b.flac",
+          "agreement": 1.0,
+          "sec": 4.82
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s006_con_actor011_script3_1_5b.flac",
+          "agreement": 0.875,
+          "sec": 7.07
+        }
+      }
+    },
+    {
+      "id": "male_003",
+      "actor_id": "003",
+      "gender": "male",
+      "mean_agreement": 0.975,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor003_script1_1_1a.flac",
+          "agreement": 1.0,
+          "sec": 3.9
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor003_script1_1_2b.flac",
+          "agreement": 1.0,
+          "sec": 3.8
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor003_script1_1_3a.flac",
+          "agreement": 1.0,
+          "sec": 4.11
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor003_script1_1_4a.flac",
+          "agreement": 1.0,
+          "sec": 4.83
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s002_con_actor003_script1_1_5b.flac",
+          "agreement": 0.875,
+          "sec": 4.64
+        }
+      }
+    },
+    {
+      "id": "male_006",
+      "actor_id": "006",
+      "gender": "male",
+      "mean_agreement": 0.971,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s003_con_actor006_script1_2_1a.flac",
+          "agreement": 1.0,
+          "sec": 3.77
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s003_con_actor006_script1_1_2b.flac",
+          "agreement": 1.0,
+          "sec": 3.07
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s003_con_actor006_script1_2_3b.flac",
+          "agreement": 1.0,
+          "sec": 2.99
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s003_con_actor006_script3_2_4b.flac",
+          "agreement": 1.0,
+          "sec": 5.88
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s003_con_actor006_script2_2_5b.flac",
+          "agreement": 0.857,
+          "sec": 4.05
+        }
+      }
+    },
+    {
+      "id": "male_001",
+      "actor_id": "001",
+      "gender": "male",
+      "mean_agreement": 0.95,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s001_con_actor001_script2_1_1b.flac",
+          "agreement": 1.0,
+          "sec": 3.6
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s001_con_actor001_script1_2_2b.flac",
+          "agreement": 1.0,
+          "sec": 3.07
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s001_con_actor001_script3_2_3a.flac",
+          "agreement": 0.875,
+          "sec": 4.4
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s001_con_actor001_script3_2_4b.flac",
+          "agreement": 1.0,
+          "sec": 5.09
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s001_con_actor001_script2_1_5b.flac",
+          "agreement": 0.875,
+          "sec": 4.25
+        }
+      }
+    },
+    {
+      "id": "male_009",
+      "actor_id": "009",
+      "gender": "male",
+      "mean_agreement": 0.943,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s005_con_actor009_script2_1_1b.flac",
+          "agreement": 1.0,
+          "sec": 5.46
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s005_con_actor009_script1_1_2b.flac",
+          "agreement": 0.857,
+          "sec": 2.84
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s005_con_actor009_script2_1_3b.flac",
+          "agreement": 1.0,
+          "sec": 4.85
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s005_con_actor009_script2_1_4b.flac",
+          "agreement": 1.0,
+          "sec": 4.97
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s005_con_actor009_script1_2_5b.flac",
+          "agreement": 0.857,
+          "sec": 5.33
+        }
+      }
+    },
+    {
+      "id": "male_012",
+      "actor_id": "012",
+      "gender": "male",
+      "mean_agreement": 0.93,
+      "emotions": {
+        "neutral": {
+          "file": "neutral_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s006_con_actor012_script2_1_1b.flac",
+          "agreement": 1.0,
+          "sec": 5.87
+        },
+        "angry": {
+          "file": "angry_1.wav",
+          "text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+          "audio_id": "s006_con_actor012_script2_2_2b.flac",
+          "agreement": 0.857,
+          "sec": 4.66
+        },
+        "happy": {
+          "file": "happy_1.wav",
+          "text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+          "audio_id": "s006_con_actor012_script1_2_3b.flac",
+          "agreement": 1.0,
+          "sec": 4.03
+        },
+        "sad": {
+          "file": "sad_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s006_con_actor012_script3_1_4b.flac",
+          "agreement": 0.938,
+          "sec": 7.09
+        },
+        "frustrated": {
+          "file": "frustrated_1.wav",
+          "text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+          "audio_id": "s006_con_actor012_script3_1_5b.flac",
+          "agreement": 0.857,
+          "sec": 7.03
+        }
+      }
+    }
+  ]
+}

@@ -24,8 +24,7 @@ from app.models import (
     BenchmarkTakeVariant,
     ABVariantSpec,
 )
-from app.renderers.voxcpm import format_voxcpm_instruction, VOXCPM_INSTRUCTION_MAP, STYLE_VOCABULARY
-from app.services.siangtts_service import siangtts_service, prepare_text
+from app.services.thonburian_service import thonburian_service
 
 TEST_RUNS_DIR = Path(__file__).resolve().parent.parent.parent / "test_runs"
 TEST_RUNS_DIR.mkdir(parents=True, exist_ok=True)
@@ -48,29 +47,23 @@ PRESET_SENTENCES = [
         "id": "dialogue",
         "title": "ประโยคตัดพ้อ / ตั้งคำถาม (Dialogue)",
         "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
-        "desc": "เหมาะมากสำหรับวัดอารมณ์ Sad, Angry, Sarcastic, Tired",
+        "desc": "เหมาะมากสำหรับวัดอารมณ์ Sad, Angry, Frustrated",
     },
     {
         "id": "cheer",
         "title": "ประโยคข่าวสาร / ตื่นเต้น (Cheer & Joy)",
         "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
-        "desc": "เหมาะสำหรับวัดอารมณ์ Happy, Excited, Calm, Neutral",
+        "desc": "เหมาะสำหรับวัดอารมณ์ Happy, Neutral",
     },
 ]
 
-# Emotion metadata dictionary for display and analysis
+# Emotion metadata dictionary for Thonburian F5 + SeedVC (5 thai-ser emotions)
 EMOTION_META: Dict[str, Dict[str, Any]] = {
     "neutral": {
         "name_th": "ปกติ / เป็นกลาง",
         "icon": "📰",
         "color_class": "tone-neutral",
         "description": "น้ำเสียงปกติ บรรยาย ข้อมูลทั่วไป ไม่มีการกระแทกหรือลากเสียง",
-    },
-    "calm": {
-        "name_th": "สงบ / นุ่มนวล",
-        "icon": "☕",
-        "color_class": "tone-calm",
-        "description": "สงบ ผ่อนคลาย นุ่มนวล พูดช้า ชัดถ้อยชัดคำอย่างมีสติ",
     },
     "happy": {
         "name_th": "ร่าเริง / มีความสุข",
@@ -90,35 +83,11 @@ EMOTION_META: Dict[str, Dict[str, Any]] = {
         "color_class": "tone-angry",
         "description": "โกรธ ไม่พอใจ เสียงแข็ง ดุดัน กระแทกเสียงและพลังเสียงสูง",
     },
-    "excited": {
-        "name_th": "ตื่นเต้น / เร่งเร้า",
-        "icon": "⚡",
-        "color_class": "tone-excited",
-        "description": "ตื่นเต้น กระตือรือร้น ดีใจสุดขีด จังหวะพูดกระชับเร็ว",
-    },
-    "nervous": {
-        "name_th": "ประหม่า / กังวล",
-        "icon": "😰",
-        "color_class": "tone-nervous",
-        "description": "ประหม่า ลังเล ไม่มั่นใจ สั่นเครือเล็กน้อย",
-    },
-    "sarcastic": {
-        "name_th": "ประชด / แดกดัน",
-        "icon": "😏",
-        "color_class": "tone-sarcastic",
-        "description": "ประชด ประชัน แดกดัน เน้นเสียงสูงต่ำแปลกจังหวะ",
-    },
-    "scared": {
-        "name_th": "หวาดกลัว / ตกใจ",
-        "icon": "😱",
-        "color_class": "tone-scared",
-        "description": "กลัว หวาดผวา ตื่นตระหนก หายใจกระชั้น สั่นเครือ",
-    },
-    "tired": {
-        "name_th": "เหนื่อย / หมดแรง",
-        "icon": "🥱",
-        "color_class": "tone-tired",
-        "description": "เหนื่อย อ่อนเพลีย ล้า ง่วง พลังงานต่ำ พูดช้าๆ ถอนหายใจ",
+    "frustrated": {
+        "name_th": "หงุดหงิด / อึดอัดใจ",
+        "icon": "😤",
+        "color_class": "tone-frustrated",
+        "description": "หงุดหงิด อึดอัดใจ ถอนหายใจ อารมณ์คุกรุ่น",
     },
 }
 
@@ -217,7 +186,7 @@ class BenchmarkService:
 
     def get_presets(self) -> Dict[str, Any]:
         """Return preset sentences, available speakers, and emotion metadata."""
-        speakers = siangtts_service.list_speakers()
+        speakers = thonburian_service.list_speakers()
         return {
             "preset_sentences": PRESET_SENTENCES,
             "emotions": [
@@ -228,17 +197,20 @@ class BenchmarkService:
                     "icon": v["icon"],
                     "color_class": v["color_class"],
                     "description": v["description"],
-                    "default_instruction": format_voxcpm_instruction(Tone(k), 2),
+                    "default_instruction": f"[{k}]",
                 }
                 for k, v in EMOTION_META.items()
             ],
             "speakers": speakers,
+            "donor_sets": thonburian_service.list_donor_sets(),
             "default_params": {
                 "text": PRESET_SENTENCES[0]["text"],
                 "repeats": 3,
+                "gender": "female",
+                "donor_set": None,
                 "intensity": 2,
-                "cfg_value": 2.5,
-                "inference_timesteps": 10,
+                "cfg_value": 2.0,
+                "inference_timesteps": 32,
                 "lora_mode": "on",
             },
         }
@@ -250,20 +222,25 @@ class BenchmarkService:
         session_id = f"bench_{ts}{spk_tag}"
         s_dir = self._session_dir(session_id)
 
-        emotions = req.emotions if req.emotions else [t.value for t in Tone]
+        emotions = req.emotions if req.emotions else list(EMOTION_META.keys())
         total_takes = len(emotions) * req.repeats
+        gender = req.gender or "female"
 
         session_data = {
             "session_id": session_id,
             "name": req.name or f"Emotion Benchmark ({ts})",
             "created_at": datetime.now().isoformat(),
             "speaker_id": req.speaker_id,
+            "gender": gender,
+            "donor_set": req.donor_set,
             "text": req.text,
             "emotions": emotions,
             "repeats": req.repeats,
             "total_takes": total_takes,
             "completed_takes": 0,
             "params": {
+                "gender": gender,
+                "donor_set": req.donor_set,
                 "intensity": req.intensity,
                 "cfg_value": req.cfg_value,
                 "inference_timesteps": req.inference_timesteps,
@@ -280,6 +257,7 @@ class BenchmarkService:
             name=session_data["name"],
             created_at=session_data["created_at"],
             speaker_id=req.speaker_id,
+            gender=gender,
             text=req.text,
             emotions=emotions,
             repeats=req.repeats,
@@ -304,18 +282,10 @@ class BenchmarkService:
 
         # Resolve emotion tone instruction
         tone_val = req.emotion.lower()
-        try:
-            tone_enum = Tone(tone_val)
-        except ValueError:
-            tone_enum = Tone.NEUTRAL
-
-        instruction = req.instruction
-        if not instruction:
-            instruction = format_voxcpm_instruction(tone_enum, req.intensity) or ""
-
-        # Prepare full synthesized text
+        instruction = f"[{tone_val}]"
         clean_text = req.text.strip()
-        full_text = f"{instruction}{clean_text}" if instruction else clean_text
+        gender = req.gender or session_data.get("gender") or "female"
+        donor_set = req.donor_set or session_data.get("donor_set")
 
         # One entry means the classic single-file take; more means the generation is
         # shared and only the assembly differs between the files written.
@@ -337,8 +307,10 @@ class BenchmarkService:
         out_wav_path = s_dir / filename
 
         try:
-            takes, sr_out, _tones = siangtts_service.synthesize_variants(
-                [full_text],
+            pre_vc_sink: dict = {}
+            debug_sink: dict = {}
+            takes, sr_out, _tones = thonburian_service.synthesize_variants(
+                [clean_text],
                 variants=[
                     {
                         "id": v.id,
@@ -348,12 +320,24 @@ class BenchmarkService:
                     for v in specs
                 ],
                 speaker_id=req.speaker_id,
+                gender=gender,
+                donor_set=donor_set,
                 cfg_value=req.cfg_value,
                 inference_timesteps=req.inference_timesteps,
-                tones=[req.emotion],
+                tones=[tone_val],
                 breaks=[False],
                 lora_mode=req.lora_mode or "on",
+                pre_vc_sink=pre_vc_sink,
+                debug_sink=debug_sink,
             )
+
+            # Save the pre-SeedVC (Thonburian F5) clip so the UI can play it too.
+            pre_vc_filename = None
+            pre_vc_url = None
+            if pre_vc_sink.get("wav"):
+                pre_vc_filename = f"{req.emotion}_take_{req.take_idx}__thon_preVC.wav"
+                (s_dir / pre_vc_filename).write_bytes(pre_vc_sink["wav"])
+                pre_vc_url = f"/api/benchmark/audio/{req.session_id}/{pre_vc_filename}"
 
             variant_records = []
             for take, spec in zip(takes, specs):
@@ -382,6 +366,9 @@ class BenchmarkService:
                 "filename": filename,
                 "audio_url": f"/api/benchmark/audio/{req.session_id}/{filename}",
                 "metrics": metrics,
+                "pre_vc_url": pre_vc_url,
+                "pre_vc_filename": pre_vc_filename,
+                "model_input": debug_sink or None,
                 "variants": variant_records,
                 "elapsed_s": elapsed_s,
                 "error": None,
@@ -403,6 +390,9 @@ class BenchmarkService:
                 audio_url=take_record["audio_url"],
                 filename=filename,
                 metrics=metrics,
+                pre_vc_url=pre_vc_url,
+                pre_vc_filename=pre_vc_filename,
+                model_input=debug_sink or None,
                 variants=[BenchmarkTakeVariant(**v) for v in variant_records],
                 elapsed_s=elapsed_s,
                 error=None,

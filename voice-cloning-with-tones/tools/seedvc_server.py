@@ -89,17 +89,17 @@ def main() -> int:
                 pitch_shift=req.semi_tone_shift,
                 stream_output=False,
             )
+
+            # f0-conditioned models run at 44.1k, the base models at 22.05k.
+            sr = 44100 if req.f0_condition else 22050
+            audio = np.asarray(audio, dtype="float32").squeeze()
+            Path(req.output).parent.mkdir(parents=True, exist_ok=True)
+            sf.write(req.output, audio, sr, subtype="PCM_16")
+            return JSONResponse({"output": req.output, "sample_rate": sr, "frames": int(audio.size)})
         except Exception as e:                                    # noqa: BLE001
             import traceback
             traceback.print_exc()
             return JSONResponse({"error": f"{type(e).__name__}: {e}"}, status_code=500)
-
-        # f0-conditioned models run at 44.1k, the base models at 22.05k.
-        sr = 44100 if req.f0_condition else 22050
-        audio = np.asarray(audio, dtype="float32").squeeze()
-        Path(req.output).parent.mkdir(parents=True, exist_ok=True)
-        sf.write(req.output, audio, sr, subtype="PCM_16")
-        return JSONResponse({"output": req.output, "sample_rate": sr, "frames": int(audio.size)})
 
     uvicorn.run(app, host=args.host, port=args.port, log_level="warning")
     return 0

@@ -1187,12 +1187,29 @@ document.addEventListener('DOMContentLoaded', () => {
       .trim();
   }
 
+  function getSelectedGender() {
+    const checked = document.querySelector('input[name="gender_select"]:checked');
+    return checked ? checked.value : 'female';
+  }
+
+  // Gender toggle listeners
+  const genderRadioInputs = document.querySelectorAll('input[name="gender_select"]');
+  genderRadioInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      document.querySelectorAll('.gender-radio-label').forEach((lbl) => lbl.classList.remove('active'));
+      const parent = input.closest('.gender-radio-label');
+      if (parent) parent.classList.add('active');
+    });
+  });
+
   // Synthesis Helper
-  async function fetchSynthesisBlob({ text, speakerId, guidance, engine, model, cfgValue, timesteps, loraMode, autoAnnotate = true, postProcess = true, dspParams = null }) {
+  async function fetchSynthesisBlob({ text, speakerId, gender, guidance, engine, model, cfgValue, timesteps, loraMode, autoAnnotate = true, postProcess = true, dspParams = null }) {
+    const effectiveGender = gender || getSelectedGender();
     if (selectedAudioFile) {
       const formData = new FormData();
       formData.append('text', text);
       formData.append('file', selectedAudioFile);
+      if (effectiveGender) formData.append('gender', effectiveGender);
       if (guidance) formData.append('guidance', guidance);
       if (model) formData.append('model', model);
       formData.append('cfg_value', cfgValue);
@@ -1223,6 +1240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({
           text: text,
           speaker_id: speakerId,
+          gender: effectiveGender,
           guidance: guidance || null,
           engine: engine,
           model: model,

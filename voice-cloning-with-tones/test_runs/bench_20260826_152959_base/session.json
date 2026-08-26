@@ -1,0 +1,64 @@
+{
+  "session_id": "bench_20260826_152959_base",
+  "name": "Emotion Benchmark (20260826_152959)",
+  "created_at": "2026-08-26T15:29:59.735952",
+  "speaker_id": null,
+  "gender": "female",
+  "donor_set": "female_004",
+  "text": "???? 1,250 ??? ?? 20% ???????",
+  "emotions": [
+    "neutral"
+  ],
+  "repeats": 1,
+  "total_takes": 1,
+  "completed_takes": 1,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_004",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 32,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "???? 1,250 ??? ?? 20% ???????",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_152959_base/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 2.72,
+        "rms": 0.0115,
+        "energy_dbfs": -38.8,
+        "f0_med_hz": 240.3,
+        "f0_p10_hz": 210.0,
+        "f0_p90_hz": 317.0,
+        "f0_spread_st": 7.13
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_152959_base/neutral_take_1__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_1__thon_preVC.wav",
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_152959_base/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 2.72,
+            "rms": 0.0115,
+            "energy_dbfs": -38.8,
+            "f0_med_hz": 240.3,
+            "f0_p10_hz": 210.0,
+            "f0_p90_hz": 317.0,
+            "f0_spread_st": 7.13
+          }
+        }
+      ],
+      "elapsed_s": 19.3,
+      "error": null,
+      "timestamp": "2026-08-26T15:30:19.302367"
+    }
+  }
+}

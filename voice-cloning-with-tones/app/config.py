@@ -38,15 +38,35 @@ class Settings(BaseSettings):
     segmenter_engine: str = "crfcut"
 
     # Shared SiangTTS GPU service — the one process that holds VoxCPM2 for every
-    # pipeline on the host (voice-cloning/src/gpu_service.py). The studio sends
-    # generation there and keeps annotation, chunking and assembly local.
+    # pipeline on the host (voice-cloning/src/gpu_service.py).
     voxcpm_service_url: str = "http://127.0.0.1:8020"
-    # Refuse to run without it. Loading a second copy of the model here would fight
-    # the shared one for VRAM on a single-GPU host, which is the exact problem the
-    # split exists to solve -- and it would do it silently, several minutes into a
-    # request. Set false only when nothing else is using the GPU.
-    voxcpm_remote_required: bool = True
-    service_port: int = 8011
+    voxcpm_remote_required: bool = False
+    service_port: int = 8012
+
+    # Thonburian F5 + SeedVC Voice Generation Pipeline
+    flowtts_src: str = os.getenv("FLOWTTS_SRC", r"C:\Users\opendream002\Desktop\thonburian\thonburian-tts")
+    seedvc_url: str = "http://127.0.0.1:8022"
+    # SeedVC /convert HTTP read timeout (s). Convert stalls when F5 and SeedVC
+    # contend for the same GPU, so this is generous rather than tight.
+    seedvc_timeout: int = int(os.getenv("SEEDVC_TIMEOUT", "180"))
+    # Free F5's GPU cache after each generation, before calling SeedVC, so the
+    # SeedVC worker (same GPU) is not starved into a read timeout.
+    thonburian_free_cache: bool = True
+    emotion_donor_dir: str = "ref/emotions"
+    dataset_dir: str = "dataset"
+    seedvc_diffusion_steps: int = 25
+    seedvc_f0_condition: bool = True
+    seedvc_auto_f0_adjust: bool = True
+    thonburian_device: str = ""
+    thonburian_cfg_strength: float = 2.0
+    thonburian_nfe_step: int = 32
+    # F5 speech speed multiplier: <1.0 = slower speech, >1.0 = faster.
+    thonburian_speed: float = float(os.getenv("THONBURIAN_SPEED", "0.9"))
+    # F5+vocos can overshoot [-1, 1]; the library saves as PCM_16 with no peak guard,
+    # so loud emotions (happy/frustrated) clip on write. Scale any F5 output whose peak
+    # exceeds this ceiling down to it before SeedVC and the pre-VC player. 0 disables.
+    thonburian_f5_peak: float = float(os.getenv("THONBURIAN_F5_PEAK", "0.95"))
+    default_gender: str = "female"
 
     # SiangTTS / VoxCPM2 Voice Cloning
     siangtts_base_model: str = "openbmb/VoxCPM2"

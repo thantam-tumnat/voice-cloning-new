@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pipeline Explorer — Thonburian F5 + SeedVC</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <style>
+    .pl-wrap { max-width: 860px; margin: 0 auto; padding: 24px 20px 80px; }
+    .pl-title { font-size: 22px; font-weight: 700; color: var(--text-primary); margin: 0 0 4px; }
+    .pl-sub { color: var(--text-secondary); font-size: 14px; margin: 0 0 24px; }
+    .pl-card { background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 12px; padding: 20px; margin-bottom: 18px; }
+    .pl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 640px) { .pl-grid { grid-template-columns: 1fr; } }
+    .pl-field label { display: block; font-size: 12px; font-weight: 600;
+      color: var(--text-secondary); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+    .pl-field select, .pl-field textarea, .pl-field input {
+      width: 100%; box-sizing: border-box; background: var(--bg-input);
+      border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary);
+      padding: 10px 12px; font-size: 14px; font-family: inherit; }
+    .pl-field select:focus, .pl-field textarea:focus { outline: none; border-color: var(--border-focus); }
+    .pl-field textarea { resize: vertical; min-height: 92px; line-height: 1.5; }
+    .pl-hint { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+    .pl-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 4px; }
+    .pl-speed { display: flex; align-items: center; gap: 10px; }
+    .pl-speed input[type=range] { width: 160px; }
+    .pl-btn { background: var(--primary-color); color: #fff; border: none; border-radius: 8px;
+      padding: 12px 22px; font-size: 15px; font-weight: 600; cursor: pointer; }
+    .pl-btn:hover { background: var(--primary-hover); }
+    .pl-btn:disabled { opacity: .55; cursor: not-allowed; }
+    .pl-stage { background: var(--bg-card-sub); border: 1px solid var(--border-color);
+      border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+    .pl-stage h4 { margin: 0 0 2px; font-size: 15px; color: var(--text-primary); }
+    .pl-stage .pl-hint { margin-top: 2px; margin-bottom: 10px; }
+    .pl-stage audio { width: 100%; }
+    .pl-badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px;
+      border-radius: 999px; background: var(--tone-neutral-bg); color: var(--tone-neutral); }
+    .pl-status { font-size: 13px; color: var(--text-secondary); min-height: 18px; margin-top: 10px; }
+    .pl-status.err { color: var(--tone-angry); }
+    .pl-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+    .pl-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border-hover);
+      border-top-color: var(--primary-color); border-radius: 50%; animation: spin .8s linear infinite;
+      vertical-align: -2px; margin-right: 6px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .pl-empty { color: var(--text-muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="pl-wrap">
+    <h1 class="pl-title">Pipeline Explorer</h1>
+    <p class="pl-sub">เลือกชุด donor → อารมณ์ → เสียงที่จะโคลน แล้วฟังผลทุกสเตจ (Donor → Thonburian F5 → SeedVC)</p>
+
+    <div class="pl-card">
+      <div class="pl-grid">
+        <div class="pl-field">
+          <label for="donorSet">ชุด Donor (ผู้พูด)</label>
+          <select id="donorSet"></select>
+        </div>
+        <div class="pl-field">
+          <label for="emotion">อารมณ์</label>
+          <select id="emotion"></select>
+        </div>
+        <div class="pl-field">
+          <label for="speaker">เสียงที่จะโคลน</label>
+          <select id="speaker"></select>
+        </div>
+        <div class="pl-field">
+          <label for="speed">ความเร็ว (speed)</label>
+          <div class="pl-speed">
+            <input type="range" id="speed" min="0.5" max="1.5" step="0.05" value="0.9" />
+            <span id="speedVal">0.90×</span>
+          </div>
+          <div class="pl-hint">&lt;1 พูดช้าลง · &gt;1 เร็วขึ้น</div>
+        </div>
+      </div>
+
+      <div class="pl-field" style="margin-top:16px;">
+        <label for="text">ข้อความที่จะพูด</label>
+        <textarea id="text" placeholder="พิมพ์ข้อความที่นี่... (ถ้าเว้นว่างจะใช้ transcript ของ donor)"></textarea>
+        <div class="pl-hint" id="textHint">เลือกอารมณ์เพื่อดึง transcript ของ donor มาแสดง</div>
+      </div>
+
+      <div class="pl-row" style="margin-top:16px;">
+        <button class="pl-btn" id="runBtn">▶ รัน Pipeline</button>
+        <span class="pl-status" id="status"></span>
+      </div>
+    </div>
+
+    <div class="pl-card">
+      <h3 style="margin:0 0 4px;font-size:16px;color:var(--text-primary);">Output — ฟังได้ทุกสเตจ</h3>
+      <div class="pl-meta" id="outMeta"></div>
+      <div id="stages"><p class="pl-empty">ยังไม่มีผลลัพธ์ — กด "รัน Pipeline" ด้านบน</p></div>
+    </div>
+  </div>
+
+  <script src="/static/pipeline.js"></script>
+</body>
+</html>

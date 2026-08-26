@@ -1,4 +1,14 @@
 import os
+import sys
+
+# Ensure UTF-8 output on Windows consoles to prevent charmap encoding errors
+for _s in (sys.stdout, sys.stderr):
+    if hasattr(_s, "reconfigure"):
+        try:
+            _s.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 from datetime import datetime
 from contextlib import asynccontextmanager
 from typing import Optional
@@ -30,7 +40,9 @@ from app.models import (
     BenchmarkTakeRequest,
     BenchmarkTakeResult,
     BenchmarkSessionSummary,
+    PipelineTraceRequest,
 )
+from pathlib import Path
 from app.config import settings
 from app.segmenter import segment_text
 from app.annotator import annotator
@@ -41,6 +53,7 @@ from app.renderers.voxcpm import (
     collect_tag_warnings,
 )
 from app.services.siangtts_service import siangtts_service, SynthesizerUnavailable
+from app.services.thonburian_service import thonburian_service, ThonburianServiceUnavailable
 from app.services.pronunciation import (
     dictionary_path,
     load_dictionary,
@@ -102,22 +115,14 @@ def _plan_chunks(
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Connect to the engine and, when it is local, precompute the speaker caches.
-    # A failure here is a warning rather than a crash: the studio's annotation half
-    # works without an engine, and saying so on /health beats refusing to boot.
-    try:
-        siangtts_service.init_speakers()
-        status = siangtts_service.status
-        print(f"[Startup] synthesizer: {status['mode']} {status.get('remote_url') or ''}".rstrip())
-    except Exception as e:
-        print(f"[Startup] Warning: synthesizer unavailable: {e}")
+    print(f"[Startup] Tone Studio running on port {settings.service_port} with Thonburian F5 + SeedVC backend")
     yield
 
 
 app = FastAPI(
-    title="Thai TTS Tone Annotation & Voice Cloning Studio",
-    description="LLM-based emotional tone annotation and SiangTTS (VoxCPM2) Voice Cloning pipeline for Thai speech.",
-    version="2.0.0",
+    title="Thai TTS Tone Annotation & Voice Cloning Studio (Thonburian F5 + SeedVC)",
+    description="LLM-based emotional tone annotation and Thonburian F5 + SeedVC Voice Cloning pipeline for Thai speech.",
+    version="2.1.0",
     lifespan=lifespan,
 )
 
@@ -155,13 +160,22 @@ def benchmark_ui():
     return {"message": "Benchmark UI is loading."}
 
 
+@app.get("/pipeline", include_in_schema=False)
+def pipeline_ui():
+    page = os.path.join(static_dir, "pipeline.html")
+    if os.path.exists(page):
+        return FileResponse(page)
+    return {"message": "Pipeline explorer UI not found."}
+
+
 
 @app.get("/health")
 def health_check():
     return {
         "status": "ok",
         "service": "thai-tts-tone-annotation",
-        "version": "2.0.0",
+        "version": "2.1.0",
+        "port": settings.service_port,
         "provider": settings.llm_provider,
         "default_model": (
             settings.openai_model if settings.llm_provider == "openai"
@@ -171,8 +185,8 @@ def health_check():
             settings.openai_escalate_model if settings.llm_provider == "openai"
             else (settings.gemini_escalate_model if settings.llm_provider == "gemini" else settings.llm_escalate_model)
         ),
-        "speakers_count": len(siangtts_service.list_speakers()),
-        "synthesizer": siangtts_service.status,
+        "speakers_count": len(thonburian_service.list_speakers()),
+        "synthesizer": thonburian_service.status,
     }
 
 
@@ -394,9 +408,9 @@ def delete_speaker_endpoint(speaker_id: str):
 @app.post("/synthesize")
 async def synthesize_endpoint(req: SynthesizeRequest):
     """
-    Synthesizes speech using SiangTTS (VoxCPM2) or mapped engines.
+    Synthesizes speech using Thonburian F5 (emotion) + SeedVC (voice conversion).
     If auto_annotate is True, extracts emotions and injects control instructions automatically.
-    Returns 48kHz WAV audio stream with timestamped filename.
+    Returns 44.1kHz WAV audio stream with timestamped filename.
     """
     text = req.text.strip()
     if not text:
@@ -414,15 +428,18 @@ async def synthesize_endpoint(req: SynthesizeRequest):
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     lora_tag = "lora_off" if lora_mode == "off" else "lora_on"
     spk_tag = f"{req.speaker_id}_" if req.speaker_id else ""
-    filename = f"{ts}_{spk_tag}{lora_tag}.wav"
+    gender_tag = f"{req.gender}_" if req.gender else ""
+    filename = f"{ts}_{gender_tag}{spk_tag}{lora_tag}.wav"
 
-    # Perform synthesis via SiangTTSService
+    # Perform synthesis via ThonburianService
     try:
-        wav_bytes = siangtts_service.synthesize_many(
+        wav_bytes = thonburian_service.synthesize_many(
             parts,
             speaker_id=req.speaker_id,
+            gender=req.gender,
             cfg_value=req.cfg_value,
             inference_timesteps=req.inference_timesteps,
+            speed=req.speed,
             tones=tones,
             breaks=breaks,
             post_process=req.post_process,
@@ -437,8 +454,10 @@ async def synthesize_endpoint(req: SynthesizeRequest):
             media_type="audio/wav",
             headers={"Content-Disposition": f'inline; filename="{filename}"'},
         )
-    except SynthesizerUnavailable as e:
+    except ThonburianServiceUnavailable as e:
         raise HTTPException(status_code=503, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Synthesis failed: {str(e)}")
 
@@ -447,10 +466,12 @@ async def synthesize_endpoint(req: SynthesizeRequest):
 async def synthesize_with_upload_endpoint(
     text: str = Form(...),
     file: Optional[UploadFile] = File(None),
+    gender: Optional[str] = Form(None),
     guidance: Optional[str] = Form(None),
     model: Optional[str] = Form(None),
-    cfg_value: float = Form(2.5),
-    inference_timesteps: int = Form(10),
+    cfg_value: float = Form(2.0),
+    inference_timesteps: int = Form(32),
+    speed: Optional[float] = Form(None),
     auto_annotate: bool = Form(True),
     lora_mode: Optional[str] = Form("on"),
     post_process: bool = Form(True),
@@ -460,7 +481,7 @@ async def synthesize_with_upload_endpoint(
 ):
     """
     Synthesizes speech with a direct one-off uploaded reference audio file.
-    Returns 48kHz WAV audio stream with timestamped filename.
+    Returns 44.1kHz WAV audio stream with timestamped filename.
     """
     clean_text = text.strip()
     if not clean_text:
@@ -476,8 +497,6 @@ async def synthesize_with_upload_endpoint(
     audio_bytes = await file.read() if file else None
     ref_filename = file.filename if file else None
 
-    # Multipart carries the overrides as a JSON string; a malformed one is a client
-    # error rather than something to silently render at defaults.
     dsp_params = None
     if post_process_params:
         try:
@@ -489,16 +508,18 @@ async def synthesize_with_upload_endpoint(
 
     active_lora_mode = lora_mode or "on"
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-    lora_tag = "lora_off" if active_lora_mode == "off" else "lora_on"
-    filename = f"{ts}_custom_{lora_tag}.wav"
+    gender_tag = f"{gender}_" if gender else ""
+    filename = f"{ts}_{gender_tag}custom.wav"
 
     try:
-        wav_bytes = siangtts_service.synthesize_many(
+        wav_bytes = thonburian_service.synthesize_many(
             parts,
             ref_audio_bytes=audio_bytes,
             ref_filename=ref_filename,
+            gender=gender,
             cfg_value=cfg_value,
             inference_timesteps=inference_timesteps,
+            speed=speed,
             tones=tones,
             breaks=breaks,
             post_process=post_process,
@@ -510,8 +531,10 @@ async def synthesize_with_upload_endpoint(
             media_type="audio/wav",
             headers={"Content-Disposition": f'inline; filename="{filename}"'},
         )
-    except SynthesizerUnavailable as e:
+    except ThonburianServiceUnavailable as e:
         raise HTTPException(status_code=503, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Synthesis failed: {str(e)}")
 
@@ -523,9 +546,7 @@ def synthesize_ab_endpoint(req: ABSynthesizeRequest):
     Two ordinary /synthesize calls cannot answer "did the post-processing help",
     because the sampler produces a different take each time and that variation is
     mixed into whatever the processing did. Here the generation happens once and
-    every variant is built from the same chunks, so the difference between the
-    returned files is only the treatment -- and it costs one generation, not one
-    per variant.
+    every variant is built from the same chunks.
     """
     text = req.text.strip()
     if not text:
@@ -553,18 +574,23 @@ def synthesize_ab_endpoint(req: ABSynthesizeRequest):
 
     run_id = f"ab_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     try:
-        takes, sample_rate, chunk_tones = siangtts_service.synthesize_variants(
+        takes, sample_rate, chunk_tones = thonburian_service.synthesize_variants(
             parts,
             variants=specs,
             speaker_id=req.speaker_id,
+            gender=req.gender,
+            donor_set=req.donor_set,
             cfg_value=req.cfg_value,
             inference_timesteps=req.inference_timesteps,
+            speed=req.speed,
             tones=tones,
             breaks=breaks,
             lora_mode=req.lora_mode or "on",
         )
-    except SynthesizerUnavailable as e:
+    except ThonburianServiceUnavailable as e:
         raise HTTPException(status_code=503, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"A/B synthesis failed: {str(e)}")
 
@@ -641,12 +667,117 @@ def get_benchmark_session_endpoint(session_id: str):
     return data
 
 
+# --------------------------------------------------------------------------- #
+# Pipeline explorer: donor -> Thonburian F5 -> SeedVC, every stage playable
+# --------------------------------------------------------------------------- #
+
+PIPELINE_RUNS_DIR = Path("scratch/pipeline_runs")
+
+
+@app.get("/api/pipeline/donor-sets")
+def pipeline_donor_sets_endpoint():
+    """Donor sets (one speaker each) with their emotions and transcripts."""
+    return {"sets": thonburian_service.list_donor_sets()}
+
+
+@app.get("/api/pipeline/speakers")
+def pipeline_speakers_endpoint():
+    """Target voices to clone (reference clips under ref/)."""
+    return {"speakers": thonburian_service.list_speakers()}
+
+
+@app.post("/api/pipeline/trace")
+def pipeline_trace_endpoint(req: PipelineTraceRequest):
+    """Run one utterance through the whole pipeline, returning a URL per stage."""
+    run_id = f"run_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}"
+    run_dir = PIPELINE_RUNS_DIR / run_id
+    try:
+        result = thonburian_service.render_trace(
+            donor_set=req.donor_set,
+            emotion=req.emotion,
+            run_dir=run_dir,
+            text=req.text,
+            speaker_id=req.speaker_id,
+            speed=req.speed,
+        )
+    except ThonburianServiceUnavailable as e:
+        raise HTTPException(status_code=503, detail=str(e))
+    except (ValueError, FileNotFoundError) as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Pipeline failed: {e}")
+
+    def url(name: str) -> str:
+        return f"/api/pipeline/audio/{run_id}/{name}"
+
+    stages = [
+        {
+            "key": "donor",
+            "label": "1. Donor clip (emotion source)",
+            "hint": "คลิปอ้างอิงอารมณ์จาก dataset (บุคลิกต้นทาง)",
+            "url": url(result["files"]["donor"]),
+        },
+        {
+            "key": "f5",
+            "label": "2. Thonburian F5 (emotional, donor timbre)",
+            "hint": f"F5 สร้างเสียงตามข้อความ+อารมณ์ ({result['f5_secs']}s) — ยังเป็นเสียง donor",
+            "url": url(result["files"]["f5"]),
+        },
+        {
+            "key": "vc",
+            "label": "3. SeedVC output (cloned voice)",
+            "hint": f"แปลง timbre เป็นเสียงที่เลือก ({result['vc_secs']}s) — ผลลัพธ์สุดท้าย",
+            "url": url(result["files"]["vc"]),
+        },
+    ]
+    return {
+        "run_id": run_id,
+        "emotion": result["emotion"],
+        "donor_set": result["donor_set"],
+        "target": result["target"],
+        "gen_text": result["gen_text"],
+        "donor_transcript": result["donor_transcript"],
+        "stages": stages,
+    }
+
+
+@app.get("/api/pipeline/audio/{run_id}/{filename}")
+def pipeline_audio_endpoint(run_id: str, filename: str):
+    """Serve one stage's audio from a pipeline run."""
+    # Guard against path traversal: names come from our own run_id/filenames.
+    if "/" in run_id or "\\" in run_id or ".." in run_id or "/" in filename or "\\" in filename or ".." in filename:
+        raise HTTPException(status_code=400, detail="Invalid path")
+    path = (PIPELINE_RUNS_DIR / run_id / filename).resolve()
+    base = PIPELINE_RUNS_DIR.resolve()
+    if base not in path.parents or not path.exists():
+        raise HTTPException(status_code=404, detail="Audio file not found")
+    media = "audio/mpeg" if path.suffix.lower() == ".mp3" else "audio/wav"
+    return FileResponse(path, media_type=media,
+                        headers={"Content-Disposition": f'inline; filename="{path.name}"'})
+
+
 @app.get("/api/benchmark/audio/{session_id}/{filename}")
 def get_benchmark_audio_endpoint(session_id: str, filename: str):
     """Stream synthesized audio file from a benchmark session."""
     path = benchmark_service.get_audio_path(session_id, filename)
     if path is None or not path.exists():
         raise HTTPException(status_code=404, detail="Audio file not found")
+    return FileResponse(
+        path,
+        media_type="audio/wav",
+        headers={"Content-Disposition": f'inline; filename="{path.name}"'},
+    )
+
+
+@app.get("/api/donor-clip/{donor_set}/{emotion}")
+def donor_clip_endpoint(donor_set: str, emotion: str):
+    """Serve one emotion's donor reference clip from a donor set, for preview playback."""
+    for part in (donor_set, emotion):
+        if "/" in part or "\\" in part or ".." in part:
+            raise HTTPException(status_code=400, detail="Invalid path")
+    path = thonburian_service.get_donor_clip_path(donor_set, emotion)
+    if path is None or not path.exists():
+        raise HTTPException(status_code=404, detail="Donor clip not found")
     return FileResponse(
         path,
         media_type="audio/wav",

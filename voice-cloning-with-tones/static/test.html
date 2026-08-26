@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emotion TTS Benchmark & Pipeline Test Suite | SiangTTS</title>
+  <title>Emotion TTS Benchmark & Pipeline Test Suite | Thonburian F5 + SeedVC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css?v=2.1.0">
-  <link rel="stylesheet" href="/static/test.css?v=1.2.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/static/style.css?v=2.2.0">
+  <link rel="stylesheet" href="/static/test.css?v=2.2.0">
 </head>
 <body>
   <div class="test-app-container">
@@ -27,9 +28,9 @@
         <div>
           <div class="test-title-row">
             <h1 class="test-title">Emotion TTS Benchmark & Pipeline Comparison</h1>
-            <span class="test-badge-suite">Test Suite v2.0</span>
+            <span class="test-badge-suite">Thonburian + SeedVC</span>
           </div>
-          <p class="test-subtitle">ทดสอบรันเสียงเดิม ทุกอารมณ์ (10 อารมณ์) ซ้ำหลายๆ ครั้ง (Multi-Take) เพื่อเทียบความต่างและเช็คผลลัพธ์เมื่อปรับแก้ Pipeline</p>
+          <p class="test-subtitle">ทดสอบรันเสียงเดิม ทุกอารมณ์ (5 อารมณ์) ซ้ำหลายๆ ครั้ง (Multi-Take) เพื่อเทียบความต่าง Prosody และผลลัพธ์ของ Thonburian F5 + SeedVC (:8012)</p>
         </div>
       </div>
       <div class="test-header-actions">
@@ -58,17 +59,47 @@
         </div>
         <div class="header-status-pill" id="health-status">
           <span class="status-dot"></span>
-          <span class="status-label">กำลังเชื่อมต่อ GPU Service...</span>
+          <span class="status-label">กำลังเชื่อมต่อ Thonburian + SeedVC...</span>
         </div>
       </div>
 
       <div class="config-grid">
         <!-- Column 1: Voice & Sentence Selection -->
         <div class="config-col">
-          <!-- Speaker Selection -->
+          <!-- Voice Gender Selection -->
           <div class="form-group">
+            <label class="field-label">เพศของเสียงผู้พูด (Voice Gender):</label>
+            <div class="gender-toggle-row" style="display:flex;gap:10px;margin-top:6px;">
+              <label class="gender-radio-label active" id="gender-opt-female" style="flex:1;padding:8px 14px;border:1px solid #3b82f6;background:rgba(59,130,246,0.15);border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px;color:#93c5fd;">
+                <input type="radio" name="bench_gender" value="female" checked style="accent-color:#3b82f6;">
+                <span>👩 หญิง (Female)</span>
+              </label>
+              <label class="gender-radio-label" id="gender-opt-male" style="flex:1;padding:8px 14px;border:1px solid #334155;background:#1e293b;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px;color:#94a3b8;">
+                <input type="radio" name="bench_gender" value="male" style="accent-color:#3b82f6;">
+                <span>👨 ชาย (Male)</span>
+              </label>
+            </div>
+            <small class="field-hint">💡 เลือกว่าจะใช้ Emotion Donor จากเพศหญิงหรือเพศชาย</small>
+          </div>
+
+          <!-- Emotion Donor Set (same person across all emotions) -->
+          <div class="form-group" style="margin-top: 14px;">
+            <label for="donor-set-select" class="field-label">ชุดเสียงต้นแบบอารมณ์ (Emotion Donor — คนเดียวกันทุกอารมณ์):</label>
+            <div style="display:flex;gap:8px;margin-top:6px;align-items:stretch;">
+              <select id="donor-set-select" class="custom-select" style="flex:1;">
+                <option value="">-- อัตโนมัติตามเพศ (Auto by Gender) --</option>
+              </select>
+              <button type="button" id="btn-random-donor-set" class="btn btn-sm btn-secondary" title="สุ่มชุดเสียงต้นแบบ" style="white-space:nowrap;">🎲 สุ่ม</button>
+            </div>
+            <small class="field-hint">💡 เลือกชุดที่ทุกอารมณ์มาจาก <b>คนเดียวกัน</b> เพื่อไม่ให้ความต่างของอารมณ์ปนกับการเปลี่ยนตัวผู้พูด</small>
+            <div id="donor-clip-buttons" class="donor-clip-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
+            <audio id="donor-clip-audio" preload="none" class="hidden"></audio>
+          </div>
+
+          <!-- Speaker Selection -->
+          <div class="form-group" style="margin-top: 14px;">
             <div class="field-label-row">
-              <label for="speaker-select" class="field-label">เลือกเสียงผู้พูด (Speaker Profile):</label>
+              <label for="speaker-select" class="field-label">เลือกเสียงผู้พูดเป้าหมาย (SeedVC Target):</label>
               <button type="button" id="btn-play-ref" class="btn-icon-subtle hidden" title="ฟังเสียง Reference ของผู้พูด">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 <span>ฟังเสียง Ref</span>
@@ -76,7 +107,7 @@
               <audio id="speaker-ref-audio" preload="none" class="hidden"></audio>
             </div>
             <select id="speaker-select" class="custom-select">
-              <option value="">-- ไม่ใช้เสียงโคลน (Auto-Seed Neutral Voice) --</option>
+              <option value="">-- ไม่ใช้เสียงโคลน (Default Voice) --</option>
             </select>
             <small class="field-hint">💡 ระบบจะล็อค Voice Identity เดียวกันนี้ตลอดทุกอารมณ์และทุก Take</small>
           </div>
@@ -98,7 +129,7 @@
           <!-- Emotion Selector Checkboxes -->
           <div class="form-group">
             <div class="field-label-row">
-              <label class="field-label">เลือกอารมณ์ที่ต้องการทดสอบ:</label>
+              <label class="field-label">เลือกอารมณ์ที่ต้องการทดสอบ (5 อารมณ์):</label>
               <div class="action-links">
                 <button type="button" id="btn-select-all-emotions" class="btn-text-action">เลือกทั้งหมด</button>
                 <span class="sep">|</span>
@@ -125,31 +156,23 @@
             </div>
 
             <div class="param-box">
-              <label for="param-intensity" class="field-label">ระดับความเข้ม (Intensity):</label>
-              <select id="param-intensity" class="custom-select-sm">
-                <option value="1">Level 1 (แผ่วเบา / Slight)</option>
-                <option value="2" selected>Level 2 (มาตรฐาน / Moderate)</option>
-                <option value="3">Level 3 (รุนแรง / Intense)</option>
-              </select>
-            </div>
-
-            <div class="param-box">
               <label for="param-cfg" class="field-label">CFG Guidance:</label>
               <select id="param-cfg" class="custom-select-sm">
                 <option value="1.5">1.5 (นุ่มนวล)</option>
-                <option value="2.0">2.0 (ธรรมชาติ)</option>
-                <option value="2.5" selected>2.5 (แนะนำ)</option>
-                <option value="3.5">3.5 (ชัดเจน)</option>
-                <option value="4.5">4.5 (จัดจ้าน)</option>
+                <option value="2.0" selected>2.0 (แนะนำ / สมดุล)</option>
+                <option value="2.5">2.5 (ชัดเจน)</option>
+                <option value="3.0">3.0 (เน้นอารมณ์จัด)</option>
               </select>
             </div>
 
             <div class="param-box">
-              <label for="param-lora-mode" class="field-label">โหมด LoRA:</label>
-              <select id="param-lora-mode" class="custom-select-sm">
-                <option value="on" selected>✨ Thai LoRA (ON)</option>
-                <option value="off">🚫 LoRA OFF (Base)</option>
-                <option value="legacy">⚡ Legacy (2.0/2.0)</option>
+              <label for="param-steps" class="field-label">NFE Steps:</label>
+              <select id="param-steps" class="custom-select-sm">
+                <option value="16">16 (เร็วมาก)</option>
+                <option value="24">24 (เร็ว)</option>
+                <option value="32" selected>32 (แนะนำ / คุณภาพดี)</option>
+                <option value="48">48 (ละเอียด)</option>
+                <option value="64">64 (สูงสุด)</option>
               </select>
             </div>
 
@@ -189,7 +212,7 @@
       <!-- Action Bar -->
       <div class="config-action-bar">
         <div class="suite-info-summary" id="suite-info-summary">
-          <span class="info-badge">พร้อมทดสอบ: <strong id="summary-emotions-count">10</strong> อารมณ์ × <strong id="summary-takes-count">3</strong> รอบ = รวม <strong id="summary-total-takes">30</strong> Takes</span>
+          <span class="info-badge">พร้อมทดสอบ: <strong id="summary-emotions-count">5</strong> อารมณ์ × <strong id="summary-takes-count">3</strong> รอบ = รวม <strong id="summary-total-takes">15</strong> Takes</span>
         </div>
         <div class="action-btn-group">
           <button type="button" id="btn-run-benchmark" class="btn btn-primary btn-run-large">
@@ -241,6 +264,7 @@
       <div class="ab-uses-config" id="ab-uses-config">
         <span class="ab-uses-label">ใช้ค่าจากข้อ 1:</span>
         <span class="ab-chip" id="ab-echo-speaker">—</span>
+        <span class="ab-chip" id="ab-echo-donor">—</span>
         <span class="ab-chip" id="ab-echo-cfg">—</span>
         <span class="ab-chip" id="ab-echo-lora">—</span>
         <span class="ab-chip ab-chip-text" id="ab-echo-text">—</span>
@@ -403,7 +427,7 @@
           <thead>
             <tr>
               <th class="th-emotion">อารมณ์ (Emotion)</th>
-              <th class="th-instruction">คำสั่ง VoxCPM2 Instruction</th>
+              <th class="th-instruction">แท็กอารมณ์ (Emotion Tag)</th>
               <th class="th-take" id="th-take-1">Take 1</th>
               <th class="th-take" id="th-take-2">Take 2</th>
               <th class="th-take" id="th-take-3">Take 3</th>
@@ -450,6 +474,6 @@
   <!-- Audio Element for background playback comparison -->
   <audio id="global-suite-audio" preload="none" class="hidden"></audio>
 
-  <script src="/static/test.js?v=1.2.1"></script>
+  <script src="/static/test.js?v=1.5.0"></script>
 </body>
 </html>

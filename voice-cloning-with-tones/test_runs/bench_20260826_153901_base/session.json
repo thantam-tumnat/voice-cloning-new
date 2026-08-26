@@ -1,0 +1,91 @@
+{
+  "session_id": "bench_20260826_153901_base",
+  "name": "Emotion Benchmark (20260826_153901)",
+  "created_at": "2026-08-26T15:39:01.660590",
+  "speaker_id": null,
+  "gender": "female",
+  "donor_set": "female_004",
+  "text": "???? 1,250 ???",
+  "emotions": [
+    "happy"
+  ],
+  "repeats": 1,
+  "total_takes": 1,
+  "completed_takes": 1,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_004",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 32,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "???? 1,250 ???",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_153901_base/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 1.68,
+        "rms": 0.0117,
+        "energy_dbfs": -38.7,
+        "f0_med_hz": 235.8,
+        "f0_p10_hz": 199.2,
+        "f0_p90_hz": 292.1,
+        "f0_spread_st": 6.62
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_153901_base/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "???? 1,250 ???",
+            "f5_input": {
+              "text": "?? หนึ่งพันสองร้อยห้าสิบ ??",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 32,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "lion.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_153901_base/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 1.68,
+            "rms": 0.0117,
+            "energy_dbfs": -38.7,
+            "f0_med_hz": 235.8,
+            "f0_p10_hz": 199.2,
+            "f0_p90_hz": 292.1,
+            "f0_spread_st": 6.62
+          }
+        }
+      ],
+      "elapsed_s": 18.59,
+      "error": null,
+      "timestamp": "2026-08-26T15:39:20.514157"
+    }
+  }
+}

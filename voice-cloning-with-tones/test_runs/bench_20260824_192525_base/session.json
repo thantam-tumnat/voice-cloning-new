@@ -1,0 +1,26 @@
+{
+  "session_id": "bench_20260824_192525_base",
+  "name": "Emotion Benchmark (20260824_192525)",
+  "created_at": "2026-08-24T19:25:25.854549",
+  "speaker_id": null,
+  "gender": "female",
+  "text": "ทดสอบ",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 0,
+  "params": {
+    "gender": "female",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 32,
+    "lora_mode": "on"
+  },
+  "takes": {}
+}

@@ -1,0 +1,1019 @@
+{
+  "session_id": "bench_20260826_154257_however",
+  "name": "Emotion Benchmark (20260826_154257)",
+  "created_at": "2026-08-26T15:42:57.782905",
+  "speaker_id": "however",
+  "gender": "female",
+  "donor_set": "female_004",
+  "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 15,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_004",
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 16,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 4.06,
+        "rms": 0.1517,
+        "energy_dbfs": -16.4,
+        "f0_med_hz": 272.2,
+        "f0_p10_hz": 241.0,
+        "f0_p90_hz": 324.3,
+        "f0_spread_st": 5.14
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_1__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 4.06,
+            "rms": 0.1517,
+            "energy_dbfs": -16.4,
+            "f0_med_hz": 272.2,
+            "f0_p10_hz": 241.0,
+            "f0_p90_hz": 324.3,
+            "f0_spread_st": 5.14
+          }
+        }
+      ],
+      "elapsed_s": 4.05,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:01.834281"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "[neutral]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 3.9,
+        "rms": 0.1316,
+        "energy_dbfs": -17.6,
+        "f0_med_hz": 274.8,
+        "f0_p10_hz": 239.7,
+        "f0_p90_hz": 343.2,
+        "f0_spread_st": 6.22
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_2__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 3.9,
+            "rms": 0.1316,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 274.8,
+            "f0_p10_hz": 239.7,
+            "f0_p90_hz": 343.2,
+            "f0_spread_st": 6.22
+          }
+        }
+      ],
+      "elapsed_s": 3.7,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:05.536610"
+    },
+    "neutral_3": {
+      "emotion": "neutral",
+      "take_idx": 3,
+      "instruction": "[neutral]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "neutral_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_3.wav",
+      "metrics": {
+        "dur_s": 3.96,
+        "rms": 0.1411,
+        "energy_dbfs": -17.0,
+        "f0_med_hz": 273.9,
+        "f0_p10_hz": 241.6,
+        "f0_p90_hz": 336.6,
+        "f0_spread_st": 5.74
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_3__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/neutral_take_3.wav",
+          "metrics": {
+            "dur_s": 3.96,
+            "rms": 0.1411,
+            "energy_dbfs": -17.0,
+            "f0_med_hz": 273.9,
+            "f0_p10_hz": 241.6,
+            "f0_p90_hz": 336.6,
+            "f0_spread_st": 5.74
+          }
+        }
+      ],
+      "elapsed_s": 3.75,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:09.293515"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 4.72,
+        "rms": 0.1355,
+        "energy_dbfs": -17.4,
+        "f0_med_hz": 273.9,
+        "f0_p10_hz": 232.1,
+        "f0_p90_hz": 329.1,
+        "f0_spread_st": 6.05
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 4.72,
+            "rms": 0.1355,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 273.9,
+            "f0_p10_hz": 232.1,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 6.05
+          }
+        }
+      ],
+      "elapsed_s": 3.73,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:13.030180"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "[happy]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 4.79,
+        "rms": 0.125,
+        "energy_dbfs": -18.1,
+        "f0_med_hz": 274.8,
+        "f0_p10_hz": 232.1,
+        "f0_p90_hz": 351.4,
+        "f0_spread_st": 7.18
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_2__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 4.79,
+            "rms": 0.125,
+            "energy_dbfs": -18.1,
+            "f0_med_hz": 274.8,
+            "f0_p10_hz": 232.1,
+            "f0_p90_hz": 351.4,
+            "f0_spread_st": 7.18
+          }
+        }
+      ],
+      "elapsed_s": 3.64,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:16.677102"
+    },
+    "happy_3": {
+      "emotion": "happy",
+      "take_idx": 3,
+      "instruction": "[happy]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "happy_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_3.wav",
+      "metrics": {
+        "dur_s": 4.78,
+        "rms": 0.1261,
+        "energy_dbfs": -18.0,
+        "f0_med_hz": 275.6,
+        "f0_p10_hz": 230.9,
+        "f0_p90_hz": 344.5,
+        "f0_spread_st": 6.93
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_3__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/happy_take_3.wav",
+          "metrics": {
+            "dur_s": 4.78,
+            "rms": 0.1261,
+            "energy_dbfs": -18.0,
+            "f0_med_hz": 275.6,
+            "f0_p10_hz": 230.9,
+            "f0_p90_hz": 344.5,
+            "f0_spread_st": 6.93
+          }
+        }
+      ],
+      "elapsed_s": 3.66,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:20.346413"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "[sad]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 5.71,
+        "rms": 0.1153,
+        "energy_dbfs": -18.8,
+        "f0_med_hz": 274.8,
+        "f0_p10_hz": 234.6,
+        "f0_p90_hz": 339.2,
+        "f0_spread_st": 6.39
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_1__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 5.71,
+            "rms": 0.1153,
+            "energy_dbfs": -18.8,
+            "f0_med_hz": 274.8,
+            "f0_p10_hz": 234.6,
+            "f0_p90_hz": 339.2,
+            "f0_spread_st": 6.39
+          }
+        }
+      ],
+      "elapsed_s": 4.41,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:24.762038"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "[sad]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 5.72,
+        "rms": 0.1105,
+        "energy_dbfs": -19.1,
+        "f0_med_hz": 273.1,
+        "f0_p10_hz": 221.6,
+        "f0_p90_hz": 364.5,
+        "f0_spread_st": 8.61
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_2__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 5.72,
+            "rms": 0.1105,
+            "energy_dbfs": -19.1,
+            "f0_med_hz": 273.1,
+            "f0_p10_hz": 221.6,
+            "f0_p90_hz": 364.5,
+            "f0_spread_st": 8.61
+          }
+        }
+      ],
+      "elapsed_s": 4.38,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:29.150088"
+    },
+    "sad_3": {
+      "emotion": "sad",
+      "take_idx": 3,
+      "instruction": "[sad]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "sad_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_3.wav",
+      "metrics": {
+        "dur_s": 5.68,
+        "rms": 0.106,
+        "energy_dbfs": -19.5,
+        "f0_med_hz": 273.1,
+        "f0_p10_hz": 234.6,
+        "f0_p90_hz": 326.7,
+        "f0_spread_st": 5.73
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_3__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/sad_take_3.wav",
+          "metrics": {
+            "dur_s": 5.68,
+            "rms": 0.106,
+            "energy_dbfs": -19.5,
+            "f0_med_hz": 273.1,
+            "f0_p10_hz": 234.6,
+            "f0_p90_hz": 326.7,
+            "f0_spread_st": 5.73
+          }
+        }
+      ],
+      "elapsed_s": 4.31,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:33.464748"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 5.49,
+        "rms": 0.1764,
+        "energy_dbfs": -15.1,
+        "f0_med_hz": 272.2,
+        "f0_p10_hz": 227.3,
+        "f0_p90_hz": 343.5,
+        "f0_spread_st": 7.15
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_1__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 5.49,
+            "rms": 0.1764,
+            "energy_dbfs": -15.1,
+            "f0_med_hz": 272.2,
+            "f0_p10_hz": 227.3,
+            "f0_p90_hz": 343.5,
+            "f0_spread_st": 7.15
+          }
+        }
+      ],
+      "elapsed_s": 3.9,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:37.370389"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "[angry]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 5.38,
+        "rms": 0.1742,
+        "energy_dbfs": -15.2,
+        "f0_med_hz": 275.6,
+        "f0_p10_hz": 226.2,
+        "f0_p90_hz": 350.0,
+        "f0_spread_st": 7.56
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_2__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 5.38,
+            "rms": 0.1742,
+            "energy_dbfs": -15.2,
+            "f0_med_hz": 275.6,
+            "f0_p10_hz": 226.2,
+            "f0_p90_hz": 350.0,
+            "f0_spread_st": 7.56
+          }
+        }
+      ],
+      "elapsed_s": 3.82,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:41.193369"
+    },
+    "angry_3": {
+      "emotion": "angry",
+      "take_idx": 3,
+      "instruction": "[angry]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "angry_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_3.wav",
+      "metrics": {
+        "dur_s": 5.44,
+        "rms": 0.1598,
+        "energy_dbfs": -15.9,
+        "f0_med_hz": 277.4,
+        "f0_p10_hz": 228.5,
+        "f0_p90_hz": 350.0,
+        "f0_spread_st": 7.38
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_3__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/angry_take_3.wav",
+          "metrics": {
+            "dur_s": 5.44,
+            "rms": 0.1598,
+            "energy_dbfs": -15.9,
+            "f0_med_hz": 277.4,
+            "f0_p10_hz": 228.5,
+            "f0_p90_hz": 350.0,
+            "f0_spread_st": 7.38
+          }
+        }
+      ],
+      "elapsed_s": 3.88,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:45.080333"
+    },
+    "frustrated_1": {
+      "emotion": "frustrated",
+      "take_idx": 1,
+      "instruction": "[frustrated]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "frustrated_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_1.wav",
+      "metrics": {
+        "dur_s": 6.76,
+        "rms": 0.136,
+        "energy_dbfs": -17.3,
+        "f0_med_hz": 270.6,
+        "f0_p10_hz": 243.6,
+        "f0_p90_hz": 324.3,
+        "f0_spread_st": 4.95
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_1__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_1.wav",
+          "metrics": {
+            "dur_s": 6.76,
+            "rms": 0.136,
+            "energy_dbfs": -17.3,
+            "f0_med_hz": 270.6,
+            "f0_p10_hz": 243.6,
+            "f0_p90_hz": 324.3,
+            "f0_spread_st": 4.95
+          }
+        }
+      ],
+      "elapsed_s": 4.93,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:50.019470"
+    },
+    "frustrated_2": {
+      "emotion": "frustrated",
+      "take_idx": 2,
+      "instruction": "[frustrated]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "frustrated_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_2.wav",
+      "metrics": {
+        "dur_s": 6.74,
+        "rms": 0.1433,
+        "energy_dbfs": -16.9,
+        "f0_med_hz": 272.2,
+        "f0_p10_hz": 245.0,
+        "f0_p90_hz": 329.1,
+        "f0_spread_st": 5.11
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_2__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_2.wav",
+          "metrics": {
+            "dur_s": 6.74,
+            "rms": 0.1433,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 272.2,
+            "f0_p10_hz": 245.0,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 5.11
+          }
+        }
+      ],
+      "elapsed_s": 4.98,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:55.007053"
+    },
+    "frustrated_3": {
+      "emotion": "frustrated",
+      "take_idx": 3,
+      "instruction": "[frustrated]",
+      "spoken_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+      "filename": "frustrated_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_3.wav",
+      "metrics": {
+        "dur_s": 6.59,
+        "rms": 0.1331,
+        "energy_dbfs": -17.5,
+        "f0_med_hz": 272.2,
+        "f0_p10_hz": 246.4,
+        "f0_p90_hz": 302.1,
+        "f0_spread_st": 3.53
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_3__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+            "f5_input": {
+              "text": "ในที่สุดโปรเจกต์นี้ก็สำเร็จลุล่วงไปได้ด้วยดี ขอแสดงความยินดีด้วยครับ",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "however.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_154257_however/frustrated_take_3.wav",
+          "metrics": {
+            "dur_s": 6.59,
+            "rms": 0.1331,
+            "energy_dbfs": -17.5,
+            "f0_med_hz": 272.2,
+            "f0_p10_hz": 246.4,
+            "f0_p90_hz": 302.1,
+            "f0_spread_st": 3.53
+          }
+        }
+      ],
+      "elapsed_s": 4.93,
+      "error": null,
+      "timestamp": "2026-08-26T15:43:59.944696"
+    }
+  }
+}
