@@ -1,0 +1,92 @@
+{
+  "session_id": "bench_20260826_171511_lion",
+  "name": "Emotion Benchmark (20260826_171511)",
+  "created_at": "2026-08-26T17:15:11.909972",
+  "speaker_id": "lion",
+  "gender": "female",
+  "donor_set": "female_004",
+  "text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+  "emotions": [
+    "happy"
+  ],
+  "repeats": 1,
+  "total_takes": 1,
+  "completed_takes": 1,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_004",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 32,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_171511_lion/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 3.66,
+        "rms": 0.0104,
+        "energy_dbfs": -39.6,
+        "f0_med_hz": 237.7,
+        "f0_p10_hz": 192.6,
+        "f0_p90_hz": 300.0,
+        "f0_spread_st": 7.67
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_171511_lion/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "เขาบอกฉันแบบนั้นจริงๆ นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+            "f5_input": {
+              "text": "เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.975,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 32,
+              "lora_mode": "on",
+              "donor_set": "female_004"
+            },
+            "seedvc_input": {
+              "target": "lion.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_171511_lion/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 3.66,
+            "rms": 0.0104,
+            "energy_dbfs": -39.6,
+            "f0_med_hz": 237.7,
+            "f0_p10_hz": 192.6,
+            "f0_p90_hz": 300.0,
+            "f0_spread_st": 7.67
+          }
+        }
+      ],
+      "elapsed_s": 3.51,
+      "error": null,
+      "timestamp": "2026-08-26T17:15:17.480276"
+    }
+  }
+}

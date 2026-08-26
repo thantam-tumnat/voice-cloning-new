@@ -1,10 +1,11 @@
-INFO:     Started server process [22612]
+INFO:     Started server process [42640]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8012 (Press CTRL+C to quit)
 [Startup] Tone Studio running on port 8012 with Thonburian F5 + SeedVC backend
-INFO:     127.0.0.1:55931 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55933 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56431 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56451 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56453 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
 C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\google\api_core\_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.11) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
   warnings.warn(message, FutureWarning)
 C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\pydantic\_internal\_generate_schema.py:2274: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
@@ -13,7 +14,7 @@ C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\
   warnings.warn(
 [Thonburian] Loading Thonburian F5 on cuda:0 ...
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[Thonburian] Ready in 4.2s on cuda:0
+[Thonburian] Ready in 4.7s on cuda:0
 Download Vocos from huggingface charactr/vocos-mel-24khz
 
 vocab :  C:\Users\opendream002\.cache\huggingface\hub\models--biodatlab--ThonburianTTS\snapshots\ac854d8b3d59dd240812ed486072c357e0f515b6\megaF5\mega_vocab.txt
@@ -24,20 +25,42 @@ Converting audio...
 Using custom reference text...
 
 ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
-gen_text 0 ??
+gen_text 0 สวัสดีครับผมชื่อสมชายยินดีที่ได้รู้จักทุกคน
 
 
 Generating audio in 1 batches...
-  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  2.00s/it]100%|██████████| 1/1 [00:01<00:00,  2.00s/it]
-INFO:     127.0.0.1:55935 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55942 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.38s/it]100%|██████████| 1/1 [00:02<00:00,  2.38s/it]
+INFO:     127.0.0.1:61432 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63930 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
 Converting audio...
 Using custom reference text...
 
 ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
-gen_text 0 ??
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
 
 
 Generating audio in 1 batches...
-  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.11s/it]100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
-INFO:     127.0.0.1:55944 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.99s/it]100%|██████████| 1/1 [00:01<00:00,  1.99s/it]
+INFO:     127.0.0.1:63932 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63938 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 วันนี้ดีใจมากเลยที่ได้เจอทุกคน
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.56s/it]100%|██████████| 1/1 [00:01<00:00,  1.56s/it]
+INFO:     127.0.0.1:63940 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63947 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 ราคาหนึ่งพันสองร้อยห้าสิบบาท ลดยี่สิบเปอร์เซ็นต์
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.79s/it]100%|██████████| 1/1 [00:01<00:00,  1.79s/it]
+INFO:     127.0.0.1:63949 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
