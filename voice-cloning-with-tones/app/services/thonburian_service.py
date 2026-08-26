@@ -42,6 +42,8 @@ from app.services.audio_post import (
     assemble_with_spans,
     butt_join,
     butt_join_with_spans,
+    fade_edges,
+    trim_silence,
     voiced_rms,
 )
 from app.services.pronunciation import apply_pronunciation
@@ -481,6 +483,151 @@ class ThonburianService:
         except Exception:
             pass
 
+    # ------------------------------------------------------------------ #
+    # F5 single-batch guard (stop mid-utterance pauses / skipped words)
+    # ------------------------------------------------------------------ #
+
+    @staticmethod
+    def _f5_max_bytes(donor_wav: Path, donor_txt: str) -> Optional[int]:
+        """The UTF-8 byte budget F5 keeps one gen_text in a *single* batch.
+
+        Mirrors flowtts ``infer_process``: ``max_chars = ref_bytes / ref_dur *
+        (22 - ref_dur)``. Beyond it, F5 splits gen_text into batches, generates each
+        with its own (over-)estimated duration and cross-fades them back together --
+        which is exactly what leaves a pause hanging at every seam and lets a syllable
+        get swallowed in the overlap. We size our own split just under this so every
+        F5 call stays one batch. F5 measures the *silence-trimmed* reference, which is
+        shorter than the raw file and therefore yields a slightly larger budget, so
+        computing from the raw duration here is deliberately conservative.
+        """
+        try:
+            info = sf.info(str(donor_wav))
+            dur = info.frames / info.samplerate if info.samplerate else 0.0
+        except Exception:
+            return None
+        if dur <= 0 or dur >= 22:
+            return None
+        ref_bytes = len((donor_txt or "").encode("utf-8"))
+        if ref_bytes <= 0:
+            return None
+        return int(ref_bytes / dur * (22 - dur))
+
+    def _split_for_f5(
+        self, body_text: str, donor_wav: Path, donor_txt: str,
+        *, safety: float = 0.85, min_bytes: int = 40,
+    ) -> List[str]:
+        """Split ``body_text`` at Thai word boundaries into single-batch F5 pieces.
+
+        Returns ``[body_text]`` unchanged when it already fits F5's one-batch budget
+        (the common case -- most tone runs are short enough), so short utterances are
+        byte-for-byte untouched. Only long runs are pre-split, and at word boundaries
+        via newmm so a word is never cut. A too-small trailing piece is merged back so
+        no fragment trips F5's ``< 10 bytes -> speed 0.3`` slow-down path.
+        """
+        text = (body_text or "").strip()
+        if not text:
+            return []
+        budget = self._f5_max_bytes(donor_wav, donor_txt)
+        if not budget:
+            return [text]
+        limit = max(min_bytes, int(budget * safety))
+        if len(text.encode("utf-8")) <= limit:
+            return [text]
+
+        try:
+            from pythainlp.tokenize import word_tokenize
+            words = word_tokenize(text, engine="newmm")
+        except Exception:
+            return [text]
+
+        pieces: List[str] = []
+        cur = ""
+        for w in words:
+            if cur and len((cur + w).encode("utf-8")) > limit:
+                pieces.append(cur)
+                cur = ""
+            cur += w
+        if cur:
+            pieces.append(cur)
+
+        cleaned = [p.strip() for p in pieces if p.strip()]
+        if not cleaned:
+            return [text]
+        # Fold a tiny tail into its neighbour so no piece is short enough to hit F5's
+        # 0.3x slow-down (or to under-estimate its own duration and drop a syllable).
+        if len(cleaned) >= 2 and len(cleaned[-1].encode("utf-8")) < min_bytes:
+            cleaned[-2] = f"{cleaned[-2]} {cleaned[-1]}".strip()
+            cleaned.pop()
+        return cleaned
+
+    def _render_f5(
+        self,
+        pipeline: Any,
+        *,
+        text: str,
+        donor_wav: Path,
+        donor_txt: str,
+        out_path: Path,
+        speed: float,
+        scratch_dir: Path,
+        tag: str,
+    ) -> None:
+        """Generate one F5 clip for ``text`` into ``out_path``, single-batch guaranteed.
+
+        Short text is one plain F5 call (unchanged behaviour). Long text is split into
+        F5-single-batch pieces (see ``_split_for_f5``), each generated on its own, then
+        each piece's F5-padded trailing/leading silence is trimmed *before* joining --
+        so the over-allocated tail that used to surface as a mid-sentence pause is gone,
+        and the join is a short controlled fade we own instead of F5's blind cross-fade.
+        """
+        pieces = self._split_for_f5(text, donor_wav, donor_txt)
+        if len(pieces) <= 1:
+            pipeline(
+                text=text,
+                ref_voice=str(donor_wav.resolve()),
+                ref_text=donor_txt,
+                output_file=str(out_path.resolve()),
+                speed=speed,
+            )
+            return
+
+        rendered: List[Tuple[np.ndarray, int]] = []
+        for pj, piece in enumerate(pieces):
+            ptmp = scratch_dir / f"{tag}_p{pj}.wav"
+            try:
+                pipeline(
+                    text=piece,
+                    ref_voice=str(donor_wav.resolve()),
+                    ref_text=donor_txt,
+                    output_file=str(ptmp.resolve()),
+                    speed=speed,
+                )
+                self._depeak_f5(ptmp)
+                a, psr = sf.read(str(ptmp), dtype="float32")
+                if a.ndim > 1:
+                    a = a.mean(axis=1)
+                a = trim_silence(a, psr)
+                if a.size:
+                    a = fade_edges(a, psr)
+                    rendered.append((a, int(psr)))
+            finally:
+                ptmp.unlink(missing_ok=True)
+
+        if not rendered:
+            raise ValueError("F5 produced no audio for any sub-piece")
+
+        psr = rendered[0][1]
+        # A short inter-piece gap keeps the seam from sounding glued while staying well
+        # under a real pause; edges are already faded so it never clicks.
+        gap = np.zeros(int(0.04 * psr), dtype=np.float32)
+        merged: List[np.ndarray] = []
+        for pj, (a, _ps) in enumerate(rendered):
+            if pj:
+                merged.append(gap)
+            merged.append(a)
+        out = np.concatenate(merged).astype("float32")
+        sf.write(str(out_path), out, psr, subtype="FLOAT")
+
     @staticmethod
     def _median_f0(wav_path: Path) -> Optional[float]:
         """Median voiced F0 (Hz) of a clip via autocorrelation, transcript-free.
@@ -617,13 +764,16 @@ class ThonburianService:
         modes_out: List[Dict[str, Any]] = []
         pre_vc: Dict[str, Any] = {}
         try:
-            # 1. F5 once.
-            pipeline(
+            # 1. F5 once (single-batch guarded so long text keeps its rhythm).
+            self._render_f5(
+                pipeline,
                 text=body_text,
-                ref_voice=str(donor_wav.resolve()),
-                ref_text=donor_txt,
-                output_file=str(thon_out.resolve()),
+                donor_wav=donor_wav,
+                donor_txt=donor_txt,
+                out_path=thon_out,
                 speed=chunk_speed,
+                scratch_dir=scratch_dir,
+                tag=f"f0cmp_{emotion}_{ts}",
             )
             self._depeak_f5(thon_out)
 
@@ -827,13 +977,18 @@ class ThonburianService:
                         },
                     })
 
-                # 4. Thonburian F5 generation (24 kHz)
-                pipeline(
+                # 4. Thonburian F5 generation (24 kHz). Long runs are pre-split into
+                # single-batch pieces so F5 never inserts its own seam pause / drops a
+                # word at a batch boundary (see _render_f5).
+                self._render_f5(
+                    pipeline,
                     text=body_text,
-                    ref_voice=str(donor_wav.resolve()),
-                    ref_text=donor_txt,
-                    output_file=str(thon_out.resolve()),
+                    donor_wav=donor_wav,
+                    donor_txt=donor_txt,
+                    out_path=thon_out,
                     speed=chunk_speed,
+                    scratch_dir=scratch_dir,
+                    tag=f"thon_{emotion}_{i}_{ts}",
                 )
 
                 # Tame F5's overshoot before anything reads it (SeedVC + pre-VC).
@@ -1034,12 +1189,15 @@ class ThonburianService:
             # anything the caller left unset), then record what actually took.
             effective_tuning = self._apply_audio_tuning(tuning)
             t0 = time.time()
-            pipeline(
+            self._render_f5(
+                pipeline,
                 text=body,
-                ref_voice=str(donor_wav.resolve()),
-                ref_text=donor_txt,
-                output_file=str(stage_a.resolve()),
+                donor_wav=donor_wav,
+                donor_txt=donor_txt,
+                out_path=stage_a,
                 speed=speed_value,
+                scratch_dir=run_dir,
+                tag=f"A_f5_{emotion}",
             )
             self._depeak_f5(stage_a)
             f5_secs = time.time() - t0
