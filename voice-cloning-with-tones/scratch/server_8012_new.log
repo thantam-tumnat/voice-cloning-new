@@ -1,10 +1,12 @@
-INFO:     Started server process [26248]
+INFO:     Started server process [14724]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8012 (Press CTRL+C to quit)
 [Startup] Tone Studio running on port 8012 with Thonburian F5 + SeedVC backend
-INFO:     127.0.0.1:52125 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52126 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57402 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57402 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57402 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51400 - "GET /health HTTP/1.1" 200 OK
 C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\google\api_core\_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.11) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
   warnings.warn(message, FutureWarning)
 C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\pydantic\_internal\_generate_schema.py:2274: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
@@ -13,7 +15,7 @@ C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\
   warnings.warn(
 [Thonburian] Loading Thonburian F5 on cuda:0 ...
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[Thonburian] Ready in 4.3s on cuda:0
+[Thonburian] Ready in 4.7s on cuda:0
 Download Vocos from huggingface charactr/vocos-mel-24khz
 
 vocab :  C:\Users\opendream002\.cache\huggingface\hub\models--biodatlab--ThonburianTTS\snapshots\ac854d8b3d59dd240812ed486072c357e0f515b6\megaF5\mega_vocab.txt
@@ -23,50 +25,624 @@ model :  C:\Users\opendream002\.cache\huggingface\hub\models--biodatlab--Thonbur
 Converting audio...
 Using custom reference text...
 
-ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
-gen_text 0 ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 วันนี้เป็นวันที่อากาศแจ่มใสมากผมตื่นแต่เช้าออกไปเดินเล่นในสวนสาธารณะใกล้บ้าน
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.85s/it]100%|██████████| 1/1 [00:02<00:00,  2.85s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 แล้วก็แวะซื้อกาแฟร้านโปรดระหว่างทางกลับบ้าน ผมนั่งอ่านหนังสือเล่มใหม่ที่เพิ่งซื้อมา
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.44s/it]100%|██████████| 1/1 [00:02<00:00,  2.44s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 รู้สึกผ่อนคลายและมีความสุขกับช่วงเวลาเงียบสงบแบบนี้มากจริงจริง อยากให้ทุกวันเป็นแบบนี้
 
 
 Generating audio in 1 batches...
   0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.45s/it]100%|██████████| 1/1 [00:02<00:00,  2.45s/it]
-INFO:     127.0.0.1:52127 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53898 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เพราะมันทำให้ผมได้พักผ่อนและเติมพลังก่อนเริ่มสัปดาห์การทำงานที่ยุ่งเหยิงอีกครั้ง
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.38s/it]100%|██████████| 1/1 [00:02<00:00,  2.38s/it]
+INFO:     127.0.0.1:51405 - "POST /synthesize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64866 - "GET /api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49647 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49647 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49647 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50581 - "GET /api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50581 - "GET /api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57127 - "GET /api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57127 - "GET /api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__f0_baseline.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62193 - "GET /api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52170 - "GET /api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52170 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65098 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52170 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52170 - "GET /api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62330 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62330 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62330 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60210 - "GET /api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60210 - "GET /api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60210 - "GET /api/benchmark/audio/bench_20260826_183055_determination/happy_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60210 - "GET /api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60210 - "GET /api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54140 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54140 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54140 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /static/style.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /static/test.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /static/test.js?v=1.5.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53102 - "GET /api/donor-clip/female_011/angry HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53102 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.34s/it]100%|██████████| 1/1 [00:01<00:00,  1.34s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.95s/it]100%|██████████| 1/1 [00:01<00:00,  1.95s/it]
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.97s/it]100%|██████████| 1/1 [00:01<00:00,  1.97s/it]
+INFO:     127.0.0.1:56753 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56753 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56753 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.96s/it]100%|██████████| 1/1 [00:01<00:00,  1.96s/it]
+INFO:     127.0.0.1:54321 - "GET /api/benchmark/audio/bench_20260826_184129_however/neutral_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
 Converting audio...
 Using custom reference text...
 
 ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
-gen_text 0 ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
 
 
 Generating audio in 1 batches...
-  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.77s/it]100%|██████████| 1/1 [00:01<00:00,  1.77s/it]
-INFO:     127.0.0.1:53899 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53932 - "GET /test HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60507 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60507 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:60507 - "GET /models HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53667 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53548 - "GET /models HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53667 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57296 - "GET /test HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57296 - "GET /static/style.css?v=2.2.0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59215 - "GET /static/test.css?v=2.2.0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59215 - "GET /static/test.js?v=1.5.0 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57296 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59215 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59215 - "GET /favicon.ico HTTP/1.1" 404 Not Found
-INFO:     127.0.0.1:52874 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52874 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:52874 - "GET /models HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55453 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55453 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55453 - "GET /models HTTP/1.1" 200 OK
-INFO:     127.0.0.1:64421 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:64421 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:64421 - "GET /models HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58172 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58172 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58172 - "GET /models HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62182 - "GET /health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62182 - "GET /speakers HTTP/1.1" 200 OK
-INFO:     127.0.0.1:62182 - "GET /models HTTP/1.1" 200 OK
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+INFO:     127.0.0.1:55750 - "GET /api/benchmark/audio/bench_20260826_184129_however/neutral_take_1.wav HTTP/1.1" 206 Partial Content
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.93s/it]100%|██████████| 1/1 [00:01<00:00,  1.93s/it]
+INFO:     127.0.0.1:55750 - "GET /api/benchmark/audio/bench_20260826_184129_however/neutral_take_1__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:55750 - "GET /api/benchmark/audio/bench_20260826_184129_however/neutral_take_1__f0_A.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:00<00:00,  1.01it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.95s/it]100%|██████████| 1/1 [00:01<00:00,  1.95s/it]
+INFO:     127.0.0.1:62418 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_1__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]100%|██████████| 1/1 [00:00<00:00,  1.01it/s]
+INFO:     127.0.0.1:62418 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2__f0_B.wav HTTP/1.1" 206 Partial Content
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.96s/it]100%|██████████| 1/1 [00:01<00:00,  1.96s/it]
+INFO:     127.0.0.1:62418 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.13s/it]100%|██████████| 1/1 [00:01<00:00,  1.13s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.15s/it]100%|██████████| 1/1 [00:02<00:00,  2.15s/it]
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.08s/it]100%|██████████| 1/1 [00:01<00:00,  1.08s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:62937 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62937 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62937 - "GET /models HTTP/1.1" 200 OK
+100%|██████████| 1/1 [00:02<00:00,  2.19s/it]100%|██████████| 1/1 [00:02<00:00,  2.19s/it]
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.09s/it]100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.17s/it]100%|██████████| 1/1 [00:02<00:00,  2.17s/it]
+INFO:     127.0.0.1:55679 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.13it/s]100%|██████████| 1/1 [00:00<00:00,  1.13it/s]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:64114 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_1.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:01<00:00,  1.67s/it]100%|██████████| 1/1 [00:01<00:00,  1.67s/it]
+INFO:     127.0.0.1:64114 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.24it/s]100%|██████████| 1/1 [00:00<00:00,  1.24it/s]
+INFO:     127.0.0.1:64114 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.61s/it]100%|██████████| 1/1 [00:01<00:00,  1.61s/it]
+INFO:     127.0.0.1:64114 - "GET /api/benchmark/audio/bench_20260826_184129_however/angry_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00,  1.20it/s]100%|██████████| 1/1 [00:00<00:00,  1.20it/s]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.68s/it]100%|██████████| 1/1 [00:01<00:00,  1.68s/it]
+INFO:     127.0.0.1:64213 - "GET /api/donor-clip/female_011/frustrated HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64213 - "GET /api/donor-clip/female_011/happy HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:64213 - "GET /api/donor-clip/female_011/neutral HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:01<00:00,  1.38s/it]100%|██████████| 1/1 [00:01<00:00,  1.38s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.82s/it]100%|██████████| 1/1 [00:02<00:00,  2.82s/it]
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54059 - "GET /health HTTP/1.1" 200 OK
+Converting audio...
+INFO:     127.0.0.1:62797 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62797 - "GET /models HTTP/1.1" 200 OK
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.42s/it]100%|██████████| 1/1 [00:01<00:00,  1.42s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.85s/it]100%|██████████| 1/1 [00:02<00:00,  2.85s/it]
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.44s/it]100%|██████████| 1/1 [00:01<00:00,  1.44s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.85s/it]100%|██████████| 1/1 [00:02<00:00,  2.85s/it]
+INFO:     127.0.0.1:54059 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62609 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62609 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:61431 - "GET /api/benchmark/audio/bench_20260826_184129_however/neutral_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:61431 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54608 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /api/benchmark/audio/bench_20260826_184129_however/neutral_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:61431 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:61431 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:61431 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59544 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_3.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59144 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_3__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:59144 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_3__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53582 - "GET /api/benchmark/audio/bench_20260826_184129_however/angry_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53582 - "GET /api/benchmark/audio/bench_20260826_184129_however/angry_take_3__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53582 - "GET /api/benchmark/audio/bench_20260826_184129_however/angry_take_3__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49848 - "GET /api/benchmark/audio/bench_20260826_184129_however/frustrated_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49961 - "GET /api/benchmark/audio/bench_20260826_184129_however/frustrated_take_3__f0_B.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49961 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62727 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49961 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56380 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:56380 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:56380 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_2__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:56380 - "GET /api/benchmark/audio/bench_20260826_184129_however/happy_take_3__f0_A.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52639 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52639 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52639 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52639 - "GET /api/benchmark/audio/bench_20260826_184129_however/sad_take_3.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50266 - "GET /api/donor-clip/female_010/angry HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60342 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.23s/it]100%|██████████| 1/1 [00:01<00:00,  1.23s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.04s/it]100%|██████████| 1/1 [00:02<00:00,  2.04s/it]
+INFO:     127.0.0.1:59554 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59554 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59554 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60342 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.09s/it]100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+INFO:     127.0.0.1:50145 - "GET /api/benchmark/audio/bench_20260826_184740_however/neutral_take_1.wav HTTP/1.1" 206 Partial Content
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.15s/it]100%|██████████| 1/1 [00:02<00:00,  2.15s/it]
+INFO:     127.0.0.1:60342 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.04s/it]100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.05s/it]100%|██████████| 1/1 [00:02<00:00,  2.05s/it]
+INFO:     127.0.0.1:60342 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.10s/it]100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+Converting audio...
+INFO:     127.0.0.1:63048 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+Converting audio...
+  0%|          | 0/1 [00:00<?, ?it/s]Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 การอ่านหนังสือเป็นประจำทุกวัน ไม่เพียงแต่ช่วยเปิดโลกทัศน์
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A
+100%|██████████| 1/1 [00:02<00:00,  2.26s/it][A100%|██████████| 1/1 [00:02<00:00,  2.26s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 แต่ยังเสริมสร้างสมาธิและความคิดสร้างสรรค์ได้เป็นอย่างดี
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:04<00:00,  4.47s/it]100%|██████████| 1/1 [00:04<00:00,  4.47s/it]
+
+100%|██████████| 1/1 [00:02<00:00,  2.16s/it][A100%|██████████| 1/1 [00:02<00:00,  2.16s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 การอ่านหนังสือเป็นประจำทุกวัน ไม่เพียงแต่ช่วยเปิดโลกทัศน์
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:04<00:00,  4.95s/it]100%|██████████| 1/1 [00:04<00:00,  4.95s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 แต่ยังเสริมสร้างสมาธิและความคิดสร้างสรรค์ได้เป็นอย่างดี
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:60342 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:03<00:00,  3.99s/it]100%|██████████| 1/1 [00:03<00:00,  3.99s/it]
+
+100%|██████████| 1/1 [00:02<00:00,  2.17s/it][A100%|██████████| 1/1 [00:02<00:00,  2.17s/it]
+INFO:     127.0.0.1:64874 - "GET /api/benchmark/audio/bench_20260826_184740_however/happy_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:53447 - "GET /api/benchmark/audio/bench_20260826_184740_however/happy_take_1.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:05<00:00,  5.38s/it]100%|██████████| 1/1 [00:05<00:00,  5.38s/it]
+INFO:     127.0.0.1:53447 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53447 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53447 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63048 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 การอ่านหนังสือเป็นประจำทุกวัน ไม่เพียงแต่ช่วยเปิดโลกทัศน์
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63908 - "GET /api/benchmark/audio/bench_20260826_184818_however/neutral_take_1.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:02<00:00,  2.37s/it]100%|██████████| 1/1 [00:02<00:00,  2.37s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 แต่ยังเสริมสร้างสมาธิและความคิดสร้างสรรค์ได้เป็นอย่างดี
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.59s/it]100%|██████████| 1/1 [00:02<00:00,  2.59s/it]
+INFO:     127.0.0.1:60342 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.68s/it]100%|██████████| 1/1 [00:02<00:00,  2.68s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 การอ่านหนังสือเป็นประจำทุกวัน ไม่เพียงแต่ช่วยเปิดโลกทัศน์
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:04<00:00,  4.44s/it]100%|██████████| 1/1 [00:04<00:00,  4.44s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 แต่ยังเสริมสร้างสมาธิและความคิดสร้างสรรค์ได้เป็นอย่างดี
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|██████████| 1/1 [00:04<00:00,  4.37s/it][A100%|██████████| 1/1 [00:04<00:00,  4.37s/it]
+100%|██████████| 1/1 [00:04<00:00,  4.46s/it]100%|██████████| 1/1 [00:04<00:00,  4.46s/it]
+INFO:     127.0.0.1:55754 - "GET /test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "GET /static/style.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "GET /static/test.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "GET /static/test.js?v=1.5.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "GET /favicon.ico HTTP/1.1" 404 Not Found

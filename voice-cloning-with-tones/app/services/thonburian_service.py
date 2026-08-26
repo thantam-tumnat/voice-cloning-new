@@ -488,17 +488,23 @@ class ThonburianService:
     # ------------------------------------------------------------------ #
 
     @staticmethod
-    def _f5_max_bytes(donor_wav: Path, donor_txt: str) -> Optional[int]:
-        """The UTF-8 byte budget F5 keeps one gen_text in a *single* batch.
+    def _f5_max_bytes(donor_wav: Path, donor_txt: str, speed: float = 1.0) -> Optional[int]:
+        """UTF-8 byte budget for one F5 call, sized by how long it will *speak*.
 
-        Mirrors flowtts ``infer_process``: ``max_chars = ref_bytes / ref_dur *
-        (22 - ref_dur)``. Beyond it, F5 splits gen_text into batches, generates each
-        with its own (over-)estimated duration and cross-fades them back together --
-        which is exactly what leaves a pause hanging at every seam and lets a syllable
-        get swallowed in the overlap. We size our own split just under this so every
-        F5 call stays one batch. F5 measures the *silence-trimmed* reference, which is
-        shorter than the raw file and therefore yields a slightly larger budget, so
-        computing from the raw duration here is deliberately conservative.
+        Two limits apply and the tighter one wins:
+
+        * flowtts ``infer_process`` splits gen_text into batches once it exceeds
+          ``ref_bytes / ref_dur * (22 - ref_dur)``, then cross-fades the batches back
+          together -- which strands a pause at every seam and swallows syllables in the
+          overlap. Staying under it keeps every call a single batch.
+        * That ceiling is only where F5 *breaks*. Quality falls off well before it:
+          the model repeats and invents words as the sequence grows, and at 560 bytes
+          off a 3.7 s donor it was being asked for a 17 s stretch in one shot. So the
+          real budget is ``thonburian_f5_max_gen_s`` of speech, converted to bytes via
+          the donor's own pace (``ref_bytes / ref_dur``) and the requested speed --
+          the same relation F5 uses internally to reserve duration.
+
+        Returns None when the donor is unreadable, so the caller leaves text alone.
         """
         try:
             info = sf.info(str(donor_wav))
@@ -510,51 +516,75 @@ class ThonburianService:
         ref_bytes = len((donor_txt or "").encode("utf-8"))
         if ref_bytes <= 0:
             return None
-        return int(ref_bytes / dur * (22 - dur))
+
+        pace = ref_bytes / dur                      # donor bytes per second of speech
+        batch_ceiling = int(pace * (22 - dur))      # flowtts single-batch limit
+        spd = float(speed) if speed and speed > 0 else 1.0
+        quality_cap = int(pace * float(settings.thonburian_f5_max_gen_s) * spd)
+        return max(1, min(batch_ceiling, quality_cap))
+
+    @staticmethod
+    def _pack_units(units: Sequence[str], limit: int, joiner: str) -> List[str]:
+        """Greedily pack ``units`` into pieces of at most ``limit`` UTF-8 bytes."""
+        pieces: List[str] = []
+        cur = ""
+        for u in units:
+            cand = f"{cur}{joiner}{u}" if cur else u
+            if cur and len(cand.encode("utf-8")) > limit:
+                pieces.append(cur)
+                cur = u
+            else:
+                cur = cand
+        if cur:
+            pieces.append(cur)
+        return pieces
 
     def _split_for_f5(
         self, body_text: str, donor_wav: Path, donor_txt: str,
-        *, safety: float = 0.85, min_bytes: int = 40,
+        *, speed: float = 1.0, min_bytes: int = 40,
     ) -> List[str]:
-        """Split ``body_text`` at Thai word boundaries into single-batch F5 pieces.
+        """Split ``body_text`` into pieces F5 can speak well in a single shot.
 
-        Returns ``[body_text]`` unchanged when it already fits F5's one-batch budget
-        (the common case -- most tone runs are short enough), so short utterances are
-        byte-for-byte untouched. Only long runs are pre-split, and at word boundaries
-        via newmm so a word is never cut. A too-small trailing piece is merged back so
-        no fragment trips F5's ``< 10 bytes -> speed 0.3`` slow-down path.
+        Returns ``[body_text]`` unchanged when it already fits the budget (the common
+        case -- most tone runs are short), so ordinary utterances are byte-for-byte
+        untouched and behave exactly as before.
+
+        Longer text is cut at the most natural boundary that works, in order:
+        the writer's own spaces (which in Thai mark clause/sentence ends and already
+        carry a pause), and only for a single span still too long, newmm word
+        boundaries -- so a word is never cut in half. A too-small trailing piece is
+        folded back into its neighbour, both because a stray fragment sounds clipped
+        and because under 10 bytes F5 forces ``speed=0.3`` on it.
         """
         text = (body_text or "").strip()
         if not text:
             return []
-        budget = self._f5_max_bytes(donor_wav, donor_txt)
-        if not budget:
+        limit = self._f5_max_bytes(donor_wav, donor_txt, speed=speed)
+        if not limit:
             return [text]
-        limit = max(min_bytes, int(budget * safety))
+        limit = max(min_bytes, limit)
         if len(text.encode("utf-8")) <= limit:
             return [text]
 
-        try:
-            from pythainlp.tokenize import word_tokenize
-            words = word_tokenize(text, engine="newmm")
-        except Exception:
-            return [text]
-
+        # 1. Prefer the writer's own boundaries.
+        spans = [s for s in re.split(r"\s+", text) if s]
         pieces: List[str] = []
-        cur = ""
-        for w in words:
-            if cur and len((cur + w).encode("utf-8")) > limit:
-                pieces.append(cur)
-                cur = ""
-            cur += w
-        if cur:
-            pieces.append(cur)
+        for piece in self._pack_units(spans, limit, " "):
+            if len(piece.encode("utf-8")) <= limit:
+                pieces.append(piece)
+                continue
+            # 2. One span alone is over budget -- fall back to word boundaries.
+            try:
+                from pythainlp.tokenize import word_tokenize
+                words = word_tokenize(piece, engine="newmm")
+            except Exception:
+                pieces.append(piece)
+                continue
+            pieces.extend(self._pack_units(words, limit, ""))
 
         cleaned = [p.strip() for p in pieces if p.strip()]
         if not cleaned:
             return [text]
-        # Fold a tiny tail into its neighbour so no piece is short enough to hit F5's
-        # 0.3x slow-down (or to under-estimate its own duration and drop a syllable).
         if len(cleaned) >= 2 and len(cleaned[-1].encode("utf-8")) < min_bytes:
             cleaned[-2] = f"{cleaned[-2]} {cleaned[-1]}".strip()
             cleaned.pop()
@@ -580,7 +610,7 @@ class ThonburianService:
         so the over-allocated tail that used to surface as a mid-sentence pause is gone,
         and the join is a short controlled fade we own instead of F5's blind cross-fade.
         """
-        pieces = self._split_for_f5(text, donor_wav, donor_txt)
+        pieces = self._split_for_f5(text, donor_wav, donor_txt, speed=speed)
         if len(pieces) <= 1:
             pipeline(
                 text=text,

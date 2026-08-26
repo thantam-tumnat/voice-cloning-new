@@ -91,6 +91,13 @@ class Settings(BaseSettings):
     # target's pace influence while staying in F5's articulate range.
     thonburian_rate_speed_min: float = float(os.getenv("THONBURIAN_RATE_SPEED_MIN", "0.85"))
     thonburian_rate_speed_max: float = float(os.getenv("THONBURIAN_RATE_SPEED_MAX", "1.15"))
+    # Longest stretch of speech F5 is asked to generate in one shot, in seconds.
+    # The flowtts formula only guarantees the sequence stays under a 22 s ceiling
+    # (ref + generated), which is where F5 *breaks*, not where it stays good: pushed
+    # near it the model starts repeating and inventing words. Splitting long text so
+    # each call generates about this much audio keeps every shot in F5's reliable
+    # range; the pieces are re-joined by the service, so the text is unaffected.
+    thonburian_f5_max_gen_s: float = float(os.getenv("THONBURIAN_F5_MAX_GEN_S", "8.0"))
     # F5+vocos can overshoot [-1, 1]; the library saves as PCM_16 with no peak guard,
     # so loud emotions (happy/frustrated) clip on write. Scale any F5 output whose peak
     # exceeds this ceiling down to it before SeedVC and the pre-VC player. 0 disables.

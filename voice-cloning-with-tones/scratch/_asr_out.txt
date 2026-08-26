@@ -1,0 +1,15 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\huggingface_hub\file_download.py:139: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\opendream002\.cache\huggingface\hub\models--Systran--faster-whisper-small. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+[  0.00-  3.40] วันนี้เป็นวันที่อากาศแจ้มซายมาก ผมตื่น
+[  3.40-  5.42] แต่เช้าออกไปเดินเล่นในส่วนจ้า
+[  5.42-  7.34] ทรัดหน้าคงก็หวางทางกลับบ้าน
+[  7.34-  9.82] เราก็แว่ cracked สึ่นสาร้านโปรด
+[ 10.00- 13.12] และมันอาหารกับบ้านที่พTextวินสือหลัมหนุ่ม
+[ 13.12- 14.34] มีทีczywiścieขนาดเซียบตามตอนนаждนครับ
+[ 14.64- 16.02] นังมีความร่ Lenaวร่างเยียบสงมบאר
+[ 16.02- 18.14] นี้ มันมากจริงๆ
+[ 18.14- 24.54] อยากมันทำให้มาเติมผมได้พักผ่อนและตำพลันก่อนเริ่มดามการทำงาน ที่ยุ่งอย่างอีกครั้ง
+=== FULL ===
+วันนี้เป็นวันที่อากาศแจ้มซายมาก ผมตื่นแต่เช้าออกไปเดินเล่นในส่วนจ้าทรัดหน้าคงก็หวางทางกลับบ้านเราก็แว่ cracked สึ่นสาร้านโปรดและมันอาหารกับบ้านที่พTextวินสือหลัมหนุ่มมีทีczywiścieขนาดเซียบตามตอนนаждนครับนังมีความร่ Lenaวร่างเยียบสงมบארนี้ มันมากจริงๆอยากมันทำให้มาเติมผมได้พักผ่อนและตำพลันก่อนเริ่มดามการทำงาน ที่ยุ่งอย่างอีกครั้ง

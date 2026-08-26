@@ -1,0 +1,1949 @@
+{
+  "session_id": "bench_20260826_183055_determination",
+  "name": "Emotion Benchmark (20260826_183055)",
+  "created_at": "2026-08-26T18:30:55.285369",
+  "speaker_id": "determination",
+  "gender": "male",
+  "donor_set": "male_006",
+  "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 15,
+  "params": {
+    "gender": "male",
+    "donor_set": "male_006",
+    "intensity": 2,
+    "cfg_value": 2.5,
+    "inference_timesteps": 16,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 3.81,
+        "rms": 0.1841,
+        "energy_dbfs": -14.7,
+        "f0_med_hz": 169.6,
+        "f0_p10_hz": 139.3,
+        "f0_p90_hz": 228.0,
+        "f0_spread_st": 8.53
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_1__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.007,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 3.81,
+            "rms": 0.1841,
+            "energy_dbfs": -14.7,
+            "f0_med_hz": 169.6,
+            "f0_p10_hz": 139.3,
+            "f0_p90_hz": 228.0,
+            "f0_spread_st": 8.53
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "neutral_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.195,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 164.9,
+            "f0_p10_hz": 141.3,
+            "f0_p90_hz": 211.0,
+            "f0_spread_st": 6.94
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "neutral_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.1408,
+            "energy_dbfs": -17.0,
+            "f0_med_hz": 108.0,
+            "f0_p10_hz": 93.8,
+            "f0_p90_hz": 153.8,
+            "f0_spread_st": 8.55
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "neutral_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.1857,
+            "energy_dbfs": -14.6,
+            "f0_med_hz": 150.0,
+            "f0_p10_hz": 125.2,
+            "f0_p90_hz": 197.4,
+            "f0_spread_st": 7.88
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "neutral",
+        "donor": "neutral_1.wav",
+        "speed": 1.007,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 10.55,
+      "error": null,
+      "timestamp": "2026-08-26T18:31:05.848176"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "[neutral]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 3.84,
+        "rms": 0.1947,
+        "energy_dbfs": -14.2,
+        "f0_med_hz": 163.9,
+        "f0_p10_hz": 143.2,
+        "f0_p90_hz": 211.0,
+        "f0_spread_st": 6.71
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.007,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 3.84,
+            "rms": 0.1947,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 163.9,
+            "f0_p10_hz": 143.2,
+            "f0_p90_hz": 211.0,
+            "f0_spread_st": 6.71
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "neutral_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.2063,
+            "energy_dbfs": -13.7,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 142.5,
+            "f0_p90_hz": 220.5,
+            "f0_spread_st": 7.55
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "neutral_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.171,
+            "energy_dbfs": -15.3,
+            "f0_med_hz": 120.8,
+            "f0_p10_hz": 104.3,
+            "f0_p90_hz": 159.7,
+            "f0_spread_st": 7.37
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "neutral_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.2045,
+            "energy_dbfs": -13.8,
+            "f0_med_hz": 168.3,
+            "f0_p10_hz": 144.4,
+            "f0_p90_hz": 220.5,
+            "f0_spread_st": 7.33
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "neutral",
+        "donor": "neutral_1.wav",
+        "speed": 1.007,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 10.07,
+      "error": null,
+      "timestamp": "2026-08-26T18:31:15.924292"
+    },
+    "neutral_3": {
+      "emotion": "neutral",
+      "take_idx": 3,
+      "instruction": "[neutral]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "neutral_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_3.wav",
+      "metrics": {
+        "dur_s": 3.6,
+        "rms": 0.1943,
+        "energy_dbfs": -14.2,
+        "f0_med_hz": 163.3,
+        "f0_p10_hz": 130.1,
+        "f0_p90_hz": 235.8,
+        "f0_spread_st": 10.3
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_3__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.007,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_3.wav",
+          "metrics": {
+            "dur_s": 3.6,
+            "rms": 0.1943,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 163.3,
+            "f0_p10_hz": 130.1,
+            "f0_p90_hz": 235.8,
+            "f0_spread_st": 10.3
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "neutral_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.188,
+            "energy_dbfs": -14.5,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 146.1,
+            "f0_p90_hz": 206.9,
+            "f0_spread_st": 6.03
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "neutral_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.1528,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 106.0,
+            "f0_p10_hz": 94.1,
+            "f0_p90_hz": 135.6,
+            "f0_spread_st": 6.33
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "neutral_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/neutral_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 4.14,
+            "rms": 0.1875,
+            "energy_dbfs": -14.5,
+            "f0_med_hz": 148.5,
+            "f0_p10_hz": 130.9,
+            "f0_p90_hz": 187.7,
+            "f0_spread_st": 6.24
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "neutral",
+        "donor": "neutral_1.wav",
+        "speed": 1.007,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.93,
+      "error": null,
+      "timestamp": "2026-08-26T18:31:25.862488"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 2.52,
+        "rms": 0.2013,
+        "energy_dbfs": -13.9,
+        "f0_med_hz": 165.5,
+        "f0_p10_hz": 141.3,
+        "f0_p90_hz": 207.0,
+        "f0_spread_st": 6.61
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.122,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 2.52,
+            "rms": 0.2013,
+            "energy_dbfs": -13.9,
+            "f0_med_hz": 165.5,
+            "f0_p10_hz": 141.3,
+            "f0_p90_hz": 207.0,
+            "f0_spread_st": 6.61
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "happy_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2061,
+            "energy_dbfs": -13.7,
+            "f0_med_hz": 167.0,
+            "f0_p10_hz": 145.5,
+            "f0_p90_hz": 202.3,
+            "f0_spread_st": 5.7
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "happy_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2517,
+            "energy_dbfs": -12.0,
+            "f0_med_hz": 260.2,
+            "f0_p10_hz": 226.2,
+            "f0_p90_hz": 321.9,
+            "f0_spread_st": 6.11
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "happy_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2496,
+            "energy_dbfs": -12.1,
+            "f0_med_hz": 358.5,
+            "f0_p10_hz": 283.8,
+            "f0_p90_hz": 436.6,
+            "f0_spread_st": 7.46
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "happy",
+        "donor": "happy_1.wav",
+        "speed": 1.122,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.08,
+      "error": null,
+      "timestamp": "2026-08-26T18:31:34.950140"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "[happy]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 2.71,
+        "rms": 0.2066,
+        "energy_dbfs": -13.7,
+        "f0_med_hz": 164.6,
+        "f0_p10_hz": 147.4,
+        "f0_p90_hz": 200.5,
+        "f0_spread_st": 5.33
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.122,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 2.71,
+            "rms": 0.2066,
+            "energy_dbfs": -13.7,
+            "f0_med_hz": 164.6,
+            "f0_p10_hz": 147.4,
+            "f0_p90_hz": 200.5,
+            "f0_spread_st": 5.33
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "happy_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.1923,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 164.6,
+            "f0_p10_hz": 143.6,
+            "f0_p90_hz": 204.2,
+            "f0_spread_st": 6.1
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "happy_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2315,
+            "energy_dbfs": -12.7,
+            "f0_med_hz": 238.4,
+            "f0_p10_hz": 207.0,
+            "f0_p90_hz": 296.8,
+            "f0_spread_st": 6.23
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "happy_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2361,
+            "energy_dbfs": -12.5,
+            "f0_med_hz": 337.9,
+            "f0_p10_hz": 298.0,
+            "f0_p90_hz": 424.5,
+            "f0_spread_st": 6.12
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "happy",
+        "donor": "happy_1.wav",
+        "speed": 1.122,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 8.89,
+      "error": null,
+      "timestamp": "2026-08-26T18:31:43.846190"
+    },
+    "happy_3": {
+      "emotion": "happy",
+      "take_idx": 3,
+      "instruction": "[happy]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "happy_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_3.wav",
+      "metrics": {
+        "dur_s": 2.75,
+        "rms": 0.2144,
+        "energy_dbfs": -13.4,
+        "f0_med_hz": 163.3,
+        "f0_p10_hz": 144.2,
+        "f0_p90_hz": 201.4,
+        "f0_spread_st": 5.78
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_3__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.122,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_3.wav",
+          "metrics": {
+            "dur_s": 2.75,
+            "rms": 0.2144,
+            "energy_dbfs": -13.4,
+            "f0_med_hz": 163.3,
+            "f0_p10_hz": 144.2,
+            "f0_p90_hz": 201.4,
+            "f0_spread_st": 5.78
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "happy_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.1852,
+            "energy_dbfs": -14.6,
+            "f0_med_hz": 167.0,
+            "f0_p10_hz": 140.0,
+            "f0_p90_hz": 212.0,
+            "f0_spread_st": 7.19
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "happy_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2146,
+            "energy_dbfs": -13.4,
+            "f0_med_hz": 259.4,
+            "f0_p10_hz": 212.0,
+            "f0_p90_hz": 329.4,
+            "f0_spread_st": 7.63
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "happy_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/happy_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 3.03,
+            "rms": 0.2234,
+            "energy_dbfs": -13.0,
+            "f0_med_hz": 350.0,
+            "f0_p10_hz": 245.3,
+            "f0_p90_hz": 441.0,
+            "f0_spread_st": 10.16
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "happy",
+        "donor": "happy_1.wav",
+        "speed": 1.122,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.05,
+      "error": null,
+      "timestamp": "2026-08-26T18:31:52.898597"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "[sad]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 4.05,
+        "rms": 0.1607,
+        "energy_dbfs": -15.9,
+        "f0_med_hz": 166.7,
+        "f0_p10_hz": 136.5,
+        "f0_p90_hz": 219.4,
+        "f0_spread_st": 8.21
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_1__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.852,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 4.05,
+            "rms": 0.1607,
+            "energy_dbfs": -15.9,
+            "f0_med_hz": 166.7,
+            "f0_p10_hz": 136.5,
+            "f0_p90_hz": 219.4,
+            "f0_spread_st": 8.21
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "sad_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.1935,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 142.7,
+            "f0_p90_hz": 212.0,
+            "f0_spread_st": 6.85
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "sad_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.183,
+            "energy_dbfs": -14.8,
+            "f0_med_hz": 148.0,
+            "f0_p10_hz": 128.2,
+            "f0_p90_hz": 188.9,
+            "f0_spread_st": 6.71
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "sad_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.2153,
+            "energy_dbfs": -13.3,
+            "f0_med_hz": 206.1,
+            "f0_p10_hz": 179.3,
+            "f0_p90_hz": 265.5,
+            "f0_spread_st": 6.79
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "sad",
+        "donor": "sad_1.wav",
+        "speed": 0.852,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 10.58,
+      "error": null,
+      "timestamp": "2026-08-26T18:32:03.487569"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "[sad]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 4.23,
+        "rms": 0.1588,
+        "energy_dbfs": -16.0,
+        "f0_med_hz": 162.7,
+        "f0_p10_hz": 133.0,
+        "f0_p90_hz": 232.1,
+        "f0_spread_st": 9.64
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_2__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.852,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 4.23,
+            "rms": 0.1588,
+            "energy_dbfs": -16.0,
+            "f0_med_hz": 162.7,
+            "f0_p10_hz": 133.0,
+            "f0_p90_hz": 232.1,
+            "f0_spread_st": 9.64
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "sad_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.198,
+            "energy_dbfs": -14.1,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 140.3,
+            "f0_p90_hz": 229.7,
+            "f0_spread_st": 8.54
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "sad_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.1822,
+            "energy_dbfs": -14.8,
+            "f0_med_hz": 150.5,
+            "f0_p10_hz": 128.0,
+            "f0_p90_hz": 209.6,
+            "f0_spread_st": 8.54
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "sad_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.2172,
+            "energy_dbfs": -13.3,
+            "f0_med_hz": 209.0,
+            "f0_p10_hz": 175.8,
+            "f0_p90_hz": 290.1,
+            "f0_spread_st": 8.67
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "sad",
+        "donor": "sad_1.wav",
+        "speed": 0.852,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 10.57,
+      "error": null,
+      "timestamp": "2026-08-26T18:32:14.059076"
+    },
+    "sad_3": {
+      "emotion": "sad",
+      "take_idx": 3,
+      "instruction": "[sad]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "sad_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_3.wav",
+      "metrics": {
+        "dur_s": 3.9,
+        "rms": 0.1667,
+        "energy_dbfs": -15.6,
+        "f0_med_hz": 167.7,
+        "f0_p10_hz": 131.6,
+        "f0_p90_hz": 217.9,
+        "f0_spread_st": 8.73
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_3__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.852,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_3.wav",
+          "metrics": {
+            "dur_s": 3.9,
+            "rms": 0.1667,
+            "energy_dbfs": -15.6,
+            "f0_med_hz": 167.7,
+            "f0_p10_hz": 131.6,
+            "f0_p90_hz": 217.9,
+            "f0_spread_st": 8.73
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "sad_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.2113,
+            "energy_dbfs": -13.5,
+            "f0_med_hz": 165.8,
+            "f0_p10_hz": 136.5,
+            "f0_p90_hz": 225.0,
+            "f0_spread_st": 8.65
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "sad_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.201,
+            "energy_dbfs": -13.9,
+            "f0_med_hz": 140.4,
+            "f0_p10_hz": 119.8,
+            "f0_p90_hz": 191.3,
+            "f0_spread_st": 8.1
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "sad_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/sad_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 4.86,
+            "rms": 0.2262,
+            "energy_dbfs": -12.9,
+            "f0_med_hz": 194.3,
+            "f0_p10_hz": 167.2,
+            "f0_p90_hz": 272.2,
+            "f0_spread_st": 8.43
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "sad",
+        "donor": "sad_1.wav",
+        "speed": 0.852,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 10.73,
+      "error": null,
+      "timestamp": "2026-08-26T18:32:24.791049"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 3.21,
+        "rms": 0.1896,
+        "energy_dbfs": -14.4,
+        "f0_med_hz": 162.7,
+        "f0_p10_hz": 139.1,
+        "f0_p90_hz": 209.0,
+        "f0_spread_st": 7.05
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_1__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.987,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 3.21,
+            "rms": 0.1896,
+            "energy_dbfs": -14.4,
+            "f0_med_hz": 162.7,
+            "f0_p10_hz": 139.1,
+            "f0_p90_hz": 209.0,
+            "f0_spread_st": 7.05
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "angry_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.1953,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 140.1,
+            "f0_p90_hz": 190.1,
+            "f0_spread_st": 5.28
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "angry_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.2281,
+            "energy_dbfs": -12.8,
+            "f0_med_hz": 324.3,
+            "f0_p10_hz": 277.4,
+            "f0_p90_hz": 375.3,
+            "f0_spread_st": 5.24
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "angry_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.256,
+            "energy_dbfs": -11.8,
+            "f0_med_hz": 344.5,
+            "f0_p10_hz": 235.8,
+            "f0_p90_hz": 450.0,
+            "f0_spread_st": 11.19
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "angry",
+        "donor": "angry_1.wav",
+        "speed": 0.987,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.18,
+      "error": null,
+      "timestamp": "2026-08-26T18:32:33.983218"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "[angry]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 3.19,
+        "rms": 0.1903,
+        "energy_dbfs": -14.4,
+        "f0_med_hz": 166.7,
+        "f0_p10_hz": 116.1,
+        "f0_p90_hz": 194.3,
+        "f0_spread_st": 8.92
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_2__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.987,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 3.19,
+            "rms": 0.1903,
+            "energy_dbfs": -14.4,
+            "f0_med_hz": 166.7,
+            "f0_p10_hz": 116.1,
+            "f0_p90_hz": 194.3,
+            "f0_spread_st": 8.92
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "angry_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.1942,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 130.5,
+            "f0_p90_hz": 202.3,
+            "f0_spread_st": 7.59
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "angry_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.2352,
+            "energy_dbfs": -12.6,
+            "f0_med_hz": 296.0,
+            "f0_p10_hz": 228.7,
+            "f0_p90_hz": 360.9,
+            "f0_spread_st": 7.89
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "angry_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.2343,
+            "energy_dbfs": -12.6,
+            "f0_med_hz": 370.6,
+            "f0_p10_hz": 243.6,
+            "f0_p90_hz": 450.0,
+            "f0_spread_st": 10.62
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "angry",
+        "donor": "angry_1.wav",
+        "speed": 0.987,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.15,
+      "error": null,
+      "timestamp": "2026-08-26T18:32:43.147193"
+    },
+    "angry_3": {
+      "emotion": "angry",
+      "take_idx": 3,
+      "instruction": "[angry]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "angry_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_3.wav",
+      "metrics": {
+        "dur_s": 3.29,
+        "rms": 0.1944,
+        "energy_dbfs": -14.2,
+        "f0_med_hz": 165.5,
+        "f0_p10_hz": 135.3,
+        "f0_p90_hz": 201.8,
+        "f0_spread_st": 6.93
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.987,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_3.wav",
+          "metrics": {
+            "dur_s": 3.29,
+            "rms": 0.1944,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 165.5,
+            "f0_p10_hz": 135.3,
+            "f0_p90_hz": 201.8,
+            "f0_spread_st": 6.93
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "angry_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.1932,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 125.3,
+            "f0_p90_hz": 202.7,
+            "f0_spread_st": 8.33
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "angry_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.2255,
+            "energy_dbfs": -12.9,
+            "f0_med_hz": 300.0,
+            "f0_p10_hz": 221.6,
+            "f0_p90_hz": 364.5,
+            "f0_spread_st": 8.61
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "angry_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/angry_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 3.55,
+            "rms": 0.2406,
+            "energy_dbfs": -12.4,
+            "f0_med_hz": 339.2,
+            "f0_p10_hz": 247.8,
+            "f0_p90_hz": 450.0,
+            "f0_spread_st": 10.33
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "angry",
+        "donor": "angry_1.wav",
+        "speed": 0.987,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.46,
+      "error": null,
+      "timestamp": "2026-08-26T18:32:52.609730"
+    },
+    "frustrated_1": {
+      "emotion": "frustrated",
+      "take_idx": 1,
+      "instruction": "[frustrated]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "frustrated_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1.wav",
+      "metrics": {
+        "dur_s": 2.59,
+        "rms": 0.1978,
+        "energy_dbfs": -14.1,
+        "f0_med_hz": 167.4,
+        "f0_p10_hz": 134.6,
+        "f0_p90_hz": 214.1,
+        "f0_spread_st": 8.04
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.131,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1.wav",
+          "metrics": {
+            "dur_s": 2.59,
+            "rms": 0.1978,
+            "energy_dbfs": -14.1,
+            "f0_med_hz": 167.4,
+            "f0_p10_hz": 134.6,
+            "f0_p90_hz": 214.1,
+            "f0_spread_st": 8.04
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "frustrated_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.1943,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 166.1,
+            "f0_p10_hz": 136.2,
+            "f0_p90_hz": 210.9,
+            "f0_spread_st": 7.58
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "frustrated_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2103,
+            "energy_dbfs": -13.5,
+            "f0_med_hz": 195.1,
+            "f0_p10_hz": 163.9,
+            "f0_p90_hz": 249.2,
+            "f0_spread_st": 7.25
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "frustrated_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2288,
+            "energy_dbfs": -12.8,
+            "f0_med_hz": 279.1,
+            "f0_p10_hz": 227.8,
+            "f0_p90_hz": 355.6,
+            "f0_spread_st": 7.71
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "frustrated",
+        "donor": "frustrated_1.wav",
+        "speed": 1.131,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 9.08,
+      "error": null,
+      "timestamp": "2026-08-26T18:33:01.696979"
+    },
+    "frustrated_2": {
+      "emotion": "frustrated",
+      "take_idx": 2,
+      "instruction": "[frustrated]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "frustrated_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2.wav",
+      "metrics": {
+        "dur_s": 2.44,
+        "rms": 0.1929,
+        "energy_dbfs": -14.3,
+        "f0_med_hz": 165.2,
+        "f0_p10_hz": 136.4,
+        "f0_p90_hz": 214.7,
+        "f0_spread_st": 7.85
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.131,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2.wav",
+          "metrics": {
+            "dur_s": 2.44,
+            "rms": 0.1929,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 136.4,
+            "f0_p90_hz": 214.7,
+            "f0_spread_st": 7.85
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "frustrated_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2023,
+            "energy_dbfs": -13.9,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 137.8,
+            "f0_p90_hz": 214.1,
+            "f0_spread_st": 7.63
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "frustrated_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2188,
+            "energy_dbfs": -13.2,
+            "f0_med_hz": 178.5,
+            "f0_p10_hz": 152.6,
+            "f0_p90_hz": 232.1,
+            "f0_spread_st": 7.26
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "frustrated_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2423,
+            "energy_dbfs": -12.3,
+            "f0_med_hz": 252.0,
+            "f0_p10_hz": 208.0,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 7.94
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "frustrated",
+        "donor": "frustrated_1.wav",
+        "speed": 1.131,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 8.82,
+      "error": null,
+      "timestamp": "2026-08-26T18:33:10.527454"
+    },
+    "frustrated_3": {
+      "emotion": "frustrated",
+      "take_idx": 3,
+      "instruction": "[frustrated]",
+      "spoken_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+      "filename": "frustrated_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_3.wav",
+      "metrics": {
+        "dur_s": 2.58,
+        "rms": 0.2059,
+        "energy_dbfs": -13.7,
+        "f0_med_hz": 165.2,
+        "f0_p10_hz": 132.0,
+        "f0_p90_hz": 223.9,
+        "f0_spread_st": 9.14
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_3__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงๆ",
+            "f5_input": {
+              "text": "ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.131,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.5,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "male_006"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 35,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_3.wav",
+          "metrics": {
+            "dur_s": 2.58,
+            "rms": 0.2059,
+            "energy_dbfs": -13.7,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 132.0,
+            "f0_p90_hz": 223.9,
+            "f0_spread_st": 9.14
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "frustrated_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.1935,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 165.8,
+            "f0_p10_hz": 143.6,
+            "f0_p90_hz": 209.6,
+            "f0_spread_st": 6.54
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "frustrated_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2177,
+            "energy_dbfs": -13.2,
+            "f0_med_hz": 214.6,
+            "f0_p10_hz": 184.0,
+            "f0_p90_hz": 275.6,
+            "f0_spread_st": 7.0
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "frustrated_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_183055_determination/frustrated_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 2.79,
+            "rms": 0.2167,
+            "energy_dbfs": -13.3,
+            "f0_med_hz": 300.0,
+            "f0_p10_hz": 259.0,
+            "f0_p90_hz": 386.8,
+            "f0_spread_st": 6.95
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 6
+        }
+      ],
+      "f0_diag": {
+        "emotion": "frustrated",
+        "donor": "frustrated_1.wav",
+        "speed": 1.131,
+        "target_med_hz": 166.7,
+        "donor_neutral_med_hz": 115.9,
+        "b_semi_tone_shift": 6
+      },
+      "elapsed_s": 8.83,
+      "error": null,
+      "timestamp": "2026-08-26T18:33:19.368352"
+    }
+  }
+}
