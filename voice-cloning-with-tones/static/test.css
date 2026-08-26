@@ -655,6 +655,46 @@
   white-space: nowrap;
 }
 
+/* F0-compare trio (baseline / A / B): three SeedVC treatments of one F5 take. */
+.f0-compare-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+.f0-compare-label {
+  font-size: 10px;
+  color: #7dd3fc;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-right: 2px;
+}
+.btn-f0-cmp {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #bae6fd;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.btn-f0-cmp:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: #38bdf8;
+}
+.btn-f0-cmp.is-playing {
+  background: rgba(56, 189, 248, 0.28);
+  border-color: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+}
+.f0-cmp-id { letter-spacing: .2px; }
+
 /* "What was sent to the model" JSON inspector, per take cell. */
 .btn-model-input {
   margin-top: 5px;

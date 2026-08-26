@@ -1,0 +1,1034 @@
+{
+  "session_id": "bench_20260826_173542_determination",
+  "name": "Emotion Benchmark (20260826_173542)",
+  "created_at": "2026-08-26T17:35:42.508983",
+  "speaker_id": "determination",
+  "gender": "male",
+  "donor_set": "male_001",
+  "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 15,
+  "params": {
+    "gender": "male",
+    "donor_set": "male_001",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 24,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 5.35,
+        "rms": 0.1958,
+        "energy_dbfs": -14.2,
+        "f0_med_hz": 165.2,
+        "f0_p10_hz": 147.2,
+        "f0_p90_hz": 197.8,
+        "f0_spread_st": 5.11
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_1__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.747,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 5.35,
+            "rms": 0.1958,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 147.2,
+            "f0_p90_hz": 197.8,
+            "f0_spread_st": 5.11
+          }
+        }
+      ],
+      "elapsed_s": 4.09,
+      "error": null,
+      "timestamp": "2026-08-26T17:35:46.613676"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "[neutral]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 5.35,
+        "rms": 0.2036,
+        "energy_dbfs": -13.8,
+        "f0_med_hz": 167.7,
+        "f0_p10_hz": 144.4,
+        "f0_p90_hz": 205.1,
+        "f0_spread_st": 6.08
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_2__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.747,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 5.35,
+            "rms": 0.2036,
+            "energy_dbfs": -13.8,
+            "f0_med_hz": 167.7,
+            "f0_p10_hz": 144.4,
+            "f0_p90_hz": 205.1,
+            "f0_spread_st": 6.08
+          }
+        }
+      ],
+      "elapsed_s": 3.94,
+      "error": null,
+      "timestamp": "2026-08-26T17:35:50.563916"
+    },
+    "neutral_3": {
+      "emotion": "neutral",
+      "take_idx": 3,
+      "instruction": "[neutral]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "neutral_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_3.wav",
+      "metrics": {
+        "dur_s": 5.27,
+        "rms": 0.1918,
+        "energy_dbfs": -14.3,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 144.2,
+        "f0_p90_hz": 212.0,
+        "f0_spread_st": 6.67
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_3__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.747,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/neutral_take_3.wav",
+          "metrics": {
+            "dur_s": 5.27,
+            "rms": 0.1918,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 144.2,
+            "f0_p90_hz": 212.0,
+            "f0_spread_st": 6.67
+          }
+        }
+      ],
+      "elapsed_s": 3.91,
+      "error": null,
+      "timestamp": "2026-08-26T17:35:54.482991"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 4.22,
+        "rms": 0.1897,
+        "energy_dbfs": -14.4,
+        "f0_med_hz": 169.0,
+        "f0_p10_hz": 134.6,
+        "f0_p90_hz": 219.6,
+        "f0_spread_st": 8.47
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 1.143,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 4.22,
+            "rms": 0.1897,
+            "energy_dbfs": -14.4,
+            "f0_med_hz": 169.0,
+            "f0_p10_hz": 134.6,
+            "f0_p90_hz": 219.6,
+            "f0_spread_st": 8.47
+          }
+        }
+      ],
+      "elapsed_s": 3.85,
+      "error": null,
+      "timestamp": "2026-08-26T17:35:58.335449"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "[happy]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 4.42,
+        "rms": 0.202,
+        "energy_dbfs": -13.9,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 136.5,
+        "f0_p90_hz": 228.5,
+        "f0_spread_st": 8.92
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_2__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 1.143,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 4.42,
+            "rms": 0.202,
+            "energy_dbfs": -13.9,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 136.5,
+            "f0_p90_hz": 228.5,
+            "f0_spread_st": 8.92
+          }
+        }
+      ],
+      "elapsed_s": 3.85,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:02.186862"
+    },
+    "happy_3": {
+      "emotion": "happy",
+      "take_idx": 3,
+      "instruction": "[happy]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "happy_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_3.wav",
+      "metrics": {
+        "dur_s": 4.35,
+        "rms": 0.1959,
+        "energy_dbfs": -14.2,
+        "f0_med_hz": 165.8,
+        "f0_p10_hz": 132.8,
+        "f0_p90_hz": 213.0,
+        "f0_spread_st": 8.17
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_3__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 1.143,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/happy_take_3.wav",
+          "metrics": {
+            "dur_s": 4.35,
+            "rms": 0.1959,
+            "energy_dbfs": -14.2,
+            "f0_med_hz": 165.8,
+            "f0_p10_hz": 132.8,
+            "f0_p90_hz": 213.0,
+            "f0_spread_st": 8.17
+          }
+        }
+      ],
+      "elapsed_s": 3.89,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:06.078645"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "[sad]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 6.16,
+        "rms": 0.1776,
+        "energy_dbfs": -15.0,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 140.2,
+        "f0_p90_hz": 208.6,
+        "f0_spread_st": 6.88
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_1__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.838,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 6.16,
+            "rms": 0.1776,
+            "energy_dbfs": -15.0,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 140.2,
+            "f0_p90_hz": 208.6,
+            "f0_spread_st": 6.88
+          }
+        }
+      ],
+      "elapsed_s": 4.85,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:10.936482"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "[sad]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 6.06,
+        "rms": 0.1683,
+        "energy_dbfs": -15.5,
+        "f0_med_hz": 166.7,
+        "f0_p10_hz": 137.3,
+        "f0_p90_hz": 209.1,
+        "f0_spread_st": 7.28
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_2__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.838,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 6.06,
+            "rms": 0.1683,
+            "energy_dbfs": -15.5,
+            "f0_med_hz": 166.7,
+            "f0_p10_hz": 137.3,
+            "f0_p90_hz": 209.1,
+            "f0_spread_st": 7.28
+          }
+        }
+      ],
+      "elapsed_s": 4.75,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:15.688125"
+    },
+    "sad_3": {
+      "emotion": "sad",
+      "take_idx": 3,
+      "instruction": "[sad]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "sad_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_3.wav",
+      "metrics": {
+        "dur_s": 6.14,
+        "rms": 0.159,
+        "energy_dbfs": -16.0,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 135.7,
+        "f0_p90_hz": 219.1,
+        "f0_spread_st": 8.29
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_3__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.838,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/sad_take_3.wav",
+          "metrics": {
+            "dur_s": 6.14,
+            "rms": 0.159,
+            "energy_dbfs": -16.0,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 135.7,
+            "f0_p90_hz": 219.1,
+            "f0_spread_st": 8.29
+          }
+        }
+      ],
+      "elapsed_s": 4.7,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:20.392323"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 4.74,
+        "rms": 0.2149,
+        "energy_dbfs": -13.4,
+        "f0_med_hz": 165.2,
+        "f0_p10_hz": 121.1,
+        "f0_p90_hz": 225.3,
+        "f0_spread_st": 10.76
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_1__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.041,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 4.74,
+            "rms": 0.2149,
+            "energy_dbfs": -13.4,
+            "f0_med_hz": 165.2,
+            "f0_p10_hz": 121.1,
+            "f0_p90_hz": 225.3,
+            "f0_spread_st": 10.76
+          }
+        }
+      ],
+      "elapsed_s": 3.62,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:24.019506"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "[angry]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 4.73,
+        "rms": 0.1983,
+        "energy_dbfs": -14.1,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 126.0,
+        "f0_p90_hz": 208.0,
+        "f0_spread_st": 8.68
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_2__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.041,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 4.73,
+            "rms": 0.1983,
+            "energy_dbfs": -14.1,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 126.0,
+            "f0_p90_hz": 208.0,
+            "f0_spread_st": 8.68
+          }
+        }
+      ],
+      "elapsed_s": 3.67,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:27.690634"
+    },
+    "angry_3": {
+      "emotion": "angry",
+      "take_idx": 3,
+      "instruction": "[angry]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "angry_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_3.wav",
+      "metrics": {
+        "dur_s": 4.68,
+        "rms": 0.1976,
+        "energy_dbfs": -14.1,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 131.6,
+        "f0_p90_hz": 204.2,
+        "f0_spread_st": 7.6
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_3__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 1.041,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/angry_take_3.wav",
+          "metrics": {
+            "dur_s": 4.68,
+            "rms": 0.1976,
+            "energy_dbfs": -14.1,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 131.6,
+            "f0_p90_hz": 204.2,
+            "f0_spread_st": 7.6
+          }
+        }
+      ],
+      "elapsed_s": 3.56,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:31.258364"
+    },
+    "frustrated_1": {
+      "emotion": "frustrated",
+      "take_idx": 1,
+      "instruction": "[frustrated]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "frustrated_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_1.wav",
+      "metrics": {
+        "dur_s": 4.13,
+        "rms": 0.2027,
+        "energy_dbfs": -13.9,
+        "f0_med_hz": 164.6,
+        "f0_p10_hz": 135.2,
+        "f0_p90_hz": 203.8,
+        "f0_spread_st": 7.1
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_1__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.946,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_1.wav",
+          "metrics": {
+            "dur_s": 4.13,
+            "rms": 0.2027,
+            "energy_dbfs": -13.9,
+            "f0_med_hz": 164.6,
+            "f0_p10_hz": 135.2,
+            "f0_p90_hz": 203.8,
+            "f0_spread_st": 7.1
+          }
+        }
+      ],
+      "elapsed_s": 3.61,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:34.874051"
+    },
+    "frustrated_2": {
+      "emotion": "frustrated",
+      "take_idx": 2,
+      "instruction": "[frustrated]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "frustrated_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_2.wav",
+      "metrics": {
+        "dur_s": 3.94,
+        "rms": 0.2072,
+        "energy_dbfs": -13.7,
+        "f0_med_hz": 166.4,
+        "f0_p10_hz": 139.6,
+        "f0_p90_hz": 211.0,
+        "f0_spread_st": 7.16
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_2__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.946,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_2.wav",
+          "metrics": {
+            "dur_s": 3.94,
+            "rms": 0.2072,
+            "energy_dbfs": -13.7,
+            "f0_med_hz": 166.4,
+            "f0_p10_hz": 139.6,
+            "f0_p90_hz": 211.0,
+            "f0_spread_st": 7.16
+          }
+        }
+      ],
+      "elapsed_s": 3.57,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:38.445950"
+    },
+    "frustrated_3": {
+      "emotion": "frustrated",
+      "take_idx": 3,
+      "instruction": "[frustrated]",
+      "spoken_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+      "filename": "frustrated_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_3.wav",
+      "metrics": {
+        "dur_s": 4.5,
+        "rms": 0.1981,
+        "energy_dbfs": -14.1,
+        "f0_med_hz": 165.8,
+        "f0_p10_hz": 137.4,
+        "f0_p90_hz": 201.7,
+        "f0_spread_st": 6.65
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_3__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้อากาศแจ่มใส เหมาะแก่การออกไปเดินเล่นและพักผ่อนหย่อนใจเป็นอย่างยิ่ง",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.946,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "male_001"
+            },
+            "seedvc_input": {
+              "target": "determination.wav",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_173542_determination/frustrated_take_3.wav",
+          "metrics": {
+            "dur_s": 4.5,
+            "rms": 0.1981,
+            "energy_dbfs": -14.1,
+            "f0_med_hz": 165.8,
+            "f0_p10_hz": 137.4,
+            "f0_p90_hz": 201.7,
+            "f0_spread_st": 6.65
+          }
+        }
+      ],
+      "elapsed_s": 3.53,
+      "error": null,
+      "timestamp": "2026-08-26T17:36:41.983057"
+    }
+  }
+}

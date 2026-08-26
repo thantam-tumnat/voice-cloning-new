@@ -1,0 +1,92 @@
+{
+  "session_id": "bench_20260826_174146_customer",
+  "name": "Emotion Benchmark (20260826_174146)",
+  "created_at": "2026-08-26T17:41:46.591270",
+  "speaker_id": "customer",
+  "gender": "female",
+  "donor_set": "female_010",
+  "text": "???????????????????????????????????",
+  "emotions": [
+    "angry"
+  ],
+  "repeats": 1,
+  "total_takes": 1,
+  "completed_takes": 1,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_010",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 32,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "???????????????????????????????????",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_174146_customer/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 0.12,
+        "rms": 0.0217,
+        "energy_dbfs": -33.3,
+        "f0_med_hz": 282.7,
+        "f0_p10_hz": 282.3,
+        "f0_p90_hz": 284.9,
+        "f0_spread_st": 0.16
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_174146_customer/angry_take_1__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "???????????????????????????????????",
+            "f5_input": {
+              "text": "??",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.13,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 32,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_174146_customer/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 0.12,
+            "rms": 0.0217,
+            "energy_dbfs": -33.3,
+            "f0_med_hz": 282.7,
+            "f0_p10_hz": 282.3,
+            "f0_p90_hz": 284.9,
+            "f0_spread_st": 0.16
+          }
+        }
+      ],
+      "elapsed_s": 2.85,
+      "error": null,
+      "timestamp": "2026-08-26T17:41:58.972994"
+    }
+  }
+}

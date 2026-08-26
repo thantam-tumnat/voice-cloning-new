@@ -1,0 +1,46 @@
+INFO:     Started server process [42236]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8012 (Press CTRL+C to quit)
+[Startup] Tone Studio running on port 8012 with Thonburian F5 + SeedVC backend
+INFO:     127.0.0.1:56946 - "GET /api/donor-clip/female_010/frustrated HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60132 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60133 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\google\api_core\_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.11) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\pydantic\_internal\_generate_schema.py:2274: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+C:\Users\opendream002\AppData\Local\Programs\Python\Python310\lib\site-packages\pydantic\_internal\_generate_schema.py:2274: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+[Thonburian] Loading Thonburian F5 on cuda:0 ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Download Vocos from huggingface charactr/vocos-mel-24khz
+
+vocab :  C:\Users\opendream002\.cache\huggingface\hub\models--biodatlab--ThonburianTTS\snapshots\ac854d8b3d59dd240812ed486072c357e0f515b6\megaF5\mega_vocab.txt
+token :  custom
+model :  C:\Users\opendream002\.cache\huggingface\hub\models--biodatlab--ThonburianTTS\snapshots\ac854d8b3d59dd240812ed486072c357e0f515b6\megaF5\mega_f5_last.safetensors 
+
+INFO:     127.0.0.1:60131 - "GET /api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2.wav HTTP/1.1" 206 Partial Content
+[Thonburian] Ready in 4.4s on cuda:0
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.39s/it]100%|██████████| 1/1 [00:02<00:00,  2.39s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 ทำไมเรื่องมันต้องกลายเป็นแบบนี้ด้วย ไม่เข้าใจเลยจริงจริง
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.74s/it]100%|██████████| 1/1 [00:01<00:00,  1.74s/it]
+INFO:     127.0.0.1:60134 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56842 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56842 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56842 - "GET /models HTTP/1.1" 200 OK

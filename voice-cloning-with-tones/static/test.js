@@ -464,6 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loraMode,
       postProcess,
       dspVariants,
+      f0Compare: !!(document.getElementById('param-f0-compare') || {}).checked,
     });
   });
 
@@ -546,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   params: window.DSP_VARIANT_SPECS[id].params
                 }))
               : null,
+            f0_compare: !!config.f0Compare,
           });
         }
       });
@@ -802,6 +804,25 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     ` : '';
 
+    // Optional F0-compare trio (baseline / A / B): three SeedVC treatments of one
+    // F5 generation, so the emotion-vs-register trade-off is audible side by side.
+    const f0List = result.f0_variants || [];
+    const f0Diag = result.f0_diag;
+    const f0Row = f0List.length ? `
+      <div class="f0-compare-row" title="เจน F5 ครั้งเดียว แปลง SeedVC 3 แบบ${f0Diag ? ` · shift B = ${f0Diag.b_semi_tone_shift} st (target ${f0Diag.target_med_hz}Hz / donor-neutral ${f0Diag.donor_neutral_med_hz}Hz)` : ''}">
+        <span class="f0-compare-label">🎚️ เทียบ F0:</span>
+        ${f0List.map(v => {
+          const st = (v.metrics && v.metrics.f0_med_hz != null) ? `${v.metrics.f0_med_hz}Hz` : '';
+          return `
+          <button type="button" class="btn-f0-cmp" data-url="${v.audio_url}" title="${v.label}${st ? ' · ' + st : ''}">
+            <svg class="play-svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <svg class="pause-svg hidden" width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+            <span class="f0-cmp-id">${v.id}</span>
+          </button>`;
+        }).join('')}
+      </div>
+    ` : '';
+
     // Optional "what was actually sent to the model" inspector.
     const mi = result.model_input;
     const miJson = mi ? JSON.stringify(mi, null, 2) : '';
@@ -823,6 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         </a>
       </div>
+      ${f0Row}
       ${preVcRow}
       ${modelInputRow}
     `;
@@ -850,6 +872,12 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleSingleAudio(preVcUrl, preBox, preBtn);
       });
     }
+
+    // F0-compare buttons (baseline / A / B)
+    cell.querySelectorAll('.btn-f0-cmp').forEach(btn => {
+      const url = btn.dataset.url;
+      btn.addEventListener('click', () => toggleSingleAudio(url, btn, btn));
+    });
 
     // Update Metrics in Row
     if (metrics) {
@@ -1105,6 +1133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   params: window.DSP_VARIANT_SPECS[id].params
                 }))
               : null,
+            f0_compare: !!(document.getElementById('param-f0-compare') || {}).checked,
           }),
         });
         const data = await res.json();
@@ -1233,6 +1262,8 @@ document.addEventListener('DOMContentLoaded', () => {
           // Sessions recorded before variants existed simply have none, and the
           // cell falls back to the take's own fields.
           variants: takeRecord.variants || [],
+          f0_variants: takeRecord.f0_variants || [],
+          f0_diag: takeRecord.f0_diag,
           elapsed_s: takeRecord.elapsed_s,
           error: takeRecord.error,
         });

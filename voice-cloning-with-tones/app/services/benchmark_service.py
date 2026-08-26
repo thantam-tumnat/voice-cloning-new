@@ -22,6 +22,7 @@ from app.models import (
     BenchmarkTakeResult,
     BenchmarkSessionSummary,
     BenchmarkTakeVariant,
+    BenchmarkF0Variant,
     ABVariantSpec,
 )
 from app.services.thonburian_service import thonburian_service
@@ -352,6 +353,33 @@ class BenchmarkService:
                     "metrics": extract_audio_metrics(audio_arr, sr),
                 })
 
+            # Optional F0-compare trio (baseline / A / B): one F5 generation, three
+            # SeedVC treatments, so the emotion-vs-register trade-off is audible.
+            f0_records: List[dict] = []
+            f0_diag = None
+            if getattr(req, "f0_compare", False):
+                cmp = thonburian_service.render_f0_compare(
+                    clean_text,
+                    emotion=tone_val,
+                    speaker_id=req.speaker_id,
+                    gender=gender,
+                    donor_set=donor_set,
+                )
+                f0_diag = cmp.get("diag")
+                for m in cmp.get("modes", []):
+                    f_name = f"{req.emotion}_take_{req.take_idx}__f0_{m['id']}.wav"
+                    (s_dir / f_name).write_bytes(m["wav"])
+                    f_arr, f_sr = sf.read(io.BytesIO(m["wav"]), dtype="float32")
+                    f0_records.append({
+                        "id": m["id"],
+                        "label": m["label"],
+                        "filename": f_name,
+                        "audio_url": f"/api/benchmark/audio/{req.session_id}/{f_name}",
+                        "metrics": extract_audio_metrics(f_arr, f_sr),
+                        "auto_f0_adjust": bool(m["auto_f0_adjust"]),
+                        "semi_tone_shift": int(m["semi_tone_shift"]),
+                    })
+
             # The first variant stands in for the take at the top level, so every
             # existing reader -- the results matrix, the ZIP export, old session
             # files -- keeps working without knowing about variants at all.
@@ -370,6 +398,8 @@ class BenchmarkService:
                 "pre_vc_filename": pre_vc_filename,
                 "model_input": debug_sink or None,
                 "variants": variant_records,
+                "f0_variants": f0_records,
+                "f0_diag": f0_diag,
                 "elapsed_s": elapsed_s,
                 "error": None,
                 "timestamp": datetime.now().isoformat(),
@@ -394,6 +424,8 @@ class BenchmarkService:
                 pre_vc_filename=pre_vc_filename,
                 model_input=debug_sink or None,
                 variants=[BenchmarkTakeVariant(**v) for v in variant_records],
+                f0_variants=[BenchmarkF0Variant(**v) for v in f0_records],
+                f0_diag=f0_diag,
                 elapsed_s=elapsed_s,
                 error=None,
             )

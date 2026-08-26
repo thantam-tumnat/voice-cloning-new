@@ -359,6 +359,9 @@ class BenchmarkTakeRequest(BaseModel):
     # is the only way a DSP comparison is not also a comparison of two samplings.
     # Empty means the single-take behaviour driven by post_process above.
     variants: Optional[List[ABVariantSpec]] = Field(default=None, max_length=6)
+    # When true, also render the F0-compare trio (baseline / A / B) from one F5
+    # generation, so the emotion-vs-register trade-off can be judged by ear.
+    f0_compare: bool = False
 
 
 class BenchmarkTakeVariant(BaseModel):
@@ -368,6 +371,17 @@ class BenchmarkTakeVariant(BaseModel):
     filename: str
     audio_url: str
     metrics: Optional[dict] = None
+
+
+class BenchmarkF0Variant(BaseModel):
+    """One SeedVC F0 treatment (baseline / A / B) of a single F5 generation."""
+    id: str
+    label: str
+    filename: str
+    audio_url: str
+    metrics: Optional[dict] = None
+    auto_f0_adjust: bool = True
+    semi_tone_shift: int = 0
 
 
 class BenchmarkTakeResult(BaseModel):
@@ -390,6 +404,10 @@ class BenchmarkTakeResult(BaseModel):
     model_input: Optional[dict] = None
     # Every DSP treatment of this take, first entry mirroring the fields above.
     variants: List[BenchmarkTakeVariant] = Field(default_factory=list)
+    # The F0-compare trio (baseline / A / B) when requested, plus its diagnostics
+    # (measured medians and B's computed shift). Empty when f0_compare was off.
+    f0_variants: List[BenchmarkF0Variant] = Field(default_factory=list)
+    f0_diag: Optional[dict] = None
 
 
 class BenchmarkSessionSummary(BaseModel):

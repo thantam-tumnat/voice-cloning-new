@@ -54,7 +54,9 @@ class Settings(BaseSettings):
     thonburian_free_cache: bool = True
     emotion_donor_dir: str = "ref/emotions"
     dataset_dir: str = "dataset"
-    seedvc_diffusion_steps: int = 25
+    # SeedVC diffusion steps. Too few smears consonants (audible as slurred / tangled
+    # articulation); 35 sharpens the phonemes at a modest speed cost. Was 25.
+    seedvc_diffusion_steps: int = int(os.getenv("SEEDVC_DIFFUSION_STEPS", "35"))
     seedvc_f0_condition: bool = True
     seedvc_auto_f0_adjust: bool = True
     thonburian_device: str = ""
@@ -84,8 +86,11 @@ class Settings(BaseSettings):
     thonburian_match_target_rate: bool = os.getenv(
         "THONBURIAN_MATCH_TARGET_RATE", "1"
     ).strip().lower() not in ("0", "false", "no", "off")
-    thonburian_rate_speed_min: float = float(os.getenv("THONBURIAN_RATE_SPEED_MIN", "0.6"))
-    thonburian_rate_speed_max: float = float(os.getenv("THONBURIAN_RATE_SPEED_MAX", "1.6"))
+    # Narrowed from [0.6, 1.6]: the extremes slur speech -- near 0.6 F5 drags and
+    # smears syllables, near 1.6 it rushes and tangles them. A tight window keeps the
+    # target's pace influence while staying in F5's articulate range.
+    thonburian_rate_speed_min: float = float(os.getenv("THONBURIAN_RATE_SPEED_MIN", "0.85"))
+    thonburian_rate_speed_max: float = float(os.getenv("THONBURIAN_RATE_SPEED_MAX", "1.15"))
     # F5+vocos can overshoot [-1, 1]; the library saves as PCM_16 with no peak guard,
     # so loud emotions (happy/frustrated) clip on write. Scale any F5 output whose peak
     # exceeds this ceiling down to it before SeedVC and the pre-VC player. 0 disables.

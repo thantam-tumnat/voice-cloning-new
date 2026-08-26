@@ -349,19 +349,33 @@ class ThonburianService:
     # SeedVC Voice Conversion
     # ------------------------------------------------------------------ #
 
-    def _convert_seedvc(self, source_wav: Path, target_wav: Path, output_wav: Path) -> Path:
-        """Send voice conversion request to SeedVC worker (:8022)."""
+    def _convert_seedvc(
+        self,
+        source_wav: Path,
+        target_wav: Path,
+        output_wav: Path,
+        *,
+        auto_f0_adjust: Optional[bool] = None,
+        semi_tone_shift: int = 0,
+    ) -> Path:
+        """Send voice conversion request to SeedVC worker (:8022).
+
+        ``auto_f0_adjust`` / ``semi_tone_shift`` default to the server config, but the
+        F0-compare experiment overrides them per call so one F5 generation can be
+        converted several ways (see ``render_f0_compare``).
+        """
         import requests
 
+        af0 = settings.seedvc_auto_f0_adjust if auto_f0_adjust is None else bool(auto_f0_adjust)
         url = f"{self.seedvc_url}/convert"
         payload = {
             "source": str(source_wav.resolve()),
             "target": str(target_wav.resolve()),
             "output": str(output_wav.resolve()),
             "f0_condition": settings.seedvc_f0_condition,
-            "auto_f0_adjust": settings.seedvc_auto_f0_adjust,
+            "auto_f0_adjust": af0,
             "diffusion_steps": settings.seedvc_diffusion_steps,
-            "semi_tone_shift": 0,
+            "semi_tone_shift": int(semi_tone_shift),
             "inference_cfg_rate": 0.7,
         }
         try:
@@ -466,6 +480,218 @@ class ThonburianService:
                 sf.write(str(wav_path), arr, sr, subtype="FLOAT")
         except Exception:
             pass
+
+    @staticmethod
+    def _median_f0(wav_path: Path) -> Optional[float]:
+        """Median voiced F0 (Hz) of a clip via autocorrelation, transcript-free.
+
+        Used to anchor the F0-compare "B" mode: the constant semitone shift that
+        moves the donor's *neutral* register onto the target speaker's register is
+        derived from these two medians, so emotion offsets ride on top unchanged.
+        Returns None when nothing voiced is measurable.
+        """
+        try:
+            y, sr = sf.read(str(wav_path), dtype="float32")
+            if y.ndim > 1:
+                y = y.mean(axis=1)
+            if y.size == 0 or sr <= 0:
+                return None
+            frame = int(sr * 0.030)
+            hop = int(sr * 0.010)
+            if len(y) < frame:
+                return None
+            rms = float(np.sqrt(np.mean(y.astype("float64") ** 2)))
+            min_lag = max(1, int(sr / 450))
+            max_lag = int(sr / 60)
+            cands: List[float] = []
+            for i in range(0, len(y) - frame, hop):
+                fr = y[i:i + frame]
+                if np.sqrt(np.mean(fr ** 2)) < max(rms * 0.2, 1e-4):
+                    continue
+                w = fr * np.hanning(len(fr))
+                corr = np.correlate(w, w, mode="full")[len(w) - 1:]
+                if len(corr) <= max_lag or corr[0] <= 0:
+                    continue
+                region = corr[min_lag:max_lag]
+                if region.size == 0:
+                    continue
+                peak = int(np.argmax(region)) + min_lag
+                if corr[peak] > 0.3 * corr[0]:
+                    cands.append(float(sr / peak))
+            if len(cands) < 3:
+                return None
+            return float(np.median(cands))
+        except Exception:
+            return None
+
+    # F0-compare modes. Each converts the SAME F5 output a different way so the
+    # emotion-vs-register trade-off can be judged by ear:
+    #   baseline = current behaviour (SeedVC re-centres every emotion's pitch to the
+    #              target -> flat register, emotion pitch lost).
+    #   A        = keep F5's absolute pitch (emotion survives) but it sits in the
+    #              donor's register, not the target's.
+    #   B        = keep F5's pitch contour, shifted by a constant so the donor's
+    #              neutral lands on the target's register -> emotion AND register.
+    F0_COMPARE_MODES: List[Dict[str, Any]] = [
+        {"id": "baseline", "label": "ปัจจุบัน (auto-f0)", "auto_f0_adjust": True,  "shift": "none"},
+        {"id": "A", "label": "A · คงอารมณ์", "auto_f0_adjust": False, "shift": "none"},
+        {"id": "B", "label": "B · คงอารมณ์+ตรง target", "auto_f0_adjust": False, "shift": "to_target"},
+    ]
+
+    def render_f0_compare(
+        self,
+        text: str,
+        *,
+        emotion: str,
+        speaker_id: Optional[str] = None,
+        ref_audio_bytes: Optional[bytes] = None,
+        ref_filename: Optional[str] = None,
+        gender: Optional[str] = None,
+        donor_set: Optional[str] = None,
+        speed: Optional[float] = None,
+    ) -> Dict[str, Any]:
+        """Generate one utterance once with F5, then voice-convert it three ways.
+
+        Returns ``{"modes": [{id,label,wav(bytes),sr,auto_f0_adjust,semi_tone_shift}],
+        "pre_vc": {wav,sr}, "diag": {...}}``. The heavy F5 step runs a single time; the
+        three modes differ only in the SeedVC F0 handling, so this is the cheapest way
+        to A/B the register-vs-emotion trade-off. Single-utterance (benchmark) scope.
+        """
+        pipeline = self.get_pipeline()
+        self._apply_audio_tuning(None)
+
+        emotion = self._validate_and_map_emotion(emotion)
+        body_text = self._prepare_text(text)
+        if not body_text:
+            raise ValueError("No text to synthesize")
+
+        donor_wav, donor_txt = self._resolve_donor_clip(emotion, gender=gender, donor_set=donor_set)
+
+        # Resolve the target speaker (voice to clone).
+        temp_target_path = None
+        if ref_audio_bytes:
+            ext = Path(ref_filename or "upload.wav").suffix.lower()
+            if ext not in AUDIO_EXTS:
+                ext = ".wav"
+            with tempfile.NamedTemporaryFile(suffix=ext, delete=False) as tf:
+                tf.write(ref_audio_bytes)
+                temp_target_path = Path(tf.name)
+            target_wav = temp_target_path
+        elif speaker_id:
+            spk_path = self.get_speaker_audio_path(speaker_id)
+            if not spk_path or not spk_path.exists():
+                raise FileNotFoundError(f"Speaker '{speaker_id}' reference audio not found")
+            target_wav = spk_path
+        else:
+            target_wav = self._resolve_default_speaker(gender=gender)
+
+        # Speed: explicit wins; else rate-match to the target; else default.
+        if speed is not None:
+            chunk_speed = float(speed)
+        elif settings.thonburian_match_target_rate and (ref_audio_bytes or speaker_id):
+            rm = self._matched_speed(Path(target_wav), donor_wav)
+            chunk_speed = rm if rm is not None else settings.thonburian_speed
+        else:
+            chunk_speed = settings.thonburian_speed
+
+        # B's constant shift: move the donor's NEUTRAL register onto the target's.
+        # Using neutral (not this emotion) as the anchor is what keeps the emotion's
+        # own pitch offset intact after the shift.
+        semi_shift_b = 0
+        target_med = self._median_f0(Path(target_wav))
+        donor_neutral_med = None
+        try:
+            neutral_wav, _ = self._resolve_donor_clip("neutral", gender=gender, donor_set=donor_set)
+            donor_neutral_med = self._median_f0(neutral_wav)
+        except Exception:
+            donor_neutral_med = None
+        if target_med and donor_neutral_med and donor_neutral_med > 0:
+            semi_shift_b = int(round(12.0 * math.log2(target_med / donor_neutral_med)))
+            semi_shift_b = max(-12, min(12, semi_shift_b))
+
+        scratch_dir = Path("scratch/thonburian_gen")
+        scratch_dir.mkdir(parents=True, exist_ok=True)
+        ts = int(time.time() * 1000)
+        thon_out = scratch_dir / f"f0cmp_{emotion}_{ts}.wav"
+
+        modes_out: List[Dict[str, Any]] = []
+        pre_vc: Dict[str, Any] = {}
+        try:
+            # 1. F5 once.
+            pipeline(
+                text=body_text,
+                ref_voice=str(donor_wav.resolve()),
+                ref_text=donor_txt,
+                output_file=str(thon_out.resolve()),
+                speed=chunk_speed,
+            )
+            self._depeak_f5(thon_out)
+
+            if settings.thonburian_free_cache:
+                try:
+                    import torch
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
+                        torch.cuda.synchronize()
+                except Exception:
+                    pass
+
+            # Keep the pre-VC F5 clip for playback.
+            try:
+                pre_arr, pre_sr = sf.read(str(thon_out), dtype="float32")
+                if pre_arr.ndim > 1:
+                    pre_arr = pre_arr.mean(axis=1)
+                buf = io.BytesIO()
+                sf.write(buf, pre_arr, int(pre_sr), format="WAV", subtype="PCM_16")
+                pre_vc = {"wav": buf.getvalue(), "sr": int(pre_sr)}
+            except Exception:
+                pre_vc = {}
+
+            # 2. SeedVC three ways off the single F5 output.
+            for spec in self.F0_COMPARE_MODES:
+                shift = semi_shift_b if spec["shift"] == "to_target" else 0
+                vc_out = scratch_dir / f"f0cmp_{emotion}_{spec['id']}_{ts}.wav"
+                self._convert_seedvc(
+                    source_wav=thon_out,
+                    target_wav=Path(target_wav),
+                    output_wav=vc_out,
+                    auto_f0_adjust=spec["auto_f0_adjust"],
+                    semi_tone_shift=shift,
+                )
+                arr, sr = sf.read(str(vc_out), dtype="float32")
+                if arr.ndim > 1:
+                    arr = arr.mean(axis=1)
+                obuf = io.BytesIO()
+                sf.write(obuf, arr, sr, format="WAV", subtype="PCM_16")
+                modes_out.append({
+                    "id": spec["id"],
+                    "label": spec["label"],
+                    "wav": obuf.getvalue(),
+                    "sr": int(sr),
+                    "auto_f0_adjust": spec["auto_f0_adjust"],
+                    "semi_tone_shift": int(shift),
+                })
+                vc_out.unlink(missing_ok=True)
+        finally:
+            thon_out.unlink(missing_ok=True)
+            if temp_target_path and temp_target_path.exists():
+                try:
+                    temp_target_path.unlink(missing_ok=True)
+                except Exception:
+                    pass
+
+        return {
+            "modes": modes_out,
+            "pre_vc": pre_vc,
+            "diag": {
+                "emotion": emotion,
+                "donor": donor_wav.name,
+                "speed": round(float(chunk_speed), 3),
+                "target_med_hz": round(target_med, 1) if target_med else None,
+                "donor_neutral_med_hz": round(donor_neutral_med, 1) if donor_neutral_med else None,
+                "b_semi_tone_shift": semi_shift_b,
+            },
+        }
 
     # ------------------------------------------------------------------ #
     # Core Generation & Chunk Rendering

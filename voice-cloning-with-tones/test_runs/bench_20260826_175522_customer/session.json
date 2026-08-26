@@ -1,0 +1,1949 @@
+{
+  "session_id": "bench_20260826_175522_customer",
+  "name": "Emotion Benchmark (20260826_175522)",
+  "created_at": "2026-08-26T17:55:22.153492",
+  "speaker_id": "customer",
+  "gender": "female",
+  "donor_set": "female_010",
+  "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 15,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_010",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 24,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 12.61,
+        "rms": 0.1367,
+        "energy_dbfs": -17.3,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 222.3,
+        "f0_p90_hz": 308.4,
+        "f0_spread_st": 5.67
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_1__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.869,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1367,
+            "energy_dbfs": -17.3,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 222.3,
+            "f0_p90_hz": 308.4,
+            "f0_spread_st": 5.67
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "neutral_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1399,
+            "energy_dbfs": -17.1,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 221.6,
+            "f0_p90_hz": 324.5,
+            "f0_spread_st": 6.6
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "neutral_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1209,
+            "energy_dbfs": -18.4,
+            "f0_med_hz": 228.5,
+            "f0_p10_hz": 191.9,
+            "f0_p90_hz": 289.8,
+            "f0_spread_st": 7.13
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "neutral_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1548,
+            "energy_dbfs": -16.2,
+            "f0_med_hz": 265.7,
+            "f0_p10_hz": 223.7,
+            "f0_p90_hz": 331.6,
+            "f0_spread_st": 6.81
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "neutral",
+        "donor": "neutral_1.wav",
+        "speed": 0.869,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 21.13,
+      "error": null,
+      "timestamp": "2026-08-26T17:55:43.288278"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "[neutral]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 12.61,
+        "rms": 0.1526,
+        "energy_dbfs": -16.3,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 212.0,
+        "f0_p90_hz": 315.0,
+        "f0_spread_st": 6.85
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_2__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.869,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1526,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 212.0,
+            "f0_p90_hz": 315.0,
+            "f0_spread_st": 6.85
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "neutral_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1484,
+            "energy_dbfs": -16.6,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 210.0,
+            "f0_p90_hz": 317.3,
+            "f0_spread_st": 7.14
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "neutral_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1342,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 245.0,
+            "f0_p10_hz": 194.3,
+            "f0_p90_hz": 292.1,
+            "f0_spread_st": 7.06
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "neutral_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1575,
+            "energy_dbfs": -16.1,
+            "f0_med_hz": 286.4,
+            "f0_p10_hz": 230.9,
+            "f0_p90_hz": 341.9,
+            "f0_spread_st": 6.79
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "neutral",
+        "donor": "neutral_1.wav",
+        "speed": 0.869,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 20.67,
+      "error": null,
+      "timestamp": "2026-08-26T17:56:03.961537"
+    },
+    "neutral_3": {
+      "emotion": "neutral",
+      "take_idx": 3,
+      "instruction": "[neutral]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "neutral_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_3.wav",
+      "metrics": {
+        "dur_s": 12.61,
+        "rms": 0.1401,
+        "energy_dbfs": -17.1,
+        "f0_med_hz": 265.7,
+        "f0_p10_hz": 208.0,
+        "f0_p90_hz": 319.6,
+        "f0_spread_st": 7.43
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_3__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.869,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_3.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1401,
+            "energy_dbfs": -17.1,
+            "f0_med_hz": 265.7,
+            "f0_p10_hz": 208.0,
+            "f0_p90_hz": 319.6,
+            "f0_spread_st": 7.43
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "neutral_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1435,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 211.0,
+            "f0_p90_hz": 308.4,
+            "f0_spread_st": 6.57
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "neutral_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1406,
+            "energy_dbfs": -17.0,
+            "f0_med_hz": 249.9,
+            "f0_p10_hz": 203.2,
+            "f0_p90_hz": 294.0,
+            "f0_spread_st": 6.39
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "neutral_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/neutral_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 12.61,
+            "rms": 0.1608,
+            "energy_dbfs": -15.9,
+            "f0_med_hz": 296.0,
+            "f0_p10_hz": 239.9,
+            "f0_p90_hz": 350.0,
+            "f0_spread_st": 6.54
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "neutral",
+        "donor": "neutral_1.wav",
+        "speed": 0.869,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 20.71,
+      "error": null,
+      "timestamp": "2026-08-26T17:56:24.675402"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 12.67,
+        "rms": 0.1363,
+        "energy_dbfs": -17.3,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 214.1,
+        "f0_p90_hz": 324.7,
+        "f0_spread_st": 7.21
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.951,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 12.67,
+            "rms": 0.1363,
+            "energy_dbfs": -17.3,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 214.1,
+            "f0_p90_hz": 324.7,
+            "f0_spread_st": 7.21
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "happy_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1534,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 213.0,
+            "f0_p90_hz": 334.1,
+            "f0_spread_st": 7.79
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "happy_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1665,
+            "energy_dbfs": -15.6,
+            "f0_med_hz": 284.5,
+            "f0_p10_hz": 228.5,
+            "f0_p90_hz": 358.5,
+            "f0_spread_st": 7.8
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "happy_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1796,
+            "energy_dbfs": -14.9,
+            "f0_med_hz": 331.6,
+            "f0_p10_hz": 271.7,
+            "f0_p90_hz": 421.2,
+            "f0_spread_st": 7.59
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "happy",
+        "donor": "happy_1.wav",
+        "speed": 0.951,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 21.13,
+      "error": null,
+      "timestamp": "2026-08-26T17:56:45.812812"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "[happy]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 12.75,
+        "rms": 0.1459,
+        "energy_dbfs": -16.7,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 208.0,
+        "f0_p90_hz": 324.3,
+        "f0_spread_st": 7.69
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_2__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.951,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1459,
+            "energy_dbfs": -16.7,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 208.0,
+            "f0_p90_hz": 324.3,
+            "f0_spread_st": 7.69
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "happy_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1526,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 216.2,
+            "f0_p90_hz": 326.7,
+            "f0_spread_st": 7.15
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "happy_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1676,
+            "energy_dbfs": -15.5,
+            "f0_med_hz": 282.7,
+            "f0_p10_hz": 233.1,
+            "f0_p90_hz": 355.6,
+            "f0_spread_st": 7.31
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "happy_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1763,
+            "energy_dbfs": -15.1,
+            "f0_med_hz": 334.1,
+            "f0_p10_hz": 274.6,
+            "f0_p90_hz": 420.0,
+            "f0_spread_st": 7.36
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "happy",
+        "donor": "happy_1.wav",
+        "speed": 0.951,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 21.3,
+      "error": null,
+      "timestamp": "2026-08-26T17:57:07.124949"
+    },
+    "happy_3": {
+      "emotion": "happy",
+      "take_idx": 3,
+      "instruction": "[happy]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "happy_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_3.wav",
+      "metrics": {
+        "dur_s": 12.75,
+        "rms": 0.1483,
+        "energy_dbfs": -16.6,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 218.3,
+        "f0_p90_hz": 331.6,
+        "f0_spread_st": 7.24
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_3__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.951,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_3.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1483,
+            "energy_dbfs": -16.6,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 218.3,
+            "f0_p90_hz": 331.6,
+            "f0_spread_st": 7.24
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "happy_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1394,
+            "energy_dbfs": -17.1,
+            "f0_med_hz": 265.7,
+            "f0_p10_hz": 200.5,
+            "f0_p90_hz": 326.7,
+            "f0_spread_st": 8.45
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "happy_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1661,
+            "energy_dbfs": -15.6,
+            "f0_med_hz": 298.0,
+            "f0_p10_hz": 227.6,
+            "f0_p90_hz": 364.5,
+            "f0_spread_st": 8.15
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "happy_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/happy_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 12.75,
+            "rms": 0.1797,
+            "energy_dbfs": -14.9,
+            "f0_med_hz": 341.9,
+            "f0_p10_hz": 253.4,
+            "f0_p90_hz": 424.0,
+            "f0_spread_st": 8.91
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "happy",
+        "donor": "happy_1.wav",
+        "speed": 0.951,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 21.3,
+      "error": null,
+      "timestamp": "2026-08-26T17:57:28.431811"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "[sad]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 10.37,
+        "rms": 0.1119,
+        "energy_dbfs": -19.0,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 216.2,
+        "f0_p90_hz": 308.0,
+        "f0_spread_st": 6.13
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_1__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.986,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1119,
+            "energy_dbfs": -19.0,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 216.2,
+            "f0_p90_hz": 308.0,
+            "f0_spread_st": 6.13
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "sad_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1313,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 203.6,
+            "f0_p90_hz": 310.6,
+            "f0_spread_st": 7.31
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "sad_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1258,
+            "energy_dbfs": -18.0,
+            "f0_med_hz": 245.0,
+            "f0_p10_hz": 190.9,
+            "f0_p90_hz": 290.1,
+            "f0_spread_st": 7.25
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "sad_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1566,
+            "energy_dbfs": -16.1,
+            "f0_med_hz": 290.1,
+            "f0_p10_hz": 227.8,
+            "f0_p90_hz": 341.9,
+            "f0_spread_st": 7.03
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "sad",
+        "donor": "sad_1.wav",
+        "speed": 0.986,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 17.27,
+      "error": null,
+      "timestamp": "2026-08-26T17:57:45.707668"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "[sad]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 10.37,
+        "rms": 0.1117,
+        "energy_dbfs": -19.0,
+        "f0_med_hz": 263.3,
+        "f0_p10_hz": 218.3,
+        "f0_p90_hz": 304.1,
+        "f0_spread_st": 5.74
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_2__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.986,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1117,
+            "energy_dbfs": -19.0,
+            "f0_med_hz": 263.3,
+            "f0_p10_hz": 218.3,
+            "f0_p90_hz": 304.1,
+            "f0_spread_st": 5.74
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "sad_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1532,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 213.0,
+            "f0_p90_hz": 319.6,
+            "f0_spread_st": 7.02
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "sad_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1215,
+            "energy_dbfs": -18.3,
+            "f0_med_hz": 235.8,
+            "f0_p10_hz": 187.7,
+            "f0_p90_hz": 284.5,
+            "f0_spread_st": 7.2
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "sad_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1521,
+            "energy_dbfs": -16.4,
+            "f0_med_hz": 280.9,
+            "f0_p10_hz": 225.0,
+            "f0_p90_hz": 336.6,
+            "f0_spread_st": 6.98
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "sad",
+        "donor": "sad_1.wav",
+        "speed": 0.986,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 17.21,
+      "error": null,
+      "timestamp": "2026-08-26T17:58:02.926940"
+    },
+    "sad_3": {
+      "emotion": "sad",
+      "take_idx": 3,
+      "instruction": "[sad]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "sad_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_3.wav",
+      "metrics": {
+        "dur_s": 10.37,
+        "rms": 0.1106,
+        "energy_dbfs": -19.1,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 215.1,
+        "f0_p90_hz": 319.6,
+        "f0_spread_st": 6.85
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_3__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.986,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_3.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1106,
+            "energy_dbfs": -19.1,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 215.1,
+            "f0_p90_hz": 319.6,
+            "f0_spread_st": 6.85
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "sad_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1455,
+            "energy_dbfs": -16.7,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 220.5,
+            "f0_p90_hz": 312.8,
+            "f0_spread_st": 6.05
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "sad_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1203,
+            "energy_dbfs": -18.4,
+            "f0_med_hz": 232.1,
+            "f0_p10_hz": 192.6,
+            "f0_p90_hz": 275.6,
+            "f0_spread_st": 6.21
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "sad_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/sad_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 10.37,
+            "rms": 0.1494,
+            "energy_dbfs": -16.5,
+            "f0_med_hz": 276.5,
+            "f0_p10_hz": 229.7,
+            "f0_p90_hz": 325.5,
+            "f0_spread_st": 6.03
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "sad",
+        "donor": "sad_1.wav",
+        "speed": 0.986,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 17.29,
+      "error": null,
+      "timestamp": "2026-08-26T17:58:20.220883"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 6.86,
+        "rms": 0.1446,
+        "energy_dbfs": -16.8,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 218.3,
+        "f0_p90_hz": 317.3,
+        "f0_spread_st": 6.47
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_1__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.13,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1446,
+            "energy_dbfs": -16.8,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 218.3,
+            "f0_p90_hz": 317.3,
+            "f0_spread_st": 6.47
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "angry_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1425,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 199.0,
+            "f0_p90_hz": 319.6,
+            "f0_spread_st": 8.2
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "angry_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1649,
+            "energy_dbfs": -15.7,
+            "f0_med_hz": 321.9,
+            "f0_p10_hz": 242.3,
+            "f0_p90_hz": 393.8,
+            "f0_spread_st": 8.41
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "angry_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1738,
+            "energy_dbfs": -15.2,
+            "f0_med_hz": 355.6,
+            "f0_p10_hz": 256.4,
+            "f0_p90_hz": 450.0,
+            "f0_spread_st": 9.74
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "angry",
+        "donor": "angry_1.wav",
+        "speed": 1.13,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 13.78,
+      "error": null,
+      "timestamp": "2026-08-26T17:58:34.005289"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "[angry]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 6.86,
+        "rms": 0.1454,
+        "energy_dbfs": -16.7,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 203.2,
+        "f0_p90_hz": 310.6,
+        "f0_spread_st": 7.34
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_2__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.13,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1454,
+            "energy_dbfs": -16.7,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 203.2,
+            "f0_p90_hz": 310.6,
+            "f0_spread_st": 7.34
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "angry_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1356,
+            "energy_dbfs": -17.4,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 197.8,
+            "f0_p90_hz": 310.6,
+            "f0_spread_st": 7.81
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "angry_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1722,
+            "energy_dbfs": -15.3,
+            "f0_med_hz": 329.1,
+            "f0_p10_hz": 243.6,
+            "f0_p90_hz": 390.3,
+            "f0_spread_st": 8.16
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "angry_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1924,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 380.2,
+            "f0_p10_hz": 282.7,
+            "f0_p90_hz": 450.0,
+            "f0_spread_st": 8.05
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "angry",
+        "donor": "angry_1.wav",
+        "speed": 1.13,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 13.6,
+      "error": null,
+      "timestamp": "2026-08-26T17:58:47.616045"
+    },
+    "angry_3": {
+      "emotion": "angry",
+      "take_idx": 3,
+      "instruction": "[angry]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "angry_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_3.wav",
+      "metrics": {
+        "dur_s": 6.86,
+        "rms": 0.1599,
+        "energy_dbfs": -15.9,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 225.0,
+        "f0_p90_hz": 305.6,
+        "f0_spread_st": 5.3
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_3__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 1.13,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_3.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1599,
+            "energy_dbfs": -15.9,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 225.0,
+            "f0_p90_hz": 305.6,
+            "f0_spread_st": 5.3
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "angry_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1411,
+            "energy_dbfs": -17.0,
+            "f0_med_hz": 259.4,
+            "f0_p10_hz": 214.1,
+            "f0_p90_hz": 304.1,
+            "f0_spread_st": 6.08
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "angry_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1818,
+            "energy_dbfs": -14.8,
+            "f0_med_hz": 329.1,
+            "f0_p10_hz": 272.6,
+            "f0_p90_hz": 383.5,
+            "f0_spread_st": 5.91
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "angry_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/angry_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 6.86,
+            "rms": 0.1934,
+            "energy_dbfs": -14.3,
+            "f0_med_hz": 383.5,
+            "f0_p10_hz": 300.0,
+            "f0_p90_hz": 436.6,
+            "f0_spread_st": 6.5
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "angry",
+        "donor": "angry_1.wav",
+        "speed": 1.13,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 13.71,
+      "error": null,
+      "timestamp": "2026-08-26T17:59:01.337930"
+    },
+    "frustrated_1": {
+      "emotion": "frustrated",
+      "take_idx": 1,
+      "instruction": "[frustrated]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "frustrated_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_1.wav",
+      "metrics": {
+        "dur_s": 8.08,
+        "rms": 0.139,
+        "energy_dbfs": -17.1,
+        "f0_med_hz": 265.7,
+        "f0_p10_hz": 211.0,
+        "f0_p90_hz": 324.3,
+        "f0_spread_st": 7.44
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_1__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 1.032,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_1.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.139,
+            "energy_dbfs": -17.1,
+            "f0_med_hz": 265.7,
+            "f0_p10_hz": 211.0,
+            "f0_p90_hz": 324.3,
+            "f0_spread_st": 7.44
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "frustrated_take_1__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_1__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.149,
+            "energy_dbfs": -16.5,
+            "f0_med_hz": 265.7,
+            "f0_p10_hz": 216.6,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 7.24
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "frustrated_take_1__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_1__f0_A.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1311,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 233.3,
+            "f0_p10_hz": 184.5,
+            "f0_p90_hz": 290.1,
+            "f0_spread_st": 7.84
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "frustrated_take_1__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_1__f0_B.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1535,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 268.9,
+            "f0_p10_hz": 220.5,
+            "f0_p90_hz": 336.6,
+            "f0_spread_st": 7.33
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "frustrated",
+        "donor": "frustrated_1.wav",
+        "speed": 1.032,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 15.2,
+      "error": null,
+      "timestamp": "2026-08-26T17:59:16.545797"
+    },
+    "frustrated_2": {
+      "emotion": "frustrated",
+      "take_idx": 2,
+      "instruction": "[frustrated]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "frustrated_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2.wav",
+      "metrics": {
+        "dur_s": 8.08,
+        "rms": 0.1424,
+        "energy_dbfs": -16.9,
+        "f0_med_hz": 268.9,
+        "f0_p10_hz": 203.3,
+        "f0_p90_hz": 326.7,
+        "f0_spread_st": 8.21
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 1.032,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1424,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 268.9,
+            "f0_p10_hz": 203.3,
+            "f0_p90_hz": 326.7,
+            "f0_spread_st": 8.21
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "frustrated_take_2__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1373,
+            "energy_dbfs": -17.2,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 206.1,
+            "f0_p90_hz": 312.8,
+            "f0_spread_st": 7.22
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "frustrated_take_2__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2__f0_A.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1234,
+            "energy_dbfs": -18.2,
+            "f0_med_hz": 230.9,
+            "f0_p10_hz": 180.0,
+            "f0_p90_hz": 282.7,
+            "f0_spread_st": 7.81
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "frustrated_take_2__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_2__f0_B.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1435,
+            "energy_dbfs": -16.9,
+            "f0_med_hz": 274.8,
+            "f0_p10_hz": 215.1,
+            "f0_p90_hz": 331.6,
+            "f0_spread_st": 7.49
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "frustrated",
+        "donor": "frustrated_1.wav",
+        "speed": 1.032,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 14.94,
+      "error": null,
+      "timestamp": "2026-08-26T17:59:31.497383"
+    },
+    "frustrated_3": {
+      "emotion": "frustrated",
+      "take_idx": 3,
+      "instruction": "[frustrated]",
+      "spoken_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+      "filename": "frustrated_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_3.wav",
+      "metrics": {
+        "dur_s": 8.08,
+        "rms": 0.1449,
+        "energy_dbfs": -16.8,
+        "f0_med_hz": 268.9,
+        "f0_p10_hz": 210.0,
+        "f0_p90_hz": 341.9,
+        "f0_spread_st": 8.44
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_3__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+            "f5_input": {
+              "text": "เทคโนโลยีการสังเคราะห์เสียงพูดในปัจจุบัน ได้รับการพัฒนาให้มีความเป็นธรรมชาติและสามารถถ่ายทอดอารมณ์ได้ใกล้เคียงกับมนุษย์มากยิ่งขึ้น",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 1.032,
+              "speed_source": "matched_to_target",
+              "cfg_value": 2.0,
+              "inference_timesteps": 24,
+              "lora_mode": "on",
+              "donor_set": "female_010"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_3.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1449,
+            "energy_dbfs": -16.8,
+            "f0_med_hz": 268.9,
+            "f0_p10_hz": 210.0,
+            "f0_p90_hz": 341.9,
+            "f0_spread_st": 8.44
+          }
+        }
+      ],
+      "f0_variants": [
+        {
+          "id": "baseline",
+          "label": "ปัจจุบัน (auto-f0)",
+          "filename": "frustrated_take_3__f0_baseline.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_3__f0_baseline.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1441,
+            "energy_dbfs": -16.8,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 199.5,
+            "f0_p90_hz": 334.1,
+            "f0_spread_st": 8.92
+          },
+          "auto_f0_adjust": true,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "A",
+          "label": "A · คงอารมณ์",
+          "filename": "frustrated_take_3__f0_A.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_3__f0_A.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1315,
+            "energy_dbfs": -17.6,
+            "f0_med_hz": 233.3,
+            "f0_p10_hz": 171.6,
+            "f0_p90_hz": 292.1,
+            "f0_spread_st": 9.21
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 0
+        },
+        {
+          "id": "B",
+          "label": "B · คงอารมณ์+ตรง target",
+          "filename": "frustrated_take_3__f0_B.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_175522_customer/frustrated_take_3__f0_B.wav",
+          "metrics": {
+            "dur_s": 8.08,
+            "rms": 0.1468,
+            "energy_dbfs": -16.7,
+            "f0_med_hz": 272.2,
+            "f0_p10_hz": 203.8,
+            "f0_p90_hz": 339.2,
+            "f0_spread_st": 8.82
+          },
+          "auto_f0_adjust": false,
+          "semi_tone_shift": 3
+        }
+      ],
+      "f0_diag": {
+        "emotion": "frustrated",
+        "donor": "frustrated_1.wav",
+        "speed": 1.032,
+        "target_med_hz": 259.4,
+        "donor_neutral_med_hz": 222.2,
+        "b_semi_tone_shift": 3
+      },
+      "elapsed_s": 14.82,
+      "error": null,
+      "timestamp": "2026-08-26T17:59:46.329621"
+    }
+  }
+}
