@@ -716,9 +716,15 @@ class ThonburianService:
         debug_out: Optional[List[dict]] = None,
     ) -> Tuple[List[Chunk], int]:
         pipeline = self.get_pipeline()
-        # Reset F5 knobs to server defaults so this batch never inherits values a
-        # prior Pipeline Explorer run left on the shared AudioConfig.
-        self._apply_audio_tuning(None)
+        # Apply this batch's F5 knobs (and reset everything else to the server
+        # defaults, so it never inherits values a prior Pipeline Explorer run left on
+        # the shared AudioConfig). cfg_value / inference_timesteps come straight from
+        # the caller (studio sliders, benchmark params) and DO drive F5 -- higher cfg
+        # makes it hew harder to the donor's emotional prosody.
+        self._apply_audio_tuning({
+            "cfg_strength": cfg_value,
+            "nfe_step": inference_timesteps,
+        })
 
         # F5 speech speed: <1.0 slower, >1.0 faster.
         #  * explicit ``speed`` (e.g. a studio slider) always wins.
