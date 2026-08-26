@@ -60,6 +60,20 @@ class Settings(BaseSettings):
     thonburian_device: str = ""
     thonburian_cfg_strength: float = 2.0
     thonburian_nfe_step: int = 32
+    # Sway-sampling coefficient for F5's ODE time schedule. F5's own default is
+    # -1.0 (utils_infer / load_flowtts / infer_cli), which spends more steps early
+    # and yields livelier, more expressive prosody. The vendored inference.py used
+    # to hardcode 0.0 (uniform), flattening it -- this restores the real default.
+    thonburian_sway_sampling_coef: float = -1.0
+    # Loudness normalization fed to F5. It scales a quiet donor up to this RMS
+    # before conditioning and scales the output back down by the same factor, so
+    # cross-emotion loudness is largely preserved. 0.1 is F5's own default.
+    thonburian_target_rms: float = 0.1
+    # Donor silence handling. The donor clip's pauses ARE the rhythm F5 clones, so
+    # these are relaxed from the flowtts defaults (200 / 500) to keep more of the
+    # donor's internal timing: only split on longer gaps, and keep more of each.
+    thonburian_keep_silence: int = 500
+    thonburian_min_silence_len: int = 900
     # F5 speech speed multiplier: <1.0 = slower speech, >1.0 = faster.
     thonburian_speed: float = float(os.getenv("THONBURIAN_SPEED", "0.9"))
     # F5+vocos can overshoot [-1, 1]; the library saves as PCM_16 with no peak guard,

@@ -1192,6 +1192,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return checked ? checked.value : 'female';
   }
 
+  function getSelectedDonorSet() {
+    const sel = document.getElementById('donor-set-select');
+    return sel && sel.value ? sel.value : null;
+  }
+
+  // Populate the emotion donor-set dropdown from the same endpoint the Pipeline
+  // Explorer uses. Empty selection = per-gender fallback (server default).
+  async function loadDonorSets() {
+    const sel = document.getElementById('donor-set-select');
+    if (!sel) return;
+    try {
+      const res = await fetch(`${API_BASE}/api/pipeline/donor-sets`).then((r) => r.json());
+      (res.sets || []).forEach((s) => {
+        const opt = document.createElement('option');
+        opt.value = s.id;
+        opt.textContent = s.same_person ? `${s.name} · คนเดียวกัน` : s.name;
+        sel.appendChild(opt);
+      });
+    } catch (e) {
+      /* leave just the auto option if the list can't load */
+    }
+  }
+  loadDonorSets();
+
   // Gender toggle listeners
   const genderRadioInputs = document.querySelectorAll('input[name="gender_select"]');
   genderRadioInputs.forEach((input) => {
@@ -1205,11 +1229,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Synthesis Helper
   async function fetchSynthesisBlob({ text, speakerId, gender, guidance, engine, model, cfgValue, timesteps, loraMode, autoAnnotate = true, postProcess = true, dspParams = null }) {
     const effectiveGender = gender || getSelectedGender();
+    const donorSet = getSelectedDonorSet();
     if (selectedAudioFile) {
       const formData = new FormData();
       formData.append('text', text);
       formData.append('file', selectedAudioFile);
       if (effectiveGender) formData.append('gender', effectiveGender);
+      if (donorSet) formData.append('donor_set', donorSet);
       if (guidance) formData.append('guidance', guidance);
       if (model) formData.append('model', model);
       formData.append('cfg_value', cfgValue);
@@ -1241,6 +1267,7 @@ document.addEventListener('DOMContentLoaded', () => {
           text: text,
           speaker_id: speakerId,
           gender: effectiveGender,
+          donor_set: donorSet,
           guidance: guidance || null,
           engine: engine,
           model: model,

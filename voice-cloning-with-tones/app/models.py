@@ -154,6 +154,10 @@ class SynthesizeRequest(BaseModel):
     gender: Optional[Literal["male", "female", "m", "f"]] = Field(
         default=None, description="Voice gender: 'male' or 'female'"
     )
+    donor_set: Optional[str] = Field(
+        default=None,
+        description="Emotion donor set id (same-person clips). Null falls back to the per-gender folder.",
+    )
     guidance: Optional[str] = None
     engine: Literal["voxcpm", "siangtts", "elevenlabs", "gemini"] = "voxcpm"
     model: Optional[str] = Field(default=None, description="Optional specific LLM model to use")
@@ -173,6 +177,23 @@ class SynthesizeRequest(BaseModel):
     )
 
 
+class PipelineTuning(BaseModel):
+    """F5 acoustic knobs for one Pipeline Explorer run. Any field left null uses
+    the server default. Values are re-clamped to safe bounds service-side."""
+    cfg_strength: Optional[float] = Field(default=None, ge=1.0, le=6.0,
+        description="Classifier-free guidance: higher = stronger adherence to the donor's style")
+    nfe_step: Optional[int] = Field(default=None, ge=8, le=64,
+        description="Sampling steps: more = crisper prosody, slower")
+    sway_sampling_coef: Optional[float] = Field(default=None, ge=-1.5, le=0.0,
+        description="F5 time-schedule sway; -1.0 = livelier/expressive, 0.0 = flat/uniform")
+    target_rms: Optional[float] = Field(default=None, ge=0.0, le=0.5,
+        description="Loudness normalization fed to F5")
+    keep_silence: Optional[int] = Field(default=None, ge=0, le=1000,
+        description="ms of each donor pause kept — higher preserves donor rhythm")
+    min_silence_len: Optional[int] = Field(default=None, ge=200, le=1500,
+        description="Only split the donor on gaps at least this long (ms)")
+
+
 class PipelineTraceRequest(BaseModel):
     """One run of donor -> Thonburian F5 -> SeedVC, keeping every stage playable."""
     donor_set: str = Field(min_length=1, description="Donor set id, e.g. 'female' or 'male'")
@@ -182,6 +203,8 @@ class PipelineTraceRequest(BaseModel):
                                 description="Text to synthesize; empty falls back to the donor transcript")
     speed: Optional[float] = Field(default=None, ge=0.5, le=2.0,
                                    description="F5 speed multiplier; null uses the server default")
+    tuning: Optional[PipelineTuning] = Field(default=None,
+                                             description="F5 acoustic overrides; null uses server defaults")
 
 
 class ABVariantSpec(BaseModel):

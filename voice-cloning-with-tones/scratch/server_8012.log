@@ -500,3 +500,928 @@ INFO:     127.0.0.1:54300 - "GET /models HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54300 - "GET /health HTTP/1.1" 200 OK
 INFO:     127.0.0.1:56477 - "GET /models HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54300 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49797 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52808 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49797 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58949 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63827 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63429 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58550 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63429 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64007 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54628 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59148 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55205 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59148 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57458 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/benchmark/audio/bench_20260826_154257_however/frustrated_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55320 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60867 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55320 - "GET /api/benchmark/audio/bench_20260826_154257_however/frustrated_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55320 - "GET /api/benchmark/audio/bench_20260826_154257_however/angry_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:51813 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62872 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51813 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56717 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58055 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56717 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57134 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57134 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57034 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57134 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57134 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57034 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57034 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57134 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57034 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63129 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63129 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63129 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58737 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58737 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58737 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58737 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58737 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53158 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53158 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53158 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53417 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53340 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64089 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64330 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64089 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57620 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50668 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57022 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50668 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59457 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53769 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51759 - "GET /test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51759 - "GET /static/test.css?v=2.2.0 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49375 - "GET /static/test.js?v=1.5.0 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:51759 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49375 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /static/style.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /static/test.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /static/test.js?v=1.5.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50712 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49204 - "GET /api/donor-clip/female_004/angry HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:49204 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49204 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56937 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49204 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49204 - "GET /speakers/customer/audio HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.01s/it]100%|██████████| 1/1 [00:02<00:00,  2.01s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:02<00:00,  2.91s/it]100%|██████████| 1/1 [00:02<00:00,  2.91s/it]
+INFO:     127.0.0.1:54843 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53188 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /speakers HTTP/1.1" 200 OK
+
+100%|██████████| 1/1 [00:03<00:00,  3.72s/it][A100%|██████████| 1/1 [00:03<00:00,  3.72s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][AINFO:     127.0.0.1:54843 - "GET /api/benchmark/audio/bench_20260826_161045_customer/neutral_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:03<00:00,  3.77s/it]100%|██████████| 1/1 [00:03<00:00,  3.77s/it]
+
+100%|██████████| 1/1 [00:03<00:00,  3.85s/it][A100%|██████████| 1/1 [00:03<00:00,  3.85s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:54843 - "GET /api/benchmark/audio/bench_20260826_161045_customer/neutral_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:03<00:00,  3.77s/it]100%|██████████| 1/1 [00:03<00:00,  3.77s/it]
+INFO:     127.0.0.1:54843 - "GET /api/benchmark/audio/bench_20260826_161045_customer/neutral_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+
+100%|██████████| 1/1 [00:03<00:00,  3.87s/it][A100%|██████████| 1/1 [00:03<00:00,  3.87s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:03<00:00,  3.78s/it]100%|██████████| 1/1 [00:03<00:00,  3.78s/it]
+
+100%|██████████| 1/1 [00:03<00:00,  3.63s/it][A100%|██████████| 1/1 [00:03<00:00,  3.63s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][AINFO:     127.0.0.1:64791 - "GET /api/benchmark/audio/bench_20260826_161045_customer/neutral_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:03<00:00,  3.69s/it]100%|██████████| 1/1 [00:03<00:00,  3.69s/it]
+
+100%|██████████| 1/1 [00:03<00:00,  3.68s/it][A100%|██████████| 1/1 [00:03<00:00,  3.68s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:58963 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58963 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58963 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:04<00:00,  4.31s/it]100%|██████████| 1/1 [00:04<00:00,  4.31s/it]
+
+100%|██████████| 1/1 [00:03<00:00,  3.74s/it][A100%|██████████| 1/1 [00:03<00:00,  3.74s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:04<00:00,  4.34s/it]100%|██████████| 1/1 [00:04<00:00,  4.34s/it]
+
+100%|██████████| 1/1 [00:04<00:00,  4.42s/it][A100%|██████████| 1/1 [00:04<00:00,  4.42s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:57685 - "GET /api/benchmark/audio/bench_20260826_161045_customer/happy_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:04<00:00,  4.36s/it]100%|██████████| 1/1 [00:04<00:00,  4.36s/it]
+INFO:     127.0.0.1:57685 - "GET /api/benchmark/audio/bench_20260826_161045_customer/happy_take_1.wav HTTP/1.1" 206 Partial Content
+
+100%|██████████| 1/1 [00:04<00:00,  4.45s/it][A100%|██████████| 1/1 [00:04<00:00,  4.45s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:04<00:00,  4.06s/it]100%|██████████| 1/1 [00:04<00:00,  4.06s/it]
+
+100%|██████████| 1/1 [00:04<00:00,  4.32s/it][A100%|██████████| 1/1 [00:04<00:00,  4.32s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:64305 - "GET /api/benchmark/audio/bench_20260826_161045_customer/sad_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64305 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49710 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64305 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:03<00:00,  3.91s/it]100%|██████████| 1/1 [00:03<00:00,  3.91s/it]
+INFO:     127.0.0.1:64305 - "GET /api/benchmark/audio/bench_20260826_161045_customer/sad_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+
+100%|██████████| 1/1 [00:03<00:00,  3.81s/it][A100%|██████████| 1/1 [00:03<00:00,  3.81s/it]
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][A100%|██████████| 1/1 [00:03<00:00,  3.89s/it]100%|██████████| 1/1 [00:03<00:00,  3.89s/it]
+INFO:     127.0.0.1:50979 - "GET /api/benchmark/audio/bench_20260826_161045_customer/angry_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+
+100%|██████████| 1/1 [00:03<00:00,  3.90s/it][A100%|██████████| 1/1 [00:03<00:00,  3.90s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][AINFO:     127.0.0.1:50979 - "GET /api/benchmark/audio/bench_20260826_161045_customer/angry_take_1.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:04<00:00,  4.96s/it]100%|██████████| 1/1 [00:04<00:00,  4.96s/it]
+
+100%|██████████| 1/1 [00:04<00:00,  4.31s/it][A100%|██████████| 1/1 [00:04<00:00,  4.31s/it]
+INFO:     127.0.0.1:50979 - "GET /api/benchmark/audio/bench_20260826_161045_customer/angry_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][AINFO:     127.0.0.1:64175 - "GET /api/benchmark/audio/bench_20260826_161045_customer/angry_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:05<00:00,  5.14s/it]100%|██████████| 1/1 [00:05<00:00,  5.14s/it]
+INFO:     127.0.0.1:64175 - "GET /api/benchmark/audio/bench_20260826_161045_customer/angry_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+
+100%|██████████| 1/1 [00:05<00:00,  5.40s/it][A100%|██████████| 1/1 [00:05<00:00,  5.41s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]INFO:     127.0.0.1:64175 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64175 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64175 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+
+  0%|          | 0/1 [00:00<?, ?it/s][AINFO:     127.0.0.1:64175 - "GET /api/benchmark/audio/bench_20260826_161045_customer/frustrated_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+100%|██████████| 1/1 [00:05<00:00,  5.31s/it]100%|██████████| 1/1 [00:05<00:00,  5.31s/it]
+
+100%|██████████| 1/1 [00:05<00:00,  5.38s/it][A100%|██████████| 1/1 [00:05<00:00,  5.38s/it]
+INFO:     127.0.0.1:60016 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 เขาบอกฉันแบบนั้นจริงจริง นะ ฉันไม่ได้คิดไปเองสักหน่อย
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.55s/it]100%|██████████| 1/1 [00:02<00:00,  2.55s/it]
+INFO:     127.0.0.1:63809 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57298 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65437 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49517 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65417 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49517 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53871 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50614 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54521 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58889 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54521 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60250 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63339 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52581 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56009 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52581 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54600 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58300 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62345 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65063 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62345 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54983 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50247 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59430 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54507 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59430 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57166 - "GET /api/benchmark/audio/bench_20260826_161045_customer/frustrated_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54633 - "GET /api/benchmark/audio/bench_20260826_161045_customer/angry_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52721 - "GET /api/benchmark/audio/bench_20260826_161045_customer/sad_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52721 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52721 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56680 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52721 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56680 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52721 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52721 - "GET /api/benchmark/audio/bench_20260826_161045_customer/sad_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52721 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56680 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52721 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51951 - "GET /speakers/customer/audio HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:51842 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51842 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51842 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50274 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60621 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58909 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56215 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58909 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49673 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58243 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51352 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58243 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51192 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52474 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60843 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52474 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62172 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62172 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62172 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54356 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52660 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52660 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52660 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57610 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57610 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57610 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52935 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57610 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52935 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52935 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57610 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52935 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60054 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54711 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60054 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59872 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59930 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55274 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59930 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61849 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61849 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61849 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54460 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50876 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50876 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50876 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50360 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50360 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50360 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64863 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50360 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64863 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64863 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50360 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64863 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52251 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52251 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52251 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57116 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49305 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49935 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49305 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /static/style.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /static/test.css?v=2.2.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /static/test.js?v=1.5.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51041 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61722 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61722 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51847 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49847 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51847 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49847 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49847 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51847 - "GET /models HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49847 - "GET /speakers HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57169 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57169 - "GET /api/donor-clip/female_005/angry HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.05s/it]100%|██████████| 1/1 [00:02<00:00,  2.05s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.82s/it]100%|██████████| 1/1 [00:01<00:00,  1.82s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.82s/it]100%|██████████| 1/1 [00:01<00:00,  1.82s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.40s/it]100%|██████████| 1/1 [00:02<00:00,  2.40s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.52s/it]100%|██████████| 1/1 [00:02<00:00,  2.52s/it]
+INFO:     127.0.0.1:57679 - "GET /api/benchmark/audio/bench_20260826_162924_customer/neutral_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.52s/it]100%|██████████| 1/1 [00:02<00:00,  2.52s/it]
+INFO:     127.0.0.1:57679 - "GET /api/benchmark/audio/bench_20260826_162924_customer/neutral_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.12s/it]100%|██████████| 1/1 [00:02<00:00,  2.12s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.09s/it]100%|██████████| 1/1 [00:02<00:00,  2.09s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.01s/it]100%|██████████| 1/1 [00:02<00:00,  2.01s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.88s/it]100%|██████████| 1/1 [00:01<00:00,  1.88s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.83s/it]100%|██████████| 1/1 [00:01<00:00,  1.83s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.84s/it]100%|██████████| 1/1 [00:01<00:00,  1.84s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.71s/it]100%|██████████| 1/1 [00:02<00:00,  2.71s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.70s/it]100%|██████████| 1/1 [00:02<00:00,  2.70s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น. 
+gen_text 0 สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.74s/it]100%|██████████| 1/1 [00:02<00:00,  2.74s/it]
+INFO:     127.0.0.1:57169 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57169 - "GET /api/benchmark/audio/bench_20260826_162924_customer/happy_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:65482 - "GET /api/benchmark/audio/bench_20260826_162924_customer/happy_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62453 - "GET /api/benchmark/audio/bench_20260826_162924_customer/happy_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:53845 - "GET /api/benchmark/audio/bench_20260826_162924_customer/happy_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55196 - "GET /api/benchmark/audio/bench_20260826_162924_customer/sad_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55196 - "GET /api/benchmark/audio/bench_20260826_162924_customer/sad_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55196 - "GET /api/benchmark/audio/bench_20260826_162924_customer/sad_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55196 - "GET /api/benchmark/audio/bench_20260826_162924_customer/angry_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:64707 - "GET /api/benchmark/audio/bench_20260826_162924_customer/angry_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:54157 - "GET /api/benchmark/audio/bench_20260826_162924_customer/angry_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62176 - "GET /api/benchmark/audio/bench_20260826_162924_customer/angry_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:62936 - "GET /api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_1__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52120 - "GET /api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_1.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:50560 - "GET /api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_2__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:55274 - "GET /api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_2.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:52118 - "GET /api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_3__thon_preVC.wav HTTP/1.1" 206 Partial Content
+INFO:     127.0.0.1:57548 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 ??
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.50s/it]100%|██████████| 1/1 [00:01<00:00,  1.50s/it]
+INFO:     127.0.0.1:57550 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57553 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 ??
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.26s/it]100%|██████████| 1/1 [00:01<00:00,  1.26s/it]
+INFO:     127.0.0.1:57555 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57558 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 ??
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.24s/it]100%|██████████| 1/1 [00:01<00:00,  1.24s/it]
+INFO:     127.0.0.1:57560 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57488 - "GET /api/benchmark/presets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57490 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 ?? ?? ??
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.40s/it]100%|██████████| 1/1 [00:01<00:00,  1.40s/it]
+INFO:     127.0.0.1:57492 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57496 - "POST /api/benchmark/session/init HTTP/1.1" 200 OK
+Converting audio...
+Using custom reference text...
+
+ref_text   พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย. 
+gen_text 0 ?? ?? ??
+
+
+Generating audio in 1 batches...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:01<00:00,  1.29s/it]100%|██████████| 1/1 [00:01<00:00,  1.29s/it]
+INFO:     127.0.0.1:57498 - "POST /api/benchmark/run-take HTTP/1.1" 200 OK

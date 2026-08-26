@@ -1,0 +1,1019 @@
+{
+  "session_id": "bench_20260826_162924_customer",
+  "name": "Emotion Benchmark (20260826_162924)",
+  "created_at": "2026-08-26T16:29:24.524053",
+  "speaker_id": "customer",
+  "gender": "female",
+  "donor_set": "female_005",
+  "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+  "emotions": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "frustrated"
+  ],
+  "repeats": 3,
+  "total_takes": 15,
+  "completed_takes": 15,
+  "params": {
+    "gender": "female",
+    "donor_set": "female_005",
+    "intensity": 2,
+    "cfg_value": 2.0,
+    "inference_timesteps": 16,
+    "lora_mode": "on"
+  },
+  "takes": {
+    "neutral_1": {
+      "emotion": "neutral",
+      "take_idx": 1,
+      "instruction": "[neutral]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "neutral_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_1.wav",
+      "metrics": {
+        "dur_s": 4.46,
+        "rms": 0.1577,
+        "energy_dbfs": -16.0,
+        "f0_med_hz": 259.4,
+        "f0_p10_hz": 212.0,
+        "f0_p90_hz": 321.9,
+        "f0_spread_st": 7.23
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_1__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_1.wav",
+          "metrics": {
+            "dur_s": 4.46,
+            "rms": 0.1577,
+            "energy_dbfs": -16.0,
+            "f0_med_hz": 259.4,
+            "f0_p10_hz": 212.0,
+            "f0_p90_hz": 321.9,
+            "f0_spread_st": 7.23
+          }
+        }
+      ],
+      "elapsed_s": 3.69,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:28.221628"
+    },
+    "neutral_2": {
+      "emotion": "neutral",
+      "take_idx": 2,
+      "instruction": "[neutral]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "neutral_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_2.wav",
+      "metrics": {
+        "dur_s": 4.46,
+        "rms": 0.163,
+        "energy_dbfs": -15.8,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 226.2,
+        "f0_p90_hz": 308.4,
+        "f0_spread_st": 5.37
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_2__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_2.wav",
+          "metrics": {
+            "dur_s": 4.46,
+            "rms": 0.163,
+            "energy_dbfs": -15.8,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 226.2,
+            "f0_p90_hz": 308.4,
+            "f0_spread_st": 5.37
+          }
+        }
+      ],
+      "elapsed_s": 3.49,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:31.717180"
+    },
+    "neutral_3": {
+      "emotion": "neutral",
+      "take_idx": 3,
+      "instruction": "[neutral]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "neutral_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_3.wav",
+      "metrics": {
+        "dur_s": 4.46,
+        "rms": 0.1611,
+        "energy_dbfs": -15.9,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 226.2,
+        "f0_p90_hz": 329.1,
+        "f0_spread_st": 6.49
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_3__thon_preVC.wav",
+      "pre_vc_filename": "neutral_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "neutral",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "neutral_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "neutral_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/neutral_take_3.wav",
+          "metrics": {
+            "dur_s": 4.46,
+            "rms": 0.1611,
+            "energy_dbfs": -15.9,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 226.2,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 6.49
+          }
+        }
+      ],
+      "elapsed_s": 3.37,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:35.096576"
+    },
+    "happy_1": {
+      "emotion": "happy",
+      "take_idx": 1,
+      "instruction": "[happy]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "happy_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_1.wav",
+      "metrics": {
+        "dur_s": 5.86,
+        "rms": 0.1487,
+        "energy_dbfs": -16.6,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 209.0,
+        "f0_p90_hz": 329.1,
+        "f0_spread_st": 7.86
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_1__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_1.wav",
+          "metrics": {
+            "dur_s": 5.86,
+            "rms": 0.1487,
+            "energy_dbfs": -16.6,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 209.0,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 7.86
+          }
+        }
+      ],
+      "elapsed_s": 4.26,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:39.364858"
+    },
+    "happy_2": {
+      "emotion": "happy",
+      "take_idx": 2,
+      "instruction": "[happy]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "happy_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_2.wav",
+      "metrics": {
+        "dur_s": 5.86,
+        "rms": 0.1528,
+        "energy_dbfs": -16.3,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 220.5,
+        "f0_p90_hz": 324.3,
+        "f0_spread_st": 6.68
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_2__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_2.wav",
+          "metrics": {
+            "dur_s": 5.86,
+            "rms": 0.1528,
+            "energy_dbfs": -16.3,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 220.5,
+            "f0_p90_hz": 324.3,
+            "f0_spread_st": 6.68
+          }
+        }
+      ],
+      "elapsed_s": 4.41,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:43.782344"
+    },
+    "happy_3": {
+      "emotion": "happy",
+      "take_idx": 3,
+      "instruction": "[happy]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "happy_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_3.wav",
+      "metrics": {
+        "dur_s": 5.86,
+        "rms": 0.1403,
+        "energy_dbfs": -17.1,
+        "f0_med_hz": 257.9,
+        "f0_p10_hz": 217.2,
+        "f0_p90_hz": 304.1,
+        "f0_spread_st": 5.83
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_3__thon_preVC.wav",
+      "pre_vc_filename": "happy_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "happy",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "happy_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "happy_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/happy_take_3.wav",
+          "metrics": {
+            "dur_s": 5.86,
+            "rms": 0.1403,
+            "energy_dbfs": -17.1,
+            "f0_med_hz": 257.9,
+            "f0_p10_hz": 217.2,
+            "f0_p90_hz": 304.1,
+            "f0_spread_st": 5.83
+          }
+        }
+      ],
+      "elapsed_s": 4.38,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:48.170394"
+    },
+    "sad_1": {
+      "emotion": "sad",
+      "take_idx": 1,
+      "instruction": "[sad]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "sad_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_1.wav",
+      "metrics": {
+        "dur_s": 4.34,
+        "rms": 0.1247,
+        "energy_dbfs": -18.1,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 213.3,
+        "f0_p90_hz": 329.1,
+        "f0_spread_st": 7.51
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_1__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_1.wav",
+          "metrics": {
+            "dur_s": 4.34,
+            "rms": 0.1247,
+            "energy_dbfs": -18.1,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 213.3,
+            "f0_p90_hz": 329.1,
+            "f0_spread_st": 7.51
+          }
+        }
+      ],
+      "elapsed_s": 3.77,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:51.947691"
+    },
+    "sad_2": {
+      "emotion": "sad",
+      "take_idx": 2,
+      "instruction": "[sad]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "sad_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_2.wav",
+      "metrics": {
+        "dur_s": 4.34,
+        "rms": 0.1203,
+        "energy_dbfs": -18.4,
+        "f0_med_hz": 259.4,
+        "f0_p10_hz": 229.7,
+        "f0_p90_hz": 302.1,
+        "f0_spread_st": 4.74
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_2__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_2.wav",
+          "metrics": {
+            "dur_s": 4.34,
+            "rms": 0.1203,
+            "energy_dbfs": -18.4,
+            "f0_med_hz": 259.4,
+            "f0_p10_hz": 229.7,
+            "f0_p90_hz": 302.1,
+            "f0_spread_st": 4.74
+          }
+        }
+      ],
+      "elapsed_s": 3.85,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:55.804146"
+    },
+    "sad_3": {
+      "emotion": "sad",
+      "take_idx": 3,
+      "instruction": "[sad]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "sad_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_3.wav",
+      "metrics": {
+        "dur_s": 4.34,
+        "rms": 0.1328,
+        "energy_dbfs": -17.5,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 219.4,
+        "f0_p90_hz": 336.9,
+        "f0_spread_st": 7.42
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_3__thon_preVC.wav",
+      "pre_vc_filename": "sad_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "sad",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "sad_1.wav",
+              "ref_text": "อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "sad_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/sad_take_3.wav",
+          "metrics": {
+            "dur_s": 4.34,
+            "rms": 0.1328,
+            "energy_dbfs": -17.5,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 219.4,
+            "f0_p90_hz": 336.9,
+            "f0_spread_st": 7.42
+          }
+        }
+      ],
+      "elapsed_s": 3.66,
+      "error": null,
+      "timestamp": "2026-08-26T16:29:59.466685"
+    },
+    "angry_1": {
+      "emotion": "angry",
+      "take_idx": 1,
+      "instruction": "[angry]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "angry_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_1.wav",
+      "metrics": {
+        "dur_s": 4.68,
+        "rms": 0.1714,
+        "energy_dbfs": -15.3,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 222.8,
+        "f0_p90_hz": 321.7,
+        "f0_spread_st": 6.35
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_1__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_1.wav",
+          "metrics": {
+            "dur_s": 4.68,
+            "rms": 0.1714,
+            "energy_dbfs": -15.3,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 222.8,
+            "f0_p90_hz": 321.7,
+            "f0_spread_st": 6.35
+          }
+        }
+      ],
+      "elapsed_s": 3.64,
+      "error": null,
+      "timestamp": "2026-08-26T16:30:03.115797"
+    },
+    "angry_2": {
+      "emotion": "angry",
+      "take_idx": 2,
+      "instruction": "[angry]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "angry_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_2.wav",
+      "metrics": {
+        "dur_s": 4.68,
+        "rms": 0.1848,
+        "energy_dbfs": -14.7,
+        "f0_med_hz": 262.5,
+        "f0_p10_hz": 227.3,
+        "f0_p90_hz": 321.9,
+        "f0_spread_st": 6.02
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_2__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_2.wav",
+          "metrics": {
+            "dur_s": 4.68,
+            "rms": 0.1848,
+            "energy_dbfs": -14.7,
+            "f0_med_hz": 262.5,
+            "f0_p10_hz": 227.3,
+            "f0_p90_hz": 321.9,
+            "f0_spread_st": 6.02
+          }
+        }
+      ],
+      "elapsed_s": 3.39,
+      "error": null,
+      "timestamp": "2026-08-26T16:30:06.509638"
+    },
+    "angry_3": {
+      "emotion": "angry",
+      "take_idx": 3,
+      "instruction": "[angry]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "angry_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_3.wav",
+      "metrics": {
+        "dur_s": 4.68,
+        "rms": 0.2121,
+        "energy_dbfs": -13.5,
+        "f0_med_hz": 264.1,
+        "f0_p10_hz": 222.7,
+        "f0_p90_hz": 302.1,
+        "f0_spread_st": 5.27
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_3__thon_preVC.wav",
+      "pre_vc_filename": "angry_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "angry",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "angry_1.wav",
+              "ref_text": "พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "angry_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/angry_take_3.wav",
+          "metrics": {
+            "dur_s": 4.68,
+            "rms": 0.2121,
+            "energy_dbfs": -13.5,
+            "f0_med_hz": 264.1,
+            "f0_p10_hz": 222.7,
+            "f0_p90_hz": 302.1,
+            "f0_spread_st": 5.27
+          }
+        }
+      ],
+      "elapsed_s": 3.42,
+      "error": null,
+      "timestamp": "2026-08-26T16:30:09.938280"
+    },
+    "frustrated_1": {
+      "emotion": "frustrated",
+      "take_idx": 1,
+      "instruction": "[frustrated]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "frustrated_take_1.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_1.wav",
+      "metrics": {
+        "dur_s": 5.99,
+        "rms": 0.1566,
+        "energy_dbfs": -16.1,
+        "f0_med_hz": 265.7,
+        "f0_p10_hz": 206.1,
+        "f0_p90_hz": 334.1,
+        "f0_spread_st": 8.36
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_1__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_1__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_1.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_1.wav",
+          "metrics": {
+            "dur_s": 5.99,
+            "rms": 0.1566,
+            "energy_dbfs": -16.1,
+            "f0_med_hz": 265.7,
+            "f0_p10_hz": 206.1,
+            "f0_p90_hz": 334.1,
+            "f0_spread_st": 8.36
+          }
+        }
+      ],
+      "elapsed_s": 4.53,
+      "error": null,
+      "timestamp": "2026-08-26T16:30:14.479401"
+    },
+    "frustrated_2": {
+      "emotion": "frustrated",
+      "take_idx": 2,
+      "instruction": "[frustrated]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "frustrated_take_2.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_2.wav",
+      "metrics": {
+        "dur_s": 5.99,
+        "rms": 0.1579,
+        "energy_dbfs": -16.0,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 206.2,
+        "f0_p90_hz": 326.7,
+        "f0_spread_st": 7.97
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_2__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_2__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_2.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_2.wav",
+          "metrics": {
+            "dur_s": 5.99,
+            "rms": 0.1579,
+            "energy_dbfs": -16.0,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 206.2,
+            "f0_p90_hz": 326.7,
+            "f0_spread_st": 7.97
+          }
+        }
+      ],
+      "elapsed_s": 4.47,
+      "error": null,
+      "timestamp": "2026-08-26T16:30:18.953988"
+    },
+    "frustrated_3": {
+      "emotion": "frustrated",
+      "take_idx": 3,
+      "instruction": "[frustrated]",
+      "spoken_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+      "filename": "frustrated_take_3.wav",
+      "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_3.wav",
+      "metrics": {
+        "dur_s": 5.99,
+        "rms": 0.1572,
+        "energy_dbfs": -16.1,
+        "f0_med_hz": 260.9,
+        "f0_p10_hz": 220.5,
+        "f0_p90_hz": 351.7,
+        "f0_spread_st": 8.08
+      },
+      "pre_vc_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_3__thon_preVC.wav",
+      "pre_vc_filename": "frustrated_take_3__thon_preVC.wav",
+      "model_input": {
+        "chunks": [
+          {
+            "chunk_index": 0,
+            "emotion": "frustrated",
+            "raw_text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+            "f5_input": {
+              "text": "สวัสดีครับ วันนี้เรามี meeting ตอนบ่ายสองโมง อย่าลืมเตรียม presentation มาด้วยนะ",
+              "ref_voice": "frustrated_1.wav",
+              "ref_text": "ก่อนหน้านี้ก็ยังเห็นทำตัวปกติดี ใครจะไปรู้ล่ะว่าเขาคิดแบบนั้น",
+              "speed": 0.9,
+              "cfg_value": 2.0,
+              "inference_timesteps": 16,
+              "lora_mode": "on",
+              "donor_set": "female_005"
+            },
+            "seedvc_input": {
+              "target": "customer.mp3",
+              "f0_condition": true,
+              "auto_f0_adjust": true,
+              "diffusion_steps": 25,
+              "semi_tone_shift": 0,
+              "inference_cfg_rate": 0.7
+            }
+          }
+        ]
+      },
+      "variants": [
+        {
+          "id": "default",
+          "label": "Post-Processed",
+          "filename": "frustrated_take_3.wav",
+          "audio_url": "/api/benchmark/audio/bench_20260826_162924_customer/frustrated_take_3.wav",
+          "metrics": {
+            "dur_s": 5.99,
+            "rms": 0.1572,
+            "energy_dbfs": -16.1,
+            "f0_med_hz": 260.9,
+            "f0_p10_hz": 220.5,
+            "f0_p90_hz": 351.7,
+            "f0_spread_st": 8.08
+          }
+        }
+      ],
+      "elapsed_s": 4.62,
+      "error": null,
+      "timestamp": "2026-08-26T16:30:23.579709"
+    }
+  }
+}

@@ -437,6 +437,7 @@ async def synthesize_endpoint(req: SynthesizeRequest):
             parts,
             speaker_id=req.speaker_id,
             gender=req.gender,
+            donor_set=req.donor_set,
             cfg_value=req.cfg_value,
             inference_timesteps=req.inference_timesteps,
             speed=req.speed,
@@ -467,6 +468,7 @@ async def synthesize_with_upload_endpoint(
     text: str = Form(...),
     file: Optional[UploadFile] = File(None),
     gender: Optional[str] = Form(None),
+    donor_set: Optional[str] = Form(None),
     guidance: Optional[str] = Form(None),
     model: Optional[str] = Form(None),
     cfg_value: float = Form(2.0),
@@ -517,6 +519,7 @@ async def synthesize_with_upload_endpoint(
             ref_audio_bytes=audio_bytes,
             ref_filename=ref_filename,
             gender=gender,
+            donor_set=donor_set,
             cfg_value=cfg_value,
             inference_timesteps=inference_timesteps,
             speed=speed,
@@ -699,6 +702,7 @@ def pipeline_trace_endpoint(req: PipelineTraceRequest):
             text=req.text,
             speaker_id=req.speaker_id,
             speed=req.speed,
+            tuning=req.tuning.model_dump(exclude_none=True) if req.tuning else None,
         )
     except ThonburianServiceUnavailable as e:
         raise HTTPException(status_code=503, detail=str(e))
@@ -737,8 +741,16 @@ def pipeline_trace_endpoint(req: PipelineTraceRequest):
         "target": result["target"],
         "gen_text": result["gen_text"],
         "donor_transcript": result["donor_transcript"],
+        "speed": result.get("speed"),
+        "tuning": result.get("tuning"),
         "stages": stages,
     }
+
+
+@app.get("/api/pipeline/defaults")
+def pipeline_defaults_endpoint():
+    """Server default value + bounds for each F5 tuning knob (for the UI table)."""
+    return thonburian_service.tuning_defaults()
 
 
 @app.get("/api/pipeline/audio/{run_id}/{filename}")

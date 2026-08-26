@@ -8,10 +8,22 @@ const els = {
   text: $('text'), textHint: $('textHint'),
   runBtn: $('runBtn'), status: $('status'),
   stages: $('stages'), outMeta: $('outMeta'),
+  tuneGrid: $('tuneGrid'), tuneReset: $('tuneReset'),
 };
 
 let donorSets = [];           // [{id, name, emotions:[{id, transcript}]}]
 let userEditedText = false;   // stop auto-filling once the user types
+let tuneDefaults = {};        // {key: default value} from the server
+
+// Thai label + one-line hint for each F5 knob, in display order.
+const TUNE_META = {
+  sway_sampling_coef: { label: 'ความมีชีวิตชีวา (sway)', hint: '−1.0 = มีอารมณ์/ลื่นไหล · 0 = แบนราบ' },
+  cfg_strength:       { label: 'ความเข้มอารมณ์ (cfg)',   hint: 'ยิ่งสูงยิ่งยึดสไตล์ donor แรง (เสี่ยง artifact)' },
+  nfe_step:           { label: 'คุณภาพ/สเตป (NFE)',       hint: 'มากขึ้น = prosody คมขึ้น แต่ช้าลง' },
+  target_rms:         { label: 'นอร์มัลไลซ์ความดัง (rms)', hint: 'ค่านอร์มัลไลซ์ที่ป้อนให้ F5 (default 0.1)' },
+  keep_silence:       { label: 'เก็บช่วงเงียบ donor (ms)', hint: 'สูงขึ้น = รักษาจังหวะ/การเว้นวรรคของ donor' },
+  min_silence_len:    { label: 'เงียบขั้นต่ำที่ตัด (ms)',  hint: 'ตัดเฉพาะช่วงเงียบที่ยาวเกินค่านี้' },
+};
 
 const EMOTION_LABELS = {
   neutral: 'Neutral (ปกติ)', happy: 'Happy (มีความสุข)', sad: 'Sad (เศร้า)',
@@ -95,11 +107,67 @@ async function loadOptions() {
   }
 }
 
+async function loadTuning() {
+  try {
+    const res = await fetch('/api/pipeline/defaults').then((r) => r.json());
+    tuneDefaults = res.values || {};
+    const specs = res.specs || {};
+    els.tuneGrid.innerHTML = '';
+    Object.keys(TUNE_META).forEach((key) => {
+      const meta = TUNE_META[key];
+      const spec = specs[key] || {};
+      const field = document.createElement('div');
+      field.className = 'pl-field';
+      const def = tuneDefaults[key];
+      field.innerHTML =
+        `<label for="tune_${key}">${meta.label}</label>` +
+        `<input type="number" id="tune_${key}" data-key="${key}"` +
+        ` min="${spec.min}" max="${spec.max}" step="${spec.step}"` +
+        ` value="${def}" placeholder="${def}" />` +
+        `<div class="pl-hint">${meta.hint} · default ${def}</div>`;
+      els.tuneGrid.appendChild(field);
+    });
+  } catch (e) {
+    els.tuneGrid.innerHTML = '<p class="pl-hint">โหลดค่าปรับแต่งไม่สำเร็จ</p>';
+  }
+}
+
+// Only send knobs the user actually changed from the default; the rest stay null
+// so the server applies its own default.
+function collectTuning() {
+  const tuning = {};
+  els.tuneGrid.querySelectorAll('input[data-key]').forEach((inp) => {
+    const key = inp.dataset.key;
+    const raw = inp.value.trim();
+    if (raw === '') return;
+    const val = parseFloat(raw);
+    if (Number.isNaN(val)) return;
+    if (val !== parseFloat(tuneDefaults[key])) tuning[key] = val;
+  });
+  return Object.keys(tuning).length ? tuning : null;
+}
+
+function resetTuning() {
+  els.tuneGrid.querySelectorAll('input[data-key]').forEach((inp) => {
+    inp.value = tuneDefaults[inp.dataset.key];
+  });
+}
+
 function renderStages(data) {
   els.outMeta.textContent =
     `อารมณ์: ${data.emotion} · donor: ${data.donor_set} · เสียง: ${data.target} · ` +
     `ข้อความ: "${data.gen_text}"`;
   els.stages.innerHTML = '';
+  if (data.tuning) {
+    const t = data.tuning;
+    const line = document.createElement('div');
+    line.className = 'pl-tuneline';
+    line.textContent =
+      `ค่า F5 ที่ใช้: sway ${t.sway_sampling_coef} · cfg ${t.cfg_strength} · NFE ${t.nfe_step} · ` +
+      `rms ${t.target_rms} · keep_silence ${t.keep_silence}ms · min_silence ${t.min_silence_len}ms · ` +
+      `speed ${data.speed}×`;
+    els.stages.appendChild(line);
+  }
   (data.stages || []).forEach((st) => {
     const card = document.createElement('div');
     card.className = 'pl-stage';
@@ -130,10 +198,11 @@ async function run() {
   els.runBtn.disabled = true;
   setStatus('กำลังรัน F5 → SeedVC (อาจใช้เวลา ~20–60 วิ)...', false, true);
   try {
+    const tuning = collectTuning();
     const res = await fetch('/api/pipeline/trace', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ donor_set, emotion, speaker_id, text: text || null, speed }),
+      body: JSON.stringify({ donor_set, emotion, speaker_id, text: text || null, speed, tuning }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.detail || ('HTTP ' + res.status));
@@ -152,5 +221,7 @@ els.emotion.addEventListener('change', () => { userEditedText = false; syncTrans
 els.text.addEventListener('input', () => { userEditedText = true; });
 els.speed.addEventListener('input', () => { els.speedVal.textContent = (+els.speed.value).toFixed(2) + '×'; });
 els.runBtn.addEventListener('click', run);
+els.tuneReset.addEventListener('click', resetTuning);
 
 loadOptions();
+loadTuning();

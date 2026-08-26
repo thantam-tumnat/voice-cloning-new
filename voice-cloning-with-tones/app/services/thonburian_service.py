@@ -125,6 +125,10 @@ class ThonburianService:
                 audio_config=AudioConfig(
                     cfg_strength=settings.thonburian_cfg_strength,
                     nfe_step=settings.thonburian_nfe_step,
+                    sway_sampling_coef=settings.thonburian_sway_sampling_coef,
+                    target_rms=settings.thonburian_target_rms,
+                    keep_silence=settings.thonburian_keep_silence,
+                    min_silence_len=settings.thonburian_min_silence_len,
                 ),
                 temp_dir=str(temp_dir),
             )
@@ -136,6 +140,62 @@ class ThonburianService:
             self._load_error = f"{type(e).__name__}: {e}"
             print(f"[Thonburian] Failed to load pipeline: {self._load_error}", file=sys.stderr)
             raise ThonburianServiceUnavailable(f"Thonburian F5 failed to load: {self._load_error}") from e
+
+    # ------------------------------------------------------------------ #
+    # F5 acoustic tuning (per-generation, no model reload)
+    # ------------------------------------------------------------------ #
+
+    # Adjustable F5 knobs and their sane bounds. The pipeline reads
+    # ``self._pipeline.audio_config`` on every call, so writing these before a
+    # generation takes effect immediately -- no reconstruction, no reload.
+    TUNING_SPECS: Dict[str, Dict[str, Any]] = {
+        "cfg_strength":       {"min": 1.0,  "max": 6.0,   "step": 0.1},
+        "nfe_step":           {"min": 8,    "max": 64,    "step": 1},
+        "sway_sampling_coef": {"min": -1.5, "max": 0.0,   "step": 0.1},
+        "target_rms":         {"min": 0.0,  "max": 0.5,   "step": 0.01},
+        "keep_silence":       {"min": 0,    "max": 1000,  "step": 50},
+        "min_silence_len":    {"min": 200,  "max": 1500,  "step": 50},
+    }
+
+    def tuning_defaults(self) -> Dict[str, Any]:
+        """Server default for every knob, plus its bounds, for the UI table."""
+        vals = {
+            "cfg_strength": settings.thonburian_cfg_strength,
+            "nfe_step": settings.thonburian_nfe_step,
+            "sway_sampling_coef": settings.thonburian_sway_sampling_coef,
+            "target_rms": settings.thonburian_target_rms,
+            "keep_silence": settings.thonburian_keep_silence,
+            "min_silence_len": settings.thonburian_min_silence_len,
+            "speed": settings.thonburian_speed,
+        }
+        return {"values": vals, "specs": self.TUNING_SPECS}
+
+    def _apply_audio_tuning(self, overrides: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """Write the acoustic knobs onto the live AudioConfig for the next call.
+
+        Every field is set explicitly from ``overrides`` (clamped to its bounds)
+        or the server default, so one generation never inherits the previous
+        request's values. Returns the effective values for logging/inspection.
+        """
+        if self._pipeline is None:
+            return {}
+        overrides = overrides or {}
+        defaults = self.tuning_defaults()["values"]
+        cfg = self._pipeline.audio_config
+        effective: Dict[str, Any] = {}
+        for key, spec in self.TUNING_SPECS.items():
+            raw = overrides.get(key)
+            val = defaults[key] if raw is None else raw
+            try:
+                val = float(val)
+            except (TypeError, ValueError):
+                val = float(defaults[key])
+            val = max(spec["min"], min(spec["max"], val))
+            if key in ("nfe_step", "keep_silence", "min_silence_len"):
+                val = int(round(val))
+            setattr(cfg, key, val)
+            effective[key] = val
+        return effective
 
     # ------------------------------------------------------------------ #
     # Speaker & Emotion donor resolution
@@ -367,6 +427,9 @@ class ThonburianService:
         debug_out: Optional[List[dict]] = None,
     ) -> Tuple[List[Chunk], int]:
         pipeline = self.get_pipeline()
+        # Reset F5 knobs to server defaults so this batch never inherits values a
+        # prior Pipeline Explorer run left on the shared AudioConfig.
+        self._apply_audio_tuning(None)
 
         # F5 speech speed: <1.0 slower, >1.0 faster. Falls back to the global default.
         speed_value = settings.thonburian_speed if speed is None else float(speed)
@@ -596,6 +659,7 @@ class ThonburianService:
         ref_audio_bytes: Optional[bytes] = None,
         ref_filename: Optional[str] = None,
         speed: Optional[float] = None,
+        tuning: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """Run one utterance donor -> F5 -> SeedVC, keeping every stage on disk.
 
@@ -646,6 +710,9 @@ class ThonburianService:
             shutil.copy2(donor_wav, donor_out)
 
             pipeline = self.get_pipeline()
+            # Apply the F5 knobs for this run (falls back to server defaults for
+            # anything the caller left unset), then record what actually took.
+            effective_tuning = self._apply_audio_tuning(tuning)
             t0 = time.time()
             pipeline(
                 text=body,
@@ -682,6 +749,8 @@ class ThonburianService:
             "gen_text": gen_text_raw,
             "donor_transcript": donor_txt,
             "target": (speaker_id or (ref_filename or "upload") if ref_audio_bytes else speaker_id) or Path(target_wav).stem,
+            "speed": speed_value,
+            "tuning": effective_tuning,
             "f5_secs": round(f5_secs, 1),
             "vc_secs": round(vc_secs, 1),
             "files": {
@@ -703,6 +772,7 @@ class ThonburianService:
         ref_audio_bytes: Optional[bytes] = None,
         ref_filename: Optional[str] = None,
         gender: Optional[str] = None,
+        donor_set: Optional[str] = None,
         cfg_value: float = 2.0,
         inference_timesteps: int = 32,
         speed: Optional[float] = None,
@@ -718,6 +788,7 @@ class ThonburianService:
             ref_audio_bytes=ref_audio_bytes,
             ref_filename=ref_filename,
             gender=gender,
+            donor_set=donor_set,
             cfg_value=cfg_value,
             inference_timesteps=inference_timesteps,
             speed=speed,
