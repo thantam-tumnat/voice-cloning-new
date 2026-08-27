@@ -2,6 +2,7 @@
 .env
 .env.local
 *.env
+secrets.json
 
 # Downloaded model caches (SeedVC / funasr / rmvpe), fetched by tools/seedvc_server.py
 checkpoints/
@@ -40,5 +41,20 @@ Desktop.ini
 # Derived from the local model, regenerated on demand -- not worth committing.
 voice_cache/_auto_seed.pt
 
-# Takes written by tools/ab_gen.py
+# Outputs, Runs & Scratch (ไฟล์ผลลัพธ์และทดสอบชั่วคราว)
 takes/
+scratch/
+test_runs/
+pipeline_runs/
+runs/
+*_temp/
+thonburian_temp/
+thonburian_gen/
+*.tmp
+*.temp
+
+# Logs
+*.log
+*.err
+logs/
+

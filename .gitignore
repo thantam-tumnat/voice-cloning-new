@@ -1,0 +1,133 @@
+# ==============================================================================
+# Python & Virtual Environments
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.uv/
+.python-version-local
+
+# ==============================================================================
+# Caching, Linting & Testing
+# ==============================================================================
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ==============================================================================
+# Logs & Traces
+# ==============================================================================
+*.log
+*.err
+logs/
+**/logs/
+
+# ==============================================================================
+# Scratch, Output & Results (ไฟล์ทดสอบ ผลลัพธ์ รันชั่วคราว)
+# ==============================================================================
+scratch/
+**/scratch/
+test_runs/
+**/test_runs/
+pipeline_runs/
+**/pipeline_runs/
+runs/
+**/runs/
+takes/
+**/takes/
+demo/samples/
+wandb/
+**/wandb/
+*_temp/
+**/thonburian_temp/
+**/thonburian_gen/
+*.tmp
+*.temp
+
+# ==============================================================================
+# Checkpoints, Model Weights & Caches (ไฟล์โมเดลขนาดใหญ่และแคชเสียง)
+# ==============================================================================
+checkpoints/
+**/checkpoints/
+*.ckpt
+*.safetensors
+*.parquet
+*.arrow
+# Auto-generated neutral seed voice
+voice_cache/_auto_seed.pt
+**/voice_cache/_auto_seed.pt
+
+# Voice embedding cache (regenerable) - uncomment to ignore voice_cache entirely:
+# voice_cache/
+# **/voice_cache/
+
+# Preserve reference audio files & docs
+!**/ref/
+!**/ref/**
+!**/docs/samples/
+!**/docs/samples/**
+
+# ==============================================================================
+# Go Binaries & Build Outputs
+# ==============================================================================
+*.exe
+*.exe~
+*.dll
+*.dylib
+queue_gateway.exe
+*.test
+*.out
+go.work
+
+# ==============================================================================
+# Environment & Secrets (ไฟล์คอนฟิกความลับ)
+# ==============================================================================
+.env
+.env.local
+.env.*.local
+*.env
+secrets.json
+!.env.example
+!.env.template
+
+# ==============================================================================
+# IDEs & Editor configs
+# ==============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ==============================================================================
+# OS Metadata
+# ==============================================================================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini

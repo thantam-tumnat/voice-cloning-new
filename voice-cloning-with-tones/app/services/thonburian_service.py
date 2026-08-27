@@ -334,9 +334,13 @@ class ThonburianService:
         """Strip style instruction parenthetical, then make the text speakable for F5.
 
         Pipeline: encoding hygiene (``normalize_thai_text``) -> speakable-Thai rewrite
-        (``expand``: numbers/abbreviations/ๆ/เทอ so Thai is read correctly) -> custom
-        pronunciation dictionary. This runs on every text just before F5, so both the
-        benchmark page and the studio get correct Thai reading.
+        (``expand``: numbers/abbreviations/ๆ/เทอ so Thai is read correctly).
+
+        The pronunciation dictionary is deliberately NOT applied here: an override may
+        respell a word as spaced syllables ("เทคโนโลยี" -> "เทค โน โล ยี"), and the
+        long-text splitter cuts on whitespace, so applying it this early would let a
+        cut land between a word's own syllables. ``_render_f5`` applies it to each
+        piece after the text has been split, which cannot expose that seam.
         """
         m = _LEADING_STYLE_RE.match(text or "")
         body = text[m.end():] if m else (text or "")
@@ -344,8 +348,7 @@ class ThonburianService:
         if not clean_body:
             return ""
         normalized = normalize_thai_text(clean_body)
-        speakable = expand(normalized, is_thai=True)
-        return apply_pronunciation(speakable)
+        return expand(normalized, is_thai=True)
 
     # ------------------------------------------------------------------ #
     # SeedVC Voice Conversion
@@ -567,7 +570,7 @@ class ThonburianService:
             return [text]
 
         # 1. Prefer the writer's own boundaries.
-        spans = [s for s in re.split(r"\s+", text) if s]
+        spans = [s for s in re.split(r"[ \t\r\n]+", text) if s]
         pieces: List[str] = []
         for piece in self._pack_units(spans, limit, " "):
             if len(piece.encode("utf-8")) <= limit:
@@ -610,10 +613,13 @@ class ThonburianService:
         so the over-allocated tail that used to surface as a mid-sentence pause is gone,
         and the join is a short controlled fade we own instead of F5's blind cross-fade.
         """
-        pieces = self._split_for_f5(text, donor_wav, donor_txt, speed=speed)
+        # Split first, then apply pronunciation overrides to each piece -- see
+        # _prepare_text for why the order matters.
+        pieces = [apply_pronunciation(p) for p in
+                  self._split_for_f5(text, donor_wav, donor_txt, speed=speed)]
         if len(pieces) <= 1:
             pipeline(
-                text=text,
+                text=pieces[0] if pieces else text,
                 ref_voice=str(donor_wav.resolve()),
                 ref_text=donor_txt,
                 output_file=str(out_path.resolve()),
